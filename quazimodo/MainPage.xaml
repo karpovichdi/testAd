@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:quazimodo="clr-namespace:quazimodo;assembly=quazimodo"
+    x:Class="quazimodo.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="1"
+                Text="Start"
+                Clicked="BtnStartClicked"/>
+        <Button Grid.Row="2"
+                Text="Stop"
+                Clicked="BtnStopClicked"/>
+        <quazimodo:AdMobView x:Name="adMobViewReal"
+                             Grid.Row="4"
+                             BackgroundColor="Red"
+                             AdId="{x:Static quazimodo:Constants.Add2Android}"/>
+        <quazimodo:AdMobView x:Name="adMobViewTest"
+                             Grid.Row="6"
+                             BackgroundColor="Red"
+                             AdId="{x:Static quazimodo:Constants.TestAdBlockAndroid}"/>
+    </Grid>
+</ContentPage>

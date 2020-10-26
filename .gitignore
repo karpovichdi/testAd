@@ -1,0 +1,8 @@
+.idea/
+.vs/
+quazimodo.Android/bin
+quazimodo.Android/obj
+quazimodo.iOS/bin
+quazimodo.iOS/obj/
+quazimodo/bin/
+quazimodo/obj
