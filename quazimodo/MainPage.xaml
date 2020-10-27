@@ -6,28 +6,43 @@
     x:Class="quazimodo.MainPage">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Grid.Row="1"
                 Text="Start"
                 Clicked="BtnStartClicked"/>
-        <Button Grid.Row="2"
+        <Button Grid.Row="3"
                 Text="Stop"
                 Clicked="BtnStopClicked"/>
-        <quazimodo:AdMobView x:Name="adMobViewReal"
-                             Grid.Row="4"
-                             BackgroundColor="Red"
-                             AdId="{x:Static quazimodo:Constants.Add2Android}"/>
         <quazimodo:AdMobView x:Name="adMobViewTest"
-                             Grid.Row="6"
+                             Grid.Row="5"
                              BackgroundColor="Red"
                              AdId="{x:Static quazimodo:Constants.TestAdBlockAndroid}"/>
+        <quazimodo:AdMobView Grid.Row="7"
+                             BackgroundColor="Red"
+                             AdId="{x:Static quazimodo:Constants.Add2Android}"/>
+        <quazimodo:AdMobView Grid.Row="9"
+                             BackgroundColor="Red"
+                             AdId="{x:Static quazimodo:Constants.BlockTest1}"/>
+        <quazimodo:AdMobView Grid.Row="11"
+                             BackgroundColor="Red"
+                             AdId="{x:Static quazimodo:Constants.BannerTest4}"/>
+        <quazimodo:AdMobView Grid.Row="13"
+                             BackgroundColor="Red"
+                             AdId="{x:Static quazimodo:Constants.Add1Android}"/>
+        
     </Grid>
 </ContentPage>
