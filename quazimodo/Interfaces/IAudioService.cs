@@ -1,6 +1,6 @@
-namespace quazimodo
+namespace quazimodo.Interfaces
 {
-    public interface IAudio
+    public interface IAudioService
     {
         void PlayAudioFile(string fileName);
 

@@ -1,18 +1,17 @@
-using System;
 using Android.Content;
 using Android.Gms.Ads;
 using Android.Widget;
-using quazimodo;
-using quazimodo.Droid;
+using quazimodo.Controlls;
+using quazimodo.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(AdMobView), typeof(AdMobViewRenderer))]
-namespace quazimodo.Droid
+[assembly: ExportRenderer(typeof(AdMobBannerView), typeof(AdMobBannerRenderer))]
+namespace quazimodo.Droid.Renderers
 {
-    public class AdMobViewRenderer : ViewRenderer<AdMobView, AdView>
+    public class AdMobBannerRenderer : ViewRenderer<AdMobBannerView, AdView>
     {
-        public AdMobViewRenderer(Context context) : base(context) { }
+        public AdMobBannerRenderer(Context context) : base(context) { }
  
         private AdView CreateAdView()
         {
@@ -23,20 +22,11 @@ namespace quazimodo.Droid
                 LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent),
             };
 
-            try
-            {
-                var adRequest = new AdRequest.Builder();
-                adView.LoadAd(adRequest.Build());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
- 
+            adView.LoadAd(new AdRequest.Builder().Build());
             return adView;
         }
  
-        protected override void OnElementChanged(ElementChangedEventArgs<AdMobView> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<AdMobBannerView> e)
         {
             base.OnElementChanged(e);
  

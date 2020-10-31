@@ -1,11 +1,11 @@
 using Xamarin.Forms;
 
-namespace quazimodo
+namespace quazimodo.Controlls
 {
-    public class AdMobView : View
+    public class AdMobBannerView : View
     {
         public static readonly BindableProperty AdIdProperty = BindableProperty.Create(nameof(AdId),  
-            typeof(string), typeof(AdMobView));  
+            typeof(string), typeof(AdMobBannerView));  
   
         public string AdId
         {  
