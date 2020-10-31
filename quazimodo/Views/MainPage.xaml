@@ -6,14 +6,169 @@
     xmlns:constants="clr-namespace:quazimodo.Constants;assembly=quazimodo"
     NavigationPage.HasNavigationBar="False"
     x:Class="quazimodo.Views.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="kindEmojiItem" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="Brown"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="WidthRequest" Value="40"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <quazimodo:AdMobBannerView Grid.Row="1"
-                                   BackgroundColor="Red"
-                                   AdId="{x:Static constants:AdConstants.TestBannerId}"/>
         
+        <ScrollView>
+            <FlexLayout Margin="10,30,10,0"
+                       Direction="Row"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Start"
+                       Wrap="Wrap"
+                       AlignContent="Start"
+                       JustifyContent="Center"
+                       AlignItems="Start">
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"/>
+            
+            <ImageButton Source="kiss.png"
+                         Style="{StaticResource kindEmojiItem}"
+                         Aspect="AspectFit"
+                         Clicked="BtnStartClicked"/>
+        </FlexLayout>
+        </ScrollView>
+       
+        <quazimodo:AdMobBannerView Grid.Row="1"
+                                   AdId="{x:Static constants:AdConstants.TestBannerId}"/>
     </Grid>
 </ContentPage>

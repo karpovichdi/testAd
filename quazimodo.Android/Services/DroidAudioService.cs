@@ -9,16 +9,9 @@ namespace quazimodo.Droid.Services
     public class DroidAudioService : IAudioService
     {
         private MediaPlayer _player;
-        private bool _isPlaying;
         
         public void PlayAudioFile(string fileName)
         {
-            if (_isPlaying)
-            {
-                return;
-            }
-
-            _isPlaying = true;
             _player = new MediaPlayer();
             if (global::Android.App.Application.Context.Assets != null)
             {
@@ -38,12 +31,7 @@ namespace quazimodo.Droid.Services
 
         public void StopPlaying()
         {
-            if (!_isPlaying)
-            {
-                return;
-            }
-            _player.Stop();
-            _isPlaying = false;
+            _player?.Stop();
         }
     }
 }

@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.Gms.Ads;
 using Android.OS;
 using Android.Runtime;
+using Android.Views;
 using quazimodo.Droid.Listeners;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -19,6 +20,8 @@ namespace quazimodo.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            Window?.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
 
             base.OnCreate(savedInstanceState);
 

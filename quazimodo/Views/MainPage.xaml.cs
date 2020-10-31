@@ -6,6 +6,8 @@ namespace quazimodo.Views
 {
     public partial class MainPage : ContentPage
     {
+        public static bool Playing;
+        
         public MainPage()
         {
             InitializeComponent();
@@ -13,7 +15,7 @@ namespace quazimodo.Views
 
         private void BtnStartClicked(object sender, EventArgs e)
         {
-            DependencyService.Get<IAudioService>().PlayAudioFile("sound.mp3");
+            DependencyService.Get<IAudioService>().PlayAudioFile("ILoveYou.mp3");
         }
 
         private void BtnStopClicked(object sender, EventArgs e)
