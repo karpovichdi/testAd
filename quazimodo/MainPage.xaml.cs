@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace quazimodo
@@ -18,6 +19,23 @@ namespace quazimodo
         private void BtnStopClicked(object sender, EventArgs e)
         {
             DependencyService.Get<IAudio>().StopPlaying();
+        }
+
+        private void NextPageClicked(object sender, EventArgs e)
+        {
+            NavigateToNewPage();
+        }
+
+        private async Task NavigateToNewPage()
+        {
+            try
+            {
+                await Navigation.PushAsync(new VideoAddPage());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }
