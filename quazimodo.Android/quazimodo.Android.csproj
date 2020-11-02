@@ -77,7 +77,54 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\alien.png" />
+    <AndroidResource Include="Resources\drawable\blowkiss.png" />
     <AndroidResource Include="Resources\drawable\kiss.png" />
+    <AndroidResource Include="Resources\drawable\closedeyes.png" />
+    <AndroidResource Include="Resources\drawable\cool.png" />
+    <AndroidResource Include="Resources\drawable\money.png" />
+    <AndroidResource Include="Resources\drawable\dollar.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\glance.png" />
+    <AndroidResource Include="Resources\drawable\glanceq.png" />
+    <AndroidResource Include="Resources\drawable\grandfather.png" />
+    <AndroidResource Include="Resources\drawable\Laughter.png" />
+    <AndroidResource Include="Resources\drawable\grinningq.png" />
+    <AndroidResource Include="Resources\drawable\grinningw.png" />
+    <AndroidResource Include="Resources\drawable\grinninge.png" />
+    <AndroidResource Include="Resources\drawable\grinningr.png" />
+    <AndroidResource Include="Resources\drawable\grinningy.png" />
+    <AndroidResource Include="Resources\drawable\wink.png" />
+    <AndroidResource Include="Resources\drawable\sweating.png" />
+    <AndroidResource Include="Resources\drawable\hand.png" />
+    <AndroidResource Include="Resources\drawable\hearteyes.png" />
+    <AndroidResource Include="Resources\drawable\hearteyesq.png" />
+    <AndroidResource Include="Resources\drawable\hugging.png" />
+    <AndroidResource Include="Resources\drawable\kissing.png" />
+    <AndroidResource Include="Resources\drawable\laughing.png" />
+    <AndroidResource Include="Resources\drawable\policeman.png" />
+    <AndroidResource Include="Resources\drawable\eyepatch.png" />
+    <AndroidResource Include="Resources\drawable\Laughterq.png" />
+    <AndroidResource Include="Resources\drawable\lol.png" />
+    <AndroidResource Include="Resources\drawable\tasty.png" />
+    <AndroidResource Include="Resources\drawable\smilingface.png" />
+    <AndroidResource Include="Resources\drawable\devil.png" />
+    <AndroidResource Include="Resources\drawable\smile.png" />
+    <AndroidResource Include="Resources\drawable\angel.png" />
+    <AndroidResource Include="Resources\drawable\hearts.png" />
+    <AndroidResource Include="Resources\drawable\sunglasses.png" />
+    <AndroidResource Include="Resources\drawable\tongueout.png" />
+    <AndroidResource Include="Resources\drawable\starred.png" />
+    <AndroidResource Include="Resources\drawable\sunglassesq.png" />
+    <AndroidResource Include="Resources\drawable\joy.png" />
+    <AndroidResource Include="Resources\drawable\thief.png" />
+    <AndroidResource Include="Resources\drawable\tease.png" />
+    <AndroidResource Include="Resources\drawable\upsidedown.png" />
+    <AndroidResource Include="Resources\drawable\winkingface.png" />
+    <AndroidResource Include="Resources\drawable\yummy.png" />
+    <AndroidResource Include="Resources\drawable\happy.png" />
+    <AndroidResource Include="Resources\drawable\zany.png" />
     <AndroidResource Include="Resources\layout\Tabbar.xml" />
     <AndroidResource Include="Resources\layout\Toolbar.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
