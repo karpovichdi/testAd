@@ -326,7 +326,7 @@
 
                     <BoxView Grid.RowSpan="2"
                               CornerRadius="20"
-                              BackgroundColor="#f1f8e9" />
+                              BackgroundColor="#d7ccc8"  />
                     <Frame Grid.Row="0"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="Start">
