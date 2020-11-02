@@ -5,8 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:quazimodo="clr-namespace:quazimodo.Controlls;assembly=quazimodo"
     xmlns:constants="clr-namespace:quazimodo.Constants;assembly=quazimodo"
+    xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
     NavigationPage.HasNavigationBar="False"
     x:Class="quazimodo.Views.MainPage">
+    <ContentPage.BindingContext>
+        <viewModels:MainViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="positiveEmojiItem" TargetType="ImageButton">
@@ -79,138 +83,10 @@
                     <FlexLayout Grid.Row="1"
                                 Style="{StaticResource flexLayoutStyle}">
                         <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}" />
-
-                        <ImageButton Source="kiss.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      Aspect="AspectFit"
-                                     Clicked="BtnStartClicked" />
+                                     Command="{Binding SmileClickCommand}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Kiss}"/>
                     </FlexLayout>
                 </Grid>
 
@@ -228,7 +104,7 @@
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="Start">
                         <Label Style="{StaticResource soundCategoryStyle}"
-                               TextColor="#cbae8270"
+                               TextColor="#bec5b7"
                                Text="Neutral" />
                     </Frame>
                     <FlexLayout Grid.Row="1"
@@ -310,10 +186,7 @@
                         <ImageButton Source="kiss.png"
                                      Style="{StaticResource neutralEmojiItem}" />
 
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     Aspect="AspectFit"
-                                     Clicked="BtnStartClicked" />
+                        
                     </FlexLayout>
                 </Grid>
 
@@ -325,13 +198,13 @@
                     </Grid.RowDefinitions>
 
                     <BoxView Grid.RowSpan="2"
-                              CornerRadius="20"
-                              BackgroundColor="#d7ccc8"  />
+                             CornerRadius="20"
+                             BackgroundColor="#d7ccc8" />
                     <Frame Grid.Row="0"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="Start">
                         <Label Style="{StaticResource soundCategoryStyle}"
-                               TextColor="#cbae8270"
+                               TextColor="#a69b97"
                                Text="Negative" />
                     </Frame>
                     <FlexLayout Grid.Row="1"
@@ -365,17 +238,10 @@
                         <ImageButton Source="kiss.png"
                                      Style="{StaticResource negativeEmojiItem}" />
 
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}"
-                                     Aspect="AspectFit"
-                                     Clicked="BtnStartClicked" />
                     </FlexLayout>
                 </Grid>
             </StackLayout>
-
-
         </ScrollView>
-
         <quazimodo:AdMobBannerView Grid.Row="1"
                                    AdId="{x:Static constants:AdConstants.TestBannerId}" />
     </Grid>
