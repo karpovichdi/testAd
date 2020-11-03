@@ -77,6 +77,7 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\accept.png" />
     <AndroidResource Include="Resources\drawable\alien.png" />
     <AndroidResource Include="Resources\drawable\amazed.png" />
     <AndroidResource Include="Resources\drawable\anger.png" />
@@ -130,6 +131,7 @@
     <AndroidResource Include="Resources\drawable\poop.png" />
     <AndroidResource Include="Resources\drawable\poutine.png" />
     <AndroidResource Include="Resources\drawable\puke.png" />
+    <AndroidResource Include="Resources\drawable\reject.png" />
     <AndroidResource Include="Resources\drawable\robot.png" />
     <AndroidResource Include="Resources\drawable\sad.png" />
     <AndroidResource Include="Resources\drawable\sadface.png" />

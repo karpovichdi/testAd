@@ -1,6 +1,6 @@
 ﻿namespace quazimodo.Constants
 {
-    public static class SmileIdConstants
+    public static class ImageIdConstants
     {
         #region Positive
         public static string Alien001 => "alien.png";
@@ -115,5 +115,8 @@
         
         
         #endregion
+        
+        public static string Accept => "accept.png";
+        public static string Reject => "reject.png";
     }
 }

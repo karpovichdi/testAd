@@ -5,11 +5,11 @@ namespace quazimodo.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public Command SmileClickCommand { get; set; }
+        public Command MusicBtnClickCommand { get; set; }
 
         public MainViewModel()
         {
-            SmileClickCommand = new Command(SmileClickCommandHandler);
+            MusicBtnClickCommand = new Command(SmileClickCommandHandler);
         }
 
         private void SmileClickCommandHandler(object obj)
