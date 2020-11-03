@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:quazimodo="clr-namespace:quazimodo.Controlls;assembly=quazimodo"
+    xmlns:enums="clr-namespace:quazimodo.Enums;assembly=quazimodo"
     xmlns:constants="clr-namespace:quazimodo.Constants;assembly=quazimodo"
     xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
     NavigationPage.HasNavigationBar="False"
@@ -468,16 +469,16 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.Poop}" />
                     </FlexLayout>
                 </Grid>
-
+                
                 <StackLayout Orientation="Horizontal"
                              HorizontalOptions="Center"
                              Margin="20">
                     <ImageButton Source="{x:Static constants:ImageIdConstants.Reject}"
                                  Style="{StaticResource acceptButtonStyle}" 
-                                 CommandParameter="{x:Static constants:ImageIdConstants.Reject}"/>
+                                 CommandParameter="{x:Static enums:SoundParameter.Reject}"/>
                     <ImageButton Source="{x:Static constants:ImageIdConstants.Accept}"
                                  Style="{StaticResource acceptButtonStyle}" 
-                                 CommandParameter="{x:Static constants:ImageIdConstants.Accept}"/>
+                                 CommandParameter="{x:Static enums:SoundParameter.Accept}"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
