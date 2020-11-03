@@ -21,6 +21,7 @@
                 <Setter Property="Margin" Value="5" />
                 <Setter Property="BorderColor" Value="#ffffe4" />
                 <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="Aspect" Value="AspectFit" />
                 <Setter Property="Command" Value="{Binding SmileClickCommand}" />
             </Style>
             <Style x:Key="neutralEmojiItem" TargetType="ImageButton">
@@ -29,8 +30,10 @@
                 <Setter Property="WidthRequest" Value="40" />
                 <Setter Property="Padding" Value="5" />
                 <Setter Property="Margin" Value="5" />
+                <Setter Property="Aspect" Value="AspectFit" />
                 <Setter Property="BorderColor" Value="#ffffff" />
                 <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="Command" Value="{Binding SmileClickCommand}" />
             </Style>
             <Style x:Key="negativeEmojiItem" TargetType="ImageButton">
                 <Setter Property="BackgroundColor" Value="#a69b9770" />
@@ -38,6 +41,7 @@
                 <Setter Property="WidthRequest" Value="40" />
                 <Setter Property="Padding" Value="5" />
                 <Setter Property="Margin" Value="5" />
+                <Setter Property="Aspect" Value="AspectFit" />
                 <Setter Property="BorderColor" Value="#fffffb" />
                 <Setter Property="BorderWidth" Value="1" />
             </Style>
@@ -85,190 +89,145 @@
                                 Style="{StaticResource flexLayoutStyle}">
                         <ImageButton Source="closedeyes.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Closed014}"/>
                         <ImageButton Source="upsidedown.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.UpsideDown128}"/>
                         <ImageButton Source="winkingface.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.WinkingFace132}"/>
                         <ImageButton Source="smilingface.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.SmillingFace095}"/>
                         <ImageButton Source="hand.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Hand055}"/>
                         <ImageButton Source="hugging.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Hugging058}"/>
                         
                         <ImageButton Source="tasty.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Tasty086}"/>
                         <ImageButton Source="tongueout.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.TongueOut109}"/>
                         <ImageButton Source="yummy.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Yummy136}"/>
                         <ImageButton Source="eyepatch.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.EyePatch075}"/>
                         <ImageButton Source="thief.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Thief120}"/>
                         <ImageButton Source="cool.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Cool020}"/>
                         
                         <ImageButton Source="sunglasses.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Sunglasses104}"/>
                         <ImageButton Source="kissing.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Kissing059}"/>
                         <ImageButton Source="blowkiss.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.BlowKiss009}"/>
                         <ImageButton Source="hearteyes.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.HeartEyes056}"/>
                         <ImageButton Source="hearts.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Hearts103}"/>
                         <ImageButton Source="grinningw.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Grinning044}"/>
                         
                         <ImageButton Source="Laughter.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Laughter042}"/>
                         <ImageButton Source="wink.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Wink052}"/>
                         <ImageButton Source="happy.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Happy137}"/>
                         <ImageButton Source="grinninge.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Grinning046}"/>
                         <ImageButton Source="grinningr.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Grinning047}"/>
                         <ImageButton Source="grinningy.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Grinning049}"/>
                         
                         <ImageButton Source="Laughterq.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Laughter079}"/>
                         <ImageButton Source="sweating.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Sweating053}"/>
                         <ImageButton Source="lol.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Lol080}"/>
                         <ImageButton Source="joy.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Joy117}"/>
                         <ImageButton Source="angel.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Angel102}"/>
                         <ImageButton Source="money.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Money027}"/>
                         
                         <ImageButton Source="starred.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Starred111}"/>
                         <ImageButton Source="policeman.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Policeman067}"/>
                         <ImageButton Source="grandfather.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.GrandFather040}"/>
                         <ImageButton Source="grinningq.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Grinning043}"/>
                         <ImageButton Source="laughing.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Laughing061}"/>
                         <ImageButton Source="smile.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Smile100}"/>
                         
                         <ImageButton Source="alien.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Alien001}"/>
                         <ImageButton Source="glanceq.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Glance039}"/>
                         <ImageButton Source="kiss.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Kiss011}"/>
                         <ImageButton Source="zany.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Zany138}"/>
                         <ImageButton Source="tease.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Tease123}"/>
                         <ImageButton Source="sunglassesq.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Sunglasses113}"/>
                         
                         <ImageButton Source="devil.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Devil098}"/>
                         <ImageButton Source="dollar.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Dollar028}"/>
                         <ImageButton Source="hearteyesq.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     Aspect="AspectFit"
                                      CommandParameter="{x:Static constants:SmileIdConstants.HeartEyes057}"/>
                     </FlexLayout>
                 </Grid>
@@ -292,84 +251,48 @@
                     </Frame>
                     <FlexLayout Grid.Row="1"
                                 Style="{StaticResource flexLayoutStyle}">
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource neutralEmojiItem}" />
-
+                        <ImageButton Source="flatmouth.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Flatmouth}"/>
+                        <ImageButton Source="neutral.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Neutral}"/>
+                        <ImageButton Source="upset.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Upset}"/>
+                        <ImageButton Source="zanyq.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Zanyq}"/>
+                        <ImageButton Source="teeth.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Teeth}"/>
+                        <ImageButton Source="grimacing.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Grimacing}"/>
                         
+                        <ImageButton Source="sleeping.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Sleeping}"/>
+                        <ImageButton Source="tongueoutq.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Tongueoutq}"/>
+                        <ImageButton Source="amazed.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Amazed}"/>
+                        <ImageButton Source="ninja.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Ninja}"/>
+                        <ImageButton Source="robot.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Robot}"/>
+                        <ImageButton Source="skull.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Skull}"/>
+                        
+                        <ImageButton Source="ghost.png"
+                                     Style="{StaticResource neutralEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Ghost}"/>
+
                     </FlexLayout>
                 </Grid>
 

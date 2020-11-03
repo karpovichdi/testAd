@@ -2,6 +2,7 @@
 {
     public static class SmileIdConstants
     {
+        #region Positive
         public static string Alien001 => "alien.png";
         public static string BlowKiss009 => "blowkiss.png";
         public static string Kiss011 => "kiss.png";
@@ -47,5 +48,26 @@
         public static string Yummy136 => "yummy.png";
         public static string Happy137 => "happy.png";
         public static string Zany138 => "zany.png";
+        #endregion
+        
+        #region Neutral
+        public static string Amazed => "amazed.png";
+        public static string Flatmouth => "flatmouth.png";
+        public static string Ghost => "ghost.png";
+        public static string Grimacing => "grimacing.png";
+        public static string Neutral => "neutral.png";
+        public static string Ninja => "ninja.png";
+        public static string Robot => "robot.png";
+        public static string Skull => "skull.png";
+        public static string Sleeping => "sleeping.png";
+        public static string Teeth => "teeth.png";
+        public static string Tongueoutq => "tongueoutq.png";
+        public static string Upset => "upset.png";
+        public static string Zanyq => "zanyq.png";
+        #endregion
+        
+        #region Negative
+        //public static string Zany138 => "zany.png";
+        #endregion
     }
 }

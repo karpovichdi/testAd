@@ -78,7 +78,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\alien.png" />
+    <AndroidResource Include="Resources\drawable\amazed.png" />
     <AndroidResource Include="Resources\drawable\blowkiss.png" />
+    <AndroidResource Include="Resources\drawable\flatmouth.png" />
+    <AndroidResource Include="Resources\drawable\ghost.png" />
+    <AndroidResource Include="Resources\drawable\grimacing.png" />
     <AndroidResource Include="Resources\drawable\kiss.png" />
     <AndroidResource Include="Resources\drawable\closedeyes.png" />
     <AndroidResource Include="Resources\drawable\cool.png" />
@@ -95,6 +99,14 @@
     <AndroidResource Include="Resources\drawable\grinninge.png" />
     <AndroidResource Include="Resources\drawable\grinningr.png" />
     <AndroidResource Include="Resources\drawable\grinningy.png" />
+    <AndroidResource Include="Resources\drawable\neutral.png" />
+    <AndroidResource Include="Resources\drawable\ninja.png" />
+    <AndroidResource Include="Resources\drawable\robot.png" />
+    <AndroidResource Include="Resources\drawable\skull.png" />
+    <AndroidResource Include="Resources\drawable\sleeping.png" />
+    <AndroidResource Include="Resources\drawable\teeth.png" />
+    <AndroidResource Include="Resources\drawable\tongueoutq.png" />
+    <AndroidResource Include="Resources\drawable\upset.png" />
     <AndroidResource Include="Resources\drawable\wink.png" />
     <AndroidResource Include="Resources\drawable\sweating.png" />
     <AndroidResource Include="Resources\drawable\hand.png" />
@@ -125,6 +137,7 @@
     <AndroidResource Include="Resources\drawable\yummy.png" />
     <AndroidResource Include="Resources\drawable\happy.png" />
     <AndroidResource Include="Resources\drawable\zany.png" />
+    <AndroidResource Include="Resources\drawable\zanyq.png" />
     <AndroidResource Include="Resources\layout\Tabbar.xml" />
     <AndroidResource Include="Resources\layout\Toolbar.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
