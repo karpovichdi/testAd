@@ -44,6 +44,7 @@
                 <Setter Property="Aspect" Value="AspectFit" />
                 <Setter Property="BorderColor" Value="#fffffb" />
                 <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="Command" Value="{Binding SmileClickCommand}" />
             </Style>
             <Style x:Key="flexLayoutStyle" TargetType="FlexLayout">
                 <Setter Property="Direction" Value="Row" />
@@ -87,69 +88,69 @@
                     </Frame>
                     <FlexLayout Grid.Row="1"
                                 Style="{StaticResource flexLayoutStyle}">
-                        <ImageButton Source="closedeyes.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Closed014}"/>
-                        <ImageButton Source="upsidedown.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.UpsideDown128}"/>
-                        <ImageButton Source="winkingface.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.WinkingFace132}"/>
                         <ImageButton Source="smilingface.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.SmillingFace095}"/>
-                        <ImageButton Source="hand.png"
+                        <ImageButton Source="closedeyes.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Hand055}"/>
-                        <ImageButton Source="hugging.png"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Closed014}"/>
+                        <ImageButton Source="winkingface.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Hugging058}"/>
-                        
-                        <ImageButton Source="tasty.png"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.WinkingFace132}"/>
+                        <ImageButton Source="upsidedown.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Tasty086}"/>
-                        <ImageButton Source="tongueout.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.TongueOut109}"/>
-                        <ImageButton Source="yummy.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Yummy136}"/>
-                        <ImageButton Source="eyepatch.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.EyePatch075}"/>
-                        <ImageButton Source="thief.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Thief120}"/>
-                        <ImageButton Source="cool.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Cool020}"/>
-                        
-                        <ImageButton Source="sunglasses.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Sunglasses104}"/>
+                                     CommandParameter="{x:Static constants:SmileIdConstants.UpsideDown128}"/>
                         <ImageButton Source="kissing.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Kissing059}"/>
+                        <ImageButton Source="hand.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Hand055}"/>
+                        
+                        <ImageButton Source="hugging.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Hugging058}"/>
+                        <ImageButton Source="angel.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Angel102}"/>
+                        <ImageButton Source="sweating.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Sweating053}"/>
+                        <ImageButton Source="joy.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Joy117}"/>
+                        <ImageButton Source="lol.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Lol080}"/>
+                        <ImageButton Source="tongueout.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.TongueOut109}"/>
+                        
+                        <ImageButton Source="yummy.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Yummy136}"/>
+                        <ImageButton Source="tasty.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Tasty086}"/>
                         <ImageButton Source="blowkiss.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.BlowKiss009}"/>
-                        <ImageButton Source="hearteyes.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.HeartEyes056}"/>
                         <ImageButton Source="hearts.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Hearts103}"/>
-                        <ImageButton Source="grinningw.png"
+                        <ImageButton Source="hearteyes.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Grinning044}"/>
-                        
+                                     CommandParameter="{x:Static constants:SmileIdConstants.HeartEyes056}"/>
                         <ImageButton Source="Laughter.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Laughter042}"/>
+                        
                         <ImageButton Source="wink.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Wink052}"/>
+                        <ImageButton Source="grinningw.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Grinning044}"/>
                         <ImageButton Source="happy.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Happy137}"/>
@@ -166,25 +167,25 @@
                         <ImageButton Source="Laughterq.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Laughter079}"/>
-                        <ImageButton Source="sweating.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Sweating053}"/>
-                        <ImageButton Source="lol.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Lol080}"/>
-                        <ImageButton Source="joy.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Joy117}"/>
-                        <ImageButton Source="angel.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Angel102}"/>
                         <ImageButton Source="money.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Money027}"/>
-                        
                         <ImageButton Source="starred.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Starred111}"/>
+                        <ImageButton Source="eyepatch.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.EyePatch075}"/>
+                        <ImageButton Source="cool.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Cool020}"/>
+                        <ImageButton Source="sunglasses.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Sunglasses104}"/>
+                        
+                        <ImageButton Source="thief.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Thief120}"/>
                         <ImageButton Source="policeman.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Policeman067}"/>
@@ -197,16 +198,10 @@
                         <ImageButton Source="laughing.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Laughing061}"/>
-                        <ImageButton Source="smile.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Smile100}"/>
-                        
-                        <ImageButton Source="alien.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:SmileIdConstants.Alien001}"/>
                         <ImageButton Source="glanceq.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Glance039}"/>
+                        
                         <ImageButton Source="kiss.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Kiss011}"/>
@@ -219,16 +214,22 @@
                         <ImageButton Source="sunglassesq.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Sunglasses113}"/>
-                        
                         <ImageButton Source="devil.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Devil098}"/>
                         <ImageButton Source="dollar.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.Dollar028}"/>
+                        
                         <ImageButton Source="hearteyesq.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:SmileIdConstants.HeartEyes057}"/>
+                        <ImageButton Source="smile.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Smile100}"/>
+                        <ImageButton Source="alien.png"
+                                     Style="{StaticResource positiveEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Alien001}"/>
                     </FlexLayout>
                 </Grid>
 
@@ -315,35 +316,145 @@
                     </Frame>
                     <FlexLayout Grid.Row="1"
                                 Style="{StaticResource flexLayoutStyle}">
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource negativeEmojiItem}" />
-
+                        <ImageButton Source="anger.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Anger}"/>
+                        <ImageButton Source="poutine.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Poutine}"/>
+                        <ImageButton Source="sadness.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Sadness}"/>
+                        <ImageButton Source="sadface.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.SadFace}"/>
+                        <ImageButton Source="confusing.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Confusing}"/>
+                        <ImageButton Source="silent.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Silent}"/>
+                        
+                        <ImageButton Source="death.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Death}"/>
+                        <ImageButton Source="disturb.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Disturb}"/>
+                        <ImageButton Source="sad.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Sad}"/>
+                        <ImageButton Source="mouthfull.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.MouthFull}"/>
+                        <ImageButton Source="lying.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Lying}"/>
+                        <ImageButton Source="flushed.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Flushed}"/>
+                        
+                        <ImageButton Source="zipped.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Zipped}"/>
+                        <ImageButton Source="medicalmask.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.MedicalMask}"/>
+                        <ImageButton Source="sneezing.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Sneezing}"/>
+                        <ImageButton Source="thinking.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Thinking}"/>
+                        <ImageButton Source="sweat.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Sweat}"/>
+                        <ImageButton Source="tears.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Tears}"/>
+                        
+                        <ImageButton Source="snoring.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Snoring}"/>
+                        <ImageButton Source="crying.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Crying}"/>
+                        <ImageButton Source="sweattongue.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.SweatTongue}"/>
+                        <ImageButton Source="teasing.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Teasing}"/>
+                        <ImageButton Source="angryface.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Angryface}"/>
+                        <ImageButton Source="frown.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Frown}"/>
+                        
+                        <ImageButton Source="irritated.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Irritated}"/>
+                        <ImageButton Source="surprised.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Surprised}"/>
+                        <ImageButton Source="dizzy.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Dizzy}"/>
+                        <ImageButton Source="shock.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Shock}"/>
+                        <ImageButton Source="angry.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Angry}"/>
+                        <ImageButton Source="puke.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Puke}"/>
+                        
+                        <ImageButton Source="explodes.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Explodes}"/>
+                        <ImageButton Source="chilling.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Chilling}"/>
+                        <ImageButton Source="edevil.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Edevil}"/>
+                        <ImageButton Source="devilq.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Devilq}"/>
+                        <ImageButton Source="expressionless.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.ExpressionLess}"/>
+                        <ImageButton Source="dead.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Dead}"/>
+                        
+                        <ImageButton Source="deviltongue.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.DevilTongue}"/>
+                        <ImageButton Source="cryd.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Cryd}"/>
+                        <ImageButton Source="laughingq.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Laughingq}"/>
+                        <ImageButton Source="devilsmile.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.DevilSmile}"/>
+                        <ImageButton Source="mouth.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Mouth}"/>
+                        <ImageButton Source="pirate.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Pirate}"/>
+                        
+                        <ImageButton Source="sleepingd.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Sleepingd}"/>
+                        <ImageButton Source="poop.png"
+                                     Style="{StaticResource negativeEmojiItem}"
+                                     CommandParameter="{x:Static constants:SmileIdConstants.Poop}"/>
                     </FlexLayout>
                 </Grid>
             </StackLayout>

@@ -67,7 +67,53 @@
         #endregion
         
         #region Negative
-        //public static string Zany138 => "zany.png";
+        public static string Anger => "anger.png";
+        public static string Angry => "angry.png";
+        public static string Angryface => "angryface.png";
+        public static string Chilling => "chilling.png";
+        public static string Confusing => "confusing.png";
+        public static string Cryd => "cryd.png";
+        public static string Crying => "crying.png";
+        public static string Dead => "dead.png";
+        public static string Death => "death.png";
+        public static string Devilq => "devilq.png";
+        public static string DevilSmile => "devilsmile.png";
+        public static string DevilTongue => "deviltongue.png";
+        public static string Disturb => "disturb.png";
+        public static string Dizzy => "dizzy.png";
+        public static string Edevil => "edevil.png";
+        public static string Explodes => "explodes.png";
+        public static string ExpressionLess => "expressionless.png";
+        public static string Flushed => "flushed.png";
+        public static string Frown => "frown.png";
+        public static string Irritated => "irritated.png";
+        public static string Laughingq => "laughingq.png";
+        public static string Lying => "lying.png";
+        public static string MedicalMask => "medicalmask.png";
+        public static string Mouth => "mouth.png";
+        public static string MouthFull => "mouthfull.png";
+        public static string Pirate => "pirate.png";
+        public static string Poop => "poop.png";
+        public static string Poutine => "poutine.png";
+        public static string Puke => "puke.png";
+        public static string Sad => "sad.png";
+        public static string SadFace => "sadface.png";
+        public static string Sadness => "sadness.png";
+        public static string Shock => "shock.png";
+        public static string Silent => "silent.png";
+        public static string Sleepingd => "sleepingd.png";
+        public static string Sneezing => "sneezing.png";
+        public static string Snoring => "snoring.png";
+        public static string Surprised => "surprised.png";
+        public static string Sweat => "sweat.png";
+        public static string SweatTongue => "sweattongue.png";
+        public static string Tears => "tears.png";
+        public static string Teasing => "teasing.png";
+        public static string Thinking => "thinking.png";
+        public static string Zipped => "zipped.png";
+
+        
+        
         #endregion
     }
 }
