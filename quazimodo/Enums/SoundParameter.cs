@@ -7,5 +7,8 @@
         Love,
         Crank,
         Creepypasta,
+        Wow,
+        Star,
+        
     }
 }

@@ -186,7 +186,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.Money027}" />
                         <ImageButton Source="starred.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Starred111}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.Star}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="eyepatch.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:ImageIdConstants.EyePatch075}" />
@@ -419,7 +420,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.Dizzy}" />
                         <ImageButton Source="shock.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Shock}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.Wow}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="angry.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static constants:ImageIdConstants.Angry}" />

@@ -73,6 +73,12 @@ namespace quazimodo.ViewModels
                 case SoundParameter.Creepypasta:
                     _audioService.PlayAudioFile(SoundParameter.Creepypasta + _extension);
                     break;
+                case SoundParameter.Wow:
+                    _audioService.PlayAudioFile(SoundParameter.Wow + _extension);
+                    break;
+                case SoundParameter.Star:
+                    _audioService.PlayAudioFile(SoundParameter.Star + _extension);
+                    break;
                 default: _audioService.PlayAudioFile("ILoveYou" + _extension);
                     break;
             }

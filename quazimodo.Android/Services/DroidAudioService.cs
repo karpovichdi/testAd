@@ -1,12 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
-using Android.Gms.Tasks;
 using Android.Media;
 using quazimodo.Constants;
 using quazimodo.Droid.Services;
 using quazimodo.Interfaces;
-using quazimodo.ViewModels;
-using quazimodo.Views;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(DroidAudioService))]
