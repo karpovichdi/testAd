@@ -22,6 +22,7 @@
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -143,6 +144,7 @@
     <AndroidResource Include="Resources\drawable\sleepingd.png" />
     <AndroidResource Include="Resources\drawable\sneezing.png" />
     <AndroidResource Include="Resources\drawable\snoring.png" />
+    <AndroidResource Include="Resources\drawable\stop.png" />
     <AndroidResource Include="Resources\drawable\surprised.png" />
     <AndroidResource Include="Resources\drawable\sweat.png" />
     <AndroidResource Include="Resources\drawable\sweattongue.png" />
@@ -209,9 +211,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Accept.mp3" />
+    <AndroidAsset Include="Assets\Crank.mp3" />
+    <AndroidAsset Include="Assets\Creepypasta.mp3" />
     <AndroidAsset Include="Assets\ILoveYou.mp3" />
+    <AndroidAsset Include="Assets\Love.mp3" />
     <AndroidAsset Include="Assets\Reject.mp3" />
-    <AndroidAsset Include="Assets\sound.mp3" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

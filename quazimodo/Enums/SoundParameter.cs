@@ -4,5 +4,8 @@
     {
         Reject,
         Accept,
+        Love,
+        Crank,
+        Creepypasta,
     }
 }

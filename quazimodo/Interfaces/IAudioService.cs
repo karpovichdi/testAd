@@ -1,3 +1,5 @@
+using System;
+
 namespace quazimodo.Interfaces
 {
     public interface IAudioService

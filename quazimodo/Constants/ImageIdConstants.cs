@@ -111,12 +111,10 @@
         public static string Teasing => "teasing.png";
         public static string Thinking => "thinking.png";
         public static string Zipped => "zipped.png";
-
-        
-        
         #endregion
         
         public static string Accept => "accept.png";
         public static string Reject => "reject.png";
+        public static string Stop => "stop.png";
     }
 }

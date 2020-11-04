@@ -77,10 +77,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <ScrollView>
+        <ScrollView Grid.RowSpan="2">
             <StackLayout Spacing="0">
                 <!-- positive -->
                 <Grid Margin="20">
@@ -152,7 +153,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.Hearts103}" />
                         <ImageButton Source="hearteyes.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.HeartEyes056}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.Love}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="Laughter.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:ImageIdConstants.Laughter042}" />
@@ -190,7 +192,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.EyePatch075}" />
                         <ImageButton Source="cool.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Cool020}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.Crank}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="sunglasses.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:ImageIdConstants.Sunglasses104}" />
@@ -304,7 +307,8 @@
 
                         <ImageButton Source="ghost.png"
                                      Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Ghost}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.Creepypasta}" 
+                                     BorderWidth="10"/>
 
                     </FlexLayout>
                 </Grid>
@@ -482,7 +486,20 @@
                 </StackLayout>
             </StackLayout>
         </ScrollView>
-        <quazimodo:AdMobBannerView Grid.Row="1"
+        <ImageButton Grid.Row="1"
+                     HorizontalOptions="Center"
+                     BackgroundColor="#30303030"
+                     VerticalOptions="End"
+                     HeightRequest="80"
+                     WidthRequest="80"
+                     CornerRadius="20"
+                     Aspect="AspectFit"
+                     IsVisible="{Binding StopButtonVisible}"
+                     Command="{Binding StopCommand}"
+                     Source="{x:Static constants:ImageIdConstants.Stop}"
+                     Padding="10"
+                     Margin="0,0,0,20"/>
+        <quazimodo:AdMobBannerView Grid.Row="2"
                                    AdId="{x:Static constants:AdConstants.TestBannerId}" />
     </Grid>
 </ContentPage>
