@@ -115,6 +115,21 @@ namespace quazimodo.ViewModels
                 case SoundParameter.flushed:
                     _audioService.PlayAudioFile(SoundParameter.flushed + _extension);
                     break;
+                case SoundParameter.joy:
+                    _audioService.PlayAudioFile(SoundParameter.joy + _extension);
+                    break;
+                case SoundParameter.silentq:
+                    _audioService.PlayAudioFile(SoundParameter.silentq + _extension);
+                    break;
+                case SoundParameter.sad:
+                    _audioService.PlayAudioFile(SoundParameter.sad + _extension);
+                    break;
+                case SoundParameter.tears:
+                    _audioService.PlayAudioFile(SoundParameter.tears + _extension);
+                    break;
+                case SoundParameter.amazed:
+                    _audioService.PlayAudioFile(SoundParameter.amazed + _extension);
+                    break;
             }
         }
     }

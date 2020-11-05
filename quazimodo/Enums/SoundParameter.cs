@@ -21,6 +21,11 @@
         skull,
         sneezing,
         flushed,
+        joy,
+        silentq,
+        sad,
+        tears,
+        amazed,
         
     }
 }
