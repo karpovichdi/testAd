@@ -130,6 +130,30 @@ namespace quazimodo.ViewModels
                 case SoundParameter.amazed:
                     _audioService.PlayAudioFile(SoundParameter.amazed + _extension);
                     break;
+                case SoundParameter.lyingq:
+                    _audioService.PlayAudioFile(SoundParameter.lyingq + _extension);
+                    break;
+                case SoundParameter.smilingface:
+                    _audioService.PlayAudioFile(SoundParameter.smilingface + _extension);
+                    break;
+                case SoundParameter.teasing:
+                    _audioService.PlayAudioFile(SoundParameter.teasing + _extension);
+                    break;
+                case SoundParameter.surprised:
+                    _audioService.PlayAudioFile(SoundParameter.surprised + _extension);
+                    break;
+                case SoundParameter.dizzy:
+                    _audioService.PlayAudioFile(SoundParameter.dizzy + _extension);
+                    break;
+                case SoundParameter.angry:
+                    _audioService.PlayAudioFile(SoundParameter.angry + _extension);
+                    break;
+                case SoundParameter.mouth:
+                    _audioService.PlayAudioFile(SoundParameter.mouth + _extension);
+                    break;
+                case SoundParameter.alien:
+                    _audioService.PlayAudioFile(SoundParameter.alien + _extension);
+                    break;
             }
         }
     }

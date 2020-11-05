@@ -211,26 +211,34 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Accept.mp3" />
+    <AndroidAsset Include="Assets\alien.mp3" />
     <AndroidAsset Include="Assets\amazed.mp3" />
+    <AndroidAsset Include="Assets\angry.mp3" />
     <AndroidAsset Include="Assets\blowkiss.mp3" />
     <AndroidAsset Include="Assets\confusingq.mp3" />
     <AndroidAsset Include="Assets\Crank.mp3" />
     <AndroidAsset Include="Assets\Creepypasta.mp3" />
+    <AndroidAsset Include="Assets\dizzy.mp3" />
     <AndroidAsset Include="Assets\flushed.mp3" />
     <AndroidAsset Include="Assets\grandfather.mp3" />
     <AndroidAsset Include="Assets\grinningq.mp3" />
     <AndroidAsset Include="Assets\joy.mp3" />
     <AndroidAsset Include="Assets\laughingq.mp3" />
     <AndroidAsset Include="Assets\Love.mp3" />
+    <AndroidAsset Include="Assets\lyingq.mp3" />
+    <AndroidAsset Include="Assets\mouth.mp3" />
     <AndroidAsset Include="Assets\neutral.mp3" />
     <AndroidAsset Include="Assets\Reject.mp3" />
     <AndroidAsset Include="Assets\sad.mp3" />
     <AndroidAsset Include="Assets\silentq.mp3" />
     <AndroidAsset Include="Assets\skull.mp3" />
+    <AndroidAsset Include="Assets\smilingface.mp3" />
     <AndroidAsset Include="Assets\sneezing.mp3" />
     <AndroidAsset Include="Assets\Star.mp3" />
+    <AndroidAsset Include="Assets\surprised.mp3" />
     <AndroidAsset Include="Assets\sweating.mp3" />
     <AndroidAsset Include="Assets\tears.mp3" />
+    <AndroidAsset Include="Assets\teasing.mp3" />
     <AndroidAsset Include="Assets\thinking.mp3" />
     <AndroidAsset Include="Assets\wink.mp3" />
     <AndroidAsset Include="Assets\Wow.mp3" />

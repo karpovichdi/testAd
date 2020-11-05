@@ -26,6 +26,15 @@
         sad,
         tears,
         amazed,
+        lyingq,
+        smilingface,
+        teasing,
+        surprised,
+        dizzy,
+        robot,
+        angry,
+        mouth,
+        alien,
         
     }
 }
