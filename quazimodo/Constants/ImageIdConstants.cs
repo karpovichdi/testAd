@@ -71,7 +71,7 @@
         public static string Angry => "angry.png";
         public static string Angryface => "angryface.png";
         public static string Chilling => "chilling.png";
-        public static string Confusing => "confusing.png";
+        public static string Confusing => "confusingq.png";
         public static string Cryd => "cryd.png";
         public static string Crying => "crying.png";
         public static string Dead => "dead.png";

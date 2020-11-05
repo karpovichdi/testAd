@@ -86,7 +86,7 @@
     <AndroidResource Include="Resources\drawable\angryface.png" />
     <AndroidResource Include="Resources\drawable\blowkiss.png" />
     <AndroidResource Include="Resources\drawable\chilling.png" />
-    <AndroidResource Include="Resources\drawable\confusing.png" />
+    <AndroidResource Include="Resources\drawable\confusingq.png" />
     <AndroidResource Include="Resources\drawable\cryd.png" />
     <AndroidResource Include="Resources\drawable\crying.png" />
     <AndroidResource Include="Resources\drawable\dead.png" />
@@ -211,12 +211,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Accept.mp3" />
+    <AndroidAsset Include="Assets\blowkiss.mp3" />
+    <AndroidAsset Include="Assets\confusingq.mp3" />
     <AndroidAsset Include="Assets\Crank.mp3" />
     <AndroidAsset Include="Assets\Creepypasta.mp3" />
-    <AndroidAsset Include="Assets\ILoveYou.mp3" />
     <AndroidAsset Include="Assets\Love.mp3" />
     <AndroidAsset Include="Assets\Reject.mp3" />
     <AndroidAsset Include="Assets\Star.mp3" />
+    <AndroidAsset Include="Assets\thinking.mp3" />
+    <AndroidAsset Include="Assets\wink.mp3" />
     <AndroidAsset Include="Assets\Wow.mp3" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

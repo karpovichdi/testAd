@@ -8573,7 +8573,7 @@ namespace quazimodo.Droid
 			public const int common_google_signin_btn_text_light_normal_background = 2131165314;
 			
 			// aapt resource value: 0x7F070083
-			public const int confusing = 2131165315;
+			public const int confusingq = 2131165315;
 			
 			// aapt resource value: 0x7F070084
 			public const int cool = 2131165316;

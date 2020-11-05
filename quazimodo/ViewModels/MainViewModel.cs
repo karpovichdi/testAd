@@ -79,7 +79,17 @@ namespace quazimodo.ViewModels
                 case SoundParameter.Star:
                     _audioService.PlayAudioFile(SoundParameter.Star + _extension);
                     break;
-                default: _audioService.PlayAudioFile("ILoveYou" + _extension);
+                case SoundParameter.wink:
+                    _audioService.PlayAudioFile(SoundParameter.wink + _extension);
+                    break;
+                case SoundParameter.thinking:
+                    _audioService.PlayAudioFile(SoundParameter.thinking + _extension);
+                    break;
+                case SoundParameter.confusingq:
+                    _audioService.PlayAudioFile(SoundParameter.confusingq + _extension);
+                    break;
+                case SoundParameter.blowkiss:
+                    _audioService.PlayAudioFile(SoundParameter.blowkiss + _extension);
                     break;
             }
         }

@@ -9,6 +9,10 @@
         Creepypasta,
         Wow,
         Star,
+        wink,
+        thinking,
+        confusingq,
+        blowkiss,
         
     }
 }
