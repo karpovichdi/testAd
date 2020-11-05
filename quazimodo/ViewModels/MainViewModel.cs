@@ -91,6 +91,21 @@ namespace quazimodo.ViewModels
                 case SoundParameter.blowkiss:
                     _audioService.PlayAudioFile(SoundParameter.blowkiss + _extension);
                     break;
+                case SoundParameter.grandfather:
+                    _audioService.PlayAudioFile(SoundParameter.grandfather + _extension);
+                    break;
+                case SoundParameter.sweating:
+                    _audioService.PlayAudioFile(SoundParameter.sweating + _extension);
+                    break;
+                case SoundParameter.laughingq:
+                    _audioService.PlayAudioFile(SoundParameter.laughingq + _extension);
+                    break;
+                case SoundParameter.neutral:
+                    _audioService.PlayAudioFile(SoundParameter.neutral + _extension);
+                    break;
+                case SoundParameter.grinningq:
+                    _audioService.PlayAudioFile(SoundParameter.grinningq + _extension);
+                    break;
             }
         }
     }

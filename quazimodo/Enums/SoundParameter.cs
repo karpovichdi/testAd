@@ -13,6 +13,11 @@
         thinking,
         confusingq,
         blowkiss,
+        grandfather,
+        sweating,
+        laughingq,
+        neutral,
+        grinningq,
         
     }
 }

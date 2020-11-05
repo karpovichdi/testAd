@@ -215,9 +215,14 @@
     <AndroidAsset Include="Assets\confusingq.mp3" />
     <AndroidAsset Include="Assets\Crank.mp3" />
     <AndroidAsset Include="Assets\Creepypasta.mp3" />
+    <AndroidAsset Include="Assets\grandfather.mp3" />
+    <AndroidAsset Include="Assets\grinningq.mp3" />
+    <AndroidAsset Include="Assets\laughingq.mp3" />
     <AndroidAsset Include="Assets\Love.mp3" />
+    <AndroidAsset Include="Assets\neutral.mp3" />
     <AndroidAsset Include="Assets\Reject.mp3" />
     <AndroidAsset Include="Assets\Star.mp3" />
+    <AndroidAsset Include="Assets\sweating.mp3" />
     <AndroidAsset Include="Assets\thinking.mp3" />
     <AndroidAsset Include="Assets\wink.mp3" />
     <AndroidAsset Include="Assets\Wow.mp3" />
