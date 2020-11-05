@@ -106,6 +106,15 @@ namespace quazimodo.ViewModels
                 case SoundParameter.grinningq:
                     _audioService.PlayAudioFile(SoundParameter.grinningq + _extension);
                     break;
+                case SoundParameter.skull:
+                    _audioService.PlayAudioFile(SoundParameter.skull + _extension);
+                    break;
+                case SoundParameter.sneezing:
+                    _audioService.PlayAudioFile(SoundParameter.sneezing + _extension);
+                    break;
+                case SoundParameter.flushed:
+                    _audioService.PlayAudioFile(SoundParameter.flushed + _extension);
+                    break;
             }
         }
     }

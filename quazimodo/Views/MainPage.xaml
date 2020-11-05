@@ -310,7 +310,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.Robot}" />
                         <ImageButton Source="skull.png"
                                      Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Skull}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.skull}" 
+                                     BorderWidth="10"/>
 
                         <ImageButton Source="ghost.png"
                                      Style="{StaticResource neutralEmojiItem}"
@@ -375,7 +376,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.Lying}" />
                         <ImageButton Source="flushed.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Flushed}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.flushed}" 
+                                     BorderWidth="10"/>
 
                         <ImageButton Source="zipped.png"
                                      Style="{StaticResource negativeEmojiItem}"
@@ -385,7 +387,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.MedicalMask}" />
                         <ImageButton Source="sneezing.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Sneezing}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.sneezing}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="thinking.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.thinking}" 

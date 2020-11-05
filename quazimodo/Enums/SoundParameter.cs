@@ -18,6 +18,9 @@
         laughingq,
         neutral,
         grinningq,
+        skull,
+        sneezing,
+        flushed,
         
     }
 }
