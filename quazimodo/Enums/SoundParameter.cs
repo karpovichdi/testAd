@@ -47,6 +47,10 @@
         upset,
         grimacing,
         cryd,
+        lol,
+        sunglassesqq,
+        mouthfull,
+        edevil,
         
     }
 }

@@ -190,6 +190,18 @@ namespace quazimodo.ViewModels
                 case SoundParameter.cryd:
                     _audioService.PlayAudioFile(SoundParameter.cryd + _extension);
                     break;
+                case SoundParameter.lol:
+                    _audioService.PlayAudioFile(SoundParameter.lol + _extension);
+                    break;
+                case SoundParameter.sunglassesqq:
+                    _audioService.PlayAudioFile(SoundParameter.sunglassesqq + _extension);
+                    break;
+                case SoundParameter.mouthfull:
+                    _audioService.PlayAudioFile(SoundParameter.mouthfull + _extension);
+                    break;
+                case SoundParameter.edevil:
+                    _audioService.PlayAudioFile(SoundParameter.edevil + _extension);
+                    break;
             }
         }
     }
