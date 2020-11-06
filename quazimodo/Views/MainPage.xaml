@@ -195,14 +195,16 @@
                                      BorderWidth="10"/>
                         <ImageButton Source="eyepatch.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.EyePatch075}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.eyepatch}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="cool.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.Crank}" 
                                      BorderWidth="10"/>
                         <ImageButton Source="sunglasses.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Sunglasses104}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.sunglassesq}" 
+                                     BorderWidth="10"/>
 
                         <ImageButton Source="thief.png"
                                      Style="{StaticResource positiveEmojiItem}"
@@ -249,7 +251,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.HeartEyes057}" />
                         <ImageButton Source="smile.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Smile100}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.smile}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="alien.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.alien}" 
@@ -278,7 +281,8 @@
                                 Style="{StaticResource flexLayoutStyle}">
                         <ImageButton Source="flatmouth.png"
                                      Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Flatmouth}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.flatmouth}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="neutral.png"
                                      Style="{StaticResource neutralEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.neutral}" 
@@ -288,7 +292,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.Upset}" />
                         <ImageButton Source="zanyq.png"
                                      Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Zanyq}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.zanyq}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="teeth.png"
                                      Style="{StaticResource neutralEmojiItem}"
                                      CommandParameter="{x:Static constants:ImageIdConstants.Teeth}" />
@@ -496,7 +501,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.Sleepingd}" />
                         <ImageButton Source="poop.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Poop}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.poop}" 
+                                     BorderWidth="10"/>
                     </FlexLayout>
                 </Grid>
                 

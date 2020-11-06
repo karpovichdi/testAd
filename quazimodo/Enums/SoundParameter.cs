@@ -35,6 +35,13 @@
         angry,
         mouth,
         alien,
+        zanyq,
+        smile,
+        sunglassesq,
+        poop,
+        flatmouth,
+        eyepatch,
+        
         
     }
 }
