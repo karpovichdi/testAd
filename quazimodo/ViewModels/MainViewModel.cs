@@ -172,6 +172,24 @@ namespace quazimodo.ViewModels
                 case SoundParameter.eyepatch:
                     _audioService.PlayAudioFile(SoundParameter.eyepatch + _extension);
                     break;
+                case SoundParameter.Laughterq:
+                    _audioService.PlayAudioFile(SoundParameter.Laughterq + _extension);
+                    break;
+                case SoundParameter.money:
+                    _audioService.PlayAudioFile(SoundParameter.money + _extension);
+                    break;
+                case SoundParameter.dollar:
+                    _audioService.PlayAudioFile(SoundParameter.dollar + _extension);
+                    break;
+                case SoundParameter.upset:
+                    _audioService.PlayAudioFile(SoundParameter.upset + _extension);
+                    break;
+                case SoundParameter.grimacing:
+                    _audioService.PlayAudioFile(SoundParameter.grimacing + _extension);
+                    break;
+                case SoundParameter.cryd:
+                    _audioService.PlayAudioFile(SoundParameter.cryd + _extension);
+                    break;
             }
         }
     }

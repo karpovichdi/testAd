@@ -41,7 +41,12 @@
         poop,
         flatmouth,
         eyepatch,
-        
+        Laughterq,
+        money,
+        dollar,
+        upset,
+        grimacing,
+        cryd,
         
     }
 }
