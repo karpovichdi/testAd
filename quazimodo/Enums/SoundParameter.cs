@@ -51,6 +51,11 @@
         sunglassesqq,
         mouthfull,
         edevil,
+        angryface,
+        sleeping,
+        tongueout,
+        Laughter,
+        angel,
         
     }
 }

@@ -213,7 +213,9 @@
     <AndroidAsset Include="Assets\Accept.mp3" />
     <AndroidAsset Include="Assets\alien.mp3" />
     <AndroidAsset Include="Assets\amazed.mp3" />
+    <AndroidAsset Include="Assets\angel.mp3" />
     <AndroidAsset Include="Assets\angry.mp3" />
+    <AndroidAsset Include="Assets\angryface.mp3" />
     <AndroidAsset Include="Assets\blowkiss.mp3" />
     <AndroidAsset Include="Assets\confusingq.mp3" />
     <AndroidAsset Include="Assets\Crank.mp3" />
@@ -230,6 +232,7 @@
     <AndroidAsset Include="Assets\grinningq.mp3" />
     <AndroidAsset Include="Assets\joy.mp3" />
     <AndroidAsset Include="Assets\laughingq.mp3" />
+    <AndroidAsset Include="Assets\Laughter.mp3" />
     <AndroidAsset Include="Assets\Laughterq.mp3" />
     <AndroidAsset Include="Assets\lol.mp3" />
     <AndroidAsset Include="Assets\Love.mp3" />
@@ -243,6 +246,7 @@
     <AndroidAsset Include="Assets\sad.mp3" />
     <AndroidAsset Include="Assets\silentq.mp3" />
     <AndroidAsset Include="Assets\skull.mp3" />
+    <AndroidAsset Include="Assets\sleeping.mp3" />
     <AndroidAsset Include="Assets\smile.mp3" />
     <AndroidAsset Include="Assets\smilingface.mp3" />
     <AndroidAsset Include="Assets\sneezing.mp3" />
@@ -254,6 +258,7 @@
     <AndroidAsset Include="Assets\tears.mp3" />
     <AndroidAsset Include="Assets\teasing.mp3" />
     <AndroidAsset Include="Assets\thinking.mp3" />
+    <AndroidAsset Include="Assets\tongueout.mp3" />
     <AndroidAsset Include="Assets\upset.mp3" />
     <AndroidAsset Include="Assets\wink.mp3" />
     <AndroidAsset Include="Assets\Wow.mp3" />
