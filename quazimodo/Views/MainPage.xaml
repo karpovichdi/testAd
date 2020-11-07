@@ -117,7 +117,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.UpsideDown128}" />
                         <ImageButton Source="kissing.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Kissing059}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.teeth}" 
+                                     BorderWidth="10" />
                         <ImageButton Source="hand.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:ImageIdConstants.Hand055}" />
@@ -393,7 +394,8 @@
 
                         <ImageButton Source="death.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Death}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.death}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="disturb.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.disturb}" 
@@ -417,7 +419,8 @@
 
                         <ImageButton Source="zipped.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Zipped}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.zipped}" 
+                                     BorderWidth="10" />
                         <ImageButton Source="medicalmask.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.medicalmask}" 
@@ -447,7 +450,8 @@
                                      CommandParameter="{x:Static constants:ImageIdConstants.Crying}" />
                         <ImageButton Source="sweattongue.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.SweatTongue}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.sweattongue}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="teasing.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.teasing}" 
@@ -490,7 +494,8 @@
                                      BorderWidth="10"/>
                         <ImageButton Source="chilling.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Chilling}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.chilling}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="edevil.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.edevil}" 
@@ -533,7 +538,8 @@
 
                         <ImageButton Source="sleepingd.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Sleepingd}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.sleepingd}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="poop.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.poop}" 

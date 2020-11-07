@@ -217,11 +217,13 @@
     <AndroidAsset Include="Assets\angry.mp3" />
     <AndroidAsset Include="Assets\angryface.mp3" />
     <AndroidAsset Include="Assets\blowkiss.mp3" />
+    <AndroidAsset Include="Assets\chilling.mp3" />
     <AndroidAsset Include="Assets\closedeyes.mp3" />
     <AndroidAsset Include="Assets\confusingq.mp3" />
     <AndroidAsset Include="Assets\Crank.mp3" />
     <AndroidAsset Include="Assets\Creepypasta.mp3" />
     <AndroidAsset Include="Assets\cryd.mp3" />
+    <AndroidAsset Include="Assets\death.mp3" />
     <AndroidAsset Include="Assets\devilsmile.mp3" />
     <AndroidAsset Include="Assets\deviltongue.mp3" />
     <AndroidAsset Include="Assets\disturb.mp3" />
@@ -265,6 +267,7 @@
     <AndroidAsset Include="Assets\silentq.mp3" />
     <AndroidAsset Include="Assets\skull.mp3" />
     <AndroidAsset Include="Assets\sleeping.mp3" />
+    <AndroidAsset Include="Assets\sleepingd.mp3" />
     <AndroidAsset Include="Assets\smile.mp3" />
     <AndroidAsset Include="Assets\smilingface.mp3" />
     <AndroidAsset Include="Assets\sneezing.mp3" />
@@ -274,8 +277,10 @@
     <AndroidAsset Include="Assets\sunglassesqq.mp3" />
     <AndroidAsset Include="Assets\surprised.mp3" />
     <AndroidAsset Include="Assets\sweating.mp3" />
+    <AndroidAsset Include="Assets\sweattongue.mp3" />
     <AndroidAsset Include="Assets\tears.mp3" />
     <AndroidAsset Include="Assets\teasing.mp3" />
+    <AndroidAsset Include="Assets\teeth.mp3" />
     <AndroidAsset Include="Assets\thief.mp3" />
     <AndroidAsset Include="Assets\thinking.mp3" />
     <AndroidAsset Include="Assets\tongueout.mp3" />
@@ -283,6 +288,7 @@
     <AndroidAsset Include="Assets\wink.mp3" />
     <AndroidAsset Include="Assets\Wow.mp3" />
     <AndroidAsset Include="Assets\zanyq.mp3" />
+    <AndroidAsset Include="Assets\zipped.mp3" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

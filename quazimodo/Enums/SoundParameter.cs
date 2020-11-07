@@ -76,6 +76,12 @@
         grinningr,
         puke,
         explodes,
+        chilling,
+        sleepingd,
+        zipped,
+        death,
+        teeth,
+        sweattongue,
         
     }
 }
