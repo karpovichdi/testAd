@@ -79,12 +79,14 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\accept.png" />
+    <AndroidResource Include="Resources\drawable\airhorn.png" />
     <AndroidResource Include="Resources\drawable\alien.png" />
     <AndroidResource Include="Resources\drawable\amazed.png" />
     <AndroidResource Include="Resources\drawable\anger.png" />
     <AndroidResource Include="Resources\drawable\angry.png" />
     <AndroidResource Include="Resources\drawable\angryface.png" />
     <AndroidResource Include="Resources\drawable\blowkiss.png" />
+    <AndroidResource Include="Resources\drawable\chicken.png" />
     <AndroidResource Include="Resources\drawable\chilling.png" />
     <AndroidResource Include="Resources\drawable\confusingq.png" />
     <AndroidResource Include="Resources\drawable\cryd.png" />
@@ -96,15 +98,18 @@
     <AndroidResource Include="Resources\drawable\deviltongue.png" />
     <AndroidResource Include="Resources\drawable\disturb.png" />
     <AndroidResource Include="Resources\drawable\dizzy.png" />
+    <AndroidResource Include="Resources\drawable\drum.png" />
     <AndroidResource Include="Resources\drawable\edevil.png" />
     <AndroidResource Include="Resources\drawable\explodes.png" />
     <AndroidResource Include="Resources\drawable\expressionless.png" />
+    <AndroidResource Include="Resources\drawable\fist.png" />
     <AndroidResource Include="Resources\drawable\flatmouth.png" />
     <AndroidResource Include="Resources\drawable\flushed.png" />
     <AndroidResource Include="Resources\drawable\frown.png" />
     <AndroidResource Include="Resources\drawable\ghost.png" />
     <AndroidResource Include="Resources\drawable\grandfather.png" />
     <AndroidResource Include="Resources\drawable\grimacing.png" />
+    <AndroidResource Include="Resources\drawable\gun.png" />
     <AndroidResource Include="Resources\drawable\irritated.png" />
     <AndroidResource Include="Resources\drawable\kiss.png" />
     <AndroidResource Include="Resources\drawable\closedeyes.png" />
@@ -153,6 +158,7 @@
     <AndroidResource Include="Resources\drawable\teeth.png" />
     <AndroidResource Include="Resources\drawable\thinking.png" />
     <AndroidResource Include="Resources\drawable\tongueoutq.png" />
+    <AndroidResource Include="Resources\drawable\universal.png" />
     <AndroidResource Include="Resources\drawable\upset.png" />
     <AndroidResource Include="Resources\drawable\wink.png" />
     <AndroidResource Include="Resources\drawable\sweating.png" />
@@ -211,12 +217,14 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Accept.mp3" />
+    <AndroidAsset Include="Assets\airhorn.mp3" />
     <AndroidAsset Include="Assets\alien.mp3" />
     <AndroidAsset Include="Assets\amazed.mp3" />
     <AndroidAsset Include="Assets\angel.mp3" />
     <AndroidAsset Include="Assets\angry.mp3" />
     <AndroidAsset Include="Assets\angryface.mp3" />
     <AndroidAsset Include="Assets\blowkiss.mp3" />
+    <AndroidAsset Include="Assets\chicken.mp3" />
     <AndroidAsset Include="Assets\chilling.mp3" />
     <AndroidAsset Include="Assets\closedeyes.mp3" />
     <AndroidAsset Include="Assets\confusingq.mp3" />
@@ -231,10 +239,12 @@
     <AndroidAsset Include="Assets\disturb.mp3" />
     <AndroidAsset Include="Assets\dizzy.mp3" />
     <AndroidAsset Include="Assets\dollar.mp3" />
+    <AndroidAsset Include="Assets\drum.mp3" />
     <AndroidAsset Include="Assets\edevil.mp3" />
     <AndroidAsset Include="Assets\explodes.mp3" />
     <AndroidAsset Include="Assets\expressionless.mp3" />
     <AndroidAsset Include="Assets\eyepatch.mp3" />
+    <AndroidAsset Include="Assets\fist.mp3" />
     <AndroidAsset Include="Assets\flatmouth.mp3" />
     <AndroidAsset Include="Assets\flushed.mp3" />
     <AndroidAsset Include="Assets\frown.mp3" />
@@ -244,6 +254,7 @@
     <AndroidAsset Include="Assets\grinningq.mp3" />
     <AndroidAsset Include="Assets\grinningr.mp3" />
     <AndroidAsset Include="Assets\grinningy.mp3" />
+    <AndroidAsset Include="Assets\gun.mp3" />
     <AndroidAsset Include="Assets\hand.mp3" />
     <AndroidAsset Include="Assets\hugging.mp3" />
     <AndroidAsset Include="Assets\irritated.mp3" />
@@ -292,6 +303,7 @@
     <AndroidAsset Include="Assets\thief.mp3" />
     <AndroidAsset Include="Assets\thinking.mp3" />
     <AndroidAsset Include="Assets\tongueout.mp3" />
+    <AndroidAsset Include="Assets\universal.mp3" />
     <AndroidAsset Include="Assets\upset.mp3" />
     <AndroidAsset Include="Assets\wink.mp3" />
     <AndroidAsset Include="Assets\Wow.mp3" />

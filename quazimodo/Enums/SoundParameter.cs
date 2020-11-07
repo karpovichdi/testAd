@@ -91,6 +91,11 @@
         hugging,
         yummy,
         tasty,
-        
+        airhorn,
+        chicken,
+        drum,
+        fist,
+        gun,
+        universal,
     }
 }

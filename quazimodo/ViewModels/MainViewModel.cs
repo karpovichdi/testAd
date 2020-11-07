@@ -322,6 +322,24 @@ namespace quazimodo.ViewModels
                 case SoundParameter.tasty:
                     _audioService.PlayAudioFile(SoundParameter.tasty + _extension);
                     break;
+                case SoundParameter.airhorn:
+                    _audioService.PlayAudioFile(SoundParameter.airhorn + _extension);
+                    break;
+                case SoundParameter.chicken:
+                    _audioService.PlayAudioFile(SoundParameter.chicken + _extension);
+                    break;
+                case SoundParameter.drum:
+                    _audioService.PlayAudioFile(SoundParameter.drum + _extension);
+                    break;
+                case SoundParameter.fist:
+                    _audioService.PlayAudioFile(SoundParameter.fist + _extension);
+                    break;
+                case SoundParameter.gun:
+                    _audioService.PlayAudioFile(SoundParameter.gun + _extension);
+                    break;
+                case SoundParameter.universal:
+                    _audioService.PlayAudioFile(SoundParameter.universal + _extension);
+                    break;
             }
         }
     }
