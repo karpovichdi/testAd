@@ -107,7 +107,8 @@
                                      BorderWidth="10"/>
                         <ImageButton Source="closedeyes.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Closed014}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.closedeyes}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="winkingface.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:ImageIdConstants.WinkingFace132}" />
@@ -183,10 +184,12 @@
                                      BorderWidth="10"/>
                         <ImageButton Source="grinningr.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Grinning047}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.grinningr}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="grinningy.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Grinning049}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.grinningy}" 
+                                     BorderWidth="10"/>
 
                         <ImageButton Source="Laughterq.png"
                                      Style="{StaticResource positiveEmojiItem}"
@@ -231,7 +234,8 @@
                                      BorderWidth="10"/>
                         <ImageButton Source="laughing.png"
                                      Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Laughing061}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.laughing}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="glanceq.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static constants:ImageIdConstants.Glance039}" />
@@ -327,10 +331,12 @@
                                      BorderWidth="10"/>
                         <ImageButton Source="ninja.png"
                                      Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Ninja}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.ninja}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="robot.png"
                                      Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Robot}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.robotq}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="skull.png"
                                      Style="{StaticResource neutralEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.skull}" 
@@ -475,11 +481,13 @@
                                      BorderWidth="10"/>
                         <ImageButton Source="puke.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Puke}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.puke}" 
+                                     BorderWidth="10"/>
 
                         <ImageButton Source="explodes.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Explodes}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.explodes}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="chilling.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static constants:ImageIdConstants.Chilling}" />
@@ -500,7 +508,8 @@
 
                         <ImageButton Source="deviltongue.png"
                                      Style="{StaticResource negativeEmojiItem}"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.DevilTongue}" />
+                                     CommandParameter="{x:Static enums:SoundParameter.deviltongue}" 
+                                     BorderWidth="10"/>
                         <ImageButton Source="cryd.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.cryd}" 

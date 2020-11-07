@@ -67,7 +67,15 @@
         sadface,
         snoring,
         grinninge,
-        
+        deviltongue,
+        closedeyes,
+        laughing,
+        grinningy,
+        ninja,
+        robotq,
+        grinningr,
+        puke,
+        explodes,
         
     }
 }
