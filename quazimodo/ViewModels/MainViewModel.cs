@@ -217,6 +217,39 @@ namespace quazimodo.ViewModels
                 case SoundParameter.angel:
                     _audioService.PlayAudioFile(SoundParameter.angel + _extension);
                     break;
+                case SoundParameter.policeman:
+                    _audioService.PlayAudioFile(SoundParameter.policeman + _extension);
+                    break;
+                case SoundParameter.thief:
+                    _audioService.PlayAudioFile(SoundParameter.thief + _extension);
+                    break;
+                case SoundParameter.devilsmile:
+                    _audioService.PlayAudioFile(SoundParameter.devilsmile + _extension);
+                    break;
+                case SoundParameter.disturb:
+                    _audioService.PlayAudioFile(SoundParameter.disturb + _extension);
+                    break;
+                case SoundParameter.medicalmask:
+                    _audioService.PlayAudioFile(SoundParameter.medicalmask + _extension);
+                    break;
+                case SoundParameter.expressionless:
+                    _audioService.PlayAudioFile(SoundParameter.expressionless + _extension);
+                    break;
+                case SoundParameter.pirate:
+                    _audioService.PlayAudioFile(SoundParameter.pirate + _extension);
+                    break;
+                case SoundParameter.poutine:
+                    _audioService.PlayAudioFile(SoundParameter.poutine + _extension);
+                    break;
+                case SoundParameter.sadface:
+                    _audioService.PlayAudioFile(SoundParameter.sadface + _extension);
+                    break;
+                case SoundParameter.snoring:
+                    _audioService.PlayAudioFile(SoundParameter.snoring + _extension);
+                    break;
+                case SoundParameter.grinninge:
+                    _audioService.PlayAudioFile(SoundParameter.grinninge + _extension);
+                    break;
             }
         }
     }

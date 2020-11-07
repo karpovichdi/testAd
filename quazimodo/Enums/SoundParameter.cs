@@ -56,6 +56,18 @@
         tongueout,
         Laughter,
         angel,
+        policeman,
+        thief,
+        devilsmile,
+        disturb,
+        medicalmask,
+        expressionless,
+        pirate,
+        poutine,
+        sadface,
+        snoring,
+        grinninge,
+        
         
     }
 }
