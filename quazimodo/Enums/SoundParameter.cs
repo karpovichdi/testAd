@@ -82,6 +82,15 @@
         death,
         teeth,
         sweattongue,
+        kiss,
+        hand,
+        frown,
+        irritated,
+        crying,
+        devilq,
+        hugging,
+        yummy,
+        tasty,
         
     }
 }

@@ -295,6 +295,33 @@ namespace quazimodo.ViewModels
                 case SoundParameter.sweattongue:
                     _audioService.PlayAudioFile(SoundParameter.sweattongue + _extension);
                     break;
+                case SoundParameter.kiss:
+                    _audioService.PlayAudioFile(SoundParameter.kiss + _extension);
+                    break;
+                case SoundParameter.hand:
+                    _audioService.PlayAudioFile(SoundParameter.hand + _extension);
+                    break;
+                case SoundParameter.frown:
+                    _audioService.PlayAudioFile(SoundParameter.frown + _extension);
+                    break;
+                case SoundParameter.irritated:
+                    _audioService.PlayAudioFile(SoundParameter.irritated + _extension);
+                    break;
+                case SoundParameter.crying:
+                    _audioService.PlayAudioFile(SoundParameter.crying + _extension);
+                    break;
+                case SoundParameter.devilq:
+                    _audioService.PlayAudioFile(SoundParameter.devilq + _extension);
+                    break;
+                case SoundParameter.hugging:
+                    _audioService.PlayAudioFile(SoundParameter.hugging + _extension);
+                    break;
+                case SoundParameter.yummy:
+                    _audioService.PlayAudioFile(SoundParameter.yummy + _extension);
+                    break;
+                case SoundParameter.tasty:
+                    _audioService.PlayAudioFile(SoundParameter.tasty + _extension);
+                    break;
             }
         }
     }
