@@ -5,5 +5,63 @@
     x:Class="quazimodo.App">
     <Application.Resources>
         <x:Double x:Key="baseBottomButtonsSpacing">20</x:Double>
+        
+        <Style x:Key="positiveEmojiItem" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="#cbae8270" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="BorderColor" Value="#ffffe4" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
+            </Style>
+            <Style x:Key="neutralEmojiItem" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="#bec5b7" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="BorderColor" Value="#ffffff" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
+            </Style>
+            <Style x:Key="negativeEmojiItem" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="#a69b9770" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="BorderColor" Value="#fffffb" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
+            </Style>
+            <Style x:Key="flexLayoutStyle" TargetType="FlexLayout">
+                <Setter Property="Direction" Value="Row" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="Wrap" Value="Wrap" />
+                <Setter Property="AlignContent" Value="Start" />
+                <Setter Property="JustifyContent" Value="Center" />
+                <Setter Property="AlignItems" Value="Start" />
+                <Setter Property="Padding" Value="10,0,10,10" />
+            </Style>
+            <Style x:Key="acceptButtonStyle" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="#595959" />
+                <Setter Property="BorderColor" Value="#fffffb" />
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
+                <Setter Property="Aspect" Value="AspectFit" />
+            </Style>
+            <Style x:Key="soundCategoryStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
     </Application.Resources>
 </Application>

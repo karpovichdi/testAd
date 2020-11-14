@@ -15,63 +15,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="positiveEmojiItem" TargetType="ImageButton">
-                <Setter Property="BackgroundColor" Value="#cbae8270" />
-                <Setter Property="HeightRequest" Value="40" />
-                <Setter Property="WidthRequest" Value="40" />
-                <Setter Property="Padding" Value="5" />
-                <Setter Property="Margin" Value="5" />
-                <Setter Property="BorderColor" Value="#ffffe4" />
-                <Setter Property="BorderWidth" Value="1" />
-                <Setter Property="Aspect" Value="AspectFit" />
-                <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
-            </Style>
-            <Style x:Key="neutralEmojiItem" TargetType="ImageButton">
-                <Setter Property="BackgroundColor" Value="#bec5b7" />
-                <Setter Property="HeightRequest" Value="40" />
-                <Setter Property="WidthRequest" Value="40" />
-                <Setter Property="Padding" Value="5" />
-                <Setter Property="Margin" Value="5" />
-                <Setter Property="Aspect" Value="AspectFit" />
-                <Setter Property="BorderColor" Value="#ffffff" />
-                <Setter Property="BorderWidth" Value="1" />
-                <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
-            </Style>
-            <Style x:Key="negativeEmojiItem" TargetType="ImageButton">
-                <Setter Property="BackgroundColor" Value="#a69b9770" />
-                <Setter Property="HeightRequest" Value="40" />
-                <Setter Property="WidthRequest" Value="40" />
-                <Setter Property="Padding" Value="5" />
-                <Setter Property="Margin" Value="5" />
-                <Setter Property="Aspect" Value="AspectFit" />
-                <Setter Property="BorderColor" Value="#fffffb" />
-                <Setter Property="BorderWidth" Value="1" />
-                <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
-            </Style>
-            <Style x:Key="flexLayoutStyle" TargetType="FlexLayout">
-                <Setter Property="Direction" Value="Row" />
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-                <Setter Property="VerticalOptions" Value="Start" />
-                <Setter Property="Wrap" Value="Wrap" />
-                <Setter Property="AlignContent" Value="Start" />
-                <Setter Property="JustifyContent" Value="Center" />
-                <Setter Property="AlignItems" Value="Start" />
-                <Setter Property="Padding" Value="10,0,10,10" />
-            </Style>
-            <Style x:Key="acceptButtonStyle" TargetType="ImageButton">
-                <Setter Property="BackgroundColor" Value="#595959" />
-                <Setter Property="BorderColor" Value="#fffffb" />
-                <Setter Property="HeightRequest" Value="100" />
-                <Setter Property="WidthRequest" Value="100" />
-                <Setter Property="Padding" Value="10" />
-                <Setter Property="CornerRadius" Value="10" />
-                <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
-                <Setter Property="Aspect" Value="AspectFit" />
-            </Style>
-            <Style x:Key="soundCategoryStyle" TargetType="Label">
-                <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="FontSize" Value="20" />
-            </Style>
+            <!-- <templateSelectors:SurveyTemplateSelector x:Key="surveyDataTemplateSelector"/> -->
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid>
@@ -81,6 +25,15 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <!-- <CollectionView SelectionMode="Single" -->
+        <!--                 ItemTemplate="{StaticResource SurveyTemplateSelector}"> -->
+        <!--     <CollectionView.ItemsLayout> -->
+        <!--         <GridItemsLayout Span="6" -->
+        <!--                           HorizontalItemSpacing="6"/> -->
+        <!--     </CollectionView.ItemsLayout> -->
+        <!--      -->
+        <!-- </CollectionView> -->
+        
         <ScrollView Grid.RowSpan="2">
             <StackLayout Spacing="0"
                          Margin="0,5,0,0">
@@ -122,7 +75,7 @@
                         <ImageButton Source="hand.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.hand}" />
-
+        
                         <ImageButton Source="hugging.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.hugging}" />
@@ -141,7 +94,7 @@
                         <ImageButton Source="tongueout.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.tongueout}" />
-
+        
                         <ImageButton Source="yummy.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.yummy}" />
@@ -161,7 +114,7 @@
                         <ImageButton Source="Laughter.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.Laughter}" />
-
+        
                         <ImageButton Source="wink.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.wink}"/>
@@ -182,7 +135,7 @@
                         <ImageButton Source="grinningy.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.grinningy}" />
-
+        
                         <ImageButton Source="Laughterq.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.Laughterq}" />
@@ -201,7 +154,7 @@
                         <ImageButton Source="sunglasses.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.sunglassesq}" />
-
+        
                         <ImageButton Source="thief.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.thief}" />
@@ -221,7 +174,7 @@
                                      Style="{StaticResource positiveEmojiItem}"
                                      IsVisible="False"
                                      CommandParameter="{x:Static constants:ImageIdConstants.Glance039}" />
-
+        
                         <ImageButton Source="kiss.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.kiss}" />
@@ -243,7 +196,7 @@
                         <ImageButton Source="dollar.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.dollar}" />
-
+        
                         <ImageButton Source="hearteyesq.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      IsVisible="False"
@@ -256,14 +209,14 @@
                                      CommandParameter="{x:Static enums:SoundParameter.alien}" />
                     </FlexLayout>
                 </Grid>
-
+        
                 <!-- neutral -->
                 <Grid Margin="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-
+        
                     <BoxView Grid.RowSpan="2"
                              CornerRadius="20"
                              BackgroundColor="#f1f8e9" />
@@ -295,7 +248,7 @@
                         <ImageButton Source="grimacing.png"
                                      Style="{StaticResource neutralEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.grimacing}" />
-
+        
                         <ImageButton Source="sleeping.png"
                                      Style="{StaticResource neutralEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.sleeping}" />
@@ -315,7 +268,7 @@
                         <ImageButton Source="skull.png"
                                      Style="{StaticResource neutralEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.skull}" />
-
+        
                         <ImageButton Source="ghost.png"
                                      Style="{StaticResource neutralEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.Creepypasta}" />
@@ -334,20 +287,20 @@
                         <ImageButton Source="gun.png"
                                      Style="{StaticResource neutralEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.gun}" />
-                        
+        
                         <ImageButton Source="universal.png"
                                      Style="{StaticResource neutralEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.universal}" />
                     </FlexLayout>
                 </Grid>
-
+        
                 <!-- negative -->
                 <Grid Margin="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-
+        
                     <BoxView Grid.RowSpan="2"
                              CornerRadius="20"
                              BackgroundColor="#d7ccc8" />
@@ -380,7 +333,7 @@
                         <ImageButton Source="silent.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.silentq}" />
-
+        
                         <ImageButton Source="death.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.death}" />
@@ -399,7 +352,7 @@
                         <ImageButton Source="flushed.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.flushed}" />
-
+        
                         <ImageButton Source="zipped.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.zipped}" />
@@ -419,7 +372,7 @@
                         <ImageButton Source="tears.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.tears}" />
-
+        
                         <ImageButton Source="snoring.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.snoring}" />
@@ -438,7 +391,7 @@
                         <ImageButton Source="frown.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.frown}" />
-
+        
                         <ImageButton Source="irritated.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.irritated}" />
@@ -457,7 +410,7 @@
                         <ImageButton Source="puke.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.puke}" />
-
+        
                         <ImageButton Source="explodes.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.explodes}" />
@@ -477,7 +430,7 @@
                                      Style="{StaticResource negativeEmojiItem}"
                                      IsVisible="False"
                                      CommandParameter="{x:Static constants:ImageIdConstants.Dead}" />
-
+        
                         <ImageButton Source="deviltongue.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.deviltongue}" />
@@ -496,7 +449,7 @@
                         <ImageButton Source="pirate.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.pirate}" />
-
+        
                         <ImageButton Source="sleepingd.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.sleepingd}" />
@@ -505,19 +458,20 @@
                                      CommandParameter="{x:Static enums:SoundParameter.poop}" />
                     </FlexLayout>
                 </Grid>
-                
+        
                 <StackLayout Orientation="Horizontal"
                              HorizontalOptions="Center"
                              Margin="20">
                     <ImageButton Source="{x:Static constants:ImageIdConstants.Reject}"
-                                 Style="{StaticResource acceptButtonStyle}" 
+                                 Style="{StaticResource acceptButtonStyle}"
                                  CommandParameter="{x:Static enums:SoundParameter.Reject}"/>
                     <ImageButton Source="{x:Static constants:ImageIdConstants.Accept}"
-                                 Style="{StaticResource acceptButtonStyle}" 
+                                 Style="{StaticResource acceptButtonStyle}"
                                  CommandParameter="{x:Static enums:SoundParameter.Accept}"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
+        
         <ImageButton Grid.Row="1"
                      HorizontalOptions="Center"
                      BackgroundColor="#30303030"
@@ -531,6 +485,7 @@
                      Source="{x:Static constants:ImageIdConstants.Stop}"
                      Padding="10"
                      Margin="0,0,0,20"/>
+        
         <quazimodo:AdMobBannerView x:Name="adMobBannerView"
                                    Grid.Row="2"
                                    AdId="{x:Static constants:AdConstants.TestBannerId}" />
