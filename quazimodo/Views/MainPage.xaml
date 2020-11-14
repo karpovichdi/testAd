@@ -78,11 +78,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ScrollView Grid.RowSpan="2">
-            <StackLayout Spacing="0">
+            <StackLayout Spacing="0"
+                         Margin="0,5,0,0">
                 <!-- positive -->
                 <Grid Margin="20">
                     <Grid.RowDefinitions>
@@ -530,7 +531,8 @@
                      Source="{x:Static constants:ImageIdConstants.Stop}"
                      Padding="10"
                      Margin="0,0,0,20"/>
-        <quazimodo:AdMobBannerView Grid.Row="2"
+        <quazimodo:AdMobBannerView x:Name="adMobBannerView"
+                                   Grid.Row="2"
                                    AdId="{x:Static constants:AdConstants.TestBannerId}" />
     </Grid>
 </ContentPage>

@@ -3,7 +3,6 @@ using Android.Content.PM;
 using Android.Gms.Ads;
 using Android.OS;
 using Android.Runtime;
-using Android.Views;
 using quazimodo.Droid.Listeners;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -11,7 +10,7 @@ using Platform = Xamarin.Essentials.Platform;
 
 namespace quazimodo.Droid
 {
-    [Activity(Label = "quazimodo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+    [Activity(Label = "quazimodo", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : FormsAppCompatActivity
     {
         public static MainActivity Instance { get; set; }
@@ -20,8 +19,6 @@ namespace quazimodo.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
-            Window?.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
 
             base.OnCreate(savedInstanceState);
 

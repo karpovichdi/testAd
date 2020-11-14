@@ -1,21 +1,24 @@
 ﻿using System;
+using quazimodo.Constants;
 using quazimodo.Interfaces;
+using quazimodo.ViewModels;
 using Xamarin.Forms;
 
 namespace quazimodo.Views
 {
     public partial class MainPage : ContentPage
     {
-        public static bool Playing;
+        private MainViewModel _viewModel => BindingContext as MainViewModel;
         
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void BtnStopClicked(object sender, EventArgs e)
+        protected override void OnDisappearing()
         {
-            DependencyService.Get<IAudioService>().StopPlaying();
+            _viewModel.StopButtonVisible = false;
+            base.OnDisappearing();
         }
     }
 }

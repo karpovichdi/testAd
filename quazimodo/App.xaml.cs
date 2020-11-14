@@ -1,4 +1,5 @@
 ﻿using System;
+using quazimodo.Interfaces;
 using quazimodo.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,6 +21,7 @@ namespace quazimodo
 
         protected override void OnSleep()
         {
+            DependencyService.Get<IAudioService>().StopPlaying();
         }
 
         protected override void OnResume()

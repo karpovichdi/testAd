@@ -4,5 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="quazimodo.App">
     <Application.Resources>
+        <x:Double x:Key="baseBottomButtonsSpacing">20</x:Double>
     </Application.Resources>
 </Application>
