@@ -10,7 +10,7 @@ using Platform = Xamarin.Essentials.Platform;
 
 namespace quazimodo.Droid
 {
-    [Activity(Label = "quazimodo",
+    [Activity(Label = "Tagura",
               Theme = "@style/LaunchTheme",
               MainLauncher = true, 
               ConfigurationChanges = ConfigChanges.ScreenSize | 
