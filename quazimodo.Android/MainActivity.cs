@@ -10,7 +10,14 @@ using Platform = Xamarin.Essentials.Platform;
 
 namespace quazimodo.Droid
 {
-    [Activity(Label = "quazimodo", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+    [Activity(Label = "quazimodo",
+              Theme = "@style/LaunchTheme",
+              MainLauncher = true, 
+              ConfigurationChanges = ConfigChanges.ScreenSize | 
+                                     ConfigChanges.Orientation | 
+                                     ConfigChanges.UiMode | 
+                                     ConfigChanges.ScreenLayout | 
+                                     ConfigChanges.SmallestScreenSize)]
     public class MainActivity : FormsAppCompatActivity
     {
         public static MainActivity Instance { get; set; }
