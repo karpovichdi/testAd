@@ -125,6 +125,7 @@
     <AndroidResource Include="Resources\drawable\closedeyes.png" />
     <AndroidResource Include="Resources\drawable\cool.png" />
     <AndroidResource Include="Resources\drawable\laughingq.png" />
+    <AndroidResource Include="Resources\drawable\Logo8Transparent.png" />
     <AndroidResource Include="Resources\drawable\lying.png" />
     <AndroidResource Include="Resources\drawable\medicalmask.png" />
     <AndroidResource Include="Resources\drawable\money.png" />
@@ -159,6 +160,7 @@
     <AndroidResource Include="Resources\drawable\sleepingd.png" />
     <AndroidResource Include="Resources\drawable\sneezing.png" />
     <AndroidResource Include="Resources\drawable\snoring.png" />
+    <AndroidResource Include="Resources\drawable\Splash2.png" />
     <AndroidResource Include="Resources\drawable\splash_logo.png" />
     <AndroidResource Include="Resources\drawable\splash_screen.xml" />
     <AndroidResource Include="Resources\drawable\stop.png" />

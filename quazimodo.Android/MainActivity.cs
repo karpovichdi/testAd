@@ -12,6 +12,8 @@ namespace quazimodo.Droid
 {
     [Activity(Label = "Tagura",
               Theme = "@style/LaunchTheme",
+              Icon = "@drawable/Logo8Transparent",
+              RoundIcon = "@drawable/Logo8Transparent",
               MainLauncher = true, 
               ConfigurationChanges = ConfigChanges.ScreenSize | 
                                      ConfigChanges.Orientation | 
