@@ -75,7 +75,7 @@ namespace quazimodo.ViewModels
             StopButtonVisible = true;
             App.CountOfPlayedSound++;
 
-            if (App.CountOfPlayedSound == AdConstants.ClicksCountBeforeAd)
+            if (App.CountOfPlayedSound >= AdConstants.ClicksCountBeforeAd)
             {
                 PopupVisible = true;
                 App.CountOfPlayedSound = 0;

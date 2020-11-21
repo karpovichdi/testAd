@@ -475,23 +475,37 @@
         <Grid Grid.Row="0"
               Grid.RowSpan="2"
               Margin="20,0,20,0"
+              BackgroundColor="#303030"
+              Opacity="0.8"
               IsVisible="{Binding PopupVisible}">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <BoxView Grid.Row="0"
-                     Grid.RowSpan="2"
-                     BackgroundColor="#30303080"/>
-            <Label Grid.Row="0"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   Text="Hello"/>
-            <Button Grid.Row="1"
+            <Frame Grid.Row="1"
+                   BorderColor="Beige"
+                   BackgroundColor="Transparent">
+                <Label TextColor="Beige"
+                       Text="Hello"/>
+            </Frame>
+            <Button Grid.Row="0"
                     Text="Skip"
                     VerticalOptions="End"
-                    Margin="0,0,0,30"
+                    Margin="0,40,0,0"
+                    BackgroundColor="#303030"
+                    TextColor="Beige"
+                    BorderColor="Beige"
+                    BorderWidth="1"
                     Command="{Binding HidePopupCommand}"/>
+            <Button Grid.Row="2"
+                    Text="Stop"
+                    VerticalOptions="End"
+                    BackgroundColor="#303030"
+                    TextColor="Beige"
+                    BorderColor="Beige"
+                    BorderWidth="1"
+                    Command="{Binding StopCommand}"/>
         </Grid> 
         
         <quazimodo:AdMobBannerView x:Name="adMobBannerView"

@@ -16,6 +16,11 @@ namespace quazimodo.Droid.Services
 
             if (editor != null)
             {
+                if (count > AdConstants.ClicksCountBeforeAd)
+                {
+                    count = AdConstants.ClicksCountBeforeAd;
+                }
+
                 editor.PutInt(AdConstants.CountOfPlayedSound, count);
                 editor.Apply();
             }
