@@ -13,11 +13,6 @@
     <ContentPage.BindingContext>
         <viewModels:MainViewModel />
     </ContentPage.BindingContext>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <!-- <templateSelectors:SurveyTemplateSelector x:Key="surveyDataTemplateSelector"/> -->
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -25,15 +20,6 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- <CollectionView SelectionMode="Single" -->
-        <!--                 ItemTemplate="{StaticResource SurveyTemplateSelector}"> -->
-        <!--     <CollectionView.ItemsLayout> -->
-        <!--         <GridItemsLayout Span="6" -->
-        <!--                           HorizontalItemSpacing="6"/> -->
-        <!--     </CollectionView.ItemsLayout> -->
-        <!--      -->
-        <!-- </CollectionView> -->
-        
         <ScrollView Grid.RowSpan="2">
             <StackLayout Spacing="0"
                          Margin="0,5,0,0">
@@ -485,6 +471,28 @@
                      Source="{x:Static constants:ImageIdConstants.Stop}"
                      Padding="10"
                      Margin="0,0,0,20"/>
+        
+        <Grid Grid.Row="0"
+              Grid.RowSpan="2"
+              Margin="20,0,20,0"
+              IsVisible="{Binding PopupVisible}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <BoxView Grid.Row="0"
+                     Grid.RowSpan="2"
+                     BackgroundColor="#30303080"/>
+            <Label Grid.Row="0"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Text="Hello"/>
+            <Button Grid.Row="1"
+                    Text="Skip"
+                    VerticalOptions="End"
+                    Margin="0,0,0,30"
+                    Command="{Binding HidePopupCommand}"/>
+        </Grid> 
         
         <quazimodo:AdMobBannerView x:Name="adMobBannerView"
                                    Grid.Row="2"

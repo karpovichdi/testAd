@@ -4,8 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="quazimodo.App">
     <Application.Resources>
-        <x:Double x:Key="baseBottomButtonsSpacing">20</x:Double>
-        
         <Style x:Key="positiveEmojiItem" TargetType="ImageButton">
                 <Setter Property="BackgroundColor" Value="#cbae8270" />
                 <Setter Property="HeightRequest" Value="40" />

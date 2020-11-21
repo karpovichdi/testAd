@@ -11,12 +11,14 @@ namespace quazimodo.ViewModels
     {
         public Command MusicBtnClickCommand { get; set; }
         public Command StopCommand { get; set; }
-
+        public Command HidePopupCommand { get; set; }
+        
         private IAudioService _audioService;
 
         private string _extension = ".mp3";
         
         private bool _stopButtonVisible;
+        private bool _popupVisible;
 
         public bool StopButtonVisible
         {
@@ -27,23 +29,39 @@ namespace quazimodo.ViewModels
                 OnPropertyChanged(nameof(StopButtonVisible));
             }
         }
+        
+        public bool PopupVisible
+        {
+            get => _popupVisible;
+            set
+            {
+                _popupVisible = value;
+                OnPropertyChanged(nameof(PopupVisible));
+            }
+        }
 
         public MainViewModel()
         {
             MusicBtnClickCommand = new Command(SmileClickCommandHandler);
-            StopCommand = new Command(StopCommandHandlder);
+            StopCommand = new Command(StopCommandHandler);
+            HidePopupCommand = new Command(HidePopupCommandHandler);
             
             _audioService = DependencyService.Get<IAudioService>();
             
             MessagingCenter.Instance.Subscribe<byte[]>(this, MessagingCenterConstants.LastSongFinished, (array) => LastSoundStopped());
         }
 
+        private void HidePopupCommandHandler()
+        {
+            PopupVisible = false;
+        }
+        
         private void LastSoundStopped()
         {
             StopButtonVisible = false;
         }
 
-        private void StopCommandHandlder(object obj)
+        private void StopCommandHandler(object obj)
         {
             _audioService.StopPlaying();
             StopButtonVisible = false;
@@ -55,7 +73,14 @@ namespace quazimodo.ViewModels
             var parameter = (SoundParameter)obj;
 
             StopButtonVisible = true;
-            
+            App.CountOfPlayedSound++;
+
+            if (App.CountOfPlayedSound == AdConstants.ClicksCountBeforeAd)
+            {
+                PopupVisible = true;
+                App.CountOfPlayedSound = 0;
+            }
+
             switch (parameter)
             {
                 case SoundParameter.Reject:
