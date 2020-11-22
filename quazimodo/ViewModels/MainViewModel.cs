@@ -7,6 +7,7 @@ using quazimodo.Constants;
 using quazimodo.Enums;
 using quazimodo.Interfaces;
 using Firebase.Database;
+using Firebase.Database.Query;
 using quazimodo.Models;
 using Xamarin.Forms;
 using Xamarin.Essentials;
@@ -122,10 +123,17 @@ namespace quazimodo.ViewModels
         {
             var current = Connectivity.NetworkAccess;
 
+            var locale = FirebaseConstants.LocalizationEn;
+            
+            if (App.TwoLetterIsoLanguageName.Contains(FirebaseConstants.LocalizationRu))
+            {
+                locale = FirebaseConstants.LocalizationRu;
+            }
+
             if (current == NetworkAccess.Internet)
             {
                 return (await _firebaseClient
-                    .Child("MyApps")
+                    .Child(FirebaseConstants.MyAppsEndpoint).Child(locale)
                     .OnceAsync<MyApp>()).Select(item => new MyApp
                 {
                     Name = item.Object.Name,

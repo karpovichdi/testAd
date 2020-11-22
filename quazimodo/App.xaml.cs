@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using quazimodo.Interfaces;
 using quazimodo.Views;
 using Xamarin.Forms;
@@ -8,6 +9,7 @@ namespace quazimodo
     public partial class App : Application
     {
         public static int CountOfPlayedSound;
+        public static string TwoLetterIsoLanguageName;
         
         private readonly IStorageService _storageService;
 
@@ -22,12 +24,12 @@ namespace quazimodo
 
         protected override void OnStart()
         {
-            SetCount();
+            Setup();
         }
 
         protected override void OnResume()
         {
-            SetCount();
+            Setup();
         }
         
         protected override void OnSleep()
@@ -43,11 +45,13 @@ namespace quazimodo
             }
         }
         
-        private void SetCount()
+        private void Setup()
         {
             try
             {
                 CountOfPlayedSound = _storageService.GetCount();
+
+                TwoLetterIsoLanguageName = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             }
             catch (Exception e)
             {

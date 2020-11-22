@@ -8,6 +8,7 @@
     xmlns:constants="clr-namespace:quazimodo.Constants;assembly=quazimodo"
     xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
     xmlns:models="clr-namespace:quazimodo.Models;assembly=quazimodo"
+    xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
     NavigationPage.HasNavigationBar="False"
     BackgroundColor="#303030"
     x:Class="quazimodo.Views.MainPage">
@@ -38,7 +39,7 @@
                            VerticalOptions="Start">
                         <Label Style="{StaticResource soundCategoryStyle}"
                                TextColor="#cbae8270"
-                               Text="Positive" />
+                               Text="{x:Static resources:Localization.PositiveHeader}"/>
                     </Frame>
                     <FlexLayout Grid.Row="1"
                                 Style="{StaticResource flexLayoutStyle}">
@@ -212,7 +213,7 @@
                            VerticalOptions="Start">
                         <Label Style="{StaticResource soundCategoryStyle}"
                                TextColor="#bec5b7"
-                               Text="Neutral" />
+                               Text="{x:Static resources:Localization.NeutralHeader}" />
                     </Frame>
                     <FlexLayout Grid.Row="1"
                                 Style="{StaticResource flexLayoutStyle}">
@@ -296,7 +297,7 @@
                            VerticalOptions="Start">
                         <Label Style="{StaticResource soundCategoryStyle}"
                                TextColor="#a69b97"
-                               Text="Negative" />
+                               Text="{x:Static resources:Localization.NegativeHeader}" />
                     </Frame>
                     <FlexLayout Grid.Row="1"
                                 Style="{StaticResource flexLayoutStyle}">
@@ -452,7 +453,7 @@
                     <ImageButton Source="{x:Static constants:ImageIdConstants.Reject}"
                                  Style="{StaticResource acceptButtonStyle}"
                                  CommandParameter="{x:Static enums:SoundParameter.Reject}" />
-                    <Button Text="MyApps"
+                    <Button Text="{x:Static resources:Localization.Tap}"
                             Command="{Binding MyAppsCommand}"
                             IsVisible="{Binding MyAppsIsExist}" />
                     <ImageButton Source="{x:Static constants:ImageIdConstants.Accept}"
@@ -494,7 +495,7 @@
                        Text="Hello" />
             </Frame>
             <Button Grid.Row="0"
-                    Text="Skip"
+                    Text="{x:Static resources:Localization.Skip}"
                     VerticalOptions="End"
                     Margin="0,40,0,0"
                     BackgroundColor="#303030"
@@ -503,7 +504,7 @@
                     BorderWidth="1"
                     Command="{Binding HidePopupCommand}" />
             <Button Grid.Row="2"
-                    Text="Stop"
+                    Text="{x:Static resources:Localization.Stop}"
                     VerticalOptions="End"
                     BackgroundColor="#303030"
                     TextColor="Beige"
@@ -558,8 +559,8 @@
                                                Source="{Binding ImageUrl}" />
                                         <Label Grid.Row="0"
                                                Grid.Column="1"
-                                               HorizontalOptions="Center"
-                                               HorizontalTextAlignment="Center"
+                                               HorizontalOptions="Start"
+                                               HorizontalTextAlignment="Start"
                                                Margin="10,0,0,0"
                                                TextColor="Beige"
                                                Text="{Binding Name}" />
@@ -578,7 +579,7 @@
             </Frame>
 
             <Button Grid.Row="1"
-                    Text="Hide"
+                    Text="{x:Static resources:Localization.Hide}"
                     VerticalOptions="End"
                     BackgroundColor="#303030"
                     TextColor="Beige"
