@@ -17,5 +17,10 @@ namespace quazimodo.Views
             ViewModel.StopButtonVisible = false;
             base.OnDisappearing();
         }
+
+        protected override void OnAppearing()
+        {
+            ViewModel.FillMyAppList();
+        }
     }
 }

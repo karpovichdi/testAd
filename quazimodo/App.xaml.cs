@@ -1,4 +1,5 @@
-﻿using quazimodo.Interfaces;
+﻿using System;
+using quazimodo.Interfaces;
 using quazimodo.Views;
 using Xamarin.Forms;
 
@@ -21,18 +22,37 @@ namespace quazimodo
 
         protected override void OnStart()
         {
-            CountOfPlayedSound = _storageService.GetCount();
-        }
-
-        protected override void OnSleep()
-        {
-            DependencyService.Get<IAudioService>().StopPlaying();
-            _storageService.SaveCount(CountOfPlayedSound);
+            SetCount();
         }
 
         protected override void OnResume()
         {
-            CountOfPlayedSound = _storageService.GetCount();
+            SetCount();
+        }
+        
+        protected override void OnSleep()
+        {
+            try
+            {
+                DependencyService.Get<IAudioService>().StopPlaying();
+                _storageService.SaveCount(CountOfPlayedSound);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+        
+        private void SetCount()
+        {
+            try
+            {
+                CountOfPlayedSound = _storageService.GetCount();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }
