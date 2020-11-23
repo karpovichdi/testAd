@@ -88,5 +88,17 @@ namespace quazimodo.Resources {
                 return ResourceManager.GetString("Tap", resourceCulture);
             }
         }
+        
+        public static string AdMessageHeader {
+            get {
+                return ResourceManager.GetString("AdMessageHeader", resourceCulture);
+            }
+        }
+        
+        public static string AdMessage {
+            get {
+                return ResourceManager.GetString("AdMessage", resourceCulture);
+            }
+        }
     }
 }

@@ -71,6 +71,17 @@ namespace quazimodo.ViewModels
             get => _popupVisible;
             set
             {
+                if (value)
+                {
+                    if (App.AdInitialized)
+                    {
+                        _popupVisible = true;
+                        OnPropertyChanged(nameof(PopupVisible));
+                    }
+                    
+                    return;
+                }
+                
                 _popupVisible = value;
                 OnPropertyChanged(nameof(PopupVisible));
             }

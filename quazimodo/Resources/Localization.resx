@@ -136,6 +136,19 @@
     <value>HIDE</value>
   </data>
   <data name="Tap" xml:space="preserve">
-        <value>TAP</value>
+     <value>TAP</value>
+  </data>
+  <data name="AdMessage" xml:space="preserve">
+     <value>Hi, I am the author of this application and I have a question: - What are you doing at home in the evening?
+
+After work, I am writing this application, I try to make it so pleasant for you to use it and you have full access to all the sounds and functions of this application.
+
+If you like it, just click on the banner at the bottom of the screen, maybe Google will really show you something useful there.
+
+I love what I do, but I do not want to work at night forever)
+Just one click on the banner, and you will help someone) Spoiler, me)</value>
+  </data>
+  <data name="AdMessageHeader" xml:space="preserve">
+        <value>What are you doing at home tonight?</value>
     </data>
 </root>

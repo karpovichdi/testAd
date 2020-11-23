@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.Gms.Ads;
 using Android.OS;
 using Android.Runtime;
+using quazimodo.Constants;
 using quazimodo.Droid.Listeners;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -35,6 +36,7 @@ namespace quazimodo.Droid
             
             Platform.Init(this, savedInstanceState);
             MobileAds.Initialize(ApplicationContext, new AdMobInitializationListener());
+            
             Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

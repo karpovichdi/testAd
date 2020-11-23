@@ -8,9 +8,10 @@ namespace quazimodo
 {
     public partial class App : Application
     {
+        public static bool AdInitialized;
         public static int CountOfPlayedSound;
         public static string TwoLetterIsoLanguageName;
-        
+
         private readonly IStorageService _storageService;
 
         public App()
@@ -21,7 +22,7 @@ namespace quazimodo
             
             _storageService = DependencyService.Get<IStorageService>();
         }
-
+        
         protected override void OnStart()
         {
             Setup();

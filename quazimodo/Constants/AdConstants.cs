@@ -9,6 +9,6 @@ namespace quazimodo.Constants
         public static string AppId = "ca-app-pub-4783460784778910~9132541995";
         
         public static string CountOfPlayedSound = "CountOfPlayedSound";
-        public static int ClicksCountBeforeAd = 1;
+        public static int ClicksCountBeforeAd = 30;
     }
 }

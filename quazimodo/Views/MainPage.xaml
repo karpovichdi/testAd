@@ -454,6 +454,8 @@
                                  Style="{StaticResource acceptButtonStyle}"
                                  CommandParameter="{x:Static enums:SoundParameter.Reject}" />
                     <Button Text="{x:Static resources:Localization.Tap}"
+                            BackgroundColor="#f1f8e9"
+                            CornerRadius="10"
                             Command="{Binding MyAppsCommand}"
                             IsVisible="{Binding MyAppsIsExist}" />
                     <ImageButton Source="{x:Static constants:ImageIdConstants.Accept}"
@@ -488,12 +490,21 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Frame Grid.Row="1"
-                   BorderColor="Beige"
-                   BackgroundColor="Transparent">
-                <Label TextColor="Beige"
-                       Text="Hello" />
-            </Frame>
+            <ScrollView Grid.Row="1">
+                <Frame BorderColor="Beige"
+                       BackgroundColor="Transparent">
+                    <StackLayout>
+                        <Label TextColor="Beige"
+                               Margin="0,0,0,20"
+                               FontSize="22"
+                               Text="{x:Static resources:Localization.AdMessageHeader}"/>
+                        <Label TextColor="Beige"
+                               FontSize="16"
+                               Text="{x:Static resources:Localization.AdMessage}"/>
+                    </StackLayout>
+                </Frame>
+            </ScrollView>
+            
             <Button Grid.Row="0"
                     Text="{x:Static resources:Localization.Skip}"
                     VerticalOptions="End"

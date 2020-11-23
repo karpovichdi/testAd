@@ -6,7 +6,7 @@ namespace quazimodo.Droid.Listeners
     {
         public void OnInitializationComplete(IInitializationStatus p0)
         {
-
+            App.AdInitialized = true;
         }
     }
 }
