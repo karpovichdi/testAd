@@ -25,8 +25,9 @@ namespace quazimodo.ViewModels
         public Command HideMyAppsCommand { get; set; }
         public Command SelectedMyAppCommand { get; set; }
         public Command RecordCommand { get; set; }
-
-        private const string Extension = ".mp3";
+        
+        private const string SoundExtension = ".mp3";
+        private const string ImageExtension = ".png";
 
         private readonly IAudioService _audioService;
         private readonly AudioRecorderService _recorderService;
@@ -41,7 +42,10 @@ namespace quazimodo.ViewModels
 
         public ObservableRangeCollection<MyApp> MyApps { get; set; }
         public ObservableRangeCollection<CustomSound> CustomSounds { get; set; }
-
+        public ObservableRangeCollection<ButtonSmileModel> NeutralSoundList { get; set; }
+        public ObservableRangeCollection<ButtonSmileModel> NegativeSoundList { get; set; }
+        public ObservableRangeCollection<ButtonSmileModel> PositiveSoundList { get; set; }
+        
         public bool AppsIsLoaded { get; set; }
 
         public bool MyAppsPageVisible
@@ -107,6 +111,13 @@ namespace quazimodo.ViewModels
 
             MyApps = new ObservableRangeCollection<MyApp>();
             CustomSounds = new ObservableRangeCollection<CustomSound>();
+            NeutralSoundList = new ObservableRangeCollection<ButtonSmileModel>();
+            PositiveSoundList = new ObservableRangeCollection<ButtonSmileModel>();
+            NegativeSoundList = new ObservableRangeCollection<ButtonSmileModel>();
+            
+            FillSoundListByType(PositiveSoundList, SmileType.Positive);
+            FillSoundListByType(NeutralSoundList, SmileType.Neutral);
+            FillSoundListByType(NegativeSoundList, SmileType.Negative);
 
             FillCustomSounds();
 
@@ -132,6 +143,147 @@ namespace quazimodo.ViewModels
 
             MessagingCenter.Instance.Subscribe<byte[]>(this, MessagingCenterConstants.LastSongFinished,
                 (array) => LastSoundStopped());
+        }
+
+        private async Task FillSoundListByType(ObservableRangeCollection<ButtonSmileModel> observable, SmileType smileType)
+        {
+            switch (smileType)
+            {
+                case SmileType.Positive:
+                    NeutralSoundList.AddRange(await GetPositiveModels());
+                    break;
+                case SmileType.Negative:
+                    NeutralSoundList.AddRange(await GetNegativeModels());
+                    break;
+                case SmileType.Neutral:
+                    NeutralSoundList.AddRange(await GetNeutralModels());
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(smileType), smileType, null);
+            }
+        }
+
+        private async Task<List<ButtonSmileModel>> GetNegativeModels()
+        {
+            var buttonSmileModels = new List<ButtonSmileModel>();
+            return buttonSmileModels;
+        }
+
+        private async Task<List<ButtonSmileModel>> GetPositiveModels()
+        {
+            var buttonSmileModels = new List<ButtonSmileModel>();
+            return buttonSmileModels;
+        }
+
+        private async Task<List<ButtonSmileModel>> GetNeutralModels()
+        {
+            var list = new List<ButtonSmileModel>()
+            {
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.flatmouth + ImageExtension,
+                    CommandParameter = SoundParameter.flatmouth,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.neutral + ImageExtension,
+                    CommandParameter = SoundParameter.neutral,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.upset + ImageExtension,
+                    CommandParameter = SoundParameter.upset,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.zanyq + ImageExtension,
+                    CommandParameter = SoundParameter.zanyq,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.grimacing + ImageExtension,
+                    CommandParameter = SoundParameter.grimacing,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.sleeping + ImageExtension,
+                    CommandParameter = SoundParameter.sleeping,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.amazed + ImageExtension,
+                    CommandParameter = SoundParameter.amazed,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.ninja + ImageExtension,
+                    CommandParameter = SoundParameter.ninja,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.robot + ImageExtension,
+                    CommandParameter = SoundParameter.robotq,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.skull + ImageExtension,
+                    CommandParameter = SoundParameter.skull,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = "ghost" + ImageExtension,
+                    CommandParameter = SoundParameter.Creepypasta,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.airhorn + ImageExtension,
+                    CommandParameter = SoundParameter.airhorn,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.chicken + ImageExtension,
+                    CommandParameter = SoundParameter.chicken,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.drum + ImageExtension,
+                    CommandParameter = SoundParameter.drum,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.fist + ImageExtension,
+                    CommandParameter = SoundParameter.fist,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.gun + ImageExtension,
+                    CommandParameter = SoundParameter.gun,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.universal + ImageExtension,
+                    CommandParameter = SoundParameter.universal,
+                    SmileType = SmileType.Neutral
+                },
+            };
+
+            return list;
         }
 
         private void FillCustomSounds()
@@ -323,286 +475,286 @@ namespace quazimodo.ViewModels
                 switch (parameter)
                 {
                     case SoundParameter.Reject:
-                        _audioService.PlayAudioFile(SoundParameter.Reject + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.Reject + SoundExtension);
                         break;
                     case SoundParameter.Accept:
-                        _audioService.PlayAudioFile(SoundParameter.Accept + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.Accept + SoundExtension);
                         break;
                     case SoundParameter.Love:
-                        _audioService.PlayAudioFile(SoundParameter.Love + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.Love + SoundExtension);
                         break;
                     case SoundParameter.Crank:
-                        _audioService.PlayAudioFile(SoundParameter.Crank + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.Crank + SoundExtension);
                         break;
                     case SoundParameter.Creepypasta:
-                        _audioService.PlayAudioFile(SoundParameter.Creepypasta + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.Creepypasta + SoundExtension);
                         break;
                     case SoundParameter.Wow:
-                        _audioService.PlayAudioFile(SoundParameter.Wow + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.Wow + SoundExtension);
                         break;
                     case SoundParameter.Star:
-                        _audioService.PlayAudioFile(SoundParameter.Star + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.Star + SoundExtension);
                         break;
                     case SoundParameter.wink:
-                        _audioService.PlayAudioFile(SoundParameter.wink + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.wink + SoundExtension);
                         break;
                     case SoundParameter.thinking:
-                        _audioService.PlayAudioFile(SoundParameter.thinking + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.thinking + SoundExtension);
                         break;
                     case SoundParameter.confusingq:
-                        _audioService.PlayAudioFile(SoundParameter.confusingq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.confusingq + SoundExtension);
                         break;
                     case SoundParameter.blowkiss:
-                        _audioService.PlayAudioFile(SoundParameter.blowkiss + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.blowkiss + SoundExtension);
                         break;
                     case SoundParameter.grandfather:
-                        _audioService.PlayAudioFile(SoundParameter.grandfather + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.grandfather + SoundExtension);
                         break;
                     case SoundParameter.sweating:
-                        _audioService.PlayAudioFile(SoundParameter.sweating + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.sweating + SoundExtension);
                         break;
                     case SoundParameter.laughingq:
-                        _audioService.PlayAudioFile(SoundParameter.laughingq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.laughingq + SoundExtension);
                         break;
                     case SoundParameter.neutral:
-                        _audioService.PlayAudioFile(SoundParameter.neutral + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.neutral + SoundExtension);
                         break;
                     case SoundParameter.grinningq:
-                        _audioService.PlayAudioFile(SoundParameter.grinningq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.grinningq + SoundExtension);
                         break;
                     case SoundParameter.skull:
-                        _audioService.PlayAudioFile(SoundParameter.skull + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.skull + SoundExtension);
                         break;
                     case SoundParameter.sneezing:
-                        _audioService.PlayAudioFile(SoundParameter.sneezing + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.sneezing + SoundExtension);
                         break;
                     case SoundParameter.flushed:
-                        _audioService.PlayAudioFile(SoundParameter.flushed + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.flushed + SoundExtension);
                         break;
                     case SoundParameter.joy:
-                        _audioService.PlayAudioFile(SoundParameter.joy + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.joy + SoundExtension);
                         break;
                     case SoundParameter.silentq:
-                        _audioService.PlayAudioFile(SoundParameter.silentq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.silentq + SoundExtension);
                         break;
                     case SoundParameter.sad:
-                        _audioService.PlayAudioFile(SoundParameter.sad + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.sad + SoundExtension);
                         break;
                     case SoundParameter.tears:
-                        _audioService.PlayAudioFile(SoundParameter.tears + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.tears + SoundExtension);
                         break;
                     case SoundParameter.amazed:
-                        _audioService.PlayAudioFile(SoundParameter.amazed + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.amazed + SoundExtension);
                         break;
                     case SoundParameter.lyingq:
-                        _audioService.PlayAudioFile(SoundParameter.lyingq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.lyingq + SoundExtension);
                         break;
                     case SoundParameter.smilingface:
-                        _audioService.PlayAudioFile(SoundParameter.smilingface + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.smilingface + SoundExtension);
                         break;
                     case SoundParameter.teasing:
-                        _audioService.PlayAudioFile(SoundParameter.teasing + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.teasing + SoundExtension);
                         break;
                     case SoundParameter.surprised:
-                        _audioService.PlayAudioFile(SoundParameter.surprised + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.surprised + SoundExtension);
                         break;
                     case SoundParameter.dizzy:
-                        _audioService.PlayAudioFile(SoundParameter.dizzy + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.dizzy + SoundExtension);
                         break;
                     case SoundParameter.angry:
-                        _audioService.PlayAudioFile(SoundParameter.angry + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.angry + SoundExtension);
                         break;
                     case SoundParameter.mouth:
-                        _audioService.PlayAudioFile(SoundParameter.mouth + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.mouth + SoundExtension);
                         break;
                     case SoundParameter.alien:
-                        _audioService.PlayAudioFile(SoundParameter.alien + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.alien + SoundExtension);
                         break;
                     case SoundParameter.zanyq:
-                        _audioService.PlayAudioFile(SoundParameter.zanyq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.zanyq + SoundExtension);
                         break;
                     case SoundParameter.smile:
-                        _audioService.PlayAudioFile(SoundParameter.smile + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.smile + SoundExtension);
                         break;
                     case SoundParameter.sunglassesq:
-                        _audioService.PlayAudioFile(SoundParameter.sunglassesq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.sunglassesq + SoundExtension);
                         break;
                     case SoundParameter.poop:
-                        _audioService.PlayAudioFile(SoundParameter.poop + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.poop + SoundExtension);
                         break;
                     case SoundParameter.flatmouth:
-                        _audioService.PlayAudioFile(SoundParameter.flatmouth + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.flatmouth + SoundExtension);
                         break;
                     case SoundParameter.eyepatch:
-                        _audioService.PlayAudioFile(SoundParameter.eyepatch + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.eyepatch + SoundExtension);
                         break;
                     case SoundParameter.Laughterq:
-                        _audioService.PlayAudioFile(SoundParameter.Laughterq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.Laughterq + SoundExtension);
                         break;
                     case SoundParameter.money:
-                        _audioService.PlayAudioFile(SoundParameter.money + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.money + SoundExtension);
                         break;
                     case SoundParameter.dollar:
-                        _audioService.PlayAudioFile(SoundParameter.dollar + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.dollar + SoundExtension);
                         break;
                     case SoundParameter.upset:
-                        _audioService.PlayAudioFile(SoundParameter.upset + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.upset + SoundExtension);
                         break;
                     case SoundParameter.grimacing:
-                        _audioService.PlayAudioFile(SoundParameter.grimacing + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.grimacing + SoundExtension);
                         break;
                     case SoundParameter.cryd:
-                        _audioService.PlayAudioFile(SoundParameter.cryd + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.cryd + SoundExtension);
                         break;
                     case SoundParameter.lol:
-                        _audioService.PlayAudioFile(SoundParameter.lol + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.lol + SoundExtension);
                         break;
                     case SoundParameter.sunglassesqq:
-                        _audioService.PlayAudioFile(SoundParameter.sunglassesqq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.sunglassesqq + SoundExtension);
                         break;
                     case SoundParameter.mouthfull:
-                        _audioService.PlayAudioFile(SoundParameter.mouthfull + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.mouthfull + SoundExtension);
                         break;
                     case SoundParameter.edevil:
-                        _audioService.PlayAudioFile(SoundParameter.edevil + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.edevil + SoundExtension);
                         break;
                     case SoundParameter.angryface:
-                        _audioService.PlayAudioFile(SoundParameter.angryface + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.angryface + SoundExtension);
                         break;
                     case SoundParameter.sleeping:
-                        _audioService.PlayAudioFile(SoundParameter.sleeping + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.sleeping + SoundExtension);
                         break;
                     case SoundParameter.tongueout:
-                        _audioService.PlayAudioFile(SoundParameter.tongueout + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.tongueout + SoundExtension);
                         break;
                     case SoundParameter.Laughter:
-                        _audioService.PlayAudioFile(SoundParameter.Laughter + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.Laughter + SoundExtension);
                         break;
                     case SoundParameter.angel:
-                        _audioService.PlayAudioFile(SoundParameter.angel + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.angel + SoundExtension);
                         break;
                     case SoundParameter.policeman:
-                        _audioService.PlayAudioFile(SoundParameter.policeman + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.policeman + SoundExtension);
                         break;
                     case SoundParameter.thief:
-                        _audioService.PlayAudioFile(SoundParameter.thief + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.thief + SoundExtension);
                         break;
                     case SoundParameter.devilsmile:
-                        _audioService.PlayAudioFile(SoundParameter.devilsmile + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.devilsmile + SoundExtension);
                         break;
                     case SoundParameter.disturb:
-                        _audioService.PlayAudioFile(SoundParameter.disturb + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.disturb + SoundExtension);
                         break;
                     case SoundParameter.medicalmask:
-                        _audioService.PlayAudioFile(SoundParameter.medicalmask + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.medicalmask + SoundExtension);
                         break;
                     case SoundParameter.expressionless:
-                        _audioService.PlayAudioFile(SoundParameter.expressionless + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.expressionless + SoundExtension);
                         break;
                     case SoundParameter.pirate:
-                        _audioService.PlayAudioFile(SoundParameter.pirate + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.pirate + SoundExtension);
                         break;
                     case SoundParameter.poutine:
-                        _audioService.PlayAudioFile(SoundParameter.poutine + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.poutine + SoundExtension);
                         break;
                     case SoundParameter.sadface:
-                        _audioService.PlayAudioFile(SoundParameter.sadface + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.sadface + SoundExtension);
                         break;
                     case SoundParameter.snoring:
-                        _audioService.PlayAudioFile(SoundParameter.snoring + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.snoring + SoundExtension);
                         break;
                     case SoundParameter.grinninge:
-                        _audioService.PlayAudioFile(SoundParameter.grinninge + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.grinninge + SoundExtension);
                         break;
                     case SoundParameter.deviltongue:
-                        _audioService.PlayAudioFile(SoundParameter.deviltongue + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.deviltongue + SoundExtension);
                         break;
                     case SoundParameter.closedeyes:
-                        _audioService.PlayAudioFile(SoundParameter.closedeyes + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.closedeyes + SoundExtension);
                         break;
                     case SoundParameter.laughing:
-                        _audioService.PlayAudioFile(SoundParameter.laughing + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.laughing + SoundExtension);
                         break;
                     case SoundParameter.grinningy:
-                        _audioService.PlayAudioFile(SoundParameter.grinningy + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.grinningy + SoundExtension);
                         break;
                     case SoundParameter.ninja:
-                        _audioService.PlayAudioFile(SoundParameter.ninja + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.ninja + SoundExtension);
                         break;
                     case SoundParameter.robotq:
-                        _audioService.PlayAudioFile(SoundParameter.robotq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.robotq + SoundExtension);
                         break;
                     case SoundParameter.grinningr:
-                        _audioService.PlayAudioFile(SoundParameter.grinningr + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.grinningr + SoundExtension);
                         break;
                     case SoundParameter.puke:
-                        _audioService.PlayAudioFile(SoundParameter.puke + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.puke + SoundExtension);
                         break;
                     case SoundParameter.explodes:
-                        _audioService.PlayAudioFile(SoundParameter.explodes + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.explodes + SoundExtension);
                         break;
                     case SoundParameter.chilling:
-                        _audioService.PlayAudioFile(SoundParameter.chilling + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.chilling + SoundExtension);
                         break;
                     case SoundParameter.sleepingd:
-                        _audioService.PlayAudioFile(SoundParameter.sleepingd + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.sleepingd + SoundExtension);
                         break;
                     case SoundParameter.zipped:
-                        _audioService.PlayAudioFile(SoundParameter.zipped + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.zipped + SoundExtension);
                         break;
                     case SoundParameter.death:
-                        _audioService.PlayAudioFile(SoundParameter.death + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.death + SoundExtension);
                         break;
                     case SoundParameter.teeth:
-                        _audioService.PlayAudioFile(SoundParameter.teeth + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.teeth + SoundExtension);
                         break;
                     case SoundParameter.sweattongue:
-                        _audioService.PlayAudioFile(SoundParameter.sweattongue + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.sweattongue + SoundExtension);
                         break;
                     case SoundParameter.kiss:
-                        _audioService.PlayAudioFile(SoundParameter.kiss + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.kiss + SoundExtension);
                         break;
                     case SoundParameter.hand:
-                        _audioService.PlayAudioFile(SoundParameter.hand + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.hand + SoundExtension);
                         break;
                     case SoundParameter.frown:
-                        _audioService.PlayAudioFile(SoundParameter.frown + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.frown + SoundExtension);
                         break;
                     case SoundParameter.irritated:
-                        _audioService.PlayAudioFile(SoundParameter.irritated + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.irritated + SoundExtension);
                         break;
                     case SoundParameter.crying:
-                        _audioService.PlayAudioFile(SoundParameter.crying + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.crying + SoundExtension);
                         break;
                     case SoundParameter.devilq:
-                        _audioService.PlayAudioFile(SoundParameter.devilq + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.devilq + SoundExtension);
                         break;
                     case SoundParameter.hugging:
-                        _audioService.PlayAudioFile(SoundParameter.hugging + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.hugging + SoundExtension);
                         break;
                     case SoundParameter.yummy:
-                        _audioService.PlayAudioFile(SoundParameter.yummy + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.yummy + SoundExtension);
                         break;
                     case SoundParameter.tasty:
-                        _audioService.PlayAudioFile(SoundParameter.tasty + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.tasty + SoundExtension);
                         break;
                     case SoundParameter.airhorn:
-                        _audioService.PlayAudioFile(SoundParameter.airhorn + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.airhorn + SoundExtension);
                         break;
                     case SoundParameter.chicken:
-                        _audioService.PlayAudioFile(SoundParameter.chicken + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.chicken + SoundExtension);
                         break;
                     case SoundParameter.drum:
-                        _audioService.PlayAudioFile(SoundParameter.drum + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.drum + SoundExtension);
                         break;
                     case SoundParameter.fist:
-                        _audioService.PlayAudioFile(SoundParameter.fist + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.fist + SoundExtension);
                         break;
                     case SoundParameter.gun:
-                        _audioService.PlayAudioFile(SoundParameter.gun + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.gun + SoundExtension);
                         break;
                     case SoundParameter.universal:
-                        _audioService.PlayAudioFile(SoundParameter.universal + Extension);
+                        _audioService.PlayAudioFile(SoundParameter.universal + SoundExtension);
                         break;
                 }
             }

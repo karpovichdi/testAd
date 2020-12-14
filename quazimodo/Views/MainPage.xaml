@@ -196,171 +196,44 @@
                         <ImageButton Source="alien.png"
                                      Style="{StaticResource positiveEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.alien}" />
-                        <Button Text="1"
-                                CommandParameter="1"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="2"
-                                CommandParameter="2"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="3"
-                                CommandParameter="3"
-                                Style="{StaticResource customSoundItem}"/>
-                        
-                        <Button Text="4"
-                                CommandParameter="4"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="5"
-                                CommandParameter="5"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="6"
-                                CommandParameter="6"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="7"
-                                CommandParameter="7"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="8"
-                                CommandParameter="8"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="9"
-                                CommandParameter="9"
-                                Style="{StaticResource customSoundItem}"/>
-                        
-                        <Button Text="10"
-                                CommandParameter="10"
-                                Style="{StaticResource customSoundItem}"/>
                     </FlexLayout>
                 </Grid>
 
-                <!-- neutral -->
-                <Grid Margin="20">
+                <Grid Margin="{StaticResource defaultOffset}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-
                     <BoxView Grid.RowSpan="2"
-                             CornerRadius="20"
-                             BackgroundColor="#f1f8e9" />
+                             CornerRadius="{StaticResource defaultOffset}"
+                             BackgroundColor="{StaticResource white4}" />
                     <Frame Grid.Row="0"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="Start">
                         <Label Style="{StaticResource soundCategoryStyle}"
-                               TextColor="#bec5b7"
+                               TextColor="{StaticResource lightGray}"
                                Text="{x:Static resources:Localization.NeutralHeader}" />
                     </Frame>
-                    <FlexLayout Grid.Row="1"
-                                Style="{StaticResource flexLayoutStyle}">
-                        <ImageButton Source="flatmouth.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.flatmouth}" />
-                        <ImageButton Source="neutral.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.neutral}" />
-                        <ImageButton Source="upset.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.upset}" />
-                        <ImageButton Source="zanyq.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.zanyq}" />
-                        <ImageButton Source="teeth.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Teeth}" />
-                        <ImageButton Source="grimacing.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.grimacing}" />
-
-                        <ImageButton Source="sleeping.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.sleeping}" />
-                        <ImageButton Source="tongueoutq.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Tongueoutq}" />
-                        <ImageButton Source="amazed.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.amazed}" />
-                        <ImageButton Source="ninja.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.ninja}" />
-                        <ImageButton Source="robot.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.robotq}" />
-                        <ImageButton Source="skull.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.skull}" />
-
-                        <ImageButton Source="ghost.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.Creepypasta}" />
-                        <ImageButton Source="airhorn.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.airhorn}" />
-                        <ImageButton Source="chicken.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.chicken}" />
-                        <ImageButton Source="drum.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.drum}" />
-                        <ImageButton Source="fist.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.fist}" />
-                        <ImageButton Source="gun.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.gun}" />
-
-                        <ImageButton Source="universal.png"
-                                     Style="{StaticResource neutralEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.universal}" />
-                        <Button Text="1"
-                                CommandParameter="11"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="2"
-                                CommandParameter="12"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="3"
-                                CommandParameter="13"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="4"
-                                CommandParameter="14"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="5"
-                                CommandParameter="15"
-                                Style="{StaticResource customSoundItem}"/>
-                        
-                        <Button Text="6"
-                                CommandParameter="16"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="7"
-                                CommandParameter="17"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="8"
-                                CommandParameter="18"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="9"
-                                CommandParameter="19"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="10"
-                                CommandParameter="20"
-                                Style="{StaticResource customSoundItem}"/>
-                    </FlexLayout>
+                    <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
+                                                      ItemSource="{Binding NeutralSoundList}" 
+                                                      ItemStyle="{StaticResource neutralEmojiItem}"
+                                                      Style="{StaticResource flexLayoutStyle}"/>
                 </Grid>
 
                 <!-- negative -->
-                <Grid Margin="20">
+                <Grid Margin="{StaticResource defaultOffset}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-
                     <BoxView Grid.RowSpan="2"
-                             CornerRadius="20"
-                             BackgroundColor="#d7ccc8" />
+                             CornerRadius="{StaticResource defaultOffset}"
+                             BackgroundColor="{StaticResource white5}" />
                     <Frame Grid.Row="0"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="Start">
                         <Label Style="{StaticResource soundCategoryStyle}"
-                               TextColor="#a69b97"
+                               TextColor="{StaticResource lightYellow}"
                                Text="{x:Static resources:Localization.NegativeHeader}" />
                     </Frame>
                     <FlexLayout Grid.Row="1"
@@ -508,58 +381,23 @@
                         <ImageButton Source="poop.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.poop}" />
-                        
-                        <Button Text="{Binding CustomSounds.[20].Label}"
-                                CommandParameter="21"                                                                                                                                
-                                IsVisible="{Binding CustomSounds.[20].Visible}"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="{Binding CustomSounds.[21].Label}"
-                                CommandParameter="22"
-                                IsVisible="{Binding CustomSounds.[21].Visible}"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="3"
-                                CommandParameter="23"
-                                Style="{StaticResource customSoundItem}"/>
-                        
-                        <Button Text="4"
-                                CommandParameter="24"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="+"
-                                CommandParameter="25"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="+"
-                                CommandParameter="26"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="+"
-                                CommandParameter="27"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="+"
-                                CommandParameter="28"
-                                Style="{StaticResource customSoundItem}"/>
-                        <Button Text="+"
-                                CommandParameter="29"
-                                Style="{StaticResource customSoundItem}"/>
-                        
-                        <Button Text="+"
-                                CommandParameter="30"
-                                Style="{StaticResource customSoundItem}"/>
                     </FlexLayout>
                 </Grid>
 
                 <StackLayout Orientation="Horizontal"
                              HorizontalOptions="Center"
-                             Margin="20">
+                             Margin="{StaticResource defaultOffset}">
                     <ImageButton Source="{x:Static constants:ImageIdConstants.Reject}"
                                  Style="{StaticResource acceptButtonStyle}"
                                  CommandParameter="{x:Static enums:SoundParameter.Reject}" />
                     <Button Text="{x:Static resources:Localization.Tap}"
-                            BackgroundColor="#f1f8e9"
-                            CornerRadius="10"
+                            BackgroundColor="{StaticResource white4}"
+                            CornerRadius="{StaticResource defaultCorner}"
                             Command="{Binding MyAppsCommand}"
                             IsVisible="{Binding MyAppsIsExist}" />
                     <Button Text="Rec"
-                            BackgroundColor="#f1f8e9"
-                            CornerRadius="10"
+                            BackgroundColor="{StaticResource white4}"
+                            CornerRadius="{StaticResource defaultCorner}"
                             Command="{Binding RecordCommand}"/>
                     <ImageButton Source="{x:Static constants:ImageIdConstants.Accept}"
                                  Style="{StaticResource acceptButtonStyle}"

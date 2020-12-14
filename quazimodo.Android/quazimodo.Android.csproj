@@ -76,6 +76,7 @@
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Effects\DroidRoundedLayoutEffect.cs" />
     <Compile Include="Listeners\AdMobInitializationListener.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\AdMobBannerRenderer.cs" />
