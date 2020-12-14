@@ -1,4 +1,6 @@
-﻿using quazimodo.ViewModels;
+﻿using System.Threading.Tasks;
+using quazimodo.ViewModels;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace quazimodo.Views
@@ -18,9 +20,12 @@ namespace quazimodo.Views
             base.OnDisappearing();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
-            ViewModel.FillMyAppList();
+            if (!ViewModel.AppsIsLoaded)
+            {
+                ViewModel.FillMyAppList();
+            }
         }
     }
 }

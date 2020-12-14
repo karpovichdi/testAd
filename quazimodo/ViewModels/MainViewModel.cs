@@ -8,7 +8,9 @@ using quazimodo.Enums;
 using quazimodo.Interfaces;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Plugin.AudioRecorder;
 using quazimodo.Models;
+using quazimodo.utils;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 
@@ -21,21 +23,27 @@ namespace quazimodo.ViewModels
         public Command HidePopupCommand { get; set; }
         public Command MyAppsCommand { get; set; }
         public Command HideMyAppsCommand { get; set; }
-        
-        public Command  SelectedMyAppCommand { get; set; }
-        
+        public Command SelectedMyAppCommand { get; set; }
+        public Command RecordCommand { get; set; }
+
         private const string Extension = ".mp3";
 
         private readonly IAudioService _audioService;
+        private readonly AudioRecorderService _recorderService;
         private readonly FirebaseClient _firebaseClient;
-        
+        private readonly AudioPlayer _audioPlayer;
+
         private bool _stopButtonVisible;
         private bool _popupVisible;
         private bool _myAppsIsExist;
         private bool _myAppsPageVisible;
+        private bool _microphonePermissionsGranted;
 
-        public ObservableCollection<MyApp> MyApps { get; set; }
-        
+        public ObservableRangeCollection<MyApp> MyApps { get; set; }
+        public ObservableRangeCollection<CustomSound> CustomSounds { get; set; }
+
+        public bool AppsIsLoaded { get; set; }
+
         public bool MyAppsPageVisible
         {
             get => _myAppsPageVisible;
@@ -45,7 +53,7 @@ namespace quazimodo.ViewModels
                 OnPropertyChanged(nameof(MyAppsPageVisible));
             }
         }
-        
+
         public bool MyAppsIsExist
         {
             get => _myAppsIsExist;
@@ -78,15 +86,15 @@ namespace quazimodo.ViewModels
                         _popupVisible = true;
                         OnPropertyChanged(nameof(PopupVisible));
                     }
-                    
+
                     return;
                 }
-                
+
                 _popupVisible = value;
                 OnPropertyChanged(nameof(PopupVisible));
             }
         }
-
+        
         public MainViewModel()
         {
             MusicBtnClickCommand = new Command(SmileClickCommandHandler);
@@ -95,17 +103,78 @@ namespace quazimodo.ViewModels
             MyAppsCommand = new Command(MyAppsCommandHandler);
             HideMyAppsCommand = new Command(HideMyAppsCommandHandler);
             SelectedMyAppCommand = new Command(SelectedMyAppCommandHandler);
+            RecordCommand = new Command(RecordCommandHandler);
 
-            MyApps = new ObservableCollection<MyApp>();
+            MyApps = new ObservableRangeCollection<MyApp>();
+            CustomSounds = new ObservableRangeCollection<CustomSound>();
 
-            _audioService = DependencyService.Get<IAudioService>();
+            FillCustomSounds();
 
-            _firebaseClient = new FirebaseClient(FirebaseConstants.DatabaseUrl);
+            try
+            {
+                _recorderService = new AudioRecorderService
+                {
+                    TotalAudioTimeout = TimeSpan.FromSeconds(15)
+                };
+            
+                _audioService = DependencyService.Get<IAudioService>();
+                _audioPlayer = new AudioPlayer();
 
+                _firebaseClient = new FirebaseClient(FirebaseConstants.DatabaseUrl);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
             Connectivity.ConnectivityChanged += ConnectivityChangedHandler;
+            _audioPlayer.FinishedPlaying += AudioFinishHandler; 
 
             MessagingCenter.Instance.Subscribe<byte[]>(this, MessagingCenterConstants.LastSongFinished,
                 (array) => LastSoundStopped());
+        }
+
+        private void FillCustomSounds()
+        {
+            var customSounds = new List<CustomSound>();
+            var innerCounter = 0;
+            for (var i = 1; i < 31; i++)
+            {
+                if (i > 10)
+                {
+                    innerCounter = 1;
+                }
+
+                var customSound = new CustomSound
+                {
+                    Number = i,
+                    Label = innerCounter.ToString(),
+                    Visible = i == 1 || i == 11 || i == 21,
+                    Path = ""
+                };
+                innerCounter++;
+                customSounds.Add(customSound);
+            }
+
+            CustomSounds.AddRange(customSounds);
+        }
+
+        private void AudioFinishHandler(object sender, EventArgs e)
+        {
+            var filePath = _recorderService.GetAudioFilePath();
+            _audioPlayer.Play(filePath);
+        }
+
+        private async void RecordCommandHandler()
+        {
+            if (!_recorderService.IsRecording)
+            {
+                await _recorderService.StartRecording();
+            }
+            else
+            {
+                await _recorderService.StopRecording();
+            }
         }
 
         public async Task FillMyAppList()
@@ -122,6 +191,8 @@ namespace quazimodo.ViewModels
                     {
                         MyApps.Add(app);
                     }
+
+                    AppsIsLoaded = true;
                 }
                 catch (Exception e)
                 {
@@ -135,7 +206,7 @@ namespace quazimodo.ViewModels
             var current = Connectivity.NetworkAccess;
 
             var locale = FirebaseConstants.LocalizationEn;
-            
+
             if (App.TwoLetterIsoLanguageName.Contains(FirebaseConstants.LocalizationRu))
             {
                 locale = FirebaseConstants.LocalizationRu;
@@ -181,13 +252,13 @@ namespace quazimodo.ViewModels
                 Launcher.OpenAsync(new Uri("market://details?id=" + downloadUrl));
             }
         }
-        
+
         private void MyAppsCommandHandler()
         {
             MyAppsPageVisible = true;
             PopupVisible = false;
         }
-        
+
         private void HideMyAppsCommandHandler()
         {
             MyAppsPageVisible = false;
@@ -208,7 +279,25 @@ namespace quazimodo.ViewModels
             _audioService.StopPlaying();
             StopButtonVisible = false;
         }
+        
+        private async Task CheckPermissions()
+        {
+            var microphoneStatus = await Permissions.CheckStatusAsync<Permissions.Microphone>();
+            if (microphoneStatus != PermissionStatus.Granted)
+            {
+                await GetPermissions();
+            }
+            else
+            {
+                _microphonePermissionsGranted = true;
+            }
+        }
 
+        private async Task GetPermissions()
+        {
+            var status = await Permissions.RequestAsync<Permissions.Microphone>();
+        }
+        
         private void SmileClickCommandHandler(object obj)
         {
             try
@@ -216,6 +305,11 @@ namespace quazimodo.ViewModels
                 if (obj is string) return;
                 var parameter = (SoundParameter) obj;
 
+                if (!_microphonePermissionsGranted)
+                {
+                    CheckPermissions();
+                }
+                
                 StopButtonVisible = true;
                 App.CountOfPlayedSound++;
 

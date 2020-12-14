@@ -12,13 +12,13 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="NegativeHeader" xml:space="preserve">
-        <value>Трололошки</value>
+        <value>Negative</value>
     </data>
     <data name="NeutralHeader" xml:space="preserve">
-        <value>Нейтрашки</value>
+        <value>Neutral</value>
     </data>
     <data name="PositiveHeader" xml:space="preserve">
-        <value>Улыбашки</value>
+        <value>Positive</value>
     </data>
     <data name="Skip" xml:space="preserve">
         <value>ЗАКРЫТЬ</value>
