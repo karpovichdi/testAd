@@ -23,6 +23,12 @@
         <Color x:Key="white2">#ffffff</Color>
         <Color x:Key="white3">#fffffb</Color>
         
+        <!--IconFonts-->
+        <OnPlatform x:Key="icomoonFont" x:TypeArguments="x:String">
+            <On Platform="Android" Value="icomoon.ttf#icomoon"/>
+            <On Platform="iOS" Value="icomoon"/>
+        </OnPlatform>
+        
         <!-- Styles -->
         <Style x:Key="emojiBaseItem" TargetType="ImageButton">
             <Setter Property="HeightRequest" Value="{StaticResource emojiSize}" />

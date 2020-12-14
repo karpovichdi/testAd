@@ -39,6 +39,7 @@
                            VerticalOptions="Start">
                         <Label Style="{StaticResource soundCategoryStyle}"
                                TextColor="#cbae8270"
+                               FontFamily="{StaticResource icomoonFont}"
                                Text="{x:Static resources:Localization.PositiveHeader}"/>
                     </Frame>
                     <FlexLayout Grid.Row="1"

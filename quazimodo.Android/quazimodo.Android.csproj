@@ -273,6 +273,7 @@
     <AndroidAsset Include="Assets\gun.mp3" />
     <AndroidAsset Include="Assets\hand.mp3" />
     <AndroidAsset Include="Assets\hugging.mp3" />
+    <AndroidAsset Include="Assets\icomoon.ttf" />
     <AndroidAsset Include="Assets\irritated.mp3" />
     <AndroidAsset Include="Assets\joy.mp3" />
     <AndroidAsset Include="Assets\kiss.mp3" />
