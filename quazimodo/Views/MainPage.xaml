@@ -236,8 +236,10 @@
                                TextColor="{StaticResource lightYellow}"
                                Text="{x:Static resources:Localization.NegativeHeader}" />
                     </Frame>
-                    <FlexLayout Grid.Row="1"
-                                Style="{StaticResource flexLayoutStyle}">
+                    <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
+                                                      ItemSource="{Binding NegativeSoundList}" 
+                                                      ItemStyle="{StaticResource negativeEmojiItem}"
+                                                      Style="{StaticResource flexLayoutStyle}">
                         <ImageButton Source="anger.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      IsVisible="False"
@@ -381,7 +383,7 @@
                         <ImageButton Source="poop.png"
                                      Style="{StaticResource negativeEmojiItem}"
                                      CommandParameter="{x:Static enums:SoundParameter.poop}" />
-                    </FlexLayout>
+                    </quazimodo:SmileButtonsFlexLayout>
                 </Grid>
 
                 <StackLayout Orientation="Horizontal"
@@ -425,7 +427,7 @@
               Margin="20,0,20,0"
               BackgroundColor="#303030"
               Opacity="0.8"
-              IsVisible="{Binding PopupVisible}">
+              IsVisible="{Binding DonationPageVisible}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
