@@ -122,8 +122,245 @@ namespace quazimodo.Services
         
         internal async Task<List<ButtonSmileModel>> GetNegativeModels()
         {
-            var buttonSmileModels = new List<ButtonSmileModel>();
-            return buttonSmileModels;
+            var list = new List<ButtonSmileModel>()
+            {
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.poutine + ImageExtension,
+                    CommandParameter = SoundParameter.poutine,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.sadface + ImageExtension,
+                    CommandParameter = SoundParameter.sadface,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.confusingq + ImageExtension,
+                    CommandParameter = SoundParameter.confusingq,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = "silent" + ImageExtension,
+                    CommandParameter = SoundParameter.silentq,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.death + ImageExtension,
+                    CommandParameter = SoundParameter.death,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.disturb + ImageExtension,
+                    CommandParameter = SoundParameter.disturb,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.sad + ImageExtension,
+                    CommandParameter = SoundParameter.sad,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.mouthfull + ImageExtension,
+                    CommandParameter = SoundParameter.mouthfull,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = "lying" + ImageExtension,
+                    CommandParameter = SoundParameter.lyingq,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.flushed + ImageExtension,
+                    CommandParameter = SoundParameter.flushed,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.zipped + ImageExtension,
+                    CommandParameter = SoundParameter.zipped,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.medicalmask + ImageExtension,
+                    CommandParameter = SoundParameter.medicalmask,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.sneezing + ImageExtension,
+                    CommandParameter = SoundParameter.sneezing,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.thinking + ImageExtension,
+                    CommandParameter = SoundParameter.thinking,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.tears + ImageExtension,
+                    CommandParameter = SoundParameter.tears,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.snoring + ImageExtension,
+                    CommandParameter = SoundParameter.snoring,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.crying + ImageExtension,
+                    CommandParameter = SoundParameter.crying,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.sweattongue + ImageExtension,
+                    CommandParameter = SoundParameter.sweattongue,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.teasing + ImageExtension,
+                    CommandParameter = SoundParameter.teasing,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.angryface + ImageExtension,
+                    CommandParameter = SoundParameter.angryface,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.frown + ImageExtension,
+                    CommandParameter = SoundParameter.frown,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.irritated + ImageExtension,
+                    CommandParameter = SoundParameter.irritated,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.surprised + ImageExtension,
+                    CommandParameter = SoundParameter.surprised,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.dizzy + ImageExtension,
+                    CommandParameter = SoundParameter.dizzy,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = "shock" + ImageExtension,
+                    CommandParameter = SoundParameter.Wow,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.angry + ImageExtension,
+                    CommandParameter = SoundParameter.angry,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.puke + ImageExtension,
+                    CommandParameter = SoundParameter.puke,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.explodes + ImageExtension,
+                    CommandParameter = SoundParameter.explodes,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.chilling + ImageExtension,
+                    CommandParameter = SoundParameter.chilling,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.edevil + ImageExtension,
+                    CommandParameter = SoundParameter.edevil,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.devilq + ImageExtension,
+                    CommandParameter = SoundParameter.devilq,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.expressionless + ImageExtension,
+                    CommandParameter = SoundParameter.expressionless,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.deviltongue + ImageExtension,
+                    CommandParameter = SoundParameter.deviltongue,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.cryd + ImageExtension,
+                    CommandParameter = SoundParameter.cryd,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.laughingq + ImageExtension,
+                    CommandParameter = SoundParameter.laughingq,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.devilsmile + ImageExtension,
+                    CommandParameter = SoundParameter.devilsmile,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.mouth + ImageExtension,
+                    CommandParameter = SoundParameter.mouth,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.sleepingd + ImageExtension,
+                    CommandParameter = SoundParameter.sleepingd,
+                    SmileType = SmileType.Negative
+                },
+                new ButtonSmileModel
+                {
+                    Image = SoundParameter.poop + ImageExtension,
+                    CommandParameter = SoundParameter.poop,
+                    SmileType = SmileType.Negative
+                },
+            };
+            
+            return list;
         }
 
         internal async Task<List<ButtonSmileModel>> GetPositiveModels()
