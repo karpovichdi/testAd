@@ -36,6 +36,7 @@
         <Color x:Key="white5">#d7ccc8</Color>
         <Color x:Key="white6">#ffe0b2</Color>
         <Color x:Key="white7">Beige</Color>
+        <Color x:Key="red">Red</Color>
         
         <!--IconFonts-->
         <OnPlatform x:Key="icomoonFont" x:TypeArguments="x:String">

@@ -131,8 +131,8 @@
                      BackgroundColor="{StaticResource darkPurple}"
                      IsVisible="{Binding StopButtonVisible}"
                      Command="{Binding StopCommand}"
-                     BorderColor="Red"
-                     BorderWidth="1"
+                     BorderColor="{StaticResource red}"
+                     BorderWidth="{StaticResource borderSize}"
                      Source="{x:Static constants:ImageIdConstants.Stop}">
             <Image.Source>
                 <x:FontImage FontFamily="{StaticResource icomoonFont}"
@@ -166,7 +166,7 @@
                                                      BorderWidth="1" 
                                                      HasShadow="False"/>
                     </StackLayout.Effects>
-                    <Label TextColor="Beige"
+                    <Label TextColor="{StaticResource white7}"
                            Margin="0,0,0,20"
                            FontSize="{StaticResource bigFontSize}"
                            Text="{x:Static resources:Localization.AdMessageHeader}" />

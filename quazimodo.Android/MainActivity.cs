@@ -20,7 +20,7 @@ namespace quazimodo.Droid
                                      ConfigChanges.Orientation | 
                                      ConfigChanges.UiMode | 
                                      ConfigChanges.ScreenLayout | 
-                                     ConfigChanges.SmallestScreenSize)]
+                                     ConfigChanges.SmallestScreenSize, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : FormsAppCompatActivity
     {
         public static MainActivity Instance { get; set; }
