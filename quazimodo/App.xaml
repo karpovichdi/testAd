@@ -53,18 +53,50 @@
             <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
             <Setter Property="Aspect" Value="AspectFit" />
             <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
+            <Style.Triggers>
+                <DataTrigger TargetType="ImageButton"
+                             Binding="{Binding IsPlaying}"
+                             Value="true">
+                    <Setter Property="BackgroundColor" Value="{StaticResource darkPurple}" />
+                    <Setter Property="BorderColor" Value="{StaticResource red}" />
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="positiveEmojiItem" TargetType="ImageButton" BasedOn="{StaticResource emojiBaseItem}">
             <Setter Property="BackgroundColor" Value="{StaticResource lightOrange}" />
             <Setter Property="BorderColor" Value="{StaticResource white1}" />
+            <Style.Triggers>
+                <DataTrigger TargetType="ImageButton"
+                             Binding="{Binding IsPlaying}"
+                             Value="false">
+                    <Setter Property="BackgroundColor" Value="{StaticResource lightOrange}" />
+                    <Setter Property="BorderColor" Value="{StaticResource white1}" />
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="neutralEmojiItem" TargetType="ImageButton" BasedOn="{StaticResource emojiBaseItem}">
             <Setter Property="BackgroundColor" Value="{StaticResource lightGray}" />
             <Setter Property="BorderColor" Value="{StaticResource white2}" />
+            <Style.Triggers>
+                <DataTrigger TargetType="ImageButton"
+                             Binding="{Binding IsPlaying}"
+                             Value="false">
+                    <Setter Property="BackgroundColor" Value="{StaticResource lightGray}" />
+                    <Setter Property="BorderColor" Value="{StaticResource white2}" />
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="negativeEmojiItem" TargetType="ImageButton" BasedOn="{StaticResource emojiBaseItem}">
             <Setter Property="BackgroundColor" Value="{StaticResource lightYellow}" />
             <Setter Property="BorderColor" Value="{StaticResource white3}" />
+            <Style.Triggers>
+                <DataTrigger TargetType="ImageButton"
+                             Binding="{Binding IsPlaying}"
+                             Value="false">
+                    <Setter Property="BackgroundColor" Value="{StaticResource lightYellow}" />
+                    <Setter Property="BorderColor" Value="{StaticResource white3}" />
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="acceptButtonStyle" TargetType="ImageButton">
             <Setter Property="BackgroundColor" Value="{StaticResource grafit}" />

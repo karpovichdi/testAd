@@ -259,7 +259,7 @@ namespace quazimodo.ViewModels
                     App.CountOfPlayedSound = 0;
                 }
                 
-                _soundManagerService.PlaySound((SoundParameter) obj);
+                _soundManagerService.PlaySound((SoundParameter) obj;);
             }
             catch (Exception e)
             {
