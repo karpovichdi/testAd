@@ -10,7 +10,7 @@
     xmlns:models="clr-namespace:quazimodo.Models;assembly=quazimodo"
     xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
     NavigationPage.HasNavigationBar="False"
-    BackgroundColor="#303030"
+    BackgroundColor="{StaticResource darkPurple}"
     x:Class="quazimodo.Views.MainPage">
     <ContentPage.BindingContext>
         <viewModels:MainViewModel />
@@ -26,177 +26,26 @@
             <StackLayout Spacing="0"
                          Margin="0,5,0,0">
                 <!-- positive -->
-                <Grid Margin="20">
+                <Grid Margin="{StaticResource defaultOffset}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <BoxView Grid.RowSpan="2"
-                             CornerRadius="20"
-                             BackgroundColor="#ffe0b2" />
+                             CornerRadius="{StaticResource defaultOffset}"
+                             BackgroundColor="{StaticResource white6}" />
                     <Frame Grid.Row="0"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="Start">
                         <Label Style="{StaticResource soundCategoryStyle}"
-                               TextColor="#cbae8270"
+                               TextColor="{StaticResource lightOrange}"
                                FontFamily="{StaticResource icomoonFont}"
                                Text="{x:Static resources:Localization.PositiveHeader}"/>
                     </Frame>
-                    <FlexLayout Grid.Row="1"
-                                Style="{StaticResource flexLayoutStyle}">
-                        <ImageButton Source="smilingface.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.smilingface}" />
-                        <ImageButton Source="closedeyes.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.closedeyes}" />
-                        <ImageButton Source="winkingface.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.WinkingFace132}" />
-                        <ImageButton Source="upsidedown.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.UpsideDown128}" />
-                        <ImageButton Source="kissing.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.teeth}" />
-                        <ImageButton Source="hand.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.hand}" />
-
-                        <ImageButton Source="hugging.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.hugging}" />
-                        <ImageButton Source="angel.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.angel}" />
-                        <ImageButton Source="sweating.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.sweating}" />
-                        <ImageButton Source="joy.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.joy}" />
-                        <ImageButton Source="lol.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.lol}" />
-                        <ImageButton Source="tongueout.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.tongueout}" />
-
-                        <ImageButton Source="yummy.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.yummy}" />
-                        <ImageButton Source="tasty.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.tasty}" />
-                        <ImageButton Source="blowkiss.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.blowkiss}" />
-                        <ImageButton Source="hearts.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Hearts103}" />
-                        <ImageButton Source="hearteyes.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.Love}" />
-                        <ImageButton Source="Laughter.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.Laughter}" />
-
-                        <ImageButton Source="wink.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.wink}" />
-                        <ImageButton Source="grinningw.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Grinning044}" />
-                        <ImageButton Source="happy.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Happy137}" />
-                        <ImageButton Source="grinninge.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.grinninge}" />
-                        <ImageButton Source="grinningr.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.grinningr}" />
-                        <ImageButton Source="grinningy.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.grinningy}" />
-
-                        <ImageButton Source="Laughterq.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.Laughterq}" />
-                        <ImageButton Source="money.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.money}" />
-                        <ImageButton Source="starred.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.Star}" />
-                        <ImageButton Source="eyepatch.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.eyepatch}" />
-                        <ImageButton Source="cool.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.Crank}" />
-                        <ImageButton Source="sunglasses.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.sunglassesq}" />
-
-                        <ImageButton Source="thief.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.thief}" />
-                        <ImageButton Source="policeman.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.policeman}" />
-                        <ImageButton Source="grandfather.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.grandfather}" />
-                        <ImageButton Source="grinningq.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.grinningq}" />
-                        <ImageButton Source="laughing.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.laughing}" />
-                        <ImageButton Source="glanceq.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Glance039}" />
-
-                        <ImageButton Source="kiss.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.kiss}" />
-                        <ImageButton Source="zany.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Zany138}" />
-                        <ImageButton Source="tease.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Tease123}" />
-                        <ImageButton Source="sunglassesq.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.sunglassesqq}" />
-                        <ImageButton Source="devil.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.Devil098}" />
-                        <ImageButton Source="dollar.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.dollar}" />
-
-                        <ImageButton Source="hearteyesq.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     IsVisible="False"
-                                     CommandParameter="{x:Static constants:ImageIdConstants.HeartEyes057}" />
-                        <ImageButton Source="smile.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.smile}" />
-                        <ImageButton Source="alien.png"
-                                     Style="{StaticResource positiveEmojiItem}"
-                                     CommandParameter="{x:Static enums:SoundParameter.alien}" />
-                    </FlexLayout>
+                    <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
+                                                      ItemSource="{Binding PositiveSoundList}" 
+                                                      ItemStyle="{StaticResource positiveEmojiItem}"
+                                                      Style="{StaticResource flexLayoutStyle}"/>
                 </Grid>
 
                 <Grid Margin="{StaticResource defaultOffset}">
@@ -267,7 +116,7 @@
 
         <ImageButton Grid.Row="1"
                      HorizontalOptions="Center"
-                     BackgroundColor="#30303030"
+                     BackgroundColor="{StaticResource darkPurple}"
                      VerticalOptions="End"
                      HeightRequest="80"
                      WidthRequest="80"
@@ -282,7 +131,7 @@
         <Grid Grid.Row="0"
               Grid.RowSpan="2"
               Margin="20,0,20,0"
-              BackgroundColor="#303030"
+              BackgroundColor="{StaticResource darkPurple}"
               Opacity="0.8"
               IsVisible="{Binding DonationPageVisible}">
             <Grid.RowDefinitions>
@@ -309,7 +158,7 @@
                     Text="{x:Static resources:Localization.Skip}"
                     VerticalOptions="End"
                     Margin="0,40,0,0"
-                    BackgroundColor="#303030"
+                    BackgroundColor="{StaticResource darkPurple}"
                     TextColor="Beige"
                     BorderColor="Beige"
                     BorderWidth="1"
@@ -328,7 +177,7 @@
         <Grid Grid.Row="0"
               Grid.RowSpan="2"
               Margin="20,0,20,0"
-              BackgroundColor="#303030"
+              BackgroundColor="{StaticResource darkPurple}"
               Opacity="0.8"
               IsVisible="{Binding MyAppsPageVisible}">
             <Grid.RowDefinitions>
@@ -392,7 +241,7 @@
             <Button Grid.Row="1"
                     Text="{x:Static resources:Localization.Hide}"
                     VerticalOptions="End"
-                    BackgroundColor="#303030"
+                    BackgroundColor="{StaticResource darkPurple}"
                     TextColor="Beige"
                     BorderColor="Beige"
                     BorderWidth="1"
