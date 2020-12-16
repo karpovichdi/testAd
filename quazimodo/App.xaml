@@ -52,7 +52,6 @@
             <Setter Property="Margin" Value="{StaticResource emojiOffset}" />
             <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
             <Setter Property="Aspect" Value="AspectFit" />
-            <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
             <Style.Triggers>
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding IsPlaying}"
@@ -65,6 +64,7 @@
         <Style x:Key="positiveEmojiItem" TargetType="ImageButton" BasedOn="{StaticResource emojiBaseItem}">
             <Setter Property="BackgroundColor" Value="{StaticResource lightOrange}" />
             <Setter Property="BorderColor" Value="{StaticResource white1}" />
+            <Setter Property="Command" Value="{Binding PositiveMusicBtnClickCommand}" />
             <Style.Triggers>
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding IsPlaying}"
@@ -89,6 +89,7 @@
         <Style x:Key="negativeEmojiItem" TargetType="ImageButton" BasedOn="{StaticResource emojiBaseItem}">
             <Setter Property="BackgroundColor" Value="{StaticResource lightYellow}" />
             <Setter Property="BorderColor" Value="{StaticResource white3}" />
+            <Setter Property="Command" Value="{Binding NegativeMusicBtnClickCommand}" />
             <Style.Triggers>
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding IsPlaying}"

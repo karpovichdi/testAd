@@ -17,7 +17,9 @@ namespace quazimodo.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public Command MusicBtnClickCommand { get; set; }
+        public Command PositiveMusicBtnClickCommand { get; set; }
+        public Command NegativeMusicBtnClickCommand { get; set; }
+        public Command NeutralMusicBtnClickCommand { get; set; }
         public Command StopCommand { get; set; }
         public Command HidePopupCommand { get; set; }
         public Command MyAppsCommand { get; set; }
@@ -33,12 +35,13 @@ namespace quazimodo.ViewModels
         private bool _donationPageVisible;
         private bool _myAppsIsExist;
         private bool _myAppsPageVisible;
-        
+        private bool _isPlaying;
+
         public ObservableRangeCollection<MyApp> MyApps { get; set; }
         public ObservableRangeCollection<CustomSound> CustomSounds { get; set; }
-        public ObservableRangeCollection<ButtonSmileModel> NeutralSoundList { get; set; }
-        public ObservableRangeCollection<ButtonSmileModel> NegativeSoundList { get; set; }
-        public ObservableRangeCollection<ButtonSmileModel> PositiveSoundList { get; set; }
+        public ObservableRangeCollection<ButtonSmileViewModel> NeutralSoundList { get; set; }
+        public ObservableRangeCollection<ButtonSmileViewModel> NegativeSoundList { get; set; }
+        public ObservableRangeCollection<ButtonSmileViewModel> PositiveSoundList { get; set; }
         
         public bool AppsIsLoaded { get; set; }
 
@@ -93,9 +96,21 @@ namespace quazimodo.ViewModels
             }
         }
         
+        public bool IsPlaying
+        {
+            get => _isPlaying;
+            set
+            {
+                _isPlaying = value;
+                OnPropertyChanged(nameof(IsPlaying));
+            }
+        }
+        
         public MainViewModel()
         {
-            MusicBtnClickCommand = new Command(SmileClickCommandHandler);
+            PositiveMusicBtnClickCommand = new Command(PositiveClickCommandHandler);
+            NegativeMusicBtnClickCommand = new Command(NegativeClickCommandHandler);
+            NeutralMusicBtnClickCommand = new Command(NeutralClickCommandHandler);
             StopCommand = new Command(StopCommandHandler);
             HidePopupCommand = new Command(HidePopupCommandHandler);
             MyAppsCommand = new Command(MyAppsCommandHandler);
@@ -105,9 +120,9 @@ namespace quazimodo.ViewModels
             
             MyApps = new ObservableRangeCollection<MyApp>();
             CustomSounds = new ObservableRangeCollection<CustomSound>();
-            NeutralSoundList = new ObservableRangeCollection<ButtonSmileModel>();
-            PositiveSoundList = new ObservableRangeCollection<ButtonSmileModel>();
-            NegativeSoundList = new ObservableRangeCollection<ButtonSmileModel>();
+            NeutralSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
+            PositiveSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
+            NegativeSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
 
             _smileButtonService = new SmileButtonService();
             _soundManagerService = new SoundManagerService();
@@ -126,6 +141,54 @@ namespace quazimodo.ViewModels
 
             MessagingCenter.Instance.Subscribe<byte[]>(this, MessagingCenterConstants.LastSongFinished,
                 (array) => LastSoundStopped());
+        }
+
+        private async void NeutralClickCommandHandler(object obj)
+        {
+            try
+            {
+                if (obj is string) return;
+                await PrepareToPlaySound();
+
+                var soundParameter = (SoundParameter) obj;
+                var smileData = NeutralSoundList.First(x => x.CommandParameter == soundParameter);
+                smileData.IsPlaying = true;
+                
+                _soundManagerService.PlaySound(soundParameter);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        private async void NegativeClickCommandHandler(object obj)
+        {
+            try
+            {
+                if (obj is string) return;
+                await PrepareToPlaySound();
+                _soundManagerService.PlaySound((SoundParameter) obj);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        private async void PositiveClickCommandHandler(object obj)
+        {
+            try
+            {
+                if (obj is string) return;
+
+                await PrepareToPlaySound();
+                _soundManagerService.PlaySound((SoundParameter) obj);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }    
         }
 
         private void RecordCommandHandler()
@@ -242,31 +305,21 @@ namespace quazimodo.ViewModels
             StopButtonVisible = false;
         }
         
-        private async void SmileClickCommandHandler(object obj)
+        private async Task PrepareToPlaySound()
         {
-            try
-            {
-                if (obj is string) return;
-                if (!_soundManagerService.MicrophonePermissionsGranted) await _soundManagerService.CheckPermissions();
+            if (!_soundManagerService.MicrophonePermissionsGranted) await _soundManagerService.CheckPermissions();
                 
-                StopButtonVisible = true;
-                App.CountOfPlayedSound++;
+            StopButtonVisible = true;
+            App.CountOfPlayedSound++;
 
-                if (App.CountOfPlayedSound >= AdConstants.ClicksCountBeforeAd)
-                {
-                    DonationPageVisible = true;
-                    MyAppsPageVisible = false;
-                    App.CountOfPlayedSound = 0;
-                }
-                
-                _soundManagerService.PlaySound((SoundParameter) obj;);
-            }
-            catch (Exception e)
+            if (App.CountOfPlayedSound >= AdConstants.ClicksCountBeforeAd)
             {
-                Console.WriteLine(e);
+                DonationPageVisible = true;
+                MyAppsPageVisible = false;
+                App.CountOfPlayedSound = 0;
             }
         }
-        
+
         void ConnectivityChangedHandler(object sender, ConnectivityChangedEventArgs e)
         {
             if (e.ConnectionProfiles != null)

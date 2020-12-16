@@ -42,6 +42,7 @@
                                Text="{x:Static resources:Localization.PositiveHeader}" />
                     </Frame>
                     <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
+                                                      ItemCommand="{Binding PositiveMusicBtnClickCommand}"
                                                       ItemSource="{Binding PositiveSoundList}"
                                                       ItemStyle="{StaticResource positiveEmojiItem}"
                                                       Style="{StaticResource flexLayoutStyle}" />
@@ -63,6 +64,7 @@
                                Text="{x:Static resources:Localization.NeutralHeader}" />
                     </Frame>
                     <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
+                                                      ItemCommand="{Binding NeutralMusicBtnClickCommand}"
                                                       ItemSource="{Binding NeutralSoundList}"
                                                       ItemStyle="{StaticResource neutralEmojiItem}"
                                                       Style="{StaticResource flexLayoutStyle}" />
@@ -84,6 +86,7 @@
                                Text="{x:Static resources:Localization.NegativeHeader}" />
                     </Frame>
                     <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
+                                                      ItemCommand="{Binding NegativeMusicBtnClickCommand}"
                                                       ItemSource="{Binding NegativeSoundList}"
                                                       ItemStyle="{StaticResource negativeEmojiItem}"
                                                       Style="{StaticResource flexLayoutStyle}" />
