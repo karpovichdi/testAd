@@ -9,6 +9,7 @@
     xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
     xmlns:models="clr-namespace:quazimodo.Models;assembly=quazimodo"
     xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
+    xmlns:effects="clr-namespace:quazimodo.Effects;assembly=quazimodo"
     NavigationPage.HasNavigationBar="False"
     BackgroundColor="{StaticResource darkPurple}"
     x:Class="quazimodo.Views.MainPage">
@@ -21,7 +22,6 @@
             <RowDefinition Height="100" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
         <ScrollView Grid.RowSpan="2">
             <StackLayout Spacing="0"
                          Margin="0,5,0,0">
@@ -39,15 +39,14 @@
                            VerticalOptions="Start">
                         <Label Style="{StaticResource soundCategoryStyle}"
                                TextColor="{StaticResource lightOrange}"
-                               FontFamily="{StaticResource icomoonFont}"
-                               Text="{x:Static resources:Localization.PositiveHeader}"/>
+                               Text="{x:Static resources:Localization.PositiveHeader}" />
                     </Frame>
                     <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
-                                                      ItemSource="{Binding PositiveSoundList}" 
+                                                      ItemSource="{Binding PositiveSoundList}"
                                                       ItemStyle="{StaticResource positiveEmojiItem}"
-                                                      Style="{StaticResource flexLayoutStyle}"/>
+                                                      Style="{StaticResource flexLayoutStyle}" />
                 </Grid>
-
+                <!-- neutral -->
                 <Grid Margin="{StaticResource defaultOffset}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -64,11 +63,10 @@
                                Text="{x:Static resources:Localization.NeutralHeader}" />
                     </Frame>
                     <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
-                                                      ItemSource="{Binding NeutralSoundList}" 
+                                                      ItemSource="{Binding NeutralSoundList}"
                                                       ItemStyle="{StaticResource neutralEmojiItem}"
-                                                      Style="{StaticResource flexLayoutStyle}"/>
+                                                      Style="{StaticResource flexLayoutStyle}" />
                 </Grid>
-
                 <!-- negative -->
                 <Grid Margin="{StaticResource defaultOffset}">
                     <Grid.RowDefinitions>
@@ -86,48 +84,67 @@
                                Text="{x:Static resources:Localization.NegativeHeader}" />
                     </Frame>
                     <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
-                                                      ItemSource="{Binding NegativeSoundList}" 
+                                                      ItemSource="{Binding NegativeSoundList}"
                                                       ItemStyle="{StaticResource negativeEmojiItem}"
-                                                      Style="{StaticResource flexLayoutStyle}">
-                    </quazimodo:SmileButtonsFlexLayout>
+                                                      Style="{StaticResource flexLayoutStyle}" />
                 </Grid>
-
-                <StackLayout Orientation="Horizontal"
-                             HorizontalOptions="Center"
-                             Margin="{StaticResource defaultOffset}">
-                    <ImageButton Source="{x:Static constants:ImageIdConstants.Reject}"
+                <Grid HorizontalOptions="Center"
+                      Margin="{StaticResource defaultOffset}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource bigButton}" />
+                        <ColumnDefinition Width="{StaticResource bigButton}" />
+                        <ColumnDefinition Width="{StaticResource bigButton}" />
+                        <ColumnDefinition Width="{StaticResource bigButton}" />
+                    </Grid.ColumnDefinitions>
+                    <ImageButton Grid.Column="0"
+                                 Source="{x:Static constants:ImageIdConstants.Reject}"
                                  Style="{StaticResource acceptButtonStyle}"
                                  CommandParameter="{x:Static enums:SoundParameter.Reject}" />
-                    <Button Text="{x:Static resources:Localization.Tap}"
+                    <Button Grid.Column="1"
+                            Text="{x:Static resources:Localization.Tap}"
                             BackgroundColor="{StaticResource white4}"
                             CornerRadius="{StaticResource defaultCorner}"
                             Command="{Binding MyAppsCommand}"
                             IsVisible="{Binding MyAppsIsExist}" />
-                    <Button Text="Rec"
+                    <Button Grid.Column="2"
+                            Text="Rec"
                             BackgroundColor="{StaticResource white4}"
                             CornerRadius="{StaticResource defaultCorner}"
-                            Command="{Binding RecordCommand}"/>
-                    <ImageButton Source="{x:Static constants:ImageIdConstants.Accept}"
+                            Command="{Binding RecordCommand}" />
+                    <ImageButton Grid.Column="3"
+                                 Source="{x:Static constants:ImageIdConstants.Accept}"
                                  Style="{StaticResource acceptButtonStyle}"
                                  CommandParameter="{x:Static enums:SoundParameter.Accept}" />
-                </StackLayout>
+                </Grid>
             </StackLayout>
         </ScrollView>
-
-        <ImageButton Grid.Row="1"
+        <ImageButton x:Name="stopSoundButton"
+                     Grid.Row="1"
                      HorizontalOptions="Center"
-                     BackgroundColor="{StaticResource darkPurple}"
                      VerticalOptions="End"
-                     HeightRequest="80"
-                     WidthRequest="80"
+                     HeightRequest="{StaticResource middleButtonSize}"
+                     WidthRequest="{StaticResource middleButtonSize}"
+                     Padding="{StaticResource bigButtonSpacing}"
+                     Margin="0,0,0,20"
                      CornerRadius="20"
                      Aspect="AspectFit"
+                     BackgroundColor="{StaticResource darkPurple}"
                      IsVisible="{Binding StopButtonVisible}"
                      Command="{Binding StopCommand}"
-                     Source="{x:Static constants:ImageIdConstants.Stop}"
-                     Padding="10"
-                     Margin="0,0,0,20" />
-
+                     BorderColor="Red"
+                     BorderWidth="1"
+                     Source="{x:Static constants:ImageIdConstants.Stop}">
+            <Image.Source>
+                <x:FontImage FontFamily="{StaticResource icomoonFont}"
+                             Size="44"
+                             Color="{StaticResource white7}" 
+                             Glyph="{x:Static constants:IconFont.stop}">
+                </x:FontImage>
+            </Image.Source>
+            <ImageButton.Effects>
+                <effects:RoundedLayoutEffect/>
+            </ImageButton.Effects>
+        </ImageButton>
         <Grid Grid.Row="0"
               Grid.RowSpan="2"
               Margin="20,0,20,0"
@@ -140,114 +157,118 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <ScrollView Grid.Row="1">
-                <Frame BorderColor="Beige"
-                       BackgroundColor="Transparent">
-                    <StackLayout>
-                        <Label TextColor="Beige"
-                               Margin="0,0,0,20"
-                               FontSize="22"
-                               Text="{x:Static resources:Localization.AdMessageHeader}"/>
-                        <Label TextColor="Beige"
-                               FontSize="16"
-                               Text="{x:Static resources:Localization.AdMessage}"/>
-                    </StackLayout>
-                </Frame>
+                <StackLayout x:Name="helpPage"
+                             Padding="{StaticResource defaultOffset}">
+                    <StackLayout.Effects>
+                        <effects:RoundedLayoutEffect HasBorder="True"
+                                                     CornerRadius="10"
+                                                     BorderColor="Beige"
+                                                     BorderWidth="1" 
+                                                     HasShadow="False"/>
+                    </StackLayout.Effects>
+                    <Label TextColor="Beige"
+                           Margin="0,0,0,20"
+                           FontSize="{StaticResource bigFontSize}"
+                           Text="{x:Static resources:Localization.AdMessageHeader}" />
+                    <Label TextColor="{StaticResource white7}"
+                           FontSize="{StaticResource middleFontSize}"
+                           Text="{x:Static resources:Localization.AdMessage}" />
+                </StackLayout>
             </ScrollView>
-            
+
             <Button Grid.Row="0"
                     Text="{x:Static resources:Localization.Skip}"
-                    VerticalOptions="End"
                     Margin="0,40,0,0"
-                    BackgroundColor="{StaticResource darkPurple}"
-                    TextColor="Beige"
-                    BorderColor="Beige"
-                    BorderWidth="1"
+                    Style="{StaticResource borderedButtonStyle}"
                     Command="{Binding HidePopupCommand}" />
             <Button Grid.Row="2"
                     Text="{x:Static resources:Localization.Stop}"
-                    VerticalOptions="End"
-                    BackgroundColor="#303030"
-                    TextColor="Beige"
-                    BorderColor="Beige"
-                    BorderWidth="1"
+                    Style="{StaticResource borderedButtonStyle}"
                     IsVisible="{Binding StopButtonVisible}"
                     Command="{Binding StopCommand}" />
         </Grid>
-
-        <Grid Grid.Row="0"
+        <BoxView Grid.RowSpan="2"
+                 Color="{StaticResource darkPurple}"
+                 Opacity="0.4"
+                 IsVisible="{Binding MyAppsPageVisible}"/>
+        <Grid x:Name="myApps"
+              Grid.Row="0"
               Grid.RowSpan="2"
-              Margin="20,0,20,0"
+              Margin="20,10,20,0"
               BackgroundColor="{StaticResource darkPurple}"
-              Opacity="0.8"
+              Opacity="0.7"
               IsVisible="{Binding MyAppsPageVisible}">
+            <Grid.Effects>
+                <effects:RoundedLayoutEffect HasBorder="True"
+                                             HasShadow="False"
+                                             BorderColor="Beige"
+                                             BorderWidth="1"
+                                             CornerRadius="10" />
+            </Grid.Effects>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Frame Grid.Row="0"
-                   BorderColor="Beige"
-                   BackgroundColor="Transparent">
-                <CollectionView x:Name="collectionView"
-                                ItemsSource="{Binding MyApps}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:MyApp">
-                            <Grid Padding="0,0,0,20">
-                                <Frame BorderColor="Beige"
-                                       BackgroundColor="Transparent">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={x:Reference collectionView}, 
+            <CollectionView x:Name="collectionView"
+                            Grid.Row="0"
+                            ItemsSource="{Binding MyApps}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:MyApp">
+                        <Grid Padding="10">
+                            <Grid>
+                                <Grid.Effects>
+                                    <effects:RoundedLayoutEffect HasBorder="True"
+                                                                 BorderWidth="1"
+                                                                 BorderColor="Beige"
+                                                                 CornerRadius="10"
+                                                                 HasShadow="False"/>
+                                </Grid.Effects>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={x:Reference collectionView}, 
                                         Path=BindingContext.SelectedMyAppCommand}"
-                                            CommandParameter="{Binding DownloadUrl}" />
-                                    </Frame.GestureRecognizers>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Image Grid.Row="0"
-                                               Grid.RowSpan="2"
-                                               Grid.Column="0"
-                                               HeightRequest="60"
-                                               WidthRequest="60"
-                                               HorizontalOptions="Start"
-                                               VerticalOptions="Start"
-                                               Source="{Binding ImageUrl}" />
-                                        <Label Grid.Row="0"
-                                               Grid.Column="1"
-                                               HorizontalOptions="Start"
-                                               HorizontalTextAlignment="Start"
-                                               Margin="10,0,0,0"
-                                               TextColor="Beige"
-                                               Text="{Binding Name}" />
-                                        <Label Grid.Row="1"
-                                               Grid.Column="1"
-                                               Margin="10,0,0,0"
-                                               TextColor="Beige"
-                                               Text="{Binding Description}" />
-                                    </Grid>
-                                </Frame>
+                                        CommandParameter="{Binding DownloadUrl}" />
+                                </Grid.GestureRecognizers>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0"
+                                       Grid.RowSpan="2"
+                                       Grid.Column="0"
+                                       HeightRequest="{StaticResource imageSize}"
+                                       WidthRequest="{StaticResource imageSize}"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Margin="10"
+                                       Source="{Binding ImageUrl}" />
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       HorizontalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       Margin="10,10,10,0"
+                                       TextColor="{StaticResource white7}"
+                                       Text="{Binding Name}" />
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       Margin="10,0,10,10"
+                                       TextColor="{StaticResource white7}"
+                                       Text="{Binding Description}" />
                             </Grid>
-
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Frame>
-
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
             <Button Grid.Row="1"
                     Text="{x:Static resources:Localization.Hide}"
-                    VerticalOptions="End"
-                    BackgroundColor="{StaticResource darkPurple}"
-                    TextColor="Beige"
-                    BorderColor="Beige"
-                    BorderWidth="1"
+                    TextColor="{StaticResource white7}"
+                    Style="{StaticResource borderedButtonStyle}"
                     Command="{Binding HideMyAppsCommand}" />
         </Grid>
-
         <quazimodo:AdMobBannerView x:Name="adMobBannerView"
                                    Grid.Row="2"
                                    AdId="{x:Static constants:AdConstants.TestBannerId}" />
