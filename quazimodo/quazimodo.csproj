@@ -14,6 +14,7 @@
   <ItemGroup>
     <PackageReference Include="FirebaseDatabase.net" Version="4.0.4" />
     <PackageReference Include="Plugin.AudioRecorder" Version="1.1.0" />
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
@@ -23,5 +24,102 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Sounds\accept.mp3" />
+    <EmbeddedResource Include="Sounds\airhorn.mp3" />
+    <EmbeddedResource Include="Sounds\alien.mp3" />
+    <EmbeddedResource Include="Sounds\amazed.mp3" />
+    <EmbeddedResource Include="Sounds\angel.mp3" />
+    <EmbeddedResource Include="Sounds\angry.mp3" />
+    <EmbeddedResource Include="Sounds\angryface.mp3" />
+    <EmbeddedResource Include="Sounds\blowkiss.mp3" />
+    <EmbeddedResource Include="Sounds\chicken.mp3" />
+    <EmbeddedResource Include="Sounds\chilling.mp3" />
+    <EmbeddedResource Include="Sounds\closedeyes.mp3" />
+    <EmbeddedResource Include="Sounds\confusingq.mp3" />
+    <EmbeddedResource Include="Sounds\cool.mp3" />
+    <EmbeddedResource Include="Sounds\ghost.mp3" />
+    <EmbeddedResource Include="Sounds\cryd.mp3" />
+    <EmbeddedResource Include="Sounds\crying.mp3" />
+    <EmbeddedResource Include="Sounds\death.mp3" />
+    <EmbeddedResource Include="Sounds\devilq.mp3" />
+    <EmbeddedResource Include="Sounds\devilsmile.mp3" />
+    <EmbeddedResource Include="Sounds\deviltongue.mp3" />
+    <EmbeddedResource Include="Sounds\disturb.mp3" />
+    <EmbeddedResource Include="Sounds\dizzy.mp3" />
+    <EmbeddedResource Include="Sounds\dollar.mp3" />
+    <EmbeddedResource Include="Sounds\drum.mp3" />
+    <EmbeddedResource Include="Sounds\edevil.mp3" />
+    <EmbeddedResource Include="Sounds\explodes.mp3" />
+    <EmbeddedResource Include="Sounds\expressionless.mp3" />
+    <EmbeddedResource Include="Sounds\eyepatch.mp3" />
+    <EmbeddedResource Include="Sounds\fist.mp3" />
+    <EmbeddedResource Include="Sounds\flatmouth.mp3" />
+    <EmbeddedResource Include="Sounds\flushed.mp3" />
+    <EmbeddedResource Include="Sounds\frown.mp3" />
+    <EmbeddedResource Include="Sounds\grandfather.mp3" />
+    <EmbeddedResource Include="Sounds\grimacing.mp3" />
+    <EmbeddedResource Include="Sounds\grinninge.mp3" />
+    <EmbeddedResource Include="Sounds\grinningq.mp3" />
+    <EmbeddedResource Include="Sounds\grinningr.mp3" />
+    <EmbeddedResource Include="Sounds\grinningy.mp3" />
+    <EmbeddedResource Include="Sounds\gun.mp3" />
+    <EmbeddedResource Include="Sounds\hand.mp3" />
+    <EmbeddedResource Include="Sounds\hugging.mp3" />
+    <EmbeddedResource Include="Sounds\irritated.mp3" />
+    <EmbeddedResource Include="Sounds\joy.mp3" />
+    <EmbeddedResource Include="Sounds\kiss.mp3" />
+    <EmbeddedResource Include="Sounds\laughing.mp3" />
+    <EmbeddedResource Include="Sounds\laughingq.mp3" />
+    <EmbeddedResource Include="Sounds\laughter.mp3" />
+    <EmbeddedResource Include="Sounds\laughterq.mp3" />
+    <EmbeddedResource Include="Sounds\lol.mp3" />
+    <EmbeddedResource Include="Sounds\hearteyes.mp3" />
+    <EmbeddedResource Include="Sounds\lying.mp3" />
+    <EmbeddedResource Include="Sounds\medicalmask.mp3" />
+    <EmbeddedResource Include="Sounds\money.mp3" />
+    <EmbeddedResource Include="Sounds\mouth.mp3" />
+    <EmbeddedResource Include="Sounds\mouthfull.mp3" />
+    <EmbeddedResource Include="Sounds\neutral.mp3" />
+    <EmbeddedResource Include="Sounds\ninja.mp3" />
+    <EmbeddedResource Include="Sounds\pirate.mp3" />
+    <EmbeddedResource Include="Sounds\policeman.mp3" />
+    <EmbeddedResource Include="Sounds\poop.mp3" />
+    <EmbeddedResource Include="Sounds\poutine.mp3" />
+    <EmbeddedResource Include="Sounds\puke.mp3" />
+    <EmbeddedResource Include="Sounds\reject.mp3" />
+    <EmbeddedResource Include="Sounds\robot.mp3" />
+    <EmbeddedResource Include="Sounds\sad.mp3" />
+    <EmbeddedResource Include="Sounds\sadface.mp3" />
+    <EmbeddedResource Include="Sounds\silent.mp3" />
+    <EmbeddedResource Include="Sounds\skull.mp3" />
+    <EmbeddedResource Include="Sounds\sleeping.mp3" />
+    <EmbeddedResource Include="Sounds\sleepingd.mp3" />
+    <EmbeddedResource Include="Sounds\smile.mp3" />
+    <EmbeddedResource Include="Sounds\smilingface.mp3" />
+    <EmbeddedResource Include="Sounds\sneezing.mp3" />
+    <EmbeddedResource Include="Sounds\snoring.mp3" />
+    <EmbeddedResource Include="Sounds\starred.mp3" />
+    <EmbeddedResource Include="Sounds\sunglasses.mp3" />
+    <EmbeddedResource Include="Sounds\sunglassesq.mp3" />
+    <EmbeddedResource Include="Sounds\surprised.mp3" />
+    <EmbeddedResource Include="Sounds\sweating.mp3" />
+    <EmbeddedResource Include="Sounds\sweattongue.mp3" />
+    <EmbeddedResource Include="Sounds\tasty.mp3" />
+    <EmbeddedResource Include="Sounds\tears.mp3" />
+    <EmbeddedResource Include="Sounds\teasing.mp3" />
+    <EmbeddedResource Include="Sounds\kissing.mp3" />
+    <EmbeddedResource Include="Sounds\thief.mp3" />
+    <EmbeddedResource Include="Sounds\thinking.mp3" />
+    <EmbeddedResource Include="Sounds\tongueout.mp3" />
+    <EmbeddedResource Include="Sounds\universal.mp3" />
+    <EmbeddedResource Include="Sounds\upset.mp3" />
+    <EmbeddedResource Include="Sounds\wink.mp3" />
+    <EmbeddedResource Include="Sounds\shock.mp3" />
+    <EmbeddedResource Include="Sounds\yummy.mp3" />
+    <EmbeddedResource Include="Sounds\zanyq.mp3" />
+    <EmbeddedResource Include="Sounds\zipped.mp3" />
   </ItemGroup>
 </Project>

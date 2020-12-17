@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using quazimodo.Constants;
 using quazimodo.Enums;
 using quazimodo.Interfaces;
-using Plugin.AudioRecorder;
 using quazimodo.Models;
 using quazimodo.Services;
 using quazimodo.utils;
@@ -27,15 +25,15 @@ namespace quazimodo.ViewModels
         public Command SelectedMyAppCommand { get; set; }
         public Command RecordCommand { get; set; }
         
-        private readonly SmileButtonService _smileButtonService;
-        private readonly SoundManagerService _soundManagerService;
+        private readonly SmileButtonSourceService _smileButtonSourceService;
+        private readonly ISoundService _soundService;
         private readonly FirebaseService _firebaseService;
         
         private bool _stopButtonVisible;
         private bool _donationPageVisible;
         private bool _myAppsIsExist;
         private bool _myAppsPageVisible;
-        private bool _isPlaying;
+        private bool _tooMuchSoundsInOneTime;
 
         public ObservableRangeCollection<MyApp> MyApps { get; set; }
         public ObservableRangeCollection<CustomSound> CustomSounds { get; set; }
@@ -95,13 +93,13 @@ namespace quazimodo.ViewModels
             }
         }
         
-        public bool IsPlaying
+        public bool TooMuchSoundsInOneTime
         {
-            get => _isPlaying;
+            get => _tooMuchSoundsInOneTime;
             set
             {
-                _isPlaying = value;
-                OnPropertyChanged(nameof(IsPlaying));
+                _tooMuchSoundsInOneTime = value;
+                OnPropertyChanged(nameof(TooMuchSoundsInOneTime));
             }
         }
         
@@ -120,22 +118,25 @@ namespace quazimodo.ViewModels
             SmileSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
             PlayingSoundsNow = new ObservableRangeCollection<ButtonSmileViewModel>();
             
-            _smileButtonService = new SmileButtonService();
-            _soundManagerService = new SoundManagerService();
+            _smileButtonSourceService = new SmileButtonSourceService();
             _firebaseService = new FirebaseService();
+            _soundService = DependencyService.Get<ISoundService>();
             
-            SmileSoundList.AddRange(_smileButtonService.GetSmiles());
-
-            // record testing
-            FillCustomSounds();
-
             _firebaseService.Initialize();
+
+            SmileSoundList.AddRange(_smileButtonSourceService.GetSmiles());
 
             Connectivity.ConnectivityChanged += ConnectivityChangedHandler;
             PlayingSoundsNow.CollectionChanged += PlayingSoundsChanged;
 
-            MessagingCenter.Instance.Subscribe<byte[]>(this, MessagingCenterConstants.LastSongFinished,
-                (array) => LastSoundStopped());
+            _soundService.SoundReleased += SoundReleased;
+            _soundService.AppClosed += AppClosedHandler;
+        }
+
+        private void SoundReleased(SoundParameter parameter)
+        {
+            var model = PlayingSoundsNow.FirstOrDefault(x => x.CommandParameter == parameter);
+            if(model != null) PlayingSoundsNow.Remove(model);
         }
 
         private void PlayingSoundsChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -154,16 +155,24 @@ namespace quazimodo.ViewModels
                     break;
                 case NotifyCollectionChangedAction.Remove:
                     var oldItems = e.OldItems;
+                    RequestToDisableTooMuchPopup();
                     foreach (var item in oldItems)
                     {
                         if (item is ButtonSmileViewModel viewModel) RequestToDisableSmile(viewModel);
                     }
+
+                    if (PlayingSoundsNow.Count == 0) StopButtonVisible = false;
                     break;
                 case NotifyCollectionChangedAction.Replace:
                     break;
                 case NotifyCollectionChangedAction.Reset:
                     break;
             }
+        }
+
+        private void RequestToDisableTooMuchPopup()
+        {
+            if (PlayingSoundsNow.Count() < ConstantsForms.MaxCountOfSoundInOneTime) TooMuchSoundsInOneTime = false;
         }
 
         private void RequestToDisableSmile(ButtonSmileViewModel viewModel)
@@ -179,11 +188,18 @@ namespace quazimodo.ViewModels
             try
             {
                 if (obj is string) return;
-                await PrepareToPlaySound();
-
                 var soundParameter = (SoundParameter) obj;
-                AddNewPlayingSound(soundParameter, SmileSoundList);
-                _soundManagerService.PlaySound(soundParameter);
+
+                if (PlayingSoundsNow.Count < ConstantsForms.MaxCountOfSoundInOneTime)
+                {
+                    await PrepareToPlaySound();
+                    AddNewPlayingSound(soundParameter, SmileSoundList);
+                    _soundService.CreateSoundPathAndPlay(soundParameter);
+                }
+                else
+                {
+                    TooMuchSoundsInOneTime = true;
+                }
             }
             catch (Exception e)
             {
@@ -193,13 +209,13 @@ namespace quazimodo.ViewModels
 
         private void AddNewPlayingSound(SoundParameter param, ObservableRangeCollection<ButtonSmileViewModel> list)
         {
-            var smileData = list.First(x => x.CommandParameter == param);
-            PlayingSoundsNow.Add(smileData);
+            var smileData = list.FirstOrDefault(x => x.CommandParameter == param);
+            if (smileData != null) PlayingSoundsNow.Add(smileData);
         }
         
         private void RecordCommandHandler()
         {
-            _soundManagerService.Record();
+            //_soundService.Record();
         }
         
         private void MyAppsCommandHandler()
@@ -220,11 +236,21 @@ namespace quazimodo.ViewModels
         
         private async void StopCommandHandler(object obj)
         {
-            await _soundManagerService.StopPlaying();
+            StopSounds();
+        }
+
+        private void AppClosedHandler()
+        {
+            StopSounds();
+        }
+
+        private async Task StopSounds()
+        {
+            await _soundService.StopPlayingAll();
             PlayingSoundsNow.ForEach(x => x.IsPlaying = false);
             StopButtonVisible = false;
         }
-        
+
         private void SelectedMyAppCommandHandler(object obj)
         {
             try
@@ -235,31 +261,6 @@ namespace quazimodo.ViewModels
             {
                 Console.WriteLine(e);
             }
-        }
-
-        private void FillCustomSounds()
-        {
-            var customSounds = new List<CustomSound>();
-            var innerCounter = 0;
-            for (var i = 1; i < 31; i++)
-            {
-                if (i > 10)
-                {
-                    innerCounter = 1;
-                }
-
-                var customSound = new CustomSound
-                {
-                    Number = i,
-                    Label = innerCounter.ToString(),
-                    Visible = i == 1 || i == 11 || i == 21,
-                    Path = ""
-                };
-                innerCounter++;
-                customSounds.Add(customSound);
-            }
-
-            CustomSounds.AddRange(customSounds);
         }
 
         public async Task FillMyAppList()
@@ -298,7 +299,7 @@ namespace quazimodo.ViewModels
         
         private async Task PrepareToPlaySound()
         {
-            if (!_soundManagerService.MicrophonePermissionsGranted) await _soundManagerService.CheckPermissions();
+            if (!_soundService.MicrophonePermissionsGranted) await _soundService.CheckPermissions();
                 
             StopButtonVisible = true;
             App.CountOfPlayedSound++;

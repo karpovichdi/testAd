@@ -37,7 +37,7 @@ namespace quazimodo
         {
             try
             {
-                DependencyService.Get<IAudioService>().StopPlaying();
+                DependencyService.Get<ISoundService>().AppClosed.Invoke();
                 _storageService.SaveCount(CountOfPlayedSound);
             }
             catch (Exception e)

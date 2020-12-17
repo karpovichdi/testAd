@@ -4,7 +4,6 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:quazimodo="clr-namespace:quazimodo.Controlls;assembly=quazimodo"
-    xmlns:enums="clr-namespace:quazimodo.Enums;assembly=quazimodo"
     xmlns:constants="clr-namespace:quazimodo.Constants;assembly=quazimodo"
     xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
     xmlns:models="clr-namespace:quazimodo.Models;assembly=quazimodo"
@@ -26,35 +25,20 @@
             <StackLayout Spacing="0"
                          Margin="0,5,0,0">
                 <quazimodo:SmileUiStackLayout ItemCommand="{Binding SoundBtnClickCommand}"
-                                              ItemSource="{Binding SmileSoundList}"/>
-                <Grid HorizontalOptions="Center"
-                      Margin="{StaticResource defaultOffset}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="{StaticResource bigButton}" />
-                        <ColumnDefinition Width="{StaticResource bigButton}" />
-                        <ColumnDefinition Width="{StaticResource bigButton}" />
-                        <ColumnDefinition Width="{StaticResource bigButton}" />
-                    </Grid.ColumnDefinitions>
-                    <ImageButton Grid.Column="0"
-                                 Source="{x:Static constants:ImageIdConstants.Reject}"
-                                 Style="{StaticResource acceptButtonStyle}"
-                                 CommandParameter="{x:Static enums:SoundParameter.Reject}" />
-                    <Button Grid.Column="1"
-                            Text="{x:Static resources:Localization.Tap}"
+                                              ItemSource="{Binding SmileSoundList}" />
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Margin="{StaticResource defaultOffset}">
+                    <Button Text="{x:Static resources:Localization.Tap}"
                             BackgroundColor="{StaticResource white4}"
                             CornerRadius="{StaticResource defaultCorner}"
                             Command="{Binding MyAppsCommand}"
                             IsVisible="{Binding MyAppsIsExist}" />
-                    <Button Grid.Column="2"
-                            Text="Rec"
+                    <Button Text="Rec"
                             BackgroundColor="{StaticResource white4}"
                             CornerRadius="{StaticResource defaultCorner}"
                             Command="{Binding RecordCommand}" />
-                    <ImageButton Grid.Column="3"
-                                 Source="{x:Static constants:ImageIdConstants.Accept}"
-                                 Style="{StaticResource acceptButtonStyle}"
-                                 CommandParameter="{x:Static enums:SoundParameter.Accept}" />
-                </Grid>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
         <ImageButton x:Name="stopSoundButton"
@@ -72,16 +56,15 @@
                      Command="{Binding StopCommand}"
                      BorderColor="{StaticResource red}"
                      BorderWidth="{StaticResource borderSize}"
-                     Source="{x:Static constants:ImageIdConstants.Stop}">
+                     Source="stop.png">
             <Image.Source>
                 <x:FontImage FontFamily="{StaticResource icomoonFont}"
                              Size="44"
-                             Color="{StaticResource white7}" 
-                             Glyph="{x:Static constants:IconFont.stop}">
-                </x:FontImage>
+                             Color="{StaticResource white7}"
+                             Glyph="{x:Static constants:IconFont.stop}" />
             </Image.Source>
             <ImageButton.Effects>
-                <effects:RoundedLayoutEffect/>
+                <effects:RoundedLayoutEffect />
             </ImageButton.Effects>
         </ImageButton>
         <Grid Grid.Row="0"
@@ -102,8 +85,8 @@
                         <effects:RoundedLayoutEffect HasBorder="True"
                                                      CornerRadius="10"
                                                      BorderColor="Beige"
-                                                     BorderWidth="1" 
-                                                     HasShadow="False"/>
+                                                     BorderWidth="1"
+                                                     HasShadow="False" />
                     </StackLayout.Effects>
                     <Label TextColor="{StaticResource white7}"
                            Margin="0,0,0,20"
@@ -129,7 +112,7 @@
         <BoxView Grid.RowSpan="2"
                  Color="{StaticResource darkPurple}"
                  Opacity="0.4"
-                 IsVisible="{Binding MyAppsPageVisible}"/>
+                 IsVisible="{Binding MyAppsPageVisible}" />
         <Grid x:Name="myApps"
               Grid.Row="0"
               Grid.RowSpan="2"
@@ -160,7 +143,7 @@
                                                                  BorderWidth="1"
                                                                  BorderColor="Beige"
                                                                  CornerRadius="10"
-                                                                 HasShadow="False"/>
+                                                                 HasShadow="False" />
                                 </Grid.Effects>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer

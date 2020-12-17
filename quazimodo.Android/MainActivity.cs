@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System.IO;
+using Android.App;
 using Android.Content.PM;
 using Android.Gms.Ads;
 using Android.OS;
@@ -31,7 +32,6 @@ namespace quazimodo.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-
             Instance = this;
             
             Platform.Init(this, savedInstanceState);
