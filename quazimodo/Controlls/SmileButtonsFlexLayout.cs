@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Linq;
+﻿using System.Collections.Specialized;
 using System.Windows.Input;
-using quazimodo.Enums;
 using quazimodo.Models;
 using quazimodo.utils;
-using quazimodo.ViewModels;
 using Xamarin.Forms;
 
 namespace quazimodo.Controlls
@@ -16,15 +10,21 @@ namespace quazimodo.Controlls
     {
         public static readonly BindableProperty ItemSourceProperty = BindableProperty.Create(nameof(ItemSource), 
             typeof(ObservableRangeCollection<ButtonSmileViewModel>), typeof(SmileButtonsFlexLayout), null, defaultBindingMode:BindingMode.TwoWay, 
-            propertyChanging: null, propertyChanged: OnPreferredTransportChanged);
-        
+            propertyChanging: null);
+
         public static readonly BindableProperty ItemStyleProperty = BindableProperty.Create(nameof(ItemStyle), 
             typeof(Style), typeof(SmileButtonsFlexLayout), null, defaultBindingMode:BindingMode.TwoWay, 
             propertyChanging: null, propertyChanged: null);
 
         public static readonly BindableProperty ItemCommandProperty = BindableProperty.Create(nameof(Command), 
             typeof(ICommand), typeof(SmileButtonsFlexLayout), null);
-        
+
+        public SmileButtonsFlexLayout()
+        {
+            ItemSource = new ObservableRangeCollection<ButtonSmileViewModel>();
+            ItemSource.CollectionChanged += ItemSourceOnCollectionChanged;
+        }
+
         public ICommand ItemCommand
         {
             get => (ICommand)GetValue(ItemCommandProperty);
@@ -43,48 +43,34 @@ namespace quazimodo.Controlls
             set => SetValue(ItemStyleProperty, value);
         }
         
-        private static void OnPreferredTransportChanged(BindableObject bindable, object oldValue, object newValue)
+        private void ItemSourceOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (!(bindable is SmileButtonsFlexLayout container))
+            switch (e.Action)
             {
-                return;
-            }
-
-            ObservableRangeCollection<ButtonSmileViewModel> newValues = null;
-            ObservableRangeCollection<ButtonSmileViewModel> oldValues = null;
-
-            if (newValue != null) newValues = newValue as ObservableRangeCollection<ButtonSmileViewModel>;
-            if (oldValue != null) oldValues = oldValue as ObservableRangeCollection<ButtonSmileViewModel>;
-
-            var newValuesCount = 0;
-            var oldValuesCount = 0;
-
-            if (newValues != null) newValuesCount = newValues.Count;
-            if (oldValues != null) oldValuesCount = oldValues.Count;
-
-            if (newValuesCount > oldValuesCount)
-            {
-                foreach (ButtonSmileViewModel value in newValues)
-                {
-                    var imageButton = new ImageButton
+                case NotifyCollectionChangedAction.Add:
+                    foreach (ButtonSmileViewModel value in e.NewItems)
                     {
-                        Source = value.Image,
-                        CommandParameter = value.CommandParameter,
-                        Style = container.ItemStyle,
-                        BindingContext = value,
-                        Command = container.ItemCommand
-                    };
-
-                    container.Children.Add(imageButton);
-                }   
-            }
-            else if (newValuesCount < oldValuesCount)
-            {
-                container.Children.Clear();
-            }
-            else
-            {
-                
+                        var imageButton = new ImageButton
+                        {
+                            Source = value.Image,
+                            CommandParameter = value.CommandParameter,
+                            Style = ItemStyle,
+                            Command = ItemCommand,
+                            BindingContext = value,
+                        };
+                    
+                        Children.Add(imageButton);
+                    }   
+                    break;
+                case NotifyCollectionChangedAction.Move:
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    Children.Clear();
+                    break;
             }
         }
     }

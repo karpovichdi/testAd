@@ -19,9 +19,7 @@ namespace quazimodo.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public Command PositiveMusicBtnClickCommand { get; set; }
-        public Command NegativeMusicBtnClickCommand { get; set; }
-        public Command NeutralMusicBtnClickCommand { get; set; }
+        public Command SoundBtnClickCommand { get; set; }
         public Command StopCommand { get; set; }
         public Command HidePopupCommand { get; set; }
         public Command MyAppsCommand { get; set; }
@@ -41,9 +39,7 @@ namespace quazimodo.ViewModels
 
         public ObservableRangeCollection<MyApp> MyApps { get; set; }
         public ObservableRangeCollection<CustomSound> CustomSounds { get; set; }
-        public ObservableRangeCollection<ButtonSmileViewModel> NeutralSoundList { get; set; }
-        public ObservableRangeCollection<ButtonSmileViewModel> NegativeSoundList { get; set; }
-        public ObservableRangeCollection<ButtonSmileViewModel> PositiveSoundList { get; set; }
+        public ObservableRangeCollection<ButtonSmileViewModel> SmileSoundList { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> PlayingSoundsNow { get; set; }
 
         public bool AppsIsLoaded { get; set; }
@@ -111,9 +107,7 @@ namespace quazimodo.ViewModels
         
         public MainViewModel()
         {
-            PositiveMusicBtnClickCommand = new Command(PositiveClickCommandHandler);
-            NegativeMusicBtnClickCommand = new Command(NegativeClickCommandHandler);
-            NeutralMusicBtnClickCommand = new Command(NeutralClickCommandHandler);
+            SoundBtnClickCommand = new Command(SoundSelectedHandler);
             StopCommand = new Command(StopCommandHandler);
             HidePopupCommand = new Command(HidePopupCommandHandler);
             MyAppsCommand = new Command(MyAppsCommandHandler);
@@ -123,18 +117,14 @@ namespace quazimodo.ViewModels
             
             MyApps = new ObservableRangeCollection<MyApp>();
             CustomSounds = new ObservableRangeCollection<CustomSound>();
-            NeutralSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
-            PositiveSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
-            NegativeSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
+            SmileSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
             PlayingSoundsNow = new ObservableRangeCollection<ButtonSmileViewModel>();
             
             _smileButtonService = new SmileButtonService();
             _soundManagerService = new SoundManagerService();
             _firebaseService = new FirebaseService();
             
-            FillSoundListByType(SmileType.Positive);
-            FillSoundListByType(SmileType.Neutral);
-            FillSoundListByType(SmileType.Negative);
+            SmileSoundList.AddRange(_smileButtonService.GetSmiles());
 
             // record testing
             FillCustomSounds();
@@ -184,7 +174,7 @@ namespace quazimodo.ViewModels
             if (!viewModels.Any()) viewModel.IsPlaying = false;
         }
         
-        private async void NeutralClickCommandHandler(object obj)
+        private async void SoundSelectedHandler(object obj)
         {
             try
             {
@@ -192,7 +182,7 @@ namespace quazimodo.ViewModels
                 await PrepareToPlaySound();
 
                 var soundParameter = (SoundParameter) obj;
-                AddNewPlayingSound(soundParameter, NeutralSoundList);
+                AddNewPlayingSound(soundParameter, SmileSoundList);
                 _soundManagerService.PlaySound(soundParameter);
             }
             catch (Exception e)
@@ -207,37 +197,6 @@ namespace quazimodo.ViewModels
             PlayingSoundsNow.Add(smileData);
         }
         
-        private async void NegativeClickCommandHandler(object obj)
-        {
-            try
-            {
-                if (obj is string) return;
-                await PrepareToPlaySound();
-                var soundParameter = (SoundParameter) obj;
-                AddNewPlayingSound(soundParameter, NegativeSoundList);
-                _soundManagerService.PlaySound(soundParameter);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-        }
-
-        private async void PositiveClickCommandHandler(object obj)
-        {
-            try
-            {
-                if (obj is string) return;
-
-                await PrepareToPlaySound();
-                _soundManagerService.PlaySound((SoundParameter) obj);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }    
-        }
-
         private void RecordCommandHandler()
         {
             _soundManagerService.Record();
@@ -275,22 +234,6 @@ namespace quazimodo.ViewModels
             catch (Exception e)
             {
                 Console.WriteLine(e);
-            }
-        }
-
-        private async Task FillSoundListByType(SmileType smileType)
-        {
-            switch (smileType)
-            {
-                case SmileType.Positive:
-                    PositiveSoundList.AddRange(await _smileButtonService.GetPositiveModels());
-                    break;
-                case SmileType.Negative:
-                    NegativeSoundList.AddRange(await _smileButtonService.GetNegativeModels());
-                    break;
-                case SmileType.Neutral:
-                    NeutralSoundList.AddRange(await _smileButtonService.GetNeutralModels());
-                    break;
             }
         }
 

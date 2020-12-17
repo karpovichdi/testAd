@@ -25,72 +25,8 @@
         <ScrollView Grid.RowSpan="2">
             <StackLayout Spacing="0"
                          Margin="0,5,0,0">
-                <!-- positive -->
-                <Grid Margin="{StaticResource defaultOffset}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <BoxView Grid.RowSpan="2"
-                             CornerRadius="{StaticResource defaultOffset}"
-                             BackgroundColor="{StaticResource white6}" />
-                    <Frame Grid.Row="0"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="Start">
-                        <Label Style="{StaticResource soundCategoryStyle}"
-                               TextColor="{StaticResource lightOrange}"
-                               Text="{x:Static resources:Localization.PositiveHeader}" />
-                    </Frame>
-                    <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
-                                                      ItemCommand="{Binding PositiveMusicBtnClickCommand}"
-                                                      ItemSource="{Binding PositiveSoundList}"
-                                                      ItemStyle="{StaticResource positiveEmojiItem}"
-                                                      Style="{StaticResource flexLayoutStyle}" />
-                </Grid>
-                <!-- neutral -->
-                <Grid Margin="{StaticResource defaultOffset}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <BoxView Grid.RowSpan="2"
-                             CornerRadius="{StaticResource defaultOffset}"
-                             BackgroundColor="{StaticResource white4}" />
-                    <Frame Grid.Row="0"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="Start">
-                        <Label Style="{StaticResource soundCategoryStyle}"
-                               TextColor="{StaticResource lightGray}"
-                               Text="{x:Static resources:Localization.NeutralHeader}" />
-                    </Frame>
-                    <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
-                                                      ItemCommand="{Binding NeutralMusicBtnClickCommand}"
-                                                      ItemSource="{Binding NeutralSoundList}"
-                                                      ItemStyle="{StaticResource neutralEmojiItem}"
-                                                      Style="{StaticResource flexLayoutStyle}" />
-                </Grid>
-                <!-- negative -->
-                <Grid Margin="{StaticResource defaultOffset}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <BoxView Grid.RowSpan="2"
-                             CornerRadius="{StaticResource defaultOffset}"
-                             BackgroundColor="{StaticResource white5}" />
-                    <Frame Grid.Row="0"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="Start">
-                        <Label Style="{StaticResource soundCategoryStyle}"
-                               TextColor="{StaticResource lightYellow}"
-                               Text="{x:Static resources:Localization.NegativeHeader}" />
-                    </Frame>
-                    <quazimodo:SmileButtonsFlexLayout Grid.Row="1"
-                                                      ItemCommand="{Binding NegativeMusicBtnClickCommand}"
-                                                      ItemSource="{Binding NegativeSoundList}"
-                                                      ItemStyle="{StaticResource negativeEmojiItem}"
-                                                      Style="{StaticResource flexLayoutStyle}" />
-                </Grid>
+                <quazimodo:SmileUiStackLayout ItemCommand="{Binding SoundBtnClickCommand}"
+                                              ItemSource="{Binding SmileSoundList}"/>
                 <Grid HorizontalOptions="Center"
                       Margin="{StaticResource defaultOffset}">
                     <Grid.ColumnDefinitions>
