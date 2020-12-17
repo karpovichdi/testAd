@@ -27,5 +27,20 @@ namespace quazimodo.Views
                 ViewModel.FillMyAppList();
             }
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (ViewModel.DonationPageVisible || ViewModel.MyAppsPageVisible)
+            {
+                ViewModel.DonationPageVisible = false;
+                ViewModel.MyAppsPageVisible = false;
+            }
+            else
+            {
+                return base.OnBackButtonPressed();
+            }
+
+            return true;
+        }
     }
 }
