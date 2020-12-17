@@ -109,87 +109,85 @@
                     IsVisible="{Binding StopButtonVisible}"
                     Command="{Binding StopCommand}" />
         </Grid>
-        <BoxView Grid.RowSpan="2"
-                 Color="{StaticResource darkPurple}"
-                 Opacity="0.4"
-                 IsVisible="{Binding MyAppsPageVisible}" />
         <Grid x:Name="myApps"
               Grid.Row="0"
               Grid.RowSpan="2"
-              Margin="20,10,20,0"
               BackgroundColor="{StaticResource darkPurple}"
-              Opacity="0.7"
+              Opacity="0.9"
               IsVisible="{Binding MyAppsPageVisible}">
-            <Grid.Effects>
-                <effects:RoundedLayoutEffect HasBorder="True"
-                                             HasShadow="False"
-                                             BorderColor="Beige"
-                                             BorderWidth="1"
-                                             CornerRadius="10" />
-            </Grid.Effects>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <CollectionView x:Name="collectionView"
-                            Grid.Row="0"
-                            ItemsSource="{Binding MyApps}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:MyApp">
-                        <Grid Padding="10">
-                            <Grid>
-                                <Grid.Effects>
-                                    <effects:RoundedLayoutEffect HasBorder="True"
-                                                                 BorderWidth="1"
-                                                                 BorderColor="Beige"
-                                                                 CornerRadius="10"
-                                                                 HasShadow="False" />
-                                </Grid.Effects>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Command="{Binding Source={x:Reference collectionView}, 
+            <Grid Margin="20,10,20,0">
+                <Grid.Effects>
+                    <effects:RoundedLayoutEffect HasBorder="True"
+                                                 HasShadow="False"
+                                                 BorderColor="Beige"
+                                                 BorderWidth="1"
+                                                 CornerRadius="10" />
+                </Grid.Effects>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <CollectionView x:Name="collectionView"
+                                Grid.Row="1"
+                                ItemsSource="{Binding MyApps}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:MyApp">
+                            <Grid Padding="10">
+                                <Grid>
+                                    <Grid.Effects>
+                                        <effects:RoundedLayoutEffect HasBorder="True"
+                                                                     BorderWidth="1"
+                                                                     BorderColor="Beige"
+                                                                     CornerRadius="10"
+                                                                     HasShadow="False" />
+                                    </Grid.Effects>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={x:Reference collectionView}, 
                                         Path=BindingContext.SelectedMyAppCommand}"
-                                        CommandParameter="{Binding DownloadUrl}" />
-                                </Grid.GestureRecognizers>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0"
-                                       Grid.RowSpan="2"
-                                       Grid.Column="0"
-                                       HeightRequest="{StaticResource imageSize}"
-                                       WidthRequest="{StaticResource imageSize}"
-                                       HorizontalOptions="Start"
-                                       VerticalOptions="Center"
-                                       Margin="10"
-                                       Source="{Binding ImageUrl}" />
-                                <Label Grid.Row="0"
-                                       Grid.Column="1"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       Margin="10,10,10,0"
-                                       TextColor="{StaticResource white7}"
-                                       Text="{Binding Name}" />
-                                <Label Grid.Row="1"
-                                       Grid.Column="1"
-                                       Margin="10,0,10,10"
-                                       TextColor="{StaticResource white7}"
-                                       Text="{Binding Description}" />
+                                            CommandParameter="{Binding DownloadUrl}" />
+                                    </Grid.GestureRecognizers>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Row="0"
+                                           Grid.RowSpan="2"
+                                           Grid.Column="0"
+                                           HeightRequest="{StaticResource imageSize}"
+                                           WidthRequest="{StaticResource imageSize}"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           Margin="10"
+                                           Source="{Binding ImageUrl}" />
+                                    <Label Grid.Row="0"
+                                           Grid.Column="1"
+                                           HorizontalOptions="Start"
+                                           HorizontalTextAlignment="Start"
+                                           Margin="10,10,10,0"
+                                           TextColor="{StaticResource white7}"
+                                           Text="{Binding Name}" />
+                                    <Label Grid.Row="1"
+                                           Grid.Column="1"
+                                           Margin="10,0,10,10"
+                                           TextColor="{StaticResource white7}"
+                                           Text="{Binding Description}" />
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Button Grid.Row="1"
-                    Text="{x:Static resources:Localization.Hide}"
-                    TextColor="{StaticResource white7}"
-                    Style="{StaticResource borderedButtonStyle}"
-                    Command="{Binding HideMyAppsCommand}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button Grid.Row="0"
+                        Text="{x:Static resources:Localization.Hide}"
+                        TextColor="{StaticResource white7}"
+                        Style="{StaticResource borderedButtonStyle}"
+                        VerticalOptions="Start"
+                        Command="{Binding HideMyAppsCommand}" />
+            </Grid>
         </Grid>
         <quazimodo:AdMobBannerView x:Name="adMobBannerView"
                                    Grid.Row="2"

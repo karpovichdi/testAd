@@ -321,12 +321,6 @@ namespace quazimodo.Services
                 },
                 new ButtonSmileViewModel
                 {
-                    Image = SoundParameter.universal + ImageExtension,
-                    CommandParameter = SoundParameter.universal,
-                    SmileType = SmileType.Neutral
-                },
-                new ButtonSmileViewModel
-                {
                     Image = SoundParameter.reject + ImageExtension,
                     CommandParameter = SoundParameter.reject,
                     SmileType = SmileType.Neutral
@@ -335,6 +329,12 @@ namespace quazimodo.Services
                 {
                     Image = SoundParameter.accept + ImageExtension,
                     CommandParameter = SoundParameter.accept,
+                    SmileType = SmileType.Neutral
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = SoundParameter.universal + ImageExtension,
+                    CommandParameter = SoundParameter.universal,
                     SmileType = SmileType.Neutral
                 },
                 
