@@ -100,8 +100,6 @@ namespace quazimodo.Services
             }
         }
         
-        // 3     3
-        
         private void AudioFinishHandler(object sender, EventArgs e)
         {
             _audioPlayer.Play(_recorderService.GetAudioFilePath());

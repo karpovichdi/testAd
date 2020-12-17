@@ -166,6 +166,7 @@ namespace quazimodo.ViewModels
                 case NotifyCollectionChangedAction.Replace:
                     break;
                 case NotifyCollectionChangedAction.Reset:
+                    StopButtonVisible = false;
                     break;
             }
         }
@@ -248,7 +249,7 @@ namespace quazimodo.ViewModels
         {
             await _soundService.StopPlayingAll();
             PlayingSoundsNow.ForEach(x => x.IsPlaying = false);
-            StopButtonVisible = false;
+            PlayingSoundsNow.Clear();
         }
 
         private void SelectedMyAppCommandHandler(object obj)
