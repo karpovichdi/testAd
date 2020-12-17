@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using quazimodo.Constants;
@@ -12,6 +13,7 @@ using quazimodo.Services;
 using quazimodo.utils;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using Xamarin.Forms.Internals;
 
 namespace quazimodo.ViewModels
 {
@@ -42,7 +44,8 @@ namespace quazimodo.ViewModels
         public ObservableRangeCollection<ButtonSmileViewModel> NeutralSoundList { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> NegativeSoundList { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> PositiveSoundList { get; set; }
-        
+        public ObservableRangeCollection<ButtonSmileViewModel> PlayingSoundsNow { get; set; }
+
         public bool AppsIsLoaded { get; set; }
 
         public bool MyAppsPageVisible
@@ -123,7 +126,8 @@ namespace quazimodo.ViewModels
             NeutralSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
             PositiveSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
             NegativeSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
-
+            PlayingSoundsNow = new ObservableRangeCollection<ButtonSmileViewModel>();
+            
             _smileButtonService = new SmileButtonService();
             _soundManagerService = new SoundManagerService();
             _firebaseService = new FirebaseService();
@@ -138,11 +142,48 @@ namespace quazimodo.ViewModels
             _firebaseService.Initialize();
 
             Connectivity.ConnectivityChanged += ConnectivityChangedHandler;
+            PlayingSoundsNow.CollectionChanged += PlayingSoundsChanged;
 
             MessagingCenter.Instance.Subscribe<byte[]>(this, MessagingCenterConstants.LastSongFinished,
                 (array) => LastSoundStopped());
         }
 
+        private void PlayingSoundsChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            var changedAction = e.Action;
+            switch (changedAction)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    var newItems = e.NewItems;
+                    foreach (var item in newItems)
+                    {
+                        if (item is ButtonSmileViewModel viewModel) viewModel.IsPlaying = true;
+                    }
+                    break;
+                case NotifyCollectionChangedAction.Move:
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    var oldItems = e.OldItems;
+                    foreach (var item in oldItems)
+                    {
+                        if (item is ButtonSmileViewModel viewModel) RequestToDisableSmile(viewModel);
+                    }
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    break;
+            }
+        }
+
+        private void RequestToDisableSmile(ButtonSmileViewModel viewModel)
+        {
+            var viewModels = PlayingSoundsNow.Where(x => 
+                x.CommandParameter == viewModel.CommandParameter);
+
+            if (!viewModels.Any()) viewModel.IsPlaying = false;
+        }
+        
         private async void NeutralClickCommandHandler(object obj)
         {
             try
@@ -151,9 +192,7 @@ namespace quazimodo.ViewModels
                 await PrepareToPlaySound();
 
                 var soundParameter = (SoundParameter) obj;
-                var smileData = NeutralSoundList.First(x => x.CommandParameter == soundParameter);
-                smileData.IsPlaying = true;
-                
+                AddNewPlayingSound(soundParameter, NeutralSoundList);
                 _soundManagerService.PlaySound(soundParameter);
             }
             catch (Exception e)
@@ -162,13 +201,21 @@ namespace quazimodo.ViewModels
             }
         }
 
+        private void AddNewPlayingSound(SoundParameter param, ObservableRangeCollection<ButtonSmileViewModel> list)
+        {
+            var smileData = list.First(x => x.CommandParameter == param);
+            PlayingSoundsNow.Add(smileData);
+        }
+        
         private async void NegativeClickCommandHandler(object obj)
         {
             try
             {
                 if (obj is string) return;
                 await PrepareToPlaySound();
-                _soundManagerService.PlaySound((SoundParameter) obj);
+                var soundParameter = (SoundParameter) obj;
+                AddNewPlayingSound(soundParameter, NegativeSoundList);
+                _soundManagerService.PlaySound(soundParameter);
             }
             catch (Exception e)
             {
@@ -212,9 +259,10 @@ namespace quazimodo.ViewModels
             DonationPageVisible = false;
         }
         
-        private void StopCommandHandler(object obj)
+        private async void StopCommandHandler(object obj)
         {
-            _soundManagerService.StopPlaying();
+            await _soundManagerService.StopPlaying();
+            PlayingSoundsNow.ForEach(x => x.IsPlaying = false);
             StopButtonVisible = false;
         }
         
