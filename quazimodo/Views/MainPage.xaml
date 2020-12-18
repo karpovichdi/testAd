@@ -34,10 +34,6 @@
                             CornerRadius="{StaticResource defaultCorner}"
                             Command="{Binding MyAppsCommand}"
                             IsVisible="{Binding MyAppsIsExist}" />
-                    <Button Text="Rec"
-                            BackgroundColor="{StaticResource white4}"
-                            CornerRadius="{StaticResource defaultCorner}"
-                            Command="{Binding RecordCommand}" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>
@@ -61,7 +57,7 @@
                 <x:FontImage FontFamily="{StaticResource icomoonFont}"
                              Size="44"
                              Color="{StaticResource white7}"
-                             Glyph="{x:Static constants:IconFont.stop}" />
+                             Glyph="{x:Static constants:FontIcons.stop}" />
             </Image.Source>
             <ImageButton.Effects>
                 <effects:RoundedLayoutEffect />

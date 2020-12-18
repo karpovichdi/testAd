@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Plugin.AudioRecorder;
 using Plugin.SimpleAudioPlayer;
+using quazimodo.Constants;
 using quazimodo.Enums;
 using quazimodo.Interfaces;
 using quazimodo.Services;
@@ -26,15 +28,34 @@ namespace quazimodo.Services
         
         private const string SoundExtension = ".mp3";
         
+        private AudioRecorderService _recorderService;
+
         private readonly AudioPlayer _audioPlayer;
-        private readonly AudioRecorderService _recorderService;
         
         public bool CanPlaySound => _freePlayers.Count > 0;
 
+        private string GetPathToSound(SoundParameter parameter)
+        {
+            return $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/{parameter}";
+        }
+
+        //     string path = Environment.ExternalStorageDirectory;
+    //     string filename = Path.Combine(path, "myfile.txt");
+    //
+    //         using (var streamWriter = new StreamWriter(filename, true))
+    //     {
+    //         streamWriter.WriteLine(DateTime.UtcNow);
+    //     }
+    //
+    // using (var streamReader = new StreamReader(filename))
+    // {
+    // string content = streamReader.ReadToEnd();
+    // System.Diagnostics.Debug.WriteLine(content);
+    // }
+        
+        
         public SoundService()
         {
-            _recorderService = new AudioRecorderService { TotalAudioTimeout = TimeSpan.FromSeconds(15) };
-
             for (var i = 0; i < 10; i++)
             {
                 var player = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
@@ -105,18 +126,6 @@ namespace quazimodo.Services
             _audioPlayer.Play(_recorderService.GetAudioFilePath());
         }
 
-        internal async Task Record()
-        {
-            if (!_recorderService.IsRecording)
-            {
-                _recorderService.StartRecording();
-            }
-            else
-            {
-                _recorderService.StopRecording();
-            }
-        }
-
         public override async Task CheckPermissions()
         {
             var microphoneStatus = await Permissions.CheckStatusAsync<Permissions.Microphone>();
@@ -128,6 +137,46 @@ namespace quazimodo.Services
             {
                 MicrophonePermissionsGranted = true;
             }
+        }
+
+        public override async Task StartRecording(SoundParameter commandParameter)
+        {
+            // var player = GetPlayer(commandParameter);
+            //
+            // using (var streamReader = new StreamReader(record1))
+            // {
+            //     var content = await streamReader.ReadToEndAsync();
+            //     var streamReaderBaseStream = streamReader.BaseStream;
+            //     player.Load(streamReaderBaseStream);
+            //     player.Play();
+            // }
+            
+            _recorderService = new AudioRecorderService
+            {
+                TotalAudioTimeout = TimeSpan.FromSeconds(ConstantsForms.MaxLenghtOfRecordedSoundInSecond),
+                FilePath = GetPathToSound(commandParameter)
+            };
+                
+            _recorderService.AudioInputReceived += RecorderServiceOnAudioInputReceived;
+            
+            await _recorderService.StartRecording();
+        }
+
+        public const string record1 = "/data/user/0/com.karpovichdi.quazimodo/files/record1";
+        
+        private void RecorderServiceOnAudioInputReceived(object sender, string e)
+        {
+            
+        }
+
+        public override Task StopRecording()
+        {
+            if (_recorderService.IsRecording)
+            {
+                _recorderService.StopRecording();
+            }
+
+            return Task.CompletedTask;
         }
 
         private async Task GetPermissions()

@@ -12,5 +12,7 @@ namespace quazimodo.Interfaces
         public abstract Task CreateSoundPathAndPlay(SoundParameter parameter);
         public abstract Task StopPlayingAll();
         public abstract Task CheckPermissions();
+        public abstract Task StartRecording(SoundParameter commandParameter);
+        public abstract Task StopRecording();
     }
 }

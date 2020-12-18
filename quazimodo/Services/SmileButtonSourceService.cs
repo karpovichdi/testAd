@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using quazimodo.Constants;
 using quazimodo.Enums;
 using quazimodo.Models;
+using Xamarin.Forms;
 
 namespace quazimodo.Services
 {
@@ -10,6 +12,14 @@ namespace quazimodo.Services
         
         internal List<ButtonSmileViewModel> GetSmiles()
         {
+            var fontImageSource = new FontImageSource()
+            {
+                FontFamily = ConstantsForms.MarkupResources.IcoMoonFontForAndroid,
+                Size = 44,
+                Color = Color.Red,
+                Glyph = FontIcons.folderPlus
+            };
+            
             var list = new List<ButtonSmileViewModel>()
             {
                 new ButtonSmileViewModel
@@ -222,6 +232,86 @@ namespace quazimodo.Services
                     CommandParameter = SoundParameter.alien,
                     SmileType = SmileType.Positive
                 },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record1,
+                    SmileType = SmileType.Positive,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record2,
+                    SmileType = SmileType.Positive,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record3,
+                    SmileType = SmileType.Positive,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record4,
+                    SmileType = SmileType.Positive,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record5,
+                    SmileType = SmileType.Positive,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record6,
+                    SmileType = SmileType.Positive,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record7,
+                    SmileType = SmileType.Positive,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record8,
+                    SmileType = SmileType.Positive,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record9,
+                    SmileType = SmileType.Positive,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record10,
+                    SmileType = SmileType.Positive,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
                 // neu
                 new ButtonSmileViewModel
                 {
@@ -336,6 +426,86 @@ namespace quazimodo.Services
                     Image = SoundParameter.universal + ImageExtension,
                     CommandParameter = SoundParameter.universal,
                     SmileType = SmileType.Neutral
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record11,
+                    SmileType = SmileType.Neutral,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record12,
+                    SmileType = SmileType.Neutral,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record13,
+                    SmileType = SmileType.Neutral,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record14,
+                    SmileType = SmileType.Neutral,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record15,
+                    SmileType = SmileType.Neutral,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record16,
+                    SmileType = SmileType.Neutral,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record17,
+                    SmileType = SmileType.Neutral,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record18,
+                    SmileType = SmileType.Neutral,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record19,
+                    SmileType = SmileType.Neutral,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record20,
+                    SmileType = SmileType.Neutral,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
                 },
                 
                 //neg
@@ -572,6 +742,86 @@ namespace quazimodo.Services
                     Image = SoundParameter.poop + ImageExtension,
                     CommandParameter = SoundParameter.poop,
                     SmileType = SmileType.Negative
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record21,
+                    SmileType = SmileType.Negative,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record22,
+                    SmileType = SmileType.Negative,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record23,
+                    SmileType = SmileType.Negative,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record24,
+                    SmileType = SmileType.Negative,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record25,
+                    SmileType = SmileType.Negative,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record26,
+                    SmileType = SmileType.Negative,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record27,
+                    SmileType = SmileType.Negative,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record28,
+                    SmileType = SmileType.Negative,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record29,
+                    SmileType = SmileType.Negative,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
+                },
+                new ButtonSmileViewModel
+                {
+                    Image = fontImageSource,
+                    CommandParameter = SoundParameter.record30,
+                    SmileType = SmileType.Negative,
+                    IsVisibleRecord = false,
+                    IsRecord = true,
                 },
             };
 

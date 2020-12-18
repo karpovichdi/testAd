@@ -1,5 +1,9 @@
-﻿using System.Collections.Specialized;
+﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Windows.Input;
+using quazimodo.Constants;
+using quazimodo.Enums;
 using quazimodo.Models;
 using quazimodo.utils;
 using Xamarin.Forms;
@@ -48,19 +52,32 @@ namespace quazimodo.Controlls
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
+                    ButtonSmileViewModel firstNotVisibleRecord = null;
+                    
                     foreach (ButtonSmileViewModel value in e.NewItems)
                     {
                         var imageButton = new ImageButton
                         {
-                            Source = value.Image,
                             CommandParameter = value.CommandParameter,
                             Style = ItemStyle,
                             Command = ItemCommand,
-                            BindingContext = value,
+                            IsVisible = !value.IsRecord || value.IsVisibleRecord,
                         };
-                    
+
+                        if (value.IsPlusButton) value.IsPlusButton = false;
+                        if (firstNotVisibleRecord == null && value.IsRecord && !value.IsVisibleRecord)
+                        {
+                            value.IsVisibleRecord = true;
+                            value.IsPlusButton = true;
+                            
+                            firstNotVisibleRecord = value;
+                        }
+
+                        imageButton.BindingContext = value;
+
                         Children.Add(imageButton);
-                    }   
+                    }
+
                     break;
                 case NotifyCollectionChangedAction.Move:
                     break;

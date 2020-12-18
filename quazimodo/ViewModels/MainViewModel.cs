@@ -23,7 +23,6 @@ namespace quazimodo.ViewModels
         public Command MyAppsCommand { get; set; }
         public Command HideMyAppsCommand { get; set; }
         public Command SelectedMyAppCommand { get; set; }
-        public Command RecordCommand { get; set; }
         
         private readonly SmileButtonSourceService _smileButtonSourceService;
         private readonly ISoundService _soundService;
@@ -111,7 +110,6 @@ namespace quazimodo.ViewModels
             MyAppsCommand = new Command(MyAppsCommandHandler);
             HideMyAppsCommand = new Command(HideMyAppsCommandHandler);
             SelectedMyAppCommand = new Command(SelectedMyAppCommandHandler);
-            RecordCommand = new Command(RecordCommandHandler);
             
             MyApps = new ObservableRangeCollection<MyApp>();
             CustomSounds = new ObservableRangeCollection<CustomSound>();
@@ -173,7 +171,7 @@ namespace quazimodo.ViewModels
 
         private void RequestToDisableTooMuchPopup()
         {
-            if (PlayingSoundsNow.Count() < ConstantsForms.MaxCountOfSoundInOneTime) TooMuchSoundsInOneTime = false;
+            if (PlayingSoundsNow.Count < ConstantsForms.MaxCountOfSoundInOneTime) TooMuchSoundsInOneTime = false;
         }
 
         private void RequestToDisableSmile(ButtonSmileViewModel viewModel)
@@ -191,15 +189,23 @@ namespace quazimodo.ViewModels
                 if (obj is string) return;
                 var soundParameter = (SoundParameter) obj;
 
-                if (PlayingSoundsNow.Count < ConstantsForms.MaxCountOfSoundInOneTime)
+                await GetMicrophonePermissions();
+
+                var smileViewModel = SmileSoundList.FirstOrDefault(x => x.CommandParameter == soundParameter);
+                if (smileViewModel != null && smileViewModel.IsPlusButton)
                 {
-                    await PrepareToPlaySound();
-                    AddNewPlayingSound(soundParameter, SmileSoundList);
-                    _soundService.CreateSoundPathAndPlay(soundParameter);
+                    await PrepareToRecording(smileViewModel);
                 }
                 else
                 {
-                    TooMuchSoundsInOneTime = true;
+                    if (PlayingSoundsNow.Count < ConstantsForms.MaxCountOfSoundInOneTime)
+                    {
+                        await PrepareToPlaySound(smileViewModel);
+                    }
+                    else
+                    {
+                        TooMuchSoundsInOneTime = true;
+                    }
                 }
             }
             catch (Exception e)
@@ -208,17 +214,24 @@ namespace quazimodo.ViewModels
             }
         }
 
-        private void AddNewPlayingSound(SoundParameter param, ObservableRangeCollection<ButtonSmileViewModel> list)
+        private async Task GetMicrophonePermissions()
         {
-            var smileData = list.FirstOrDefault(x => x.CommandParameter == param);
-            if (smileData != null) PlayingSoundsNow.Add(smileData);
+            if (!_soundService.MicrophonePermissionsGranted)
+            {
+                while (!_soundService.MicrophonePermissionsGranted)
+                {
+                    await _soundService.CheckPermissions();
+                }
+            }
         }
-        
-        private void RecordCommandHandler()
+
+        private async Task PrepareToRecording(ButtonSmileViewModel buttonSmileViewModel)
         {
-            //_soundService.Record();
+            await StopSounds();
+
+            await _soundService.StartRecording(buttonSmileViewModel.CommandParameter);
         }
-        
+
         private void MyAppsCommandHandler()
         {
             MyAppsPageVisible = true;
@@ -243,6 +256,13 @@ namespace quazimodo.ViewModels
         private void AppClosedHandler()
         {
             StopSounds();
+            StopRecording();
+        }
+
+        private void StopRecording()
+        {
+            // disable recording on ui
+            _soundService.StopRecording();
         }
 
         private async Task StopSounds()
@@ -298,11 +318,10 @@ namespace quazimodo.ViewModels
             StopButtonVisible = false;
         }
         
-        private async Task PrepareToPlaySound()
+        private async Task PrepareToPlaySound(ButtonSmileViewModel smileViewModel)
         {
-            if (!_soundService.MicrophonePermissionsGranted) await _soundService.CheckPermissions();
-                
             StopButtonVisible = true;
+
             App.CountOfPlayedSound++;
 
             if (App.CountOfPlayedSound >= AdConstants.ClicksCountBeforeAd)
@@ -311,6 +330,9 @@ namespace quazimodo.ViewModels
                 MyAppsPageVisible = false;
                 App.CountOfPlayedSound = 0;
             }
+            
+            PlayingSoundsNow.Add(smileViewModel);
+            _soundService.CreateSoundPathAndPlay(smileViewModel.CommandParameter);
         }
 
         void ConnectivityChangedHandler(object sender, ConnectivityChangedEventArgs e)

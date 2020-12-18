@@ -1,6 +1,6 @@
 ﻿namespace quazimodo.Constants
 {
-    public class IconFont
+    public class FontIcons
     {
         public const string Icon1 = "\ufffd";
         public const string Icon2 = "\u0001";
