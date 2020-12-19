@@ -17,7 +17,7 @@ namespace quazimodo.Services
                 FontFamily = ConstantsForms.MarkupResources.IcoMoonFontForAndroid,
                 Size = 44,
                 Color = Color.Red,
-                Glyph = FontIcons.folderPlus
+                Glyph = FontIcons.mic
             };
             
             var list = new List<ButtonSmileViewModel>()

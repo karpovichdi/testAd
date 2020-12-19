@@ -9,6 +9,7 @@
     xmlns:models="clr-namespace:quazimodo.Models;assembly=quazimodo"
     xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
     xmlns:effects="clr-namespace:quazimodo.Effects;assembly=quazimodo"
+    xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
     NavigationPage.HasNavigationBar="False"
     BackgroundColor="{StaticResource darkPurple}"
     x:Class="quazimodo.Views.MainPage">
@@ -188,5 +189,27 @@
         <quazimodo:AdMobBannerView x:Name="adMobBannerView"
                                    Grid.Row="2"
                                    AdId="{x:Static constants:AdConstants.TestBannerId}" />
+
+        <quazimodo:CircleImageView Grid.Row="0"
+                                   Grid.RowSpan="3"
+                                   Command="{Binding StopRecordingCommand}"
+                                   BackgroundColor="{StaticResource darkPurple}"
+                                   Opacity="0.8"
+                                   HeightRequest="{StaticResource progressViewSize}"
+                                   WidthRequest="{StaticResource progressViewSize}"
+                                   Progress="{Binding RecordingViewProgress}"
+                                   IsVisible="{Binding RecordingViewVisible}" />
+
+        <quazimodo:ConfirmPopup Grid.Row="0"
+                                Grid.RowSpan="3"
+                                BackgroundColor="{StaticResource darkPurple}"
+                                Opacity="0.8"
+                                MessageText="{Binding ConfirmMessage}"
+                                PositiveBtnText="{Binding ConfirmPopupPositiveBtnText}"
+                                NegativeBtnText="{Binding ConfirmPopupNegativeBtnText}"
+                                Command="{Binding HideRecordPopupCommand}"
+                                HeightRequest="{StaticResource progressViewSize}"
+                                WidthRequest="{StaticResource progressViewSize}"
+                                IsVisible="{Binding ConfirmPopupVisible}" />
     </Grid>
 </ContentPage>

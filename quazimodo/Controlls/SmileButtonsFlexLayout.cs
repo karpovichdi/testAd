@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
+﻿using System.Collections.Specialized;
 using System.Windows.Input;
-using quazimodo.Constants;
-using quazimodo.Enums;
 using quazimodo.Models;
 using quazimodo.utils;
 using Xamarin.Forms;

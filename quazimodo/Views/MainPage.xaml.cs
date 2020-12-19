@@ -34,6 +34,7 @@ namespace quazimodo.Views
             {
                 ViewModel.DonationPageVisible = false;
                 ViewModel.MyAppsPageVisible = false;
+                ViewModel.StopRecording(true);
             }
             else
             {

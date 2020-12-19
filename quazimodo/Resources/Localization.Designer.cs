@@ -100,5 +100,41 @@ namespace quazimodo.Resources {
                 return ResourceManager.GetString("AdMessage", resourceCulture);
             }
         }
+        
+        public static string AreYosSureWantDeclainMicPermissions {
+            get {
+                return ResourceManager.GetString("AreYosSureWantDeclainMicPermissions", resourceCulture);
+            }
+        }
+        
+        public static string Disable {
+            get {
+                return ResourceManager.GetString("Disable", resourceCulture);
+            }
+        }
+        
+        public static string Allow {
+            get {
+                return ResourceManager.GetString("Allow", resourceCulture);
+            }
+        }
+        
+        public static string DoYouWantSaveRecording {
+            get {
+                return ResourceManager.GetString("DoYouWantSaveRecording", resourceCulture);
+            }
+        }
+        
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
+            }
+        }
+        
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
     }
 }

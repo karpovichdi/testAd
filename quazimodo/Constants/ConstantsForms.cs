@@ -8,7 +8,11 @@ namespace quazimodo.Constants
     {
         public const int MaxCountOfSoundInOneTime = 10;
         
+        public static int AdditionalValueToRecordProgress = (100/MaxLenghtOfRecordedSoundInSecond)/2;
+
         public const string PathToSounds = "quazimodo.Sounds.";
+        public const string Positive = "Positive";
+        public const string Negative = "Negative";
         
         public static class EffectIds
         {
@@ -19,6 +23,7 @@ namespace quazimodo.Constants
         {
             public static Color Red => (Color)Application.Current.Resources["red"];
             public static Color LightYellow => (Color)Application.Current.Resources["lightYellow"];
+            public static Color Gray => (Color)Application.Current.Resources["grafit"];
             public static Color White7 => (Color)Application.Current.Resources["white7"];
             public static Style PositiveEmojiStyle => (Style)Application.Current.Resources["positiveEmojiItem"];
             public static Style NeutralEmojiStyle => (Style)Application.Current.Resources["neutralEmojiItem"];

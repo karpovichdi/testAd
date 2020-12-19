@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:constants="clr-namespace:quazimodo.Constants;assembly=quazimodo"
+             xmlns:controlls="clr-namespace:quazimodo.Controlls;assembly=quazimodo"
+             x:Class="quazimodo.Controlls.CircleImageView"
+             x:Name="circleImageView">
+    <Grid.Resources>
+        <ResourceDictionary>
+            <x:Double x:Key="imageRadius">65</x:Double>
+            <x:Double x:Key="imageWidth">150</x:Double>
+            <x:Double x:Key="imageHeight">130</x:Double>
+            <x:Double x:Key="strokeWidth">4</x:Double>
+            <x:Double x:Key="imageScale">1.1</x:Double>
+            <Point x:Key="imageCenter">75, 65</Point>
+        </ResourceDictionary>
+    </Grid.Resources>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="300"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="300"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <controlls:CircularProgressbarView x:Name="circularProgressbarView"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       CircleColor="{StaticResource grafit}"
+                                       ProgressColor="{StaticResource lightYellow}"/>
+    <Image Grid.Row="1"
+           Grid.Column="1"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           TranslationX="4"
+           HeightRequest="{StaticResource imageHeight}"
+           WidthRequest="{StaticResource imageWidth}"
+           Scale="{StaticResource imageScale}">
+        <Image.Source>
+            <x:FontImage FontFamily="{StaticResource icomoonFont}"
+                         Size="88"
+                         Color="{StaticResource red}"
+                         Glyph="{x:Static constants:FontIcons.mic}" />
+        </Image.Source>
+        <Image.Clip>
+            <EllipseGeometry Center="{StaticResource imageCenter}"
+                             RadiusX="{StaticResource imageRadius}"
+                             RadiusY="{StaticResource imageRadius}"/>
+        </Image.Clip>
+        <Image.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding Source={x:Reference circleImageView}, Path=Command}"/>
+        </Image.GestureRecognizers>
+    </Image>
+</Grid>

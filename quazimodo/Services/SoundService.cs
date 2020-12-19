@@ -20,6 +20,7 @@ namespace quazimodo.Services
     public class SoundService : ISoundService
     {
         public override Action<SoundParameter> SoundReleased { get; set; }
+        public override Action RecordReleased { get; set; }
         public override Action AppClosed { get; set; }
 
         private readonly List<ISimpleAudioPlayer> _freePlayers = new List<ISimpleAudioPlayer>();
@@ -126,17 +127,15 @@ namespace quazimodo.Services
             _audioPlayer.Play(_recorderService.GetAudioFilePath());
         }
 
-        public override async Task CheckPermissions()
+        public override async Task<PermissionStatus> CheckPermissions()
         {
             var microphoneStatus = await Permissions.CheckStatusAsync<Permissions.Microphone>();
             if (microphoneStatus != PermissionStatus.Granted)
             {
-                await GetPermissions();
+                return await GetPermissions();
             }
-            else
-            {
-                MicrophonePermissionsGranted = true;
-            }
+            MicrophonePermissionsGranted = true;
+            return PermissionStatus.Granted;
         }
 
         public override async Task StartRecording(SoundParameter commandParameter)
@@ -154,19 +153,20 @@ namespace quazimodo.Services
             _recorderService = new AudioRecorderService
             {
                 TotalAudioTimeout = TimeSpan.FromSeconds(ConstantsForms.MaxLenghtOfRecordedSoundInSecond),
-                FilePath = GetPathToSound(commandParameter)
+                FilePath = GetPathToSound(commandParameter),
+                StopRecordingOnSilence = false
             };
                 
             _recorderService.AudioInputReceived += RecorderServiceOnAudioInputReceived;
             
             await _recorderService.StartRecording();
         }
-
-        public const string record1 = "/data/user/0/com.karpovichdi.quazimodo/files/record1";
         
         private void RecorderServiceOnAudioInputReceived(object sender, string e)
         {
-            
+            _recorderService.AudioInputReceived -= RecorderServiceOnAudioInputReceived;
+            // not finished logic
+            RecordReleased.Invoke();
         }
 
         public override Task StopRecording()
@@ -179,9 +179,9 @@ namespace quazimodo.Services
             return Task.CompletedTask;
         }
 
-        private async Task GetPermissions()
+        private async Task<PermissionStatus> GetPermissions()
         {
-            var status = await Permissions.RequestAsync<Permissions.Microphone>();
+            return await Permissions.RequestAsync<Permissions.Microphone>();
         }
 
         public override async Task StopPlayingAll()

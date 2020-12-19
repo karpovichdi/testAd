@@ -45,5 +45,22 @@
     <data name="AdMessageHeader" xml:space="preserve">
         <value>Что ты делаешь вечером дома?</value>
     </data>
-    
+    <data name="AreYouSureWantDeclainMicPermissions" xml:space="preserve">
+        <value>Если вы запретите использование микрофона, то не сможете записывать свои звуки. Вы точно хотите запретить использование микрофона?</value>
+    </data>
+    <data name="Disable" xml:space="preserve">
+        <value>Запретить</value>
+    </data>
+    <data name="Allow" xml:space="preserve">
+        <value>Разрешить</value>
+    </data>
+    <data name="DoYouWantSaveRecording" xml:space="preserve">
+        <value>Вы хотите сохранить запись?</value>
+    </data>
+    <data name="Close" xml:space="preserve">
+        <value>Закрыть</value>
+    </data>
+    <data name="Yes" xml:space="preserve">
+        <value>Да</value>
+    </data>
 </root>
