@@ -1,7 +1,7 @@
 ﻿using Android.Content;
-using quazimodo.Constants;
 using quazimodo.Droid.Services;
-using quazimodo.Interfaces;
+using quazimodo.Services.Interfaces;
+using quazimodo.Utilities.Constants;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(StorageService))]

@@ -1,4 +1,4 @@
-﻿namespace quazimodo.Enums
+﻿namespace quazimodo.Models.Enums
 {
     public enum ConfirmMessageType
     {

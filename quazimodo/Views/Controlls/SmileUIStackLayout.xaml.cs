@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
-using quazimodo.Enums;
 using quazimodo.Models;
-using quazimodo.utils;
+using quazimodo.Models.Enums;
+using quazimodo.Utilities;
+using quazimodo.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace quazimodo.Controlls
+namespace quazimodo.Views.Controlls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SmileUiStackLayout : StackLayout

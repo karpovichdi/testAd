@@ -2,7 +2,7 @@
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 
-namespace quazimodo.Controlls
+namespace quazimodo.Views.Controlls
 {
     public class ProgressDrawer
     {

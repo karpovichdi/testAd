@@ -1,4 +1,4 @@
-﻿namespace quazimodo.Interfaces
+﻿namespace quazimodo.Services.Interfaces
 {
     public interface IStorageService
     {

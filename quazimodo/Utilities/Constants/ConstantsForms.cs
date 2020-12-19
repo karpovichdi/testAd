@@ -1,8 +1,7 @@
-﻿using quazimodo.Effects;
+﻿using quazimodo.Views.Effects;
 using Xamarin.Forms;
-using Xamarin.Forms.Markup;
 
-namespace quazimodo.Constants
+namespace quazimodo.Utilities.Constants
 {
     public static class ConstantsForms
     {

@@ -1,7 +1,7 @@
-﻿using quazimodo.Enums;
+﻿using quazimodo.Models.Enums;
 using Xamarin.Forms;
 
-namespace quazimodo.Models
+namespace quazimodo.ViewModels
 {
     public class ButtonSmileViewModel : BindableObject
     {

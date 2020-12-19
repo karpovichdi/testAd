@@ -2,16 +2,15 @@
 
 <Grid xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:constants="clr-namespace:quazimodo.Constants;assembly=quazimodo"
-             xmlns:controlls="clr-namespace:quazimodo.Controlls;assembly=quazimodo"
-             x:Class="quazimodo.Controlls.CircleImageView"
+             xmlns:controlls1="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
+             xmlns:constants1="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
+             x:Class="quazimodo.Views.Controlls.CircleImageView"
              x:Name="circleImageView">
     <Grid.Resources>
         <ResourceDictionary>
             <x:Double x:Key="imageRadius">65</x:Double>
             <x:Double x:Key="imageWidth">150</x:Double>
             <x:Double x:Key="imageHeight">130</x:Double>
-            <x:Double x:Key="strokeWidth">4</x:Double>
             <x:Double x:Key="imageScale">1.1</x:Double>
             <Point x:Key="imageCenter">75, 65</Point>
         </ResourceDictionary>
@@ -26,7 +25,7 @@
         <ColumnDefinition Width="300"/>
         <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <controlls:CircularProgressbarView x:Name="circularProgressbarView"
+    <controlls1:CircularProgressbarView x:Name="circularProgressbarView"
                                        Grid.Row="1"
                                        Grid.Column="1"
                                        CircleColor="{StaticResource grafit}"
@@ -43,7 +42,7 @@
             <x:FontImage FontFamily="{StaticResource icomoonFont}"
                          Size="88"
                          Color="{StaticResource red}"
-                         Glyph="{x:Static constants:FontIcons.mic}" />
+                         Glyph="{x:Static constants1:FontIcons.mic}" />
         </Image.Source>
         <Image.Clip>
             <EllipseGeometry Center="{StaticResource imageCenter}"

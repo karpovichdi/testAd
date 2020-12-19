@@ -1,4 +1,4 @@
-﻿namespace quazimodo.Constants
+﻿namespace quazimodo.Utilities.Constants
 {
     public static class FirebaseConstants
     {

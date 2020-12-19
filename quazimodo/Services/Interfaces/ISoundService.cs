@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using quazimodo.Enums;
+using quazimodo.Models.Enums;
 using Xamarin.Essentials;
 
-namespace quazimodo.Interfaces
+namespace quazimodo.Services.Interfaces
 {
     public abstract class ISoundService
     {

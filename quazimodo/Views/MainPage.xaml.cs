@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using quazimodo.ViewModels;
-using Xamarin.Essentials;
+﻿using quazimodo.ViewModels;
 using Xamarin.Forms;
 
 namespace quazimodo.Views

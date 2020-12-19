@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using quazimodo.Constants;
+using quazimodo.Utilities.Constants;
 using Xamarin.Forms;
 
-namespace quazimodo.Effects
+namespace quazimodo.Views.Effects
 {
     public class RoundedLayoutEffect : RoutingEffect, INotifyPropertyChanged
     {

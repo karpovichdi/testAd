@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using quazimodo.Interfaces;
+using quazimodo.Services.Interfaces;
 using quazimodo.Views;
 using Xamarin.Forms;
 

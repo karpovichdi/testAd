@@ -5,7 +5,7 @@ using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Views;
 using quazimodo.Droid.Effects;
-using quazimodo.Effects;
+using quazimodo.Views.Effects;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using AColor = Android.Graphics.Color;

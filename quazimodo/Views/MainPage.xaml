@@ -3,13 +3,12 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:quazimodo="clr-namespace:quazimodo.Controlls;assembly=quazimodo"
-    xmlns:constants="clr-namespace:quazimodo.Constants;assembly=quazimodo"
     xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
     xmlns:models="clr-namespace:quazimodo.Models;assembly=quazimodo"
     xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
-    xmlns:effects="clr-namespace:quazimodo.Effects;assembly=quazimodo"
-    xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
+    xmlns:controlls="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
+    xmlns:constants1="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
     NavigationPage.HasNavigationBar="False"
     BackgroundColor="{StaticResource darkPurple}"
     x:Class="quazimodo.Views.MainPage">
@@ -25,7 +24,7 @@
         <ScrollView Grid.RowSpan="2">
             <StackLayout Spacing="0"
                          Margin="0,5,0,0">
-                <quazimodo:SmileUiStackLayout ItemCommand="{Binding SoundBtnClickCommand}"
+                <controlls:SmileUiStackLayout ItemCommand="{Binding SoundBtnClickCommand}"
                                               ItemSource="{Binding SmileSoundList}" />
                 <StackLayout Orientation="Horizontal"
                              HorizontalOptions="Center"
@@ -58,7 +57,7 @@
                 <x:FontImage FontFamily="{StaticResource icomoonFont}"
                              Size="44"
                              Color="{StaticResource white7}"
-                             Glyph="{x:Static constants:FontIcons.stop}" />
+                             Glyph="{x:Static constants1:FontIcons.stop}" />
             </Image.Source>
             <ImageButton.Effects>
                 <effects:RoundedLayoutEffect />
@@ -186,11 +185,10 @@
                         Command="{Binding HideMyAppsCommand}" />
             </Grid>
         </Grid>
-        <quazimodo:AdMobBannerView x:Name="adMobBannerView"
+        <controlls:AdMobBannerView x:Name="adMobBannerView"
                                    Grid.Row="2"
-                                   AdId="{x:Static constants:AdConstants.TestBannerId}" />
-
-        <quazimodo:CircleImageView Grid.Row="0"
+                                   AdId="{x:Static constants1:AdConstants.TestBannerId}" />
+        <controlls:CircleImageView Grid.Row="0"
                                    Grid.RowSpan="3"
                                    Command="{Binding StopRecordingCommand}"
                                    BackgroundColor="{StaticResource darkPurple}"
@@ -199,8 +197,7 @@
                                    WidthRequest="{StaticResource progressViewSize}"
                                    Progress="{Binding RecordingViewProgress}"
                                    IsVisible="{Binding RecordingViewVisible}" />
-
-        <quazimodo:ConfirmPopup Grid.Row="0"
+        <controlls:ConfirmPopup Grid.Row="0"
                                 Grid.RowSpan="3"
                                 BackgroundColor="{StaticResource darkPurple}"
                                 Opacity="0.8"

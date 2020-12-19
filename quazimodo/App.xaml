@@ -3,8 +3,8 @@
 <Application
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:constants="clr-namespace:quazimodo.Constants;assembly=quazimodo"
-    xmlns:models="clr-namespace:quazimodo.Models;assembly=quazimodo"
+    xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
+    xmlns:constants1="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
     x:Class="quazimodo.App">
     <Application.Resources>
         
@@ -51,10 +51,10 @@
                      FontFamily="{StaticResource icomoonFont}"
                      Size="44"
                      Color="{StaticResource red}"
-                     Glyph="{x:Static constants:FontIcons.folderPlus}" />
+                     Glyph="{x:Static constants1:FontIcons.folderPlus}" />
         
         <!-- Styles -->
-        <Style x:Key="emojiBaseItem" x:DataType="models:ButtonSmileViewModel" TargetType="ImageButton">
+        <Style x:Key="emojiBaseItem" x:DataType="viewModels:ButtonSmileViewModel" TargetType="ImageButton">
             <Setter Property="HeightRequest" Value="{StaticResource emojiSize}" />
             <Setter Property="WidthRequest" Value="{StaticResource emojiSize}" />
             <Setter Property="Padding" Value="{StaticResource emojiOffset}" />

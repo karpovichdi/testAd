@@ -1,8 +1,8 @@
 using Android.Content;
 using Android.Gms.Ads;
 using Android.Widget;
-using quazimodo.Controlls;
 using quazimodo.Droid.Renderers;
+using quazimodo.Views.Controlls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 

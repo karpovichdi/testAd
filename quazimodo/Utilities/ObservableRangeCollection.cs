@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 
-namespace quazimodo.utils
+namespace quazimodo.Utilities
 {
     public class ObservableRangeCollection<T> : ObservableCollection<T>
     {

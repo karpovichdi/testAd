@@ -1,9 +1,9 @@
-﻿using quazimodo.Constants;
+﻿using quazimodo.Utilities.Constants;
 using SkiaSharp;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace quazimodo.Controlls
+namespace quazimodo.Views.Controlls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CircularProgressbarView : ContentView

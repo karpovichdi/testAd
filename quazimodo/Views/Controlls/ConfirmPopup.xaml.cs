@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace quazimodo.Controlls
+namespace quazimodo.Views.Controlls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ConfirmPopup : ContentView

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.Reflection;
-using quazimodo.Constants;
+using quazimodo.Utilities.Constants;
 
 namespace quazimodo.Utilities
 {

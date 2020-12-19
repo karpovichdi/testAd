@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
-using quazimodo.Constants;
 using quazimodo.Models;
+using quazimodo.Utilities.Constants;
 
 namespace quazimodo.Services
 {

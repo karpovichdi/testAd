@@ -4,13 +4,13 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-using quazimodo.Constants;
-using quazimodo.Enums;
-using quazimodo.Interfaces;
 using quazimodo.Models;
+using quazimodo.Models.Enums;
 using quazimodo.Resources;
 using quazimodo.Services;
-using quazimodo.utils;
+using quazimodo.Services.Interfaces;
+using quazimodo.Utilities;
+using quazimodo.Utilities.Constants;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms.Internals;
@@ -54,7 +54,6 @@ namespace quazimodo.ViewModels
         public Command StopRecordingCommand { get; set; }
         public Command HideRecordPopupCommand { get; set; }
         public ObservableRangeCollection<MyApp> MyApps { get; set; }
-        public ObservableRangeCollection<CustomSound> CustomSounds { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> SmileSoundList { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> PlayingSoundsNow { get; set; }
 
@@ -207,7 +206,6 @@ namespace quazimodo.ViewModels
             StopRecordingCommand = new Command(HideConfirmPopupCommandHandler);
 
             MyApps = new ObservableRangeCollection<MyApp>();
-            CustomSounds = new ObservableRangeCollection<CustomSound>();
             SmileSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
             PlayingSoundsNow = new ObservableRangeCollection<ButtonSmileViewModel>();
 

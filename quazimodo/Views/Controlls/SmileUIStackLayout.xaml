@@ -2,9 +2,9 @@
 
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controlls="clr-namespace:quazimodo.Controlls;assembly=quazimodo"
              xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
-             x:Class="quazimodo.Controlls.SmileUiStackLayout">
+             xmlns:controlls1="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
+             x:Class="quazimodo.Views.Controlls.SmileUiStackLayout">
     <!-- positive -->
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
@@ -21,7 +21,7 @@
                    TextColor="{StaticResource lightOrange}"
                    Text="{x:Static resources:Localization.PositiveHeader}" />
         </Frame>
-        <controlls:SmileButtonsFlexLayout x:Name="positiveFlex"
+        <controlls1:SmileButtonsFlexLayout x:Name="positiveFlex"
                                           Grid.Row="1"
                                           ItemCommand="{Binding SoundBtnClickCommand}"
                                           ItemStyle="{StaticResource positiveEmojiItem}"
@@ -43,7 +43,7 @@
                    TextColor="{StaticResource lightGray}"
                    Text="{x:Static resources:Localization.NeutralHeader}" />
         </Frame>
-        <controlls:SmileButtonsFlexLayout x:Name="neutralFlex"
+        <controlls1:SmileButtonsFlexLayout x:Name="neutralFlex"
                                           Grid.Row="1"
                                           ItemCommand="{Binding SoundBtnClickCommand}"
                                           ItemStyle="{StaticResource neutralEmojiItem}"
@@ -65,7 +65,7 @@
                    TextColor="{StaticResource lightYellow}"
                    Text="{x:Static resources:Localization.NegativeHeader}" />
         </Frame>
-        <controlls:SmileButtonsFlexLayout x:Name="negativeFlex"
+        <controlls1:SmileButtonsFlexLayout x:Name="negativeFlex"
                                           Grid.Row="1"
                                           ItemCommand="{Binding SoundBtnClickCommand}"
                                           ItemStyle="{StaticResource negativeEmojiItem}"

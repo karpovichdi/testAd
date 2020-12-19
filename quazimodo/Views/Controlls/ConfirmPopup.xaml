@@ -2,9 +2,9 @@
 
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:effects="clr-namespace:quazimodo.Effects;assembly=quazimodo"
-             xmlns:constants="clr-namespace:quazimodo.Constants;assembly=quazimodo"
-             x:Class="quazimodo.Controlls.ConfirmPopup"
+             xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
+             xmlns:constants1="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
+             x:Class="quazimodo.Views.Controlls.ConfirmPopup"
              x:Name="saveRecordPopup">
     <Grid>
         <Grid.RowDefinitions>
@@ -46,14 +46,14 @@
                     HorizontalOptions="End"
                     Style="{StaticResource borderedRedButtonStyle}"
                     Command="{Binding Source={x:Reference saveRecordPopup}, Path=Command}"
-                    CommandParameter="{x:Static constants:ConstantsForms.Negative}"
+                    CommandParameter="{x:Static constants1:ConstantsForms.Negative}"
                     Text="{Binding Source={x:Reference saveRecordPopup}, Path=NegativeBtnText}"/>
             <Button Grid.Row="1"
                     Grid.Column="1"
                     HorizontalOptions="Start"
                     Style="{StaticResource borderedRedButtonStyle}"
                     Command="{Binding Source={x:Reference saveRecordPopup}, Path=Command}"
-                    CommandParameter="{x:Static constants:ConstantsForms.Positive}"
+                    CommandParameter="{x:Static constants1:ConstantsForms.Positive}"
                     Text="{Binding Source={x:Reference saveRecordPopup}, Path=PositiveBtnText}"/>
         </Grid>
     </Grid>

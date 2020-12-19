@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using quazimodo.Constants;
-using quazimodo.Enums;
-using quazimodo.Models;
+using quazimodo.Models.Enums;
+using quazimodo.Utilities.Constants;
+using quazimodo.ViewModels;
 using Xamarin.Forms;
 
 namespace quazimodo.Services

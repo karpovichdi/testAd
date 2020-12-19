@@ -1,6 +1,6 @@
 using Xamarin.Forms;
 
-namespace quazimodo.Controlls
+namespace quazimodo.Views.Controlls
 {
     public class AdMobBannerView : View
     {

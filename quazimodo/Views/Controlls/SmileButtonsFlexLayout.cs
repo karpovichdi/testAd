@@ -1,10 +1,11 @@
 ﻿using System.Collections.Specialized;
 using System.Windows.Input;
 using quazimodo.Models;
-using quazimodo.utils;
+using quazimodo.Utilities;
+using quazimodo.ViewModels;
 using Xamarin.Forms;
 
-namespace quazimodo.Controlls
+namespace quazimodo.Views.Controlls
 {
     public class SmileButtonsFlexLayout : FlexLayout
     {
