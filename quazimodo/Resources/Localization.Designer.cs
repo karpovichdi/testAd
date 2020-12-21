@@ -101,9 +101,9 @@ namespace quazimodo.Resources {
             }
         }
         
-        public static string AreYosSureWantDeclainMicPermissions {
+        public static string AreYouSureWantDeclainMicPermissions {
             get {
-                return ResourceManager.GetString("AreYosSureWantDeclainMicPermissions", resourceCulture);
+                return ResourceManager.GetString("AreYouSureWantDeclainMicPermissions", resourceCulture);
             }
         }
         

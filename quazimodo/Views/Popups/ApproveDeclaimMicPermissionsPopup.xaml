@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
+             xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
+             xmlns:constants="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
+             x:Class="quazimodo.Views.Popups.ApproveDeclaimMicPermissionsPopup"
+             x:Name="saveRecordPopup">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1"
+              Grid.Column="1"
+              BackgroundColor="{StaticResource white7}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.Effects>
+                <effects:RoundedLayoutEffect HasBorder="True"
+                                             CornerRadius="10"
+                                             BorderColor="Red"
+                                             BorderWidth="1"
+                                             HasShadow="False" />
+            </Grid.Effects>
+            <Label Grid.Row="0"
+                   Text="{x:Static resources:Localization.AreYouSureWantDeclainMicPermissions}"
+                   FontSize="{StaticResource titleFontSize}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,10,0,0"
+                   TextColor="{StaticResource black1}"/>
+            <StackLayout Grid.Row="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Button HorizontalOptions="Center"
+                        Style="{StaticResource borderedRedButtonStyle}"
+                        Command="{Binding Source={x:Reference saveRecordPopup}, Path=Command}"
+                        CommandParameter="{x:Static constants:ConstantsForms.Negative}"
+                        Text="{x:Static resources:Localization.Disable}"/>
+                <Button HorizontalOptions="Center"
+                        Style="{StaticResource borderedRedButtonStyle}"
+                        Command="{Binding Source={x:Reference saveRecordPopup}, Path=Command}"
+                        CommandParameter="{x:Static constants:ConstantsForms.Positive}"
+                        Text="{x:Static resources:Localization.Allow}"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentView>

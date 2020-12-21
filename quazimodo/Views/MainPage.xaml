@@ -9,6 +9,7 @@
     xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
     xmlns:controlls="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
     xmlns:constants1="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
+    xmlns:popups="clr-namespace:quazimodo.Views.Popups;assembly=quazimodo"
     NavigationPage.HasNavigationBar="False"
     BackgroundColor="{StaticResource darkPurple}"
     x:Class="quazimodo.Views.MainPage">
@@ -197,16 +198,23 @@
                                    WidthRequest="{StaticResource progressViewSize}"
                                    Progress="{Binding RecordingViewProgress}"
                                    IsVisible="{Binding RecordingViewVisible}" />
-        <controlls:ConfirmPopup Grid.Row="0"
+        
+        <popups:ApproveDeclaimMicPermissionsPopup Grid.Row="0"
+                                                  Grid.RowSpan="3"
+                                                  BackgroundColor="{StaticResource darkPurple}"
+                                                  Opacity="0.8"
+                                                  Command="{Binding HideADMPPopusCommmand}"
+                                                  HeightRequest="{StaticResource progressViewSize}"
+                                                  WidthRequest="{StaticResource progressViewSize}"
+                                                  IsVisible="{Binding ADMPPopupVisible}" />
+        
+        <popups:StopRecordPopup Grid.Row="0"
                                 Grid.RowSpan="3"
                                 BackgroundColor="{StaticResource darkPurple}"
                                 Opacity="0.8"
-                                MessageText="{Binding ConfirmMessage}"
-                                PositiveBtnText="{Binding ConfirmPopupPositiveBtnText}"
-                                NegativeBtnText="{Binding ConfirmPopupNegativeBtnText}"
-                                Command="{Binding HideRecordPopupCommand}"
+                                Command="{Binding HideStopRecordingPopupCommand}"
                                 HeightRequest="{StaticResource progressViewSize}"
                                 WidthRequest="{StaticResource progressViewSize}"
-                                IsVisible="{Binding ConfirmPopupVisible}" />
+                                IsVisible="{Binding StopRecordingPopupVisible}" />
     </Grid>
 </ContentPage>

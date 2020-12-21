@@ -11,6 +11,7 @@ using quazimodo.Services;
 using quazimodo.Services.Interfaces;
 using quazimodo.Utilities;
 using quazimodo.Utilities.Constants;
+using quazimodo.Views.Popups;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms.Internals;
@@ -32,7 +33,9 @@ namespace quazimodo.ViewModels
         private bool _tooMuchSoundsInOneTime;
         private bool _recordingViewVisible;
         private bool _microphoneIsDisabledByUser;
-        private bool _confirmPopupVisible;
+        private bool _confirmPopupVisible;        
+        private bool _stopRecordingPopupVisible;
+        private bool _admpPopupVisible;
         private double _recordingViewProgress;
         private string _confirmMessage;
         private string _confirmPopupPositiveBtnText;
@@ -43,7 +46,6 @@ namespace quazimodo.ViewModels
 
         #region Properties
 
-        public ConfirmMessageType TypeOfLastConfirmMessage { get; set; }
         public bool AppsIsLoaded { get; set; }
         public Command SoundBtnClickCommand { get; set; }
         public Command StopCommand { get; set; }
@@ -52,7 +54,8 @@ namespace quazimodo.ViewModels
         public Command HideMyAppsCommand { get; set; }
         public Command SelectedMyAppCommand { get; set; }
         public Command StopRecordingCommand { get; set; }
-        public Command HideRecordPopupCommand { get; set; }
+        public Command HideADMPPopusCommmand { get; set; }
+        public Command HideStopRecordingPopupCommand { get; set; }
         public ObservableRangeCollection<MyApp> MyApps { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> SmileSoundList { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> PlayingSoundsNow { get; set; }
@@ -141,44 +144,24 @@ namespace quazimodo.ViewModels
                 OnPropertyChanged(nameof(TooMuchSoundsInOneTime));
             }
         }
-
-        public bool ConfirmPopupVisible
+        
+        public bool StopRecordingPopupVisible
         {
-            get => _confirmPopupVisible;
+            get => _stopRecordingPopupVisible;
             set
             {
-                _confirmPopupVisible = value;
-                OnPropertyChanged(nameof(ConfirmPopupVisible));
+                _stopRecordingPopupVisible = value;
+                OnPropertyChanged(nameof(StopRecordingPopupVisible));
             }
         }
-
-        public string ConfirmMessage
+        
+        public bool ADMPPopupVisible
         {
-            get => _confirmMessage;
+            get => _admpPopupVisible;
             set
             {
-                _confirmMessage = value;
-                OnPropertyChanged(nameof(ConfirmMessage));
-            }
-        }
-
-        public string ConfirmPopupPositiveBtnText
-        {
-            get => _confirmPopupPositiveBtnText;
-            set
-            {
-                _confirmPopupPositiveBtnText = value;
-                OnPropertyChanged(nameof(ConfirmPopupPositiveBtnText));
-            }
-        }
-
-        public string ConfirmPopupNegativeBtnText
-        {
-            get => _confirmPopupNegativeBtnText;
-            set
-            {
-                _confirmPopupNegativeBtnText = value;
-                OnPropertyChanged(nameof(ConfirmPopupNegativeBtnText));
+                _admpPopupVisible = value;
+                OnPropertyChanged(nameof(ADMPPopupVisible));
             }
         }
 
@@ -203,7 +186,8 @@ namespace quazimodo.ViewModels
             HideMyAppsCommand = new Command(HideMyAppsCommandHandler);
             SelectedMyAppCommand = new Command(SelectedMyAppCommandHandler);
             StopRecordingCommand = new Command(StopRecordingCommandHandler);
-            StopRecordingCommand = new Command(HideConfirmPopupCommandHandler);
+            HideADMPPopusCommmand = new Command(HideADMPPopusCommmandHandler);
+            HideStopRecordingPopupCommand = new Command(HideStopRecordingPopupCommandHandler);
 
             MyApps = new ObservableRangeCollection<MyApp>();
             SmileSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
@@ -301,17 +285,13 @@ namespace quazimodo.ViewModels
             }
             else
             {
-                ConfirmMessage = Localization.DoYouWantSaveRecording;
-                ConfirmPopupNegativeBtnText = Localization.Yes;
-                ConfirmPopupPositiveBtnText = Localization.Close;
-
-                ConfirmPopupVisible = true;
-                TypeOfLastConfirmMessage = ConfirmMessageType.StopRecording;
+                StopRecordingPopupVisible = true;
             }
             
             await _soundService.StopRecording();
             StopRecordingOnUi();
         }
+
 
         private void StopRecordingOnUi()
         {
@@ -395,6 +375,19 @@ namespace quazimodo.ViewModels
         
         #region Handlers
         
+        private void HideStopRecordingPopupCommandHandler(object obj)
+        {
+            var param = obj as string;
+            if (param == ConstantsForms.Positive)
+            {
+                // DO SAVE
+            }
+
+            StopRecordingPopupVisible = false;
+            RecordingViewVisible = false;
+            ADMPPopupVisible = true;
+        }
+
         private void SoundReleasedHandler(SoundParameter parameter)
         {
             var model = PlayingSoundsNow.FirstOrDefault(x => x.CommandParameter == parameter);
@@ -416,15 +409,7 @@ namespace quazimodo.ViewModels
                 if (!MicrophoneIsDisabledByUser)
                 {
                     var permissions = await _soundService.CheckPermissions();
-                    if (permissions != PermissionStatus.Granted)
-                    {
-                        ConfirmMessage = Localization.AreYosSureWantDeclainMicPermissions;
-                        ConfirmPopupNegativeBtnText = Localization.Disable;
-                        ConfirmPopupPositiveBtnText = Localization.Allow;
-                        TypeOfLastConfirmMessage = ConfirmMessageType.DeclaimMicPermissions;
-
-                        ConfirmPopupVisible = true;
-                    }
+                    if (permissions != PermissionStatus.Granted) ADMPPopupVisible = true;
                 }
 
                 var smileViewModel = SmileSoundList.FirstOrDefault(x => x.CommandParameter == soundParameter);
@@ -462,43 +447,21 @@ namespace quazimodo.ViewModels
             }
         }
         
-        private async void HideConfirmPopupCommandHandler(object obj)
+        private async void HideADMPPopusCommmandHandler(object obj)
         {
             var param = (string) obj;
 
-            switch (TypeOfLastConfirmMessage)
+            if (param == ConstantsForms.Positive)
             {
-                case ConfirmMessageType.DeclaimMicPermissions:
-                    if (param == ConstantsForms.Positive)
-                    {
-                        MicrophoneIsDisabledByUser = true;
-                    }
-                    else
-                    {
-                        MicrophoneIsDisabledByUser = false;
-                        ConfirmPopupVisible = false;
-                        var permissionStatus = await _soundService.CheckPermissions();
-                        if (permissionStatus != PermissionStatus.Granted)
-                        {
-                            MicrophoneIsDisabledByUser = true;
-                        }
-                    }
-
-                    break;
-                case ConfirmMessageType.StopRecording:
-                    if (param == ConstantsForms.Positive)
-                    {
-                        // DO SAVE
-                    }
-
-                    ConfirmPopupVisible = false;
-                    RecordingViewVisible = false;
-                    break;
-                case ConfirmMessageType.None:
-                    break;
+                MicrophoneIsDisabledByUser = true;
             }
-
-            TypeOfLastConfirmMessage = ConfirmMessageType.None;
+            else
+            {
+                MicrophoneIsDisabledByUser = false;
+                ADMPPopupVisible = false;
+                var permissionStatus = await _soundService.CheckPermissions();
+                if (permissionStatus != PermissionStatus.Granted) MicrophoneIsDisabledByUser = true;
+            }
         }
 
         private void StopRecordingCommandHandler()
@@ -531,7 +494,6 @@ namespace quazimodo.ViewModels
         {
             StopSounds();
             StopRecording(true);
-            TypeOfLastConfirmMessage = ConfirmMessageType.None;
         }
 
         void ConnectivityChangedHandler(object sender, ConnectivityChangedEventArgs e)

@@ -50,7 +50,8 @@
                              RadiusY="{StaticResource imageRadius}"/>
         </Image.Clip>
         <Image.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding Source={x:Reference circleImageView}, Path=Command}"/>
+            <TapGestureRecognizer Command="{Binding Source={x:Reference circleImageView}, Path=Command}"
+                                  CommandParameter="{Binding Source={x:Reference circleImageView}, Path=CommandParameter}"/>
         </Image.GestureRecognizers>
     </Image>
 </Grid>

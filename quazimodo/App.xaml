@@ -39,6 +39,7 @@
         <Color x:Key="white5">#d7ccc8</Color>
         <Color x:Key="white6">#ffe0b2</Color>
         <Color x:Key="white7">Beige</Color>
+        <Color x:Key="black1">Black</Color>
         <Color x:Key="red">Red</Color>
         
         <!--IconFonts-->
@@ -169,7 +170,7 @@
             <Setter Property="BorderWidth" Value="1" />
             <Setter Property="BorderColor" Value="{StaticResource red}" />
             <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Margin" Value="10,0,0,10" />
+            <Setter Property="Margin" Value="10,10,0,10" />
         </Style>
         <Style x:Key="customSoundItem" TargetType="Button">
             <Setter Property="BackgroundColor" Value="#a69b9770" />
