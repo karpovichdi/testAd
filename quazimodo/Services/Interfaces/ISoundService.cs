@@ -8,7 +8,7 @@ namespace quazimodo.Services.Interfaces
     public abstract class ISoundService
     {
         internal bool MicrophonePermissionsGranted;
-        public abstract Action<SoundParameter> SoundReleased { get; set; }
+        public abstract Action<SoundParameter> SongReleased { get; set; }
         public abstract Action AppClosed { get; set; }
         public abstract Action RecordReleased { get; set; }
         public abstract Task CreateSoundPathAndPlay(SoundParameter parameter);

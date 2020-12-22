@@ -5,6 +5,8 @@ namespace quazimodo.Utilities.Constants
 {
     public static class ConstantsForms
     {
+        public const string ImageExtension = ".png";
+        
         public const int MaxCountOfSoundInOneTime = 10;
         
         public static int AdditionalValueToRecordProgress = (100/MaxLenghtOfRecordedSoundInSecond)/2;

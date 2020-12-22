@@ -3,18 +3,17 @@ using quazimodo.Models.Enums;
 using quazimodo.Utilities.Constants;
 using quazimodo.ViewModels;
 using Xamarin.Forms;
+using static quazimodo.Utilities.Constants.ConstantsForms;
 
 namespace quazimodo.Services
 {
     public class SmileButtonSourceService
     {
-        private const string ImageExtension = ".png";
-        
         internal List<ButtonSmileViewModel> GetSmiles()
         {
             var fontImageSource = new FontImageSource()
             {
-                FontFamily = ConstantsForms.MarkupResources.IcoMoonFontForAndroid,
+                FontFamily = MarkupResources.IcoMoonFontForAndroid,
                 Size = 44,
                 Color = Color.Red,
                 Glyph = FontIcons.mic

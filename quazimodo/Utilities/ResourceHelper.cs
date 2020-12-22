@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
+using quazimodo.Models.Enums;
 using quazimodo.Utilities.Constants;
 
 namespace quazimodo.Utilities
@@ -10,6 +12,11 @@ namespace quazimodo.Utilities
         {
             var assembly = typeof(App).GetTypeInfo().Assembly;
             return assembly.GetManifestResourceStream(ConstantsForms.PathToSounds + soundName);
+        }
+        
+        public static string GetSongPath(SoundParameter parameter)
+        {
+            return $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/{parameter}";
         }
     }
 }

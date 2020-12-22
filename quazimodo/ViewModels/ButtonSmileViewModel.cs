@@ -5,22 +5,33 @@ namespace quazimodo.ViewModels
 {
     public class ButtonSmileViewModel : BindableObject
     {
+        private ImageSource _image;
+        private string _songPath;
         private bool _isPlaying;
         private bool _isPlusButton;
-        private ImageSource _image;
-
+        
         public SoundParameter CommandParameter { get; set; }
         public SmileType SmileType { get; set; }
         public bool IsRecord { get; set; }
         public bool IsVisibleRecord { get; set; }
 
-        public ImageSource Image // TODO try to delete binding for this property
+        public ImageSource Image
         {
             get => _image;
             set
             {
                 _image = value;
                 OnPropertyChanged(nameof(Image));
+            }
+        }
+        
+        public string SongPath
+        {
+            get => _songPath;
+            set
+            {
+                _songPath = value;
+                OnPropertyChanged(nameof(SongPath));
             }
         }
         

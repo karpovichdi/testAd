@@ -25,15 +25,15 @@
         <ScrollView Grid.RowSpan="2">
             <StackLayout Spacing="0"
                          Margin="0,5,0,0">
-                <controlls:SmileUiStackLayout ItemCommand="{Binding SoundBtnClickCommand}"
-                                              ItemSource="{Binding SmileSoundList}" />
+                <controlls:SmileUiStackLayout ItemCommand="{Binding SongClickCommand}"
+                                              ItemSource="{Binding SongList}" />
                 <StackLayout Orientation="Horizontal"
                              HorizontalOptions="Center"
                              Margin="{StaticResource defaultOffset}">
                     <Button Text="{x:Static resources:Localization.Tap}"
                             BackgroundColor="{StaticResource white4}"
                             CornerRadius="{StaticResource defaultCorner}"
-                            Command="{Binding MyAppsCommand}"
+                            Command="{Binding ShowMyAppListCommand}"
                             IsVisible="{Binding MyAppsIsExist}" />
                 </StackLayout>
             </StackLayout>
@@ -99,7 +99,7 @@
                     Text="{x:Static resources:Localization.Skip}"
                     Margin="0,40,0,0"
                     Style="{StaticResource borderedButtonStyle}"
-                    Command="{Binding HidePopupCommand}" />
+                    Command="{Binding HideDonationPageCommand}" />
             <Button Grid.Row="2"
                     Text="{x:Static resources:Localization.Stop}"
                     Style="{StaticResource borderedButtonStyle}"
@@ -191,19 +191,19 @@
                                    AdId="{x:Static constants1:AdConstants.TestBannerId}" />
         <controlls:CircleImageView Grid.Row="0"
                                    Grid.RowSpan="3"
-                                   Command="{Binding StopRecordingCommand}"
+                                   Command="{Binding StopRecordCommand}"
                                    BackgroundColor="{StaticResource darkPurple}"
                                    Opacity="0.8"
                                    HeightRequest="{StaticResource progressViewSize}"
                                    WidthRequest="{StaticResource progressViewSize}"
                                    Progress="{Binding RecordingViewProgress}"
-                                   IsVisible="{Binding RecordingViewVisible}" />
+                                   IsVisible="{Binding RecordViewVisible}" />
         
         <popups:ApproveDeclaimMicPermissionsPopup Grid.Row="0"
                                                   Grid.RowSpan="3"
                                                   BackgroundColor="{StaticResource darkPurple}"
                                                   Opacity="0.8"
-                                                  Command="{Binding HideADMPPopusCommmand}"
+                                                  Command="{Binding HideADMPPopupCommmand}"
                                                   HeightRequest="{StaticResource progressViewSize}"
                                                   WidthRequest="{StaticResource progressViewSize}"
                                                   IsVisible="{Binding ADMPPopupVisible}" />
@@ -212,7 +212,7 @@
                                 Grid.RowSpan="3"
                                 BackgroundColor="{StaticResource darkPurple}"
                                 Opacity="0.8"
-                                Command="{Binding HideStopRecordingPopupCommand}"
+                                Command="{Binding HideRecordPopupCommand}"
                                 HeightRequest="{StaticResource progressViewSize}"
                                 WidthRequest="{StaticResource progressViewSize}"
                                 IsVisible="{Binding StopRecordingPopupVisible}" />

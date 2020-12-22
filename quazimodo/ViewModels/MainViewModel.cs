@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 using System.Timers;
 using quazimodo.Models;
 using quazimodo.Models.Enums;
-using quazimodo.Resources;
 using quazimodo.Services;
 using quazimodo.Services.Interfaces;
 using quazimodo.Utilities;
 using quazimodo.Utilities.Constants;
-using quazimodo.Views.Popups;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms.Internals;
@@ -31,34 +29,31 @@ namespace quazimodo.ViewModels
         private bool _myAppsIsExist;
         private bool _myAppsPageVisible;
         private bool _tooMuchSoundsInOneTime;
-        private bool _recordingViewVisible;
+        private bool _recordViewVisible;
         private bool _microphoneIsDisabledByUser;
-        private bool _confirmPopupVisible;        
         private bool _stopRecordingPopupVisible;
         private bool _admpPopupVisible;
         private double _recordingViewProgress;
-        private string _confirmMessage;
-        private string _confirmPopupPositiveBtnText;
-        private string _confirmPopupNegativeBtnText;
-        private Timer _timer;
+        private Timer _recordProgressTimer;
+        private ButtonSmileViewModel _lastClickedViewModel;
 
         #endregion
 
         #region Properties
 
         public bool AppsIsLoaded { get; set; }
-        public Command SoundBtnClickCommand { get; set; }
+        public Command SongClickCommand { get; set; }
         public Command StopCommand { get; set; }
-        public Command HidePopupCommand { get; set; }
-        public Command MyAppsCommand { get; set; }
+        public Command HideDonationPageCommand { get; set; }
+        public Command ShowMyAppListCommand { get; set; }
         public Command HideMyAppsCommand { get; set; }
-        public Command SelectedMyAppCommand { get; set; }
-        public Command StopRecordingCommand { get; set; }
-        public Command HideADMPPopusCommmand { get; set; }
-        public Command HideStopRecordingPopupCommand { get; set; }
+        public Command MyAppSelectedCommand { get; set; }
+        public Command StopRecordCommand { get; set; }
+        public Command HideADMPPopupCommmand { get; set; }
+        public Command HideRecordPopupCommand { get; set; }
         public ObservableRangeCollection<MyApp> MyApps { get; set; }
-        public ObservableRangeCollection<ButtonSmileViewModel> SmileSoundList { get; set; }
-        public ObservableRangeCollection<ButtonSmileViewModel> PlayingSoundsNow { get; set; }
+        public ObservableRangeCollection<ButtonSmileViewModel> SongList { get; set; }
+        public ObservableRangeCollection<ButtonSmileViewModel> PlayingSong { get; set; }
 
         #endregion
 
@@ -104,13 +99,13 @@ namespace quazimodo.ViewModels
             }
         }
 
-        public bool RecordingViewVisible
+        public bool RecordViewVisible
         {
-            get => _recordingViewVisible;
+            get => _recordViewVisible;
             set
             {
-                _recordingViewVisible = value;
-                OnPropertyChanged(nameof(RecordingViewVisible));
+                _recordViewVisible = value;
+                OnPropertyChanged(nameof(RecordViewVisible));
             }
         }
 
@@ -179,19 +174,19 @@ namespace quazimodo.ViewModels
 
         public MainViewModel()
         {
-            SoundBtnClickCommand = new Command(SoundSelectedHandler);
+            SongClickCommand = new Command(SongClickHandler);
             StopCommand = new Command(StopCommandHandler);
-            HidePopupCommand = new Command(HidePopupCommandHandler);
-            MyAppsCommand = new Command(MyAppsCommandHandler);
-            HideMyAppsCommand = new Command(HideMyAppsCommandHandler);
-            SelectedMyAppCommand = new Command(SelectedMyAppCommandHandler);
-            StopRecordingCommand = new Command(StopRecordingCommandHandler);
-            HideADMPPopusCommmand = new Command(HideADMPPopusCommmandHandler);
-            HideStopRecordingPopupCommand = new Command(HideStopRecordingPopupCommandHandler);
+            HideDonationPageCommand = new Command(HideDonationPageHandler);
+            ShowMyAppListCommand = new Command(ShowMyAppListHandler);
+            HideMyAppsCommand = new Command(HideMyAppsHandler);
+            MyAppSelectedCommand = new Command(MyAppSelectedHandler);
+            StopRecordCommand = new Command(StopRecordHandler);
+            HideADMPPopupCommmand = new Command(HideADMPPopupHandler);
+            HideRecordPopupCommand = new Command(HideRecordPopupdHandler);
 
             MyApps = new ObservableRangeCollection<MyApp>();
-            SmileSoundList = new ObservableRangeCollection<ButtonSmileViewModel>();
-            PlayingSoundsNow = new ObservableRangeCollection<ButtonSmileViewModel>();
+            SongList = new ObservableRangeCollection<ButtonSmileViewModel>();
+            PlayingSong = new ObservableRangeCollection<ButtonSmileViewModel>();
 
             _smileButtonSourceService = new SmileButtonSourceService();
             _firebaseService = new FirebaseService();
@@ -199,19 +194,19 @@ namespace quazimodo.ViewModels
 
             _firebaseService.Initialize();
 
-            SmileSoundList.AddRange(_smileButtonSourceService.GetSmiles());
+            SongList.AddRange(_smileButtonSourceService.GetSmiles());
 
             Connectivity.ConnectivityChanged += ConnectivityChangedHandler;
-            PlayingSoundsNow.CollectionChanged += PlayingSoundsChanged;
+            PlayingSong.CollectionChanged += PlayingSongsChanged;
 
-            _soundService.SoundReleased += SoundReleasedHandler;
+            _soundService.SongReleased += SongReleasedHandler;
             _soundService.RecordReleased += RecordReleasedHandler;
             _soundService.AppClosed += AppClosedHandler;
         }
 
         #region Methods
         
-        private void PlayingSoundsChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void PlayingSongsChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             var changedAction = e.Action;
             switch (changedAction)
@@ -234,7 +229,7 @@ namespace quazimodo.ViewModels
                         if (item is ButtonSmileViewModel viewModel) RequestToDisableSmile(viewModel);
                     }
 
-                    if (PlayingSoundsNow.Count == 0) StopButtonVisible = false;
+                    if (PlayingSong.Count == 0) StopButtonVisible = false;
                     break;
                 case NotifyCollectionChangedAction.Replace:
                     break;
@@ -246,12 +241,12 @@ namespace quazimodo.ViewModels
 
         private void RequestToDisableTooMuchPopup()
         {
-            if (PlayingSoundsNow.Count < ConstantsForms.MaxCountOfSoundInOneTime) TooMuchSoundsInOneTime = false;
+            if (PlayingSong.Count < ConstantsForms.MaxCountOfSoundInOneTime) TooMuchSoundsInOneTime = false;
         }
 
         private void RequestToDisableSmile(ButtonSmileViewModel viewModel)
         {
-            var viewModels = PlayingSoundsNow.Where(x =>
+            var viewModels = PlayingSong.Where(x =>
                 x.CommandParameter == viewModel.CommandParameter);
 
             if (!viewModels.Any()) viewModel.IsPlaying = false;
@@ -260,12 +255,12 @@ namespace quazimodo.ViewModels
         private async Task PrepareToRecording(ButtonSmileViewModel buttonSmileViewModel)
         {
             await StopSounds();
-
-            RecordingViewVisible = true;
             
-            _timer = new Timer(500) {AutoReset = true};
-            _timer.Elapsed += OnTimedEvent;
-            _timer.Start();
+            RecordViewVisible = true;
+            
+            _recordProgressTimer = new Timer(500) {AutoReset = true};
+            _recordProgressTimer.Elapsed += OnTimedEvent;
+            _recordProgressTimer.Start();
             
             await _soundService.StartRecording(buttonSmileViewModel.CommandParameter);
         }
@@ -291,22 +286,21 @@ namespace quazimodo.ViewModels
             await _soundService.StopRecording();
             StopRecordingOnUi();
         }
-
-
+        
         private void StopRecordingOnUi()
         {
-            RecordingViewVisible = false;
+            RecordViewVisible = false;
             RecordingViewProgress = 0;
             
-            _timer.Stop();
-            _timer = null;
+            _recordProgressTimer.Stop();
+            _recordProgressTimer = null;
         }
 
         private async Task StopSounds()
         {
             await _soundService.StopPlayingAll();
-            PlayingSoundsNow.ForEach(x => x.IsPlaying = false);
-            PlayingSoundsNow.Clear();
+            PlayingSong.ForEach(x => x.IsPlaying = false);
+            PlayingSong.Clear();
         }
 
         public async Task FillMyAppList()
@@ -339,11 +333,6 @@ namespace quazimodo.ViewModels
             return null;
         }
 
-        private void LastSoundStopped()
-        {
-            StopButtonVisible = false;
-        }
-
         private async Task PrepareToPlaySound(ButtonSmileViewModel smileViewModel)
         {
             StopButtonVisible = true;
@@ -357,13 +346,13 @@ namespace quazimodo.ViewModels
                 App.CountOfPlayedSound = 0;
             }
 
-            PlayingSoundsNow.Add(smileViewModel);
+            PlayingSong.Add(smileViewModel);
             _soundService.CreateSoundPathAndPlay(smileViewModel.CommandParameter);
         }
 
         private void HideAllRecordButtons()
         {
-            var smileViewModels = SmileSoundList.Where(x => x.IsRecord);
+            var smileViewModels = SongList.Where(x => x.IsRecord);
             foreach (var viewModel in smileViewModels)
             {
                 viewModel.IsRecord = false;
@@ -375,31 +364,7 @@ namespace quazimodo.ViewModels
         
         #region Handlers
         
-        private void HideStopRecordingPopupCommandHandler(object obj)
-        {
-            var param = obj as string;
-            if (param == ConstantsForms.Positive)
-            {
-                // DO SAVE
-            }
-
-            StopRecordingPopupVisible = false;
-            RecordingViewVisible = false;
-            ADMPPopupVisible = true;
-        }
-
-        private void SoundReleasedHandler(SoundParameter parameter)
-        {
-            var model = PlayingSoundsNow.FirstOrDefault(x => x.CommandParameter == parameter);
-            if (model != null) PlayingSoundsNow.Remove(model);
-        }
-
-        private void RecordReleasedHandler()
-        {
-            StopRecordingOnUi();
-        }
-        
-        private async void SoundSelectedHandler(object obj)
+        private async void SongClickHandler(object obj)
         {
             try
             {
@@ -412,14 +377,16 @@ namespace quazimodo.ViewModels
                     if (permissions != PermissionStatus.Granted) ADMPPopupVisible = true;
                 }
 
-                var smileViewModel = SmileSoundList.FirstOrDefault(x => x.CommandParameter == soundParameter);
+                var smileViewModel = SongList.FirstOrDefault(x => x.CommandParameter == soundParameter);
+
+                _lastClickedViewModel = smileViewModel;
                 if (smileViewModel != null && smileViewModel.IsPlusButton)
                 {
                     await PrepareToRecording(smileViewModel);
                 }
                 else
                 {
-                    if (PlayingSoundsNow.Count < ConstantsForms.MaxCountOfSoundInOneTime)
+                    if (PlayingSong.Count < ConstantsForms.MaxCountOfSoundInOneTime)
                     {
                         await PrepareToPlaySound(smileViewModel);
                     }
@@ -435,7 +402,7 @@ namespace quazimodo.ViewModels
             }
         }
         
-        private void SelectedMyAppCommandHandler(object obj)
+        private void MyAppSelectedHandler(object obj)
         {
             try
             {
@@ -447,7 +414,95 @@ namespace quazimodo.ViewModels
             }
         }
         
-        private async void HideADMPPopusCommmandHandler(object obj)
+        private void SongReleasedHandler(SoundParameter parameter)
+        {
+            var model = PlayingSong.FirstOrDefault(x => x.CommandParameter == parameter);
+            if (model != null) PlayingSong.Remove(model);
+        }
+        
+        private void RecordReleasedHandler()
+        {
+            if (_lastClickedViewModel.IsPlusButton)
+            {
+                var previousSongIsPlusButton = false;
+                foreach (var song in SongList)
+                {
+                    if (previousSongIsPlusButton)
+                    {
+                        // song.IsVisibleRecord = true;
+                        // song.IsPlusButton = true;
+                        // song.IsPlaying = false;
+                        break;
+                    }
+                    
+                    if (song.IsPlusButton)
+                    {
+                        // why microphone is hidden
+                        previousSongIsPlusButton = true;
+                        song.IsVisibleRecord = true;
+                        song.IsPlusButton = false;
+                        song.IsPlaying = false;
+                        song.Image = SoundParameter.smilingface + ConstantsForms.ImageExtension;
+                        song.SongPath = ResourceHelper.GetSongPath(_lastClickedViewModel.CommandParameter);
+                    }
+                }
+            }
+
+            StopRecordingOnUi();
+        }
+        
+        private async void StopCommandHandler(object obj)
+        {
+            StopSounds();
+        }
+        
+        private void StopRecordHandler()
+        {
+            StopRecording();
+        }
+
+        private void ShowMyAppListHandler()
+        {
+            MyAppsPageVisible = true;
+            DonationPageVisible = false;
+
+            // for debug
+            // var buttonSmileViewModel = SongList[36];
+            //
+            // if (buttonSmileViewModel.IsPlusButton)
+            // {
+            //     buttonSmileViewModel.IsPlusButton = false;    
+            // }
+            // else
+            // {
+            //     buttonSmileViewModel.IsPlusButton = true;   
+            // }
+        }
+
+        private void HideMyAppsHandler()
+        {
+            MyAppsPageVisible = false;
+        }
+
+        private void HideDonationPageHandler()
+        {
+            DonationPageVisible = false;
+        }
+
+        private void HideRecordPopupdHandler(object obj)
+        {
+            var param = obj as string;
+            if (param == ConstantsForms.Positive)
+            {
+                // DO SAVE
+            }
+
+            StopRecordingPopupVisible = false;
+            RecordViewVisible = false;
+            ADMPPopupVisible = true;
+        }
+        
+        private async void HideADMPPopupHandler(object obj)
         {
             var param = (string) obj;
 
@@ -463,33 +518,7 @@ namespace quazimodo.ViewModels
                 if (permissionStatus != PermissionStatus.Granted) MicrophoneIsDisabledByUser = true;
             }
         }
-
-        private void StopRecordingCommandHandler()
-        {
-            StopRecording();
-        }
-
-        private void MyAppsCommandHandler()
-        {
-            MyAppsPageVisible = true;
-            DonationPageVisible = false;
-        }
-
-        private void HideMyAppsCommandHandler()
-        {
-            MyAppsPageVisible = false;
-        }
-
-        private void HidePopupCommandHandler()
-        {
-            DonationPageVisible = false;
-        }
-
-        private async void StopCommandHandler(object obj)
-        {
-            StopSounds();
-        }
-
+        
         private void AppClosedHandler()
         {
             StopSounds();

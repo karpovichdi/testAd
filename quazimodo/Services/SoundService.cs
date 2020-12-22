@@ -18,7 +18,7 @@ namespace quazimodo.Services
 {
     public class SoundService : ISoundService
     {
-        public override Action<SoundParameter> SoundReleased { get; set; }
+        public override Action<SoundParameter> SongReleased { get; set; }
         public override Action RecordReleased { get; set; }
         public override Action AppClosed { get; set; }
 
@@ -33,11 +33,6 @@ namespace quazimodo.Services
         private readonly AudioPlayer _audioPlayer;
         
         public bool CanPlaySound => _freePlayers.Count > 0;
-
-        private string GetPathToSound(SoundParameter parameter)
-        {
-            return $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/{parameter}";
-        }
 
         //     string path = Environment.ExternalStorageDirectory;
     //     string filename = Path.Combine(path, "myfile.txt");
@@ -84,7 +79,7 @@ namespace quazimodo.Services
             foreach (var player in keyValuePairs)
             {
                 _freePlayers.Add(player.Key);
-                SoundReleased.Invoke(player.Value);
+                SongReleased.Invoke(player.Value);
             }
 
             var busyPlayersCount = keyValuePairs.Count();
@@ -152,30 +147,28 @@ namespace quazimodo.Services
             _recorderService = new AudioRecorderService
             {
                 TotalAudioTimeout = TimeSpan.FromSeconds(ConstantsForms.MaxLenghtOfRecordedSoundInSecond),
-                FilePath = GetPathToSound(commandParameter),
+                FilePath = ResourceHelper.GetSongPath(commandParameter),
                 StopRecordingOnSilence = false
             };
                 
-            _recorderService.AudioInputReceived += RecorderServiceOnAudioInputReceived;
+            _recorderService.AudioInputReceived += OnRecordReceived;
             
             await _recorderService.StartRecording();
         }
         
-        private void RecorderServiceOnAudioInputReceived(object sender, string e)
+        private void OnRecordReceived(object sender, string e)
         {
-            _recorderService.AudioInputReceived -= RecorderServiceOnAudioInputReceived;
-            // not finished logic
+            _recorderService.AudioInputReceived -= OnRecordReceived;
             RecordReleased.Invoke();
         }
 
-        public override Task StopRecording()
+        public override async Task StopRecording()
         {
             if (_recorderService.IsRecording)
             {
-                _recorderService.StopRecording();
-            }
-
-            return Task.CompletedTask;
+                await _recorderService.StopRecording();
+                _recorderService = null;
+            };
         }
 
         private async Task<PermissionStatus> GetPermissions()
