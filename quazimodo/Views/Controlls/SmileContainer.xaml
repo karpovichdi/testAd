@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
              xmlns:controlls="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
+             xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
+             xmlns:constants="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
              x:Class="quazimodo.Views.Controlls.SmileContainer">
-    <!-- positive -->
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -14,19 +14,30 @@
         <BoxView Grid.RowSpan="2"
                  CornerRadius="{StaticResource defaultOffset}"
                  BackgroundColor="{StaticResource white6}" />
-        <Frame Grid.Row="0"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="Start">
-            <Label Style="{StaticResource soundCategoryStyle}"
-                   TextColor="{StaticResource lightOrange}"
-                   Text="{x:Static resources:Localization.PositiveHeader}" />
-        </Frame>
+        <Label Grid.Row="0"
+               Style="{StaticResource soundCategoryStyle}"
+               TextColor="{StaticResource lightOrange}"
+               Text="{x:Static resources:Localization.PositiveHeader}">
+            <Label.Effects>
+                <effects:RoundedLayoutEffect HasShadow="True"
+                                             CornerRadius="5"/>
+            </Label.Effects>
+        </Label>
+        <ImageButton Grid.Row="0"
+                     Style="{StaticResource imageButtonSettingStyle}">
+            <ImageButton.Source>
+                <FontImageSource FontFamily="{StaticResource icomoonFont}"
+                                 Color="{StaticResource lightOrange}"
+                                 Glyph="{x:Static constants:FontIcons.cog}"
+                                 Size="22">
+                </FontImageSource>
+            </ImageButton.Source>
+        </ImageButton>
         <controlls:ItemSourceFlexLayout x:Name="positiveFlex"
                                         Grid.Row="1"
                                         Style="{StaticResource flexLayoutStyle}"
                                         ItemSource="{Binding ViewModelItemSource.PositiveItemSource}"/>
     </Grid>
-    <!-- neutral -->
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -35,19 +46,30 @@
         <BoxView Grid.RowSpan="2"
                  CornerRadius="{StaticResource defaultOffset}"
                  BackgroundColor="{StaticResource white4}" />
-        <Frame Grid.Row="0"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="Start">
-            <Label Style="{StaticResource soundCategoryStyle}"
-                   TextColor="{StaticResource lightGray}"
-                   Text="{x:Static resources:Localization.NeutralHeader}" />
-        </Frame>
+        <Label Grid.Row="0"
+               Style="{StaticResource soundCategoryStyle}"
+               TextColor="{StaticResource lightGray}"
+               Text="{x:Static resources:Localization.NeutralHeader}">
+            <Label.Effects>
+                <effects:RoundedLayoutEffect HasShadow="True"
+                                             CornerRadius="5"/>
+            </Label.Effects>
+        </Label>
+        <ImageButton Grid.Row="0"
+                     Style="{StaticResource imageButtonSettingStyle}">
+            <ImageButton.Source>
+                <FontImageSource FontFamily="{StaticResource icomoonFont}"
+                                 Color="{StaticResource lightGray}"
+                                 Glyph="{x:Static constants:FontIcons.cog}"
+                                 Size="22">
+                </FontImageSource>
+            </ImageButton.Source>
+        </ImageButton>
         <controlls:ItemSourceFlexLayout x:Name="neutralFlex"
                                         Grid.Row="1"
                                         Style="{StaticResource flexLayoutStyle}"
                                         ItemSource="{Binding ViewModelItemSource.NeutralItemSource}"/>
     </Grid>
-    <!-- negative -->
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -56,15 +78,26 @@
         <BoxView Grid.RowSpan="2"
                  CornerRadius="{StaticResource defaultOffset}"
                  BackgroundColor="{StaticResource white5}" />
-        <Frame Grid.Row="0"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="Start">
-            <Label Style="{StaticResource soundCategoryStyle}"
-                   TextColor="{StaticResource lightYellow}"
-                   Text="{x:Static resources:Localization.NegativeHeader}" />
-        </Frame>
-        
-        <controlls:ItemSourceFlexLayout x:Name="negativeFlex"
+        <Label Grid.Row="0"
+               Style="{StaticResource soundCategoryStyle}"
+               TextColor="{StaticResource lightYellow}"
+               Text="{x:Static resources:Localization.NegativeHeader}">
+            <Label.Effects>
+                <effects:RoundedLayoutEffect HasShadow="True"
+                                             CornerRadius="5"/>
+            </Label.Effects>
+        </Label>
+        <ImageButton Grid.Row="0"
+                     Style="{StaticResource imageButtonSettingStyle}">
+            <ImageButton.Source>
+                <FontImageSource FontFamily="{StaticResource icomoonFont}"
+                                 Color="{StaticResource lightYellow}"
+                                 Glyph="{x:Static constants:FontIcons.cog}"
+                                 Size="22">
+                </FontImageSource>
+            </ImageButton.Source>
+        </ImageButton>
+        <controlls:ItemSourceFlexLayout x:Name="negativelFlex"
                                         Grid.Row="1"
                                         Style="{StaticResource flexLayoutStyle}"
                                         ItemSource="{Binding ViewModelItemSource.NegativeItemSource}"/>
