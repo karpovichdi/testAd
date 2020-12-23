@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Timers;
 using quazimodo.Models;
@@ -331,22 +330,22 @@ namespace quazimodo.ViewModels
         {
             if (closeWithoutPopup)
             {
+                await _soundService.StopRecording();
+                _soundService.DeleteSong(_lastClickedViewModel.CommandParameter);
+                StopRecordingOnUi();
             }
             else
             {
                 StopRecordingPopupVisible = true;
             }
-            
-            await _soundService.StopRecording();
-            StopRecordingOnUi();
         }
-        
+
         private void StopRecordingOnUi()
         {
             RecordViewVisible = false;
             RecordingViewProgress = 0;
             
-            _recordProgressTimer.Stop();
+            _recordProgressTimer?.Stop();
             _recordProgressTimer = null;
         }
 
@@ -526,18 +525,6 @@ namespace quazimodo.ViewModels
         {
             MyAppsPageVisible = true;
             DonationPageVisible = false;
-
-            // for debug
-            // var buttonSmileViewModel = SongList[36];
-            //
-            // if (buttonSmileViewModel.IsPlusButton)
-            // {
-            //     buttonSmileViewModel.IsPlusButton = false;    
-            // }
-            // else
-            // {
-            //     buttonSmileViewModel.IsPlusButton = true;   
-            // }
         }
 
         private void HideMyAppsHandler()
@@ -555,12 +542,11 @@ namespace quazimodo.ViewModels
             var param = obj as string;
             if (param == ConstantsForms.Positive)
             {
-                // DO SAVE
+                _soundService.StopRecording();
             }
 
+            StopRecordingOnUi();
             StopRecordingPopupVisible = false;
-            RecordViewVisible = false;
-            ADMPPopupVisible = true;
         }
         
         private async void HideADMPPopupHandler(object obj)

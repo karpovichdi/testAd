@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 using Plugin.AudioRecorder;
 using Plugin.SimpleAudioPlayer;
 using quazimodo.Models.Enums;
@@ -31,25 +32,11 @@ namespace quazimodo.Services
 
         private readonly AudioPlayer _audioPlayer;
 
-        public bool CanPlaySound => _freePlayers.Count > 0;
+        private bool CanPlaySound => _freePlayers.Count > 0;
 
-        //     string path = Environment.ExternalStorageDirectory;
-    //     string filename = Path.Combine(path, "myfile.txt");
-    //
-    //         using (var streamWriter = new StreamWriter(filename, true))
-    //     {
-    //         streamWriter.WriteLine(DateTime.UtcNow);
-    //     }
-    //
-    // using (var streamReader = new StreamReader(filename))
-    // {
-    // string content = streamReader.ReadToEnd();
-    // System.Diagnostics.Debug.WriteLine(content);
-    // }
-    
         public SoundService()
         {
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < ConstantsForms.MaxCountOfSoundInOneTime; i++)
             {
                 var player = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
                 player.PlaybackEnded += PlayerOnPlaybackEnded;
@@ -60,69 +47,10 @@ namespace quazimodo.Services
             _audioPlayer.FinishedPlaying += AudioFinishHandler;
         }
 
-        private ISimpleAudioPlayer GetPlayer(SoundParameter soundParameter, Stream playingSongStream)
-        {
-            if (_freePlayers.Count == 0) return null;
-            var player = _freePlayers.First();
-            _freePlayers.Remove(player);
-            _busyPlayers.Add(player, new PlayerItemModel
-            { 
-                Stream = playingSongStream,
-                Parameter = soundParameter
-            });
-            return player;
-        }
-        
-        private void ReleasePlayer()
-        {
-            var players = _busyPlayers.Where(x => !x.Key.IsPlaying);
-            var keyValuePairs = players.ToList();
-            
-            foreach (var player in keyValuePairs)
-            {
-                player.Value.Stream.Close();
-                _freePlayers.Add(player.Key);
-                SongReleased.Invoke(player.Value.Parameter);
-            }
-
-            var busyPlayersCount = keyValuePairs.Count();
-            for (var i = 0; i < busyPlayersCount; i++)
-            {
-                _busyPlayers.Remove(keyValuePairs.ElementAt(i).Key);
-            }
-        }
-
-        private void Play(SoundParameter soundParameter)
-        {
-            try
-            {
-                var playingSongStream = ResourceHelper.GetStreamSound(soundParameter) ??
-                                        File.Open(ResourceHelper.GetSongPath(soundParameter), FileMode.Open, FileAccess.Read, FileShare.Read);
-
-                var player = GetPlayer(soundParameter, playingSongStream);
-                player.Load(playingSongStream);
-                player.Play();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-        }
-
-        private void PlayerOnPlaybackEnded(object sender, EventArgs e)
-        {
-            ReleasePlayer();
-        }
-
         public override async Task CreateSoundPathAndPlay(SoundParameter parameter)
         {
             if (!CanPlaySound) return;
             Play(parameter);
-        }
-        
-        private void AudioFinishHandler(object sender, EventArgs e)
-        {
-            _audioPlayer.Play(_recorderService.GetAudioFilePath());
         }
 
         public override async Task<PermissionStatus> CheckPermissions()
@@ -159,12 +87,6 @@ namespace quazimodo.Services
             
             await _recorderService.StartRecording();
         }
-        
-        private void OnRecordReceived(object sender, string e)
-        {
-            _recorderService.AudioInputReceived -= OnRecordReceived;
-            RecordReleased.Invoke();
-        }
 
         public override async Task StopRecording()
         {
@@ -175,9 +97,21 @@ namespace quazimodo.Services
             };
         }
 
-        private async Task<PermissionStatus> GetPermissions()
+        public override Task DeleteSong(SoundParameter parameter)
         {
-            return await Permissions.RequestAsync<Permissions.Microphone>();
+            try
+            {
+                var songPath = ResourceHelper.GetSongPath(parameter);
+                var fileExist = System.IO.File.Exists(songPath);
+                if (!fileExist) return Task.CompletedTask;
+                File.Delete(songPath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return Task.CompletedTask;
         }
 
         public override async Task StopPlayingAll()
@@ -189,6 +123,76 @@ namespace quazimodo.Services
             
             _busyPlayers.ForEach(x => x.Key.Stop());
             _busyPlayers.Clear();
+        }
+        
+        private void AudioFinishHandler(object sender, EventArgs e)
+        {
+            _audioPlayer.Play(_recorderService.GetAudioFilePath());
+        }
+        
+        private void OnRecordReceived(object sender, string e)
+        {
+            _recorderService.AudioInputReceived -= OnRecordReceived;
+            RecordReleased.Invoke();
+        }
+
+        private async Task<PermissionStatus> GetPermissions()
+        {
+            return await Permissions.RequestAsync<Permissions.Microphone>();
+        }
+
+        private void PlayerOnPlaybackEnded(object sender, EventArgs e)
+        {
+            ReleasePlayer();
+        }
+
+        private void Play(SoundParameter soundParameter)
+        {
+            try
+            {
+                var playingSongStream = ResourceHelper.GetStreamSound(soundParameter) ??
+                                        File.Open(ResourceHelper.GetSongPath(soundParameter), FileMode.Open, FileAccess.Read, FileShare.Read);
+
+                var player = GetPlayer(soundParameter, playingSongStream);
+                player.Load(playingSongStream);
+                player.Play();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+        
+        private void ReleasePlayer()
+        {
+            var players = _busyPlayers.Where(x => !x.Key.IsPlaying);
+            var keyValuePairs = players.ToList();
+            
+            foreach (var player in keyValuePairs)
+            {
+                player.Value.Stream.Close();
+                _freePlayers.Add(player.Key);
+                SongReleased.Invoke(player.Value.Parameter);
+            }
+
+            var busyPlayersCount = keyValuePairs.Count();
+            for (var i = 0; i < busyPlayersCount; i++)
+            {
+                _busyPlayers.Remove(keyValuePairs.ElementAt(i).Key);
+            }
+        }
+
+        private ISimpleAudioPlayer GetPlayer(SoundParameter soundParameter, Stream playingSongStream)
+        {
+            if (_freePlayers.Count == 0) return null;
+            var player = _freePlayers.First();
+            _freePlayers.Remove(player);
+            _busyPlayers.Add(player, new PlayerItemModel
+            { 
+                Stream = playingSongStream,
+                Parameter = soundParameter
+            });
+            return player;
         }
 
         private class PlayerItemModel

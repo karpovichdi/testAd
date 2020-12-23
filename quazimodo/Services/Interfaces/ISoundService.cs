@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Timers;
 using quazimodo.Models.Enums;
 using Xamarin.Essentials;
 
@@ -16,5 +17,6 @@ namespace quazimodo.Services.Interfaces
         public abstract Task<PermissionStatus> CheckPermissions();
         public abstract Task StartRecording(SoundParameter commandParameter);
         public abstract Task StopRecording();
+        public abstract Task DeleteSong(SoundParameter parameter);
     }
 }
