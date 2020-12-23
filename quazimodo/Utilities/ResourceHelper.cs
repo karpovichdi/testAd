@@ -8,15 +8,15 @@ namespace quazimodo.Utilities
 {
     public static class ResourceHelper
     {
-        public static Stream GetStreamSound(string soundName)
+        public static Stream GetStreamSound(SoundParameter soundName)
         {
             var assembly = typeof(App).GetTypeInfo().Assembly;
-            return assembly.GetManifestResourceStream(ConstantsForms.PathToSounds + soundName);
+            return assembly.GetManifestResourceStream($"{ConstantsForms.PathToSounds}{soundName}{ConstantsForms.SoundExtension}");
         }
         
         public static string GetSongPath(SoundParameter parameter)
         {
-            return $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/{parameter}";
+            return $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/{parameter}{ConstantsForms.SoundExtension}";
         }
     }
 }

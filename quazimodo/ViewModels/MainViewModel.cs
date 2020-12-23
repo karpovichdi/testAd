@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Timers;
 using quazimodo.Models;
@@ -36,12 +37,13 @@ namespace quazimodo.ViewModels
         private double _recordingViewProgress;
         private Timer _recordProgressTimer;
         private ButtonSmileViewModel _lastClickedViewModel;
-
+        
         #endregion
 
         #region Properties
 
         public bool AppsIsLoaded { get; set; }
+        public SmileItemSourceViewModel ViewModelItemSource { get; set; }
         public Command SongClickCommand { get; set; }
         public Command StopCommand { get; set; }
         public Command HideDonationPageCommand { get; set; }
@@ -52,7 +54,6 @@ namespace quazimodo.ViewModels
         public Command HideADMPPopupCommmand { get; set; }
         public Command HideRecordPopupCommand { get; set; }
         public ObservableRangeCollection<MyApp> MyApps { get; set; }
-        public ObservableRangeCollection<ButtonSmileViewModel> SongList { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> PlayingSong { get; set; }
 
         #endregion
@@ -185,7 +186,6 @@ namespace quazimodo.ViewModels
             HideRecordPopupCommand = new Command(HideRecordPopupdHandler);
 
             MyApps = new ObservableRangeCollection<MyApp>();
-            SongList = new ObservableRangeCollection<ButtonSmileViewModel>();
             PlayingSong = new ObservableRangeCollection<ButtonSmileViewModel>();
 
             _smileButtonSourceService = new SmileButtonSourceService();
@@ -194,7 +194,7 @@ namespace quazimodo.ViewModels
 
             _firebaseService.Initialize();
 
-            SongList.AddRange(_smileButtonSourceService.GetSmiles());
+            ViewModelItemSource = new SmileItemSourceViewModel(_smileButtonSourceService.GetSmiles());
 
             Connectivity.ConnectivityChanged += ConnectivityChangedHandler;
             PlayingSong.CollectionChanged += PlayingSongsChanged;
@@ -236,6 +236,60 @@ namespace quazimodo.ViewModels
                 case NotifyCollectionChangedAction.Reset:
                     StopButtonVisible = false;
                     break;
+            }
+        }
+
+        public static void DeleteAllRecords()
+        {
+            var records = new SoundParameter[]
+            {
+                SoundParameter.record1,
+                SoundParameter.record2,
+                SoundParameter.record3,
+                SoundParameter.record4,
+                SoundParameter.record5,
+                SoundParameter.record6,
+                SoundParameter.record7,
+                SoundParameter.record8,
+                SoundParameter.record9,
+                SoundParameter.record10,
+                SoundParameter.record11,
+                SoundParameter.record12,
+                SoundParameter.record13,
+                SoundParameter.record14,
+                SoundParameter.record15,
+                SoundParameter.record16,
+                SoundParameter.record17,
+                SoundParameter.record18,
+                SoundParameter.record19,
+                SoundParameter.record20,
+                SoundParameter.record21,
+                SoundParameter.record22,
+                SoundParameter.record23,
+                SoundParameter.record24,
+                SoundParameter.record25,
+                SoundParameter.record26,
+                SoundParameter.record27,
+                SoundParameter.record28,
+                SoundParameter.record29,
+                SoundParameter.record30,
+            };
+
+            foreach (var record in records)
+            {
+                var songPath = ResourceHelper.GetSongPath(record);
+                var fileExist = System.IO.File.Exists(songPath);
+                if (fileExist)
+                {
+                    try
+                    {
+                        System.IO.File.Delete(songPath);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                }
             }
         }
 
@@ -347,16 +401,23 @@ namespace quazimodo.ViewModels
             }
 
             PlayingSong.Add(smileViewModel);
-            _soundService.CreateSoundPathAndPlay(smileViewModel.CommandParameter);
+
+            try
+            {
+                _soundService.CreateSoundPathAndPlay(smileViewModel.CommandParameter);
+            }
+            catch (Exception e)
+            {
+                StopSounds();
+            }
         }
 
         private void HideAllRecordButtons()
         {
-            var smileViewModels = SongList.Where(x => x.IsRecord);
+            var smileViewModels = ViewModelItemSource.ItemSource.Where(x => x.IsRecord);
             foreach (var viewModel in smileViewModels)
             {
-                viewModel.IsRecord = false;
-                viewModel.IsVisibleRecord = false;
+                viewModel.IsVisible = false;
             }
         }
 
@@ -377,7 +438,7 @@ namespace quazimodo.ViewModels
                     if (permissions != PermissionStatus.Granted) ADMPPopupVisible = true;
                 }
 
-                var smileViewModel = SongList.FirstOrDefault(x => x.CommandParameter == soundParameter);
+                var smileViewModel = ViewModelItemSource.ItemSource.FirstOrDefault(x => x.CommandParameter == soundParameter);
 
                 _lastClickedViewModel = smileViewModel;
                 if (smileViewModel != null && smileViewModel.IsPlusButton)
@@ -425,13 +486,13 @@ namespace quazimodo.ViewModels
             if (_lastClickedViewModel.IsPlusButton)
             {
                 var previousSongIsPlusButton = false;
-                foreach (var song in SongList)
+                foreach (var song in ViewModelItemSource.ItemSource)
                 {
                     if (previousSongIsPlusButton)
                     {
-                        // song.IsVisibleRecord = true;
-                        // song.IsPlusButton = true;
-                        // song.IsPlaying = false;
+                        song.IsVisible = true;
+                        song.IsPlusButton = true;
+                        song.IsPlaying = false;
                         break;
                     }
                     
@@ -439,7 +500,7 @@ namespace quazimodo.ViewModels
                     {
                         // why microphone is hidden
                         previousSongIsPlusButton = true;
-                        song.IsVisibleRecord = true;
+                        song.IsVisible = true;
                         song.IsPlusButton = false;
                         song.IsPlaying = false;
                         song.Image = SoundParameter.smilingface + ConstantsForms.ImageExtension;

@@ -6,14 +6,24 @@ namespace quazimodo.Utilities.Constants
     public static class ConstantsForms
     {
         public const string ImageExtension = ".png";
-        
+        public const string SoundExtension = ".mp3";
+
         public const int MaxCountOfSoundInOneTime = 10;
+        public const int MaxCountOfSoundInOneTab = 10;
         
         public static int AdditionalValueToRecordProgress = (100/MaxLenghtOfRecordedSoundInSecond)/2;
 
         public const string PathToSounds = "quazimodo.Sounds.";
         public const string Positive = "Positive";
         public const string Negative = "Negative";
+        
+        public static FontImageSource DefaultImageSource => new FontImageSource()
+        {
+            FontFamily = MarkupResources.IcoMoonFontForAndroid,
+            Size = 44,
+            Color = Color.Red,
+            Glyph = FontIcons.mic
+        };
         
         public static class EffectIds
         {

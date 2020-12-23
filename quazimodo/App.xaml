@@ -92,7 +92,6 @@
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding IsPlusButton}"
                              Value="true">
-                    <Setter Property="IsVisible" Value="true" />
                     <Setter Property="BackgroundColor" Value="Transparent" />
                     <Setter Property="BorderColor" Value="Transparent" />
                 </DataTrigger>
@@ -117,7 +116,6 @@
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding IsPlusButton}"
                              Value="true">
-                    <!-- <Setter Property="IsVisible" Value="true" /> -->
                     <Setter Property="BackgroundColor" Value="Transparent" />
                     <Setter Property="BorderColor" Value="Transparent" />
                 </DataTrigger>
@@ -143,7 +141,6 @@
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding IsPlusButton}"
                              Value="true">
-                    <!-- <Setter Property="IsVisible" Value="true" /> -->
                     <Setter Property="BackgroundColor" Value="Transparent" />
                     <Setter Property="BorderColor" Value="Transparent" />
                 </DataTrigger>

@@ -3,8 +3,8 @@
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
-             xmlns:controlls1="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
-             x:Class="quazimodo.Views.Controlls.SmileUiStackLayout">
+             xmlns:controlls="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
+             x:Class="quazimodo.Views.Controlls.SmileContainer">
     <!-- positive -->
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
@@ -21,11 +21,10 @@
                    TextColor="{StaticResource lightOrange}"
                    Text="{x:Static resources:Localization.PositiveHeader}" />
         </Frame>
-        <controlls1:SmileButtonsFlexLayout x:Name="positiveFlex"
-                                          Grid.Row="1"
-                                          ItemCommand="{Binding SoundBtnClickCommand}"
-                                          ItemStyle="{StaticResource positiveEmojiItem}"
-                                          Style="{StaticResource flexLayoutStyle}" />
+        <controlls:ItemSourceFlexLayout x:Name="positiveFlex"
+                                        Grid.Row="1"
+                                        Style="{StaticResource flexLayoutStyle}"
+                                        ItemSource="{Binding ViewModelItemSource.PositiveItemSource}"/>
     </Grid>
     <!-- neutral -->
     <Grid Margin="{StaticResource defaultOffset}">
@@ -43,11 +42,10 @@
                    TextColor="{StaticResource lightGray}"
                    Text="{x:Static resources:Localization.NeutralHeader}" />
         </Frame>
-        <controlls1:SmileButtonsFlexLayout x:Name="neutralFlex"
-                                          Grid.Row="1"
-                                          ItemCommand="{Binding SoundBtnClickCommand}"
-                                          ItemStyle="{StaticResource neutralEmojiItem}"
-                                          Style="{StaticResource flexLayoutStyle}" />
+        <controlls:ItemSourceFlexLayout x:Name="neutralFlex"
+                                        Grid.Row="1"
+                                        Style="{StaticResource flexLayoutStyle}"
+                                        ItemSource="{Binding ViewModelItemSource.NeutralItemSource}"/>
     </Grid>
     <!-- negative -->
     <Grid Margin="{StaticResource defaultOffset}">
@@ -65,10 +63,10 @@
                    TextColor="{StaticResource lightYellow}"
                    Text="{x:Static resources:Localization.NegativeHeader}" />
         </Frame>
-        <controlls1:SmileButtonsFlexLayout x:Name="negativeFlex"
-                                          Grid.Row="1"
-                                          ItemCommand="{Binding SoundBtnClickCommand}"
-                                          ItemStyle="{StaticResource negativeEmojiItem}"
-                                          Style="{StaticResource flexLayoutStyle}" />
+        
+        <controlls:ItemSourceFlexLayout x:Name="negativeFlex"
+                                        Grid.Row="1"
+                                        Style="{StaticResource flexLayoutStyle}"
+                                        ItemSource="{Binding ViewModelItemSource.NegativeItemSource}"/>
     </Grid>
 </StackLayout>

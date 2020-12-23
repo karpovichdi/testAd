@@ -2,8 +2,6 @@
 
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
-             xmlns:constants1="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
              x:Class="quazimodo.Views.Controlls.ConfirmPopup"
              x:Name="saveRecordPopup">
     

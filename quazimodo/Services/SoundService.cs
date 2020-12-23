@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Plugin.AudioRecorder;
@@ -17,21 +18,19 @@ using Xamarin.Forms.Internals;
 namespace quazimodo.Services
 {
     public class SoundService : ISoundService
-    {
+    {        
         public override Action<SoundParameter> SongReleased { get; set; }
         public override Action RecordReleased { get; set; }
         public override Action AppClosed { get; set; }
 
         private readonly List<ISimpleAudioPlayer> _freePlayers = new List<ISimpleAudioPlayer>();
-        private readonly Dictionary<ISimpleAudioPlayer, SoundParameter> _busyPlayers = 
-            new Dictionary<ISimpleAudioPlayer, SoundParameter>();
-        
-        private const string SoundExtension = ".mp3";
+        private readonly Dictionary<ISimpleAudioPlayer, PlayerItemModel> _busyPlayers = 
+            new Dictionary<ISimpleAudioPlayer, PlayerItemModel>();
         
         private AudioRecorderService _recorderService;
 
         private readonly AudioPlayer _audioPlayer;
-        
+
         public bool CanPlaySound => _freePlayers.Count > 0;
 
         //     string path = Environment.ExternalStorageDirectory;
@@ -47,8 +46,7 @@ namespace quazimodo.Services
     // string content = streamReader.ReadToEnd();
     // System.Diagnostics.Debug.WriteLine(content);
     // }
-        
-        
+    
         public SoundService()
         {
             for (var i = 0; i < 10; i++)
@@ -62,12 +60,16 @@ namespace quazimodo.Services
             _audioPlayer.FinishedPlaying += AudioFinishHandler;
         }
 
-        private ISimpleAudioPlayer GetPlayer(SoundParameter soundParameter)
+        private ISimpleAudioPlayer GetPlayer(SoundParameter soundParameter, Stream playingSongStream)
         {
             if (_freePlayers.Count == 0) return null;
             var player = _freePlayers.First();
             _freePlayers.Remove(player);
-            _busyPlayers.Add(player, soundParameter);
+            _busyPlayers.Add(player, new PlayerItemModel
+            { 
+                Stream = playingSongStream,
+                Parameter = soundParameter
+            });
             return player;
         }
         
@@ -78,8 +80,9 @@ namespace quazimodo.Services
             
             foreach (var player in keyValuePairs)
             {
+                player.Value.Stream.Close();
                 _freePlayers.Add(player.Key);
-                SongReleased.Invoke(player.Value);
+                SongReleased.Invoke(player.Value.Parameter);
             }
 
             var busyPlayersCount = keyValuePairs.Count();
@@ -91,11 +94,19 @@ namespace quazimodo.Services
 
         private void Play(SoundParameter soundParameter)
         {
-            var streamSound = ResourceHelper.GetStreamSound(soundParameter + SoundExtension);
+            try
+            {
+                var playingSongStream = ResourceHelper.GetStreamSound(soundParameter) ??
+                                        File.Open(ResourceHelper.GetSongPath(soundParameter), FileMode.Open, FileAccess.Read, FileShare.Read);
 
-            var player = GetPlayer(soundParameter);
-            player.Load(streamSound);
-            player.Play();
+                var player = GetPlayer(soundParameter, playingSongStream);
+                player.Load(playingSongStream);
+                player.Play();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private void PlayerOnPlaybackEnded(object sender, EventArgs e)
@@ -105,15 +116,8 @@ namespace quazimodo.Services
 
         public override async Task CreateSoundPathAndPlay(SoundParameter parameter)
         {
-            try
-            {
-                if (!CanPlaySound) return;
-                Play(parameter);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            if (!CanPlaySound) return;
+            Play(parameter);
         }
         
         private void AudioFinishHandler(object sender, EventArgs e)
@@ -185,6 +189,12 @@ namespace quazimodo.Services
             
             _busyPlayers.ForEach(x => x.Key.Stop());
             _busyPlayers.Clear();
+        }
+
+        private class PlayerItemModel
+        {
+            public Stream Stream { get; set; }
+            public SoundParameter Parameter { get; set; }
         }
     }
 }
