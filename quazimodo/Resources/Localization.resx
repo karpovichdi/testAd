@@ -174,4 +174,7 @@ Just one click on the banner, and you will help someone) Spoiler, me)</value>
     <data name="Yes" xml:space="preserve">
         <value>Yes</value>
     </data>
+    <data name="SelectEntriesYouWantDeleteMessage" xml:space="preserve">
+        <value>Выберите ваши записи, которые хотите удалить и нажмите в правом углу кнопку подтвердить.</value>
+    </data>
 </root>

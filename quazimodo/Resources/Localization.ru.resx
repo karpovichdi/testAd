@@ -63,4 +63,7 @@
     <data name="Yes" xml:space="preserve">
         <value>Да</value>
     </data>
+    <data name="SelectEntriesYouWantDeleteMessage" xml:space="preserve">
+        <value>Выберите ваши записи, которые хотите удалить и нажмите в правом углу кнопку подтвердить.</value>
+    </data>
 </root>

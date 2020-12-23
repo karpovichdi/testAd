@@ -32,6 +32,7 @@ namespace quazimodo.ViewModels
         private bool _recordViewVisible;
         private bool _microphoneIsDisabledByUser;
         private bool _stopRecordingPopupVisible;
+        private bool _deleteHelpMessageVisible;
         private bool _admpPopupVisible;
         private double _recordingViewProgress;
         private Timer _recordProgressTimer;
@@ -44,6 +45,7 @@ namespace quazimodo.ViewModels
         public bool AppsIsLoaded { get; set; }
         public SmileItemSourceViewModel ViewModelItemSource { get; set; }
         public Command SongClickCommand { get; set; }
+        public Command SettingsBtnClickedCommand { get; set; }
         public Command StopCommand { get; set; }
         public Command HideDonationPageCommand { get; set; }
         public Command ShowMyAppListCommand { get; set; }
@@ -159,6 +161,16 @@ namespace quazimodo.ViewModels
                 OnPropertyChanged(nameof(ADMPPopupVisible));
             }
         }
+        
+        public bool DeleteHelpMessageVisible
+        {
+            get => _deleteHelpMessageVisible;
+            set
+            {
+                _deleteHelpMessageVisible = value;
+                OnPropertyChanged(nameof(DeleteHelpMessageVisible));
+            }
+        }
 
         public double RecordingViewProgress
         {
@@ -183,6 +195,7 @@ namespace quazimodo.ViewModels
             StopRecordCommand = new Command(StopRecordHandler);
             HideADMPPopupCommmand = new Command(HideADMPPopupHandler);
             HideRecordPopupCommand = new Command(HideRecordPopupdHandler);
+            SettingsBtnClickedCommand = new Command(SettingsBtnClickHandler);
 
             MyApps = new ObservableRangeCollection<MyApp>();
             PlayingSong = new ObservableRangeCollection<ButtonSmileViewModel>();
@@ -460,6 +473,21 @@ namespace quazimodo.ViewModels
             {
                 Console.WriteLine(e);
             }
+        }
+
+        private void SettingsBtnClickHandler(object obj)
+        {
+            switch ((SmileType)obj)
+            {
+                case SmileType.Positive:
+                    break;
+                case SmileType.Negative:
+                    break;
+                case SmileType.Neutral:
+                    break;
+            }
+
+            DeleteHelpMessageVisible = !DeleteHelpMessageVisible;
         }
         
         private void MyAppSelectedHandler(object obj)

@@ -136,5 +136,11 @@ namespace quazimodo.Resources {
                 return ResourceManager.GetString("Close", resourceCulture);
             }
         }
+        
+        public static string SelectEntriesYouWantDeleteMessage {
+            get {
+                return ResourceManager.GetString("SelectEntriesYouWantDeleteMessage", resourceCulture);
+            }
+        }
     }
 }
