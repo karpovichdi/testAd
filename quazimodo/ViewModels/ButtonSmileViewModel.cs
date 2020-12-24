@@ -110,6 +110,10 @@ namespace quazimodo.ViewModels
                 {
                     DeleteModeState = DeleteModeState.ModeEnabled;
                 }
+                else
+                {
+                    DeleteModeState = DeleteModeState.SongDisabled;
+                }
             }
             else
             {
@@ -119,10 +123,11 @@ namespace quazimodo.ViewModels
         
         public void TurnOffDeleteMode()
         {
-            if (!IsPlusButton)
-            {
-                DeleteModeState = DeleteModeState.ModeDisabled;
-            }
+            DeleteModeState = DeleteModeState.ModeDisabled;
+
+            if (!IsPlusButton) return;
+            IsPlusButton = false;
+            IsPlusButton = true;
         }
     }
 }
