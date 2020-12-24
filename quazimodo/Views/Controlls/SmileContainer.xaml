@@ -8,7 +8,7 @@
              xmlns:enums="clr-namespace:quazimodo.Models.Enums;assembly=quazimodo"
              x:Class="quazimodo.Views.Controlls.SmileContainer">
     <Label Style="{StaticResource labelDeleteMessageStyle}"
-           IsVisible="{Binding DeleteHelpMessageVisible}"/>
+           IsVisible="{Binding DeleteRecordsMode}"/>
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -43,7 +43,7 @@
                                         ItemSource="{Binding ViewModelItemSource.PositiveItemSource}"/>
     </Grid>
     <Label Style="{StaticResource labelDeleteMessageStyle}"
-           IsVisible="{Binding DeleteHelpMessageVisible}"/>
+           IsVisible="{Binding DeleteRecordsMode}"/>
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -78,7 +78,7 @@
                                         ItemSource="{Binding ViewModelItemSource.NeutralItemSource}"/>
     </Grid>
     <Label Style="{StaticResource labelDeleteMessageStyle}"
-           IsVisible="{Binding DeleteHelpMessageVisible}"/>
+           IsVisible="{Binding DeleteRecordsMode}"/>
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -113,5 +113,5 @@
                                         ItemSource="{Binding ViewModelItemSource.NegativeItemSource}"/>
     </Grid>
     <Label Style="{StaticResource labelDeleteMessageStyle}"
-           IsVisible="{Binding DeleteHelpMessageVisible}"/>
+           IsVisible="{Binding DeleteRecordsMode}"/>
 </StackLayout>

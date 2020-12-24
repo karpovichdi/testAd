@@ -6,6 +6,7 @@
     xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
     xmlns:constants1="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
     xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
+    xmlns:enums="clr-namespace:quazimodo.Models.Enums;assembly=quazimodo"
     x:Class="quazimodo.App">
     <Application.Resources>
         
@@ -13,6 +14,9 @@
         <x:Double x:Key="emojiOffset">5</x:Double>
         <x:Double x:Key="emojiSize">40</x:Double>
         <x:Double x:Key="emojiBorderWidth">1</x:Double>
+        <x:Double x:Key="emojiBigBorderWidth">3</x:Double>
+        <x:Double x:Key="lowTransperency">0.5</x:Double>
+        <x:Double x:Key="normalTransperency">1</x:Double>
         <x:Double x:Key="bigButtonSize">100</x:Double>
         <x:Double x:Key="middleButtonSize">80</x:Double>
         <x:Double x:Key="imageSize">60</x:Double>
@@ -42,6 +46,7 @@
         <Color x:Key="white7">Beige</Color>
         <Color x:Key="black1">Black</Color>
         <Color x:Key="red">Red</Color>
+        <Color x:Key="green">ForestGreen</Color>
         
         <!--IconFonts-->
         <OnPlatform x:Key="icomoonFont" x:TypeArguments="x:String">
@@ -71,6 +76,22 @@
                     <Setter Property="BackgroundColor" Value="{StaticResource darkPurple}" />
                     <Setter Property="BorderColor" Value="{StaticResource red}" />
                 </DataTrigger>
+                <DataTrigger TargetType="ImageButton"
+                             Binding="{Binding DeleteModeState}"
+                             Value="{x:Static enums:DeleteModeState.ModeEnabled}">
+                    <Setter Property="BorderColor" Value="{StaticResource green}" />
+                    <Setter Property="BorderWidth" Value="{StaticResource emojiBigBorderWidth}" />
+                </DataTrigger>
+                <DataTrigger TargetType="ImageButton"
+                             Binding="{Binding DeleteModeState}"
+                             Value="{x:Static enums:DeleteModeState.ToDelete}">
+                    <Setter Property="BorderColor" Value="{StaticResource red}" />
+                </DataTrigger>
+                <DataTrigger TargetType="ImageButton"
+                             Binding="{Binding DeleteModeState}"
+                             Value="{x:Static enums:DeleteModeState.SongDisabled}">
+                    <Setter Property="Opacity" Value="{StaticResource lowTransperency}" />
+                </DataTrigger>
             </Style.Triggers>
         </Style>
         <Style x:Key="positiveEmojiItem" TargetType="ImageButton" BasedOn="{StaticResource emojiBaseItem}">
@@ -96,6 +117,13 @@
                     <Setter Property="BackgroundColor" Value="Transparent" />
                     <Setter Property="BorderColor" Value="Transparent" />
                 </DataTrigger>
+                <DataTrigger TargetType="ImageButton"
+                             Binding="{Binding DeleteModeState}"
+                             Value="{x:Static enums:DeleteModeState.ModeDisabled}">
+                    <Setter Property="Opacity" Value="{StaticResource normalTransperency}" />
+                    <Setter Property="BorderColor" Value="{StaticResource white1}" />
+                    <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
+                </DataTrigger>
             </Style.Triggers>
         </Style>
         <Style x:Key="neutralEmojiItem" TargetType="ImageButton" BasedOn="{StaticResource emojiBaseItem}">
@@ -119,6 +147,13 @@
                              Value="true">
                     <Setter Property="BackgroundColor" Value="Transparent" />
                     <Setter Property="BorderColor" Value="Transparent" />
+                </DataTrigger>
+                <DataTrigger TargetType="ImageButton"
+                             Binding="{Binding DeleteModeState}"
+                             Value="{x:Static enums:DeleteModeState.ModeDisabled}">
+                    <Setter Property="Opacity" Value="{StaticResource normalTransperency}" />
+                    <Setter Property="BorderColor" Value="{StaticResource white1}" />
+                    <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -144,6 +179,13 @@
                              Value="true">
                     <Setter Property="BackgroundColor" Value="Transparent" />
                     <Setter Property="BorderColor" Value="Transparent" />
+                </DataTrigger>
+                <DataTrigger TargetType="ImageButton"
+                             Binding="{Binding DeleteModeState}"
+                             Value="{x:Static enums:DeleteModeState.ModeDisabled}">
+                    <Setter Property="Opacity" Value="{StaticResource normalTransperency}" />
+                    <Setter Property="BorderColor" Value="{StaticResource white3}" />
+                    <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>

@@ -32,7 +32,7 @@ namespace quazimodo.ViewModels
         private bool _recordViewVisible;
         private bool _microphoneIsDisabledByUser;
         private bool _stopRecordingPopupVisible;
-        private bool _deleteHelpMessageVisible;
+        private bool _deleteRecordsMode;
         private bool _admpPopupVisible;
         private double _recordingViewProgress;
         private Timer _recordProgressTimer;
@@ -162,13 +162,13 @@ namespace quazimodo.ViewModels
             }
         }
         
-        public bool DeleteHelpMessageVisible
+        public bool DeleteRecordsMode
         {
-            get => _deleteHelpMessageVisible;
+            get => _deleteRecordsMode;
             set
             {
-                _deleteHelpMessageVisible = value;
-                OnPropertyChanged(nameof(DeleteHelpMessageVisible));
+                _deleteRecordsMode = value;
+                OnPropertyChanged(nameof(DeleteRecordsMode));
             }
         }
 
@@ -477,17 +477,16 @@ namespace quazimodo.ViewModels
 
         private void SettingsBtnClickHandler(object obj)
         {
-            switch ((SmileType)obj)
+            if (!DeleteRecordsMode)
             {
-                case SmileType.Positive:
-                    break;
-                case SmileType.Negative:
-                    break;
-                case SmileType.Neutral:
-                    break;
+                DeleteRecordsMode = true;
+                ViewModelItemSource.ItemSource.ForEach(x => x.TurnOnDeleteMode());
             }
-
-            DeleteHelpMessageVisible = !DeleteHelpMessageVisible;
+            else
+            {
+                DeleteRecordsMode = false;
+                ViewModelItemSource.ItemSource.ForEach(x => x.TurnOffDeleteMode());
+            }
         }
         
         private void MyAppSelectedHandler(object obj)

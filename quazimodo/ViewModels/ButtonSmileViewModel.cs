@@ -1,5 +1,4 @@
-﻿using System;
-using quazimodo.Models.Enums;
+﻿using quazimodo.Models.Enums;
 using quazimodo.Utilities.Constants;
 using Xamarin.Forms;
 
@@ -10,7 +9,8 @@ namespace quazimodo.ViewModels
         private string _songPath;
         private bool _isPlaying;
         private bool _isPlusButton;
-        private bool _isVisible;
+        private bool _isVisible;        
+        private DeleteModeState _deleteModeState;
         private Style _style;
         private ImageSource _image;
 
@@ -69,6 +69,16 @@ namespace quazimodo.ViewModels
             }
         }
         
+        public DeleteModeState DeleteModeState
+        {
+            get => _deleteModeState;
+            set
+            {
+                _deleteModeState = value;
+                OnPropertyChanged(nameof(DeleteModeState));
+            }
+        }
+        
         public Style Style
         {
             get
@@ -82,12 +92,36 @@ namespace quazimodo.ViewModels
                     case SmileType.Neutral:
                         return ConstantsForms.MarkupResources.NeutralEmojiStyle;
                 }
+                
                 return _style;
             }
             set
             {
                 _style = value;
                 OnPropertyChanged(nameof(Style));
+            }
+        }
+
+        public void TurnOnDeleteMode()
+        {
+            if (IsRecord)
+            {
+                if (!IsPlusButton)
+                {
+                    DeleteModeState = DeleteModeState.ModeEnabled;
+                }
+            }
+            else
+            {
+                DeleteModeState = DeleteModeState.SongDisabled;
+            }
+        }
+        
+        public void TurnOffDeleteMode()
+        {
+            if (!IsPlusButton)
+            {
+                DeleteModeState = DeleteModeState.ModeDisabled;
             }
         }
     }
