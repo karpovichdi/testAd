@@ -1,15 +1,47 @@
-﻿using quazimodo.ViewModels;
+﻿using System.ComponentModel;
+using System.Threading.Tasks;
+using quazimodo.ViewModels;
+using quazimodo.Views.Controlls;
 using Xamarin.Forms;
 
 namespace quazimodo.Views
 {
     public partial class MainPage : ContentPage
     {
+        private bool _myAppsViewAdded;
         private MainViewModel ViewModel => BindingContext as MainViewModel;
         
         public MainPage()
         {
             InitializeComponent();
+            
+            ViewModel.PropertyChanged += ViewModelOnPropertyChanged; 
+        }
+
+        private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(ViewModel.MyAppsPageVisible):
+                    AddMyAppPageToHierarchy();
+                    break;
+            }
+        }
+
+        private async void AddMyAppPageToHierarchy()
+        {
+            if (_myAppsViewAdded) return;
+            indicator.IsVisible = true;
+
+            await Task.Delay(500);
+            
+            var myAppsView = new MyAppsView();
+            rootView.Children.Add(myAppsView, 0,1,0,2);
+
+            myAppsView.BindingContext = ViewModel;
+            myAppsView.SetBinding(IsVisibleProperty, nameof(ViewModel.MyAppsPageVisible));
+            _myAppsViewAdded = true;
+            indicator.IsVisible = false;
         }
 
         protected override void OnDisappearing()

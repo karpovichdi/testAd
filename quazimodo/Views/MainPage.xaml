@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -8,7 +7,7 @@
     xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
     xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
     xmlns:controlls="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
-    xmlns:constants1="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
+    xmlns:constants="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
     xmlns:popups="clr-namespace:quazimodo.Views.Popups;assembly=quazimodo"
     NavigationPage.HasNavigationBar="False"
     BackgroundColor="{StaticResource darkPurple}"
@@ -16,12 +15,15 @@
     <ContentPage.BindingContext>
         <viewModels:MainViewModel />
     </ContentPage.BindingContext>
-    <Grid>
+    <Grid x:Name="rootView">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <ScrollView Grid.RowSpan="2">
             <StackLayout Spacing="0"
                          Margin="0,5,0,0">
@@ -57,7 +59,7 @@
                 <x:FontImage FontFamily="{StaticResource icomoonFont}"
                              Size="44"
                              Color="{StaticResource white7}"
-                             Glyph="{x:Static constants1:FontIcons.stop}" />
+                             Glyph="{x:Static constants:FontIcons.stop}" />
             </Image.Source>
             <ImageButton.Effects>
                 <effects:RoundedLayoutEffect />
@@ -105,89 +107,9 @@
                     IsVisible="{Binding StopButtonVisible}"
                     Command="{Binding StopCommand}" />
         </Grid>
-        <Grid x:Name="myApps"
-              Grid.Row="0"
-              Grid.RowSpan="2"
-              BackgroundColor="{StaticResource darkPurple}"
-              Opacity="0.9"
-              IsVisible="{Binding MyAppsPageVisible}">
-            <Grid Margin="20,10,20,0">
-                <Grid.Effects>
-                    <effects:RoundedLayoutEffect HasBorder="True"
-                                                 HasShadow="False"
-                                                 BorderColor="Beige"
-                                                 BorderWidth="1"
-                                                 CornerRadius="10" />
-                </Grid.Effects>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="70" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <CollectionView x:Name="collectionView"
-                                Grid.Row="1"
-                                ItemsSource="{Binding MyApps}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:MyApp">
-                            <Grid Padding="10">
-                                <Grid>
-                                    <Grid.Effects>
-                                        <effects:RoundedLayoutEffect HasBorder="True"
-                                                                     BorderWidth="1"
-                                                                     BorderColor="Beige"
-                                                                     CornerRadius="10"
-                                                                     HasShadow="False" />
-                                    </Grid.Effects>
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={x:Reference collectionView}, 
-                                            Path=BindingContext.MyAppSelectedCommand}"
-                                            CommandParameter="{Binding DownloadUrl}" />
-                                    </Grid.GestureRecognizers>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Image Grid.Row="0"
-                                           Grid.RowSpan="2"
-                                           Grid.Column="0"
-                                           HeightRequest="{StaticResource imageSize}"
-                                           WidthRequest="{StaticResource imageSize}"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Center"
-                                           Margin="10"
-                                           Source="{Binding ImageUrl}" />
-                                    <Label Grid.Row="0"
-                                           Grid.Column="1"
-                                           HorizontalOptions="Start"
-                                           HorizontalTextAlignment="Start"
-                                           Margin="10,10,10,0"
-                                           TextColor="{StaticResource white7}"
-                                           Text="{Binding Name}" />
-                                    <Label Grid.Row="1"
-                                           Grid.Column="1"
-                                           Margin="10,0,10,10"
-                                           TextColor="{StaticResource white7}"
-                                           Text="{Binding Description}" />
-                                </Grid>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <Button Grid.Row="0"
-                        Text="{x:Static resources:Localization.Hide}"
-                        TextColor="{StaticResource white7}"
-                        Style="{StaticResource borderedButtonStyle}"
-                        VerticalOptions="Start"
-                        Command="{Binding HideMyAppsCommand}" />
-            </Grid>
-        </Grid>
         <controlls:AdMobBannerView x:Name="adMobBannerView"
                                    Grid.Row="2"
-                                   AdId="{x:Static constants1:AdConstants.TestBannerId}" />
+                                   AdId="{x:Static constants:AdConstants.TestBannerId}" />
         <controlls:CircleImageView Grid.Row="0"
                                    Grid.RowSpan="3"
                                    Command="{Binding StopRecordCommand}"
@@ -215,5 +137,19 @@
                                 HeightRequest="{StaticResource progressViewSize}"
                                 WidthRequest="{StaticResource progressViewSize}"
                                 IsVisible="{Binding StopRecordingPopupVisible}" />
+        
+        <Grid x:Name="indicator"
+              Grid.Row="0"
+              Grid.RowSpan="3"
+              Opacity="0.8"
+              IsVisible="False"
+              BackgroundColor="{StaticResource grafit}">
+            <ActivityIndicator Color="Red"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               HeightRequest="50"
+                               WidthRequest="50"
+                               IsRunning="True"/>
+        </Grid>
     </Grid>
 </ContentPage>
