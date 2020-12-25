@@ -465,6 +465,60 @@ namespace quazimodo.ViewModels
             }
         }
 
+        public void DeleteAllRecords()
+        {
+            var records = new SoundParameter[]
+            {
+                SoundParameter.record1,
+                SoundParameter.record2,
+                SoundParameter.record3,
+                SoundParameter.record4,
+                SoundParameter.record5,
+                SoundParameter.record6,
+                SoundParameter.record7,
+                SoundParameter.record8,
+                SoundParameter.record9,
+                SoundParameter.record10,
+                SoundParameter.record11,
+                SoundParameter.record12,
+                SoundParameter.record13,
+                SoundParameter.record14,
+                SoundParameter.record15,
+                SoundParameter.record16,
+                SoundParameter.record17,
+                SoundParameter.record18,
+                SoundParameter.record19,
+                SoundParameter.record20,
+                SoundParameter.record21,
+                SoundParameter.record22,
+                SoundParameter.record23,
+                SoundParameter.record24,
+                SoundParameter.record25,
+                SoundParameter.record26,
+                SoundParameter.record27,
+                SoundParameter.record28,
+                SoundParameter.record29,
+                SoundParameter.record30,
+            };
+
+            foreach (var record in records)
+            {
+                var songPath = ResourceHelper.GetSongPath(record);
+                var fileExist = System.IO.File.Exists(songPath);
+                if (fileExist)
+                {
+                    try
+                    {
+                        System.IO.File.Delete(songPath);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                }
+            }
+        }
+
         private void TopBtnClickHandler(object obj)
         {
             if ((string)obj == ConstantsForms.Positive)
@@ -480,20 +534,33 @@ namespace quazimodo.ViewModels
                 
                 foreach (var viewModel in viewModels)
                 {
-                    var songPath = ResourceHelper.GetSongPath(viewModel.CommandParameter);
-                    var fileExist = System.IO.File.Exists(songPath);
-                    if (!fileExist) continue;
-                    try
-                    {
-                        System.IO.File.Delete(songPath);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
+                    DeleteSong(viewModel.CommandParameter);
                 }
             }
             DeleteRecordsMode = !DeleteRecordsMode;
+        }
+
+        private void DeleteSong(SoundParameter parameter)
+        {
+            var songPath = ResourceHelper.GetSongPath(parameter);
+            var fileExist = System.IO.File.Exists(songPath);
+            if (!fileExist) return;
+            try
+            {
+                System.IO.File.Delete(songPath);
+                var model = ViewModelItemSource.ItemSource.FirstOrDefault(x => 
+                    x.CommandParameter == parameter);
+
+                if (model == null) return;
+                model.IsVisible = false;
+                model.SongPath = "";
+                model.Image = "";
+                ViewModelItemSource.ItemSource.Remove(model);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private void MyAppSelectedHandler(object obj)
