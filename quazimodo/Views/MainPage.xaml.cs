@@ -31,7 +31,7 @@ namespace quazimodo.Views
         private async void AddMyAppPageToHierarchy()
         {
             if (_myAppsViewAdded) return;
-            indicator.IsVisible = true;
+            ViewModel.IsBusy = true;
 
             await Task.Delay(500);
             
@@ -41,7 +41,7 @@ namespace quazimodo.Views
             myAppsView.BindingContext = ViewModel;
             myAppsView.SetBinding(IsVisibleProperty, nameof(ViewModel.MyAppsPageVisible));
             _myAppsViewAdded = true;
-            indicator.IsVisible = false;
+            ViewModel.IsBusy = false;
         }
 
         protected override void OnDisappearing()

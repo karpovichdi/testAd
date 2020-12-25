@@ -142,7 +142,7 @@
               Grid.Row="0"
               Grid.RowSpan="3"
               Opacity="0.8"
-              IsVisible="False"
+              IsVisible="{Binding IsBusy}"
               BackgroundColor="{StaticResource grafit}">
             <ActivityIndicator Color="Red"
                                HorizontalOptions="Center"
