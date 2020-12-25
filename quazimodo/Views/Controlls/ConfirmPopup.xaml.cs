@@ -10,15 +10,6 @@ namespace quazimodo.Views.Controlls
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(
             nameof(Command), typeof(ICommand), typeof(ConfirmPopup), null);
         
-        public static readonly BindableProperty NegativeBtnTextProperty = BindableProperty.Create(
-            nameof(NegativeBtnText), typeof(string), typeof(ConfirmPopup), null);
-        
-        public static readonly BindableProperty PositiveBtnTextProperty = BindableProperty.Create(
-            nameof(PositiveBtnText), typeof(string), typeof(ConfirmPopup), null);
-        
-        public static readonly BindableProperty MessageTextProperty = BindableProperty.Create(
-            nameof(MessageText), typeof(string), typeof(ConfirmPopup), null);
-        
         public string NegativeBtnText
         {
             get => (string)GetValue(CommandProperty);

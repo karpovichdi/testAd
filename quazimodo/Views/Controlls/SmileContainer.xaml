@@ -26,17 +26,22 @@
                                              CornerRadius="5"/>
             </Label.Effects>
         </Label>
-        <ImageButton Grid.Row="0"
-                     CommandParameter="{x:Static enums:SmileType.Positive}"
-                     Style="{StaticResource imageButtonSettingStyle}">
-            <ImageButton.Source>
-                <FontImageSource FontFamily="{StaticResource icomoonFont}"
+        <controlls:ImageFontView Grid.Row="0"
+                                 CommandParameter="{x:Static constants:ConstantsForms.Negative}"
+                                 HorizontalOptions="End"
+                                 Margin="0,5,20,0"
+                                 Size="22"
+                                 Glyph="{Binding TopGlyph}"
                                  Color="{StaticResource lightOrange}"
-                                 Glyph="{x:Static constants:FontIcons.cog}"
-                                 Size="22">
-                </FontImageSource>
-            </ImageButton.Source>
-        </ImageButton>
+                                 IsVisible="{Binding TopButtonVisible}"/>
+        <controlls:ImageFontView Grid.Row="0"
+                                 CommandParameter="{x:Static constants:ConstantsForms.Positive}"
+                                 HorizontalOptions="Start"
+                                 Margin="20,5,0,0"
+                                 Size="22"
+                                 Glyph="{x:Static constants:FontIcons.checkmark}"
+                                 Color="{StaticResource lightOrange}"
+                                 IsVisible="{Binding DeleteRecordsMode}"/>
         <controlls:ItemSourceFlexLayout x:Name="positiveFlex"
                                         Grid.Row="1"
                                         Style="{StaticResource flexLayoutStyle}"
@@ -61,17 +66,22 @@
                                              CornerRadius="5"/>
             </Label.Effects>
         </Label>
-        <ImageButton Grid.Row="0"
-                     CommandParameter="{x:Static enums:SmileType.Neutral}"
-                     Style="{StaticResource imageButtonSettingStyle}">
-            <ImageButton.Source>
-                <FontImageSource FontFamily="{StaticResource icomoonFont}"
+        <controlls:ImageFontView Grid.Row="0"
+                                 CommandParameter="{x:Static constants:ConstantsForms.Negative}"
+                                 HorizontalOptions="End"
+                                 Margin="0,5,20,0"
+                                 Size="22"
+                                 Glyph="{Binding TopGlyph}"
                                  Color="{StaticResource lightGray}"
-                                 Glyph="{x:Static constants:FontIcons.cog}"
-                                 Size="22">
-                </FontImageSource>
-            </ImageButton.Source>
-        </ImageButton>
+                                 IsVisible="{Binding TopButtonVisible}"/>
+        <controlls:ImageFontView Grid.Row="0"
+                                 CommandParameter="{x:Static constants:ConstantsForms.Positive}"
+                                 HorizontalOptions="Start"
+                                 Margin="20,5,0,0"
+                                 Size="22"
+                                 Glyph="{x:Static constants:FontIcons.checkmark}"
+                                 Color="{StaticResource lightYellow}"
+                                 IsVisible="{Binding DeleteRecordsMode}"/>
         <controlls:ItemSourceFlexLayout x:Name="neutralFlex"
                                         Grid.Row="1"
                                         Style="{StaticResource flexLayoutStyle}"
@@ -96,17 +106,22 @@
                                              CornerRadius="5"/>
             </Label.Effects>
         </Label>
-        <ImageButton Grid.Row="0"
-                     CommandParameter="{x:Static enums:SmileType.Negative}"
-                     Style="{StaticResource imageButtonSettingStyle}">
-            <ImageButton.Source>
-                <FontImageSource FontFamily="{StaticResource icomoonFont}"
+        <controlls:ImageFontView Grid.Row="0"
+                                 CommandParameter="{x:Static constants:ConstantsForms.Negative}"
+                                 HorizontalOptions="End"
+                                 Margin="0,5,20,0"
+                                 Size="22"
+                                 Glyph="{Binding TopGlyph}"
                                  Color="{StaticResource lightYellow}"
-                                 Glyph="{x:Static constants:FontIcons.cog}"
-                                 Size="22">
-                </FontImageSource>
-            </ImageButton.Source>
-        </ImageButton>
+                                 IsVisible="{Binding TopButtonVisible}"/>
+        <controlls:ImageFontView Grid.Row="0"
+                                 CommandParameter="{x:Static constants:ConstantsForms.Positive}"
+                                 HorizontalOptions="Start"
+                                 Margin="20,5,0,0"
+                                 Size="22"
+                                 Glyph="{x:Static constants:FontIcons.checkmark}"
+                                 Color="{StaticResource lightYellow}"
+                                 IsVisible="{Binding DeleteRecordsMode}"/>
         <controlls:ItemSourceFlexLayout x:Name="negativelFlex"
                                         Grid.Row="1"
                                         Style="{StaticResource flexLayoutStyle}"

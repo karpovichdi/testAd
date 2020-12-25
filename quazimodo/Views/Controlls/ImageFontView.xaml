@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="quazimodo.Views.Controlls.ImageFontView"
+             x:Name="imageFontView">
+    <ImageButton CommandParameter="{Binding Source={x:Reference imageFontView}, Path=CommandParameter}"
+                 Style="{StaticResource imageButtonSettingStyle}">
+        <ImageButton.Source>
+            <FontImageSource FontFamily="{StaticResource icomoonFont}"
+                             Color="{Binding Source={x:Reference imageFontView}, Path=Color}"
+                             Glyph="{Binding Source={x:Reference imageFontView}, Path=Glyph}"
+                             Size="{Binding Source={x:Reference imageFontView}, Path=Size}">
+            </FontImageSource>
+        </ImageButton.Source>
+    </ImageButton>
+</ContentView>

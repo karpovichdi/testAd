@@ -102,18 +102,16 @@ namespace quazimodo.ViewModels
             }
         }
 
+        public void SwitchDeleteUIState()
+        {
+            DeleteModeState = DeleteModeState == DeleteModeState.ModeEnabled ? DeleteModeState.ToDelete : DeleteModeState.ModeEnabled;
+        }
+
         public void TurnOnDeleteMode()
         {
             if (IsRecord)
             {
-                if (!IsPlusButton)
-                {
-                    DeleteModeState = DeleteModeState.ModeEnabled;
-                }
-                else
-                {
-                    DeleteModeState = DeleteModeState.SongDisabled;
-                }
+                DeleteModeState = !IsPlusButton ? DeleteModeState.ModeEnabled : DeleteModeState.SongDisabled;
             }
             else
             {

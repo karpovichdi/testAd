@@ -140,7 +140,7 @@
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer
                                             Command="{Binding Source={x:Reference collectionView}, 
-                                        Path=BindingContext.SelectedMyAppCommand}"
+                                            Path=BindingContext.MyAppSelectedCommand}"
                                             CommandParameter="{Binding DownloadUrl}" />
                                     </Grid.GestureRecognizers>
                                     <Grid.RowDefinitions>
@@ -197,7 +197,7 @@
                                    WidthRequest="{StaticResource progressViewSize}"
                                    Progress="{Binding RecordingViewProgress}"
                                    IsVisible="{Binding RecordViewVisible}" />
-        
+
         <popups:ApproveDeclaimMicPermissionsPopup Grid.Row="0"
                                                   Grid.RowSpan="3"
                                                   BackgroundColor="{StaticResource darkPurple}"
@@ -206,7 +206,7 @@
                                                   HeightRequest="{StaticResource progressViewSize}"
                                                   WidthRequest="{StaticResource progressViewSize}"
                                                   IsVisible="{Binding ADMPPopupVisible}" />
-        
+
         <popups:StopRecordPopup Grid.Row="0"
                                 Grid.RowSpan="3"
                                 BackgroundColor="{StaticResource darkPurple}"

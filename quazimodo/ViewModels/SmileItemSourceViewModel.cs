@@ -38,8 +38,6 @@ namespace quazimodo.ViewModels
             
             foreach (var item in list)
             {
-                MainViewModel.DeleteAllRecords();
-                
                 if (item.SongPath == null)
                 {
                     var fullPathToFile = ResourceHelper.GetSongPath(item.CommandParameter);

@@ -86,6 +86,7 @@
                              Binding="{Binding DeleteModeState}"
                              Value="{x:Static enums:DeleteModeState.ToDelete}">
                     <Setter Property="BorderColor" Value="{StaticResource red}" />
+                    <Setter Property="BorderWidth" Value="{StaticResource emojiBigBorderWidth}" />
                 </DataTrigger>
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding DeleteModeState}"
@@ -102,6 +103,7 @@
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding IsPlaying}"
                              Value="false">
+                    <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
                     <Setter Property="BackgroundColor" Value="{StaticResource lightOrange}" />
                     <Setter Property="BorderColor" Value="{StaticResource white1}" />
                 </DataTrigger>
@@ -133,6 +135,7 @@
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding IsPlaying}"
                              Value="false">
+                    <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
                     <Setter Property="BackgroundColor" Value="{StaticResource lightGray}" />
                     <Setter Property="BorderColor" Value="{StaticResource white1}" />
                 </DataTrigger>
@@ -167,6 +170,7 @@
                              Value="false">
                     <Setter Property="BackgroundColor" Value="{StaticResource lightYellow}" />
                     <Setter Property="BorderColor" Value="{StaticResource white3}" />
+                    <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
                 </DataTrigger>
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding IsPlusButton}"
@@ -200,9 +204,7 @@
             <Setter Property="Aspect" Value="AspectFit" />
         </Style>
         <Style x:Key="imageButtonSettingStyle" TargetType="ImageButton">
-            <Setter Property="HorizontalOptions" Value="End" />
             <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-            <Setter Property="Margin" Value="0,5,18,0" />
             <Setter Property="BackgroundColor" Value="Transparent" />
             <Setter Property="Command" Value="{Binding SettingsBtnClickedCommand}" />
         </Style>

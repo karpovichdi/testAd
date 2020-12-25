@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
@@ -34,10 +35,12 @@ namespace quazimodo.ViewModels
         private bool _stopRecordingPopupVisible;
         private bool _deleteRecordsMode;
         private bool _admpPopupVisible;
+        private bool _topButtonVisible;
         private double _recordingViewProgress;
+        private string _topGlyph = FontIcons.cog;
         private Timer _recordProgressTimer;
         private ButtonSmileViewModel _lastClickedViewModel;
-        
+
         #endregion
 
         #region Properties
@@ -141,7 +144,7 @@ namespace quazimodo.ViewModels
                 OnPropertyChanged(nameof(TooMuchSoundsInOneTime));
             }
         }
-        
+
         public bool StopRecordingPopupVisible
         {
             get => _stopRecordingPopupVisible;
@@ -151,7 +154,7 @@ namespace quazimodo.ViewModels
                 OnPropertyChanged(nameof(StopRecordingPopupVisible));
             }
         }
-        
+
         public bool ADMPPopupVisible
         {
             get => _admpPopupVisible;
@@ -162,12 +165,34 @@ namespace quazimodo.ViewModels
             }
         }
         
+        public bool TopButtonVisible
+        {
+            get => _topButtonVisible;
+            set
+            {
+                _topButtonVisible = value;
+                OnPropertyChanged(nameof(TopButtonVisible));
+            }
+        }
+        
         public bool DeleteRecordsMode
         {
             get => _deleteRecordsMode;
             set
             {
                 _deleteRecordsMode = value;
+                
+                if (value)
+                {
+                    TopGlyph = FontIcons.cross;
+                    ViewModelItemSource.ItemSource.ForEach(x => x.TurnOnDeleteMode());
+                }
+                else
+                {
+                    TopGlyph = FontIcons.cog;
+                    ViewModelItemSource.ItemSource.ForEach(x => x.TurnOffDeleteMode());
+                }
+
                 OnPropertyChanged(nameof(DeleteRecordsMode));
             }
         }
@@ -181,7 +206,17 @@ namespace quazimodo.ViewModels
                 OnPropertyChanged(nameof(RecordingViewProgress));
             }
         }
-
+        
+        public string TopGlyph
+        {
+            get => _topGlyph;
+            set
+            {
+                _topGlyph = value;
+                OnPropertyChanged(nameof(TopGlyph));
+            }
+        }
+        
         #endregion
 
         public MainViewModel()
@@ -195,7 +230,7 @@ namespace quazimodo.ViewModels
             StopRecordCommand = new Command(StopRecordHandler);
             HideADMPPopupCommmand = new Command(HideADMPPopupHandler);
             HideRecordPopupCommand = new Command(HideRecordPopupdHandler);
-            SettingsBtnClickedCommand = new Command(SettingsBtnClickHandler);
+            SettingsBtnClickedCommand = new Command(TopBtnClickHandler);
 
             MyApps = new ObservableRangeCollection<MyApp>();
             PlayingSong = new ObservableRangeCollection<ButtonSmileViewModel>();
@@ -217,7 +252,7 @@ namespace quazimodo.ViewModels
         }
 
         #region Methods
-        
+
         private void PlayingSongsChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             var changedAction = e.Action;
@@ -251,60 +286,6 @@ namespace quazimodo.ViewModels
             }
         }
 
-        public static void DeleteAllRecords()
-        {
-            var records = new SoundParameter[]
-            {
-                SoundParameter.record1,
-                SoundParameter.record2,
-                SoundParameter.record3,
-                SoundParameter.record4,
-                SoundParameter.record5,
-                SoundParameter.record6,
-                SoundParameter.record7,
-                SoundParameter.record8,
-                SoundParameter.record9,
-                SoundParameter.record10,
-                SoundParameter.record11,
-                SoundParameter.record12,
-                SoundParameter.record13,
-                SoundParameter.record14,
-                SoundParameter.record15,
-                SoundParameter.record16,
-                SoundParameter.record17,
-                SoundParameter.record18,
-                SoundParameter.record19,
-                SoundParameter.record20,
-                SoundParameter.record21,
-                SoundParameter.record22,
-                SoundParameter.record23,
-                SoundParameter.record24,
-                SoundParameter.record25,
-                SoundParameter.record26,
-                SoundParameter.record27,
-                SoundParameter.record28,
-                SoundParameter.record29,
-                SoundParameter.record30,
-            };
-
-            foreach (var record in records)
-            {
-                var songPath = ResourceHelper.GetSongPath(record);
-                var fileExist = System.IO.File.Exists(songPath);
-                if (fileExist)
-                {
-                    try
-                    {
-                        System.IO.File.Delete(songPath);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
-                }
-            }
-        }
-
         private void RequestToDisableTooMuchPopup()
         {
             if (PlayingSong.Count < ConstantsForms.MaxCountOfSoundInOneTime) TooMuchSoundsInOneTime = false;
@@ -321,13 +302,13 @@ namespace quazimodo.ViewModels
         private async Task PrepareToRecording(ButtonSmileViewModel buttonSmileViewModel)
         {
             await StopSounds();
-            
+
             RecordViewVisible = true;
-            
+
             _recordProgressTimer = new Timer(500) {AutoReset = true};
             _recordProgressTimer.Elapsed += OnTimedEvent;
             _recordProgressTimer.Start();
-            
+
             await _soundService.StartRecording(buttonSmileViewModel.CommandParameter);
         }
 
@@ -335,7 +316,7 @@ namespace quazimodo.ViewModels
         {
             if (RecordingViewProgress < 100)
             {
-                RecordingViewProgress += ConstantsForms.AdditionalValueToRecordProgress ;
+                RecordingViewProgress += ConstantsForms.AdditionalValueToRecordProgress;
             }
         }
 
@@ -357,7 +338,7 @@ namespace quazimodo.ViewModels
         {
             RecordViewVisible = false;
             RecordingViewProgress = 0;
-            
+
             _recordProgressTimer?.Stop();
             _recordProgressTimer = null;
         }
@@ -434,14 +415,13 @@ namespace quazimodo.ViewModels
         }
 
         #endregion
-        
+
         #region Handlers
-        
+
         private async void SongClickHandler(object obj)
         {
             try
             {
-                if (obj is string) return;
                 var soundParameter = (SoundParameter) obj;
 
                 if (!MicrophoneIsDisabledByUser)
@@ -449,23 +429,33 @@ namespace quazimodo.ViewModels
                     var permissions = await _soundService.CheckPermissions();
                     if (permissions != PermissionStatus.Granted) ADMPPopupVisible = true;
                 }
-
-                var smileViewModel = ViewModelItemSource.ItemSource.FirstOrDefault(x => x.CommandParameter == soundParameter);
-
-                _lastClickedViewModel = smileViewModel;
-                if (smileViewModel != null && smileViewModel.IsPlusButton)
-                {
-                    await PrepareToRecording(smileViewModel);
+                
+                var smileViewModel =
+                    ViewModelItemSource.ItemSource.FirstOrDefault(x => x.CommandParameter == soundParameter);
+                if (DeleteRecordsMode)
+                { 
+                    if (!_soundService.MicrophonePermissionsGranted ||
+                        !smileViewModel.IsRecord || 
+                        smileViewModel.IsPlusButton) return;
+                    smileViewModel.SwitchDeleteUIState();
                 }
                 else
                 {
-                    if (PlayingSong.Count < ConstantsForms.MaxCountOfSoundInOneTime)
+                    _lastClickedViewModel = smileViewModel;
+                    if (smileViewModel != null && smileViewModel.IsPlusButton)
                     {
-                        await PrepareToPlaySound(smileViewModel);
+                        await PrepareToRecording(smileViewModel);
                     }
                     else
                     {
-                        TooMuchSoundsInOneTime = true;
+                        if (PlayingSong.Count < ConstantsForms.MaxCountOfSoundInOneTime)
+                        {
+                            await PrepareToPlaySound(smileViewModel);
+                        }
+                        else
+                        {
+                            TooMuchSoundsInOneTime = true;
+                        }
                     }
                 }
             }
@@ -475,20 +465,37 @@ namespace quazimodo.ViewModels
             }
         }
 
-        private void SettingsBtnClickHandler(object obj)
+        private void TopBtnClickHandler(object obj)
         {
-            if (!DeleteRecordsMode)
+            if ((string)obj == ConstantsForms.Positive)
             {
-                DeleteRecordsMode = true;
-                ViewModelItemSource.ItemSource.ForEach(x => x.TurnOnDeleteMode());
+                var viewModels = ViewModelItemSource.ItemSource.Where(item => 
+                    item.DeleteModeState == DeleteModeState.ToDelete).ToList();
+
+                if (viewModels.Count == 0)
+                {
+                    DeleteRecordsMode = !DeleteRecordsMode;
+                    return;
+                }
+                
+                foreach (var viewModel in viewModels)
+                {
+                    var songPath = ResourceHelper.GetSongPath(viewModel.CommandParameter);
+                    var fileExist = System.IO.File.Exists(songPath);
+                    if (!fileExist) continue;
+                    try
+                    {
+                        System.IO.File.Delete(songPath);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                }
             }
-            else
-            {
-                DeleteRecordsMode = false;
-                ViewModelItemSource.ItemSource.ForEach(x => x.TurnOffDeleteMode());
-            }
+            DeleteRecordsMode = !DeleteRecordsMode;
         }
-        
+
         private void MyAppSelectedHandler(object obj)
         {
             try
@@ -500,13 +507,13 @@ namespace quazimodo.ViewModels
                 Console.WriteLine(e);
             }
         }
-        
+
         private void SongReleasedHandler(SoundParameter parameter)
         {
             var model = PlayingSong.FirstOrDefault(x => x.CommandParameter == parameter);
             if (model != null) PlayingSong.Remove(model);
         }
-        
+
         private void RecordReleasedHandler()
         {
             if (_lastClickedViewModel.IsPlusButton)
@@ -521,7 +528,7 @@ namespace quazimodo.ViewModels
                         song.IsPlaying = false;
                         break;
                     }
-                    
+
                     if (song.IsPlusButton)
                     {
                         // why microphone is hidden
@@ -536,13 +543,16 @@ namespace quazimodo.ViewModels
             }
 
             StopRecordingOnUi();
+            StopRecordingOnUi();
+            
+            TopButtonVisible = true;
         }
-        
+
         private async void StopCommandHandler(object obj)
         {
             StopSounds();
         }
-        
+
         private void StopRecordHandler()
         {
             StopRecording();
@@ -575,7 +585,7 @@ namespace quazimodo.ViewModels
             StopRecordingOnUi();
             StopRecordingPopupVisible = false;
         }
-        
+
         private async void HideADMPPopupHandler(object obj)
         {
             var param = (string) obj;
@@ -592,7 +602,7 @@ namespace quazimodo.ViewModels
                 if (permissionStatus != PermissionStatus.Granted) MicrophoneIsDisabledByUser = true;
             }
         }
-        
+
         private void AppClosedHandler()
         {
             StopSounds();
@@ -608,7 +618,7 @@ namespace quazimodo.ViewModels
                     connectionProfiles.Contains(ConnectionProfile.Cellular)) FillMyAppList();
             }
         }
-        
+
         #endregion
     }
 }

@@ -175,6 +175,6 @@ Just one click on the banner, and you will help someone) Spoiler, me)</value>
         <value>Yes</value>
     </data>
     <data name="SelectEntriesYouWantDeleteMessage" xml:space="preserve">
-        <value>Выберите ваши записи, которые хотите удалить и нажмите в правом углу кнопку подтвердить.</value>
+        <value>Select your entries you want to delete and click confirm button in the left corner.</value>
     </data>
 </root>
