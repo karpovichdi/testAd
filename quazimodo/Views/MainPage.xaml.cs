@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Timers;
 using quazimodo.ViewModels;
 using quazimodo.Views.Controlls;
 using Xamarin.Forms;
@@ -13,8 +15,14 @@ namespace quazimodo.Views
         
         public MainPage()
         {
-            InitializeComponent();
+            var watch = Stopwatch.StartNew();
             
+            InitializeComponent();
+
+            watch.Stop();
+            var elapsedMs = (double)watch.ElapsedMilliseconds / 1000;
+            Debug.WriteLine("Timer: " + elapsedMs);
+            // 2.312z
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged; 
         }
 
@@ -27,7 +35,9 @@ namespace quazimodo.Views
                     break;
             }
         }
-
+        
+        #region Methods
+        
         private async void AddMyAppPageToHierarchy()
         {
             if (_myAppsViewAdded) return;
@@ -43,7 +53,11 @@ namespace quazimodo.Views
             _myAppsViewAdded = true;
             ViewModel.IsBusy = false;
         }
+        
+        #endregion
 
+        #region Overrides
+        
         protected override void OnDisappearing()
         {
             ViewModel.StopButtonVisible = false;
@@ -73,5 +87,7 @@ namespace quazimodo.Views
 
             return true;
         }
+        
+        #endregion
     }
 }
