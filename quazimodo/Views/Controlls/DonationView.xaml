@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
+             xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
+             Margin="20,0,20,0"
+             BackgroundColor="{StaticResource darkPurple}"
+             Opacity="0.8"
+             x:Class="quazimodo.Views.Controlls.DonationView">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <ScrollView Grid.Row="1">
+        <StackLayout x:Name="helpPage"
+                     Padding="{StaticResource defaultOffset}">
+            <StackLayout.Effects>
+                <effects:RoundedLayoutEffect HasBorder="True"
+                                             CornerRadius="10"
+                                             BorderColor="Beige"
+                                             BorderWidth="1"
+                                             HasShadow="False" />
+            </StackLayout.Effects>
+            <Label TextColor="{StaticResource white7}"
+                   Margin="0,0,0,20"
+                   FontSize="{StaticResource bigFontSize}"
+                   Text="{x:Static resources:Localization.AdMessageHeader}" />
+            <Label TextColor="{StaticResource white7}"
+                   FontSize="{StaticResource middleFontSize}"
+                   Text="{x:Static resources:Localization.AdMessage}" />
+        </StackLayout>
+    </ScrollView>
+
+    <Button Grid.Row="0"
+            Text="{x:Static resources:Localization.Skip}"
+            Margin="0,40,0,0"
+            Style="{StaticResource borderedButtonStyle}"
+            Command="{Binding HideDonationPageCommand}" />
+    <Button Grid.Row="2"
+            Text="{x:Static resources:Localization.Stop}"
+            Style="{StaticResource borderedButtonStyle}"
+            IsVisible="{Binding StopButtonVisible}"
+            Command="{Binding StopCommand}" />
+</Grid>

@@ -5,6 +5,7 @@ using Android.Gms.Ads;
 using Android.OS;
 using Android.Runtime;
 using quazimodo.Droid.Listeners;
+using quazimodo.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Platform = Xamarin.Essentials.Platform;
@@ -27,6 +28,8 @@ namespace quazimodo.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            MainPage.StartTimer();
+            
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

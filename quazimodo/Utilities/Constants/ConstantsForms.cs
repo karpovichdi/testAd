@@ -32,6 +32,8 @@ namespace quazimodo.Utilities.Constants
         
         public static class MarkupResources
         {
+            public static double ProgressViewSize => (double)Application.Current.Resources["progressViewSize"];
+            public static Color DarkPurple => (Color)Application.Current.Resources["darkPurple"];
             public static Color Red => (Color)Application.Current.Resources["red"];
             public static Color LightYellow => (Color)Application.Current.Resources["lightYellow"];
             public static Color Gray => (Color)Application.Current.Resources["grafit"];
