@@ -51,7 +51,6 @@ namespace quazimodo.Views.Controlls
 
             public class ProgressDrawer
             {
-
                 public ProgressDrawer(SKCanvasView canvas, Circle circle, Func<float> progress, float strokeWidth, SKColor progressColor, SKColor foregroundColor)
                 {
                     canvas.PaintSurface += (sender, args) =>
@@ -82,7 +81,6 @@ namespace quazimodo.Views.Controlls
                     canvas.DrawArc(circle.Rect, 270, angle, false,
                         new SKPaint() {StrokeWidth = strokewidth, Color = color, IsStroke = true});
                 }
-
             }
 
             public void CalculateCenter(SKImageInfo argsInfo)

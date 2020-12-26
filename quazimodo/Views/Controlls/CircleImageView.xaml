@@ -2,8 +2,9 @@
 
 <Grid xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controlls1="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
+             xmlns:controlls="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
              xmlns:constants1="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
+             xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
              x:Class="quazimodo.Views.Controlls.CircleImageView"
              x:Name="circleImageView">
     <Grid.Resources>
@@ -25,13 +26,14 @@
         <ColumnDefinition Width="300"/>
         <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <controlls1:CircularProgressbarView x:Name="circularProgressbarView"
+    <controlls:CircularProgressbarView x:Name="circularProgressbarView"
                                        Grid.Row="1"
                                        Grid.Column="1"
                                        CircleColor="{StaticResource grafit}"
                                        ProgressColor="{StaticResource lightYellow}"/>
     <Image Grid.Row="1"
            Grid.Column="1"
+           x:DataType="viewModels:MainViewModel"
            HorizontalOptions="Center"
            VerticalOptions="Center"
            TranslationX="4"

@@ -5,6 +5,7 @@
              xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
              xmlns:models="clr-namespace:quazimodo.Models;assembly=quazimodo"
              xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
+             xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
              BackgroundColor="{StaticResource darkPurple}"
              Opacity="0.9"
              x:Class="quazimodo.Views.Controlls.MyAppsView"
@@ -36,10 +37,9 @@
                                                              HasShadow="False" />
                             </Grid.Effects>
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Source={x:Reference collectionView}, 
-                                            Path=BindingContext.MyAppSelectedCommand}"
-                                    CommandParameter="{Binding DownloadUrl}" />
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference collectionView}, 
+                                                      Path=BindingContext.MyAppSelectedCommand}"
+                                                      CommandParameter="{Binding DownloadUrl}" />
                             </Grid.GestureRecognizers>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />

@@ -5,7 +5,6 @@
              xmlns:controlls="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
              xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
              xmlns:constants="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
-             xmlns:enums="clr-namespace:quazimodo.Models.Enums;assembly=quazimodo"
              x:Class="quazimodo.Views.Controlls.SmileContainer">
     <Label Style="{StaticResource labelDeleteMessageStyle}"
            IsVisible="{Binding DeleteRecordsMode}"/>

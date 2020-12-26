@@ -41,6 +41,13 @@ namespace quazimodo.Views
             // Page timer: 1,708 App timer: 3,418
             // Page timer: 1,803 App timer: 3,503
             // Page timer: 1,759 App timer: 3,581
+            // Page timer: 1,786 App timer: 3,351
+            // Page timer: 1,673 App timer: 3,204
+            // Page timer: 1,801 App timer: 3,436
+            // Page timer: 1,632 App timer: 3,23
+            // Page timer: 1,728 App timer: 3,383
+            // Page timer: 1,793 App timer: 3,433
+            // Page timer: 1,78 App timer: 3,439
             StopTimers();
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged; 
         }
@@ -73,7 +80,7 @@ namespace quazimodo.Views
         {
             if (_admpViewAdded) return;
 
-            var admpPopup = new ApproveDeclaimMicPermissionsPopup
+            var admpPopup = new MicPermissionsPopup
             {
                 BindingContext = ViewModel,
                 Command = ViewModel.HideADMPPopupCommmand,

@@ -1,5 +1,4 @@
 ﻿using System.Windows.Input;
-using quazimodo.Views.Controlls;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,7 +8,7 @@ namespace quazimodo.Views.Popups
     public partial class StopRecordPopup : ContentView
     {
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(
-            nameof(Command), typeof(ICommand), typeof(ConfirmPopup), null);
+            nameof(Command), typeof(ICommand), typeof(StopRecordPopup), null);
         
         public ICommand Command
         {

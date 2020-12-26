@@ -2,10 +2,15 @@
 
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
              x:Class="quazimodo.Views.Controlls.ImageFontView"
-             x:Name="imageFontView">
-    <ImageButton CommandParameter="{Binding Source={x:Reference imageFontView}, Path=CommandParameter}"
-                 Style="{StaticResource imageButtonSettingStyle}">
+             x:Name="imageFontView"
+             x:DataType="viewModels:MainViewModel">
+    <ImageButton x:DataType="viewModels:MainViewModel"
+                 CommandParameter="{Binding Source={x:Reference imageFontView}, Path=CommandParameter}"
+                 VerticalOptions="CenterAndExpand"
+                 BackgroundColor="Transparent"
+                 Command="{Binding SettingsBtnClickedCommand}">
         <ImageButton.Source>
             <FontImageSource FontFamily="{StaticResource icomoonFont}"
                              Color="{Binding Source={x:Reference imageFontView}, Path=Color}"

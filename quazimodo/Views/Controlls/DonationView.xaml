@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
              xmlns:resources="clr-namespace:quazimodo.Resources;assembly=quazimodo"
+             xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
              Margin="20,0,20,0"
              BackgroundColor="{StaticResource darkPurple}"
              Opacity="0.8"
@@ -33,12 +34,14 @@
         </StackLayout>
     </ScrollView>
 
-    <Button Grid.Row="0"
+    <Button x:DataType="viewModels:MainViewModel"
+            Grid.Row="0"
             Text="{x:Static resources:Localization.Skip}"
             Margin="0,40,0,0"
             Style="{StaticResource borderedButtonStyle}"
             Command="{Binding HideDonationPageCommand}" />
-    <Button Grid.Row="2"
+    <Button x:DataType="viewModels:MainViewModel"
+            Grid.Row="2"
             Text="{x:Static resources:Localization.Stop}"
             Style="{StaticResource borderedButtonStyle}"
             IsVisible="{Binding StopButtonVisible}"

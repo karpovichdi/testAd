@@ -1,15 +1,14 @@
 ﻿using System.Windows.Input;
-using quazimodo.Views.Controlls;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace quazimodo.Views.Popups
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ApproveDeclaimMicPermissionsPopup : ContentView
+    public partial class MicPermissionsPopup : ContentView
     {
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(
-            nameof(Command), typeof(ICommand), typeof(ConfirmPopup), null);
+            nameof(Command), typeof(ICommand), typeof(MicPermissionsPopup), null);
         
         public ICommand Command
         {
@@ -17,7 +16,7 @@ namespace quazimodo.Views.Popups
             set => SetValue(CommandProperty, value);
         }
         
-        public ApproveDeclaimMicPermissionsPopup()
+        public MicPermissionsPopup()
         {
             InitializeComponent();
         }

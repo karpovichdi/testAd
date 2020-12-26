@@ -61,7 +61,9 @@
                      Glyph="{x:Static constants1:FontIcons.folderPlus}" />
         
         <!-- Styles -->
-        <Style x:Key="emojiBaseItem" x:DataType="viewModels:ButtonSmileViewModel" TargetType="ImageButton">
+        <Style x:Key="emojiBaseItem" 
+               x:DataType="viewModels:ButtonSmileViewModel" 
+               TargetType="ImageButton">
             <Setter Property="HeightRequest" Value="{StaticResource emojiSize}" />
             <Setter Property="WidthRequest" Value="{StaticResource emojiSize}" />
             <Setter Property="Padding" Value="{StaticResource emojiOffset}" />
@@ -95,7 +97,10 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="positiveEmojiItem" TargetType="ImageButton" BasedOn="{StaticResource emojiBaseItem}">
+        <Style x:Key="positiveEmojiItem" 
+               x:DataType="viewModels:ButtonSmileViewModel" 
+               TargetType="ImageButton" 
+               BasedOn="{StaticResource emojiBaseItem}">
             <Setter Property="BackgroundColor" Value="{StaticResource lightOrange}" />
             <Setter Property="BorderColor" Value="{StaticResource white1}" />
             <Setter Property="Command" Value="{Binding PositiveMusicBtnClickCommand}" />
@@ -128,7 +133,10 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="neutralEmojiItem" TargetType="ImageButton" BasedOn="{StaticResource emojiBaseItem}">
+        <Style x:Key="neutralEmojiItem" 
+               x:DataType="viewModels:ButtonSmileViewModel" 
+               TargetType="ImageButton" 
+               BasedOn="{StaticResource emojiBaseItem}">
             <Setter Property="BackgroundColor" Value="{StaticResource lightGray}" />
             <Setter Property="BorderColor" Value="{StaticResource white2}" />
             <Style.Triggers>
@@ -160,7 +168,10 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="negativeEmojiItem" TargetType="ImageButton" BasedOn="{StaticResource emojiBaseItem}">
+        <Style x:Key="negativeEmojiItem" 
+               x:DataType="viewModels:ButtonSmileViewModel" 
+               TargetType="ImageButton" 
+               BasedOn="{StaticResource emojiBaseItem}">
             <Setter Property="BackgroundColor" Value="{StaticResource lightYellow}" />
             <Setter Property="BorderColor" Value="{StaticResource white3}" />
             <Setter Property="Command" Value="{Binding NegativeMusicBtnClickCommand}" />
@@ -193,21 +204,6 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="acceptButtonStyle" TargetType="ImageButton">
-            <Setter Property="BackgroundColor" Value="{StaticResource grafit}" />
-            <Setter Property="BorderColor" Value="{StaticResource white3}" />
-            <Setter Property="HeightRequest" Value="{StaticResource bigButtonSize}" />
-            <Setter Property="WidthRequest" Value="{StaticResource bigButtonSize}" />
-            <Setter Property="Padding" Value="{StaticResource bigButtonSpacing}" />
-            <Setter Property="CornerRadius" Value="{StaticResource bigButtonSpacing}" />
-            <Setter Property="Command" Value="{Binding SoundBtnClickCommand}" />
-            <Setter Property="Aspect" Value="AspectFit" />
-        </Style>
-        <Style x:Key="imageButtonSettingStyle" TargetType="ImageButton">
-            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-            <Setter Property="BackgroundColor" Value="Transparent" />
-            <Setter Property="Command" Value="{Binding SettingsBtnClickedCommand}" />
-        </Style>
         <Style x:Key="soundCategoryStyle" TargetType="Label">
             <Setter Property="VerticalTextAlignment" Value="Center" />
             <Setter Property="FontSize" Value="{StaticResource titleFontSize}" />
@@ -224,16 +220,6 @@
             <Setter Property="BorderColor" Value="{StaticResource red}" />
             <Setter Property="CornerRadius" Value="10" />
             <Setter Property="Margin" Value="10,10,0,10" />
-        </Style>
-        <Style x:Key="customSoundItem" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#a69b9770" />
-            <Setter Property="HeightRequest" Value="40" />
-            <Setter Property="WidthRequest" Value="40" />
-            <Setter Property="Padding" Value="5" />
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="BorderColor" Value="#fffffb" />
-            <Setter Property="BorderWidth" Value="1" />
-            <Setter Property="Command" Value="{Binding MusicBtnClickCommand}" />
         </Style>
         <Style x:Key="borderedButtonStyle" TargetType="Button">
             <Setter Property="TextColor" Value="{StaticResource white7}" />
