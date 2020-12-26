@@ -56,10 +56,15 @@
     <BundleAssemblies>false</BundleAssemblies>
     <MandroidI18n />
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
     <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Users\Karpo\AppData\Local\Xamarin\Mono for Android\Keystore\quazimodo\quazimodo.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Karpovich9</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>quazimodo</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Karpovich9</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
