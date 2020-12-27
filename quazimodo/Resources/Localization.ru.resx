@@ -66,4 +66,7 @@
     <data name="SelectEntriesYouWantDeleteMessage" xml:space="preserve">
         <value>Выберите ваши записи, которые хотите удалить и нажмите в левом углу кнопку подтвердить.</value>
     </data>
+    <data name="YouDisabledMicPermissionsYouCanTurnOnItInPhoneSettingsOrJustReinstallApp" xml:space="preserve">
+        <value>Разрешения на использования микрофона отключены, вы можете включить их в настройках телефона или просто переустановить приложение.</value>
+    </data>
 </root>

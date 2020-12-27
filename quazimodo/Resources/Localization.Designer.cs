@@ -142,5 +142,11 @@ namespace quazimodo.Resources {
                 return ResourceManager.GetString("SelectEntriesYouWantDeleteMessage", resourceCulture);
             }
         }
+
+        public static string YouDisabledMicPermissionsYouCanTurnOnItInPhoneSettingsOrJustReinstallApp {
+            get {
+                return ResourceManager.GetString("YouDisabledMicPermissionsYouCanTurnOnItInPhoneSettingsOrJustReinstallApp", resourceCulture);
+            }
+        }
     }
 }

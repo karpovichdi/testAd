@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Timers;
+using quazimodo.Resources;
 using quazimodo.Utilities.Constants;
 using quazimodo.ViewModels;
 using quazimodo.Views.Controlls;
@@ -19,6 +20,7 @@ namespace quazimodo.Views
         private bool _recordViewAdded;
         private bool _stopRecordViewAdded;
         private bool _admpViewAdded;
+        private bool _micDisabledViewAdded;
 
         public static Stopwatch PageTimer;
         public static Stopwatch AppTimer;
@@ -69,16 +71,16 @@ namespace quazimodo.Views
                     AddStopRecordViewToHierarchy();
                     break;
                 case nameof(ViewModel.ADMPPopupVisible):
-                    AddADMPViewToHierarchy();
+                    AddMicDisabledViewToHierarchy();
                     break;
             }
         }
-        
+
         #region Methods
-        
-        private void AddADMPViewToHierarchy()
+
+        private void AddMicDisabledViewToHierarchy()
         {
-            if (_admpViewAdded) return;
+            if (_micDisabledViewAdded) return;
 
             var admpPopup = new MicPermissionsPopup
             {
@@ -89,12 +91,12 @@ namespace quazimodo.Views
                 HeightRequest = ConstantsForms.MarkupResources.ProgressViewSize,
                 WidthRequest = ConstantsForms.MarkupResources.ProgressViewSize
             };
-
+            
             rootView.Children.Add(admpPopup, 0,1,0,3);
 
             admpPopup.SetBinding(IsVisibleProperty, nameof(ViewModel.ADMPPopupVisible));
             
-            _admpViewAdded = true;
+            _micDisabledViewAdded = true;
         }
         
         private void AddStopRecordViewToHierarchy()

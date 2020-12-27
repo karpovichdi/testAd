@@ -177,4 +177,7 @@ Just one click on the banner, and you will help someone) Spoiler, me)</value>
     <data name="SelectEntriesYouWantDeleteMessage" xml:space="preserve">
         <value>Select your entries you want to delete and click confirm button in the left corner.</value>
     </data>
+    <data name="YouDisabledMicPermissionsYouCanTurnOnItInPhoneSettingsOrJustReinstallApp" xml:space="preserve">
+        <value>Microphone permissions disabled you can turn on it in phone settings or just reinstall the app.</value>
+    </data>
 </root>

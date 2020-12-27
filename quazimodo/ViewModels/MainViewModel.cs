@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
@@ -31,11 +30,11 @@ namespace quazimodo.ViewModels
         private bool _myAppsPageVisible;
         private bool _tooMuchSoundsInOneTime;
         private bool _recordViewVisible;
-        private bool _microphoneIsDisabledByUser;
         private bool _stopRecordingPopupVisible;
         private bool _deleteRecordsMode;
         private bool _admpPopupVisible;
         private bool _topButtonVisible;
+        private bool _microphoneIsDisabledByUser;
         private double _recordingViewProgress;
         private string _topGlyph = FontIcons.cog;
         private Timer _recordProgressTimer;
@@ -44,7 +43,17 @@ namespace quazimodo.ViewModels
         #endregion
 
         #region Properties
-
+        
+        public bool MicrophoneIsDisabledByUser
+        {
+            get => _microphoneIsDisabledByUser;
+            set
+            {
+                _microphoneIsDisabledByUser = value;
+                if (value) HideAllRecordButtons();
+            }
+        }
+        
         public bool AppsIsLoaded { get; set; }
         public SmileItemSourceViewModel ViewModelItemSource { get; set; }
         public Command SongClickCommand { get; set; }
@@ -63,17 +72,7 @@ namespace quazimodo.ViewModels
         #endregion
 
         #region BindableProperties
-
-        public bool MicrophoneIsDisabledByUser
-        {
-            get => _microphoneIsDisabledByUser;
-            set
-            {
-                _microphoneIsDisabledByUser = value;
-                if (value) HideAllRecordButtons();
-            }
-        }
-
+        
         public bool MyAppsPageVisible
         {
             get => _myAppsPageVisible;
@@ -238,10 +237,10 @@ namespace quazimodo.ViewModels
             _smileButtonSourceService = new SmileButtonSourceService();
             _firebaseService = new FirebaseService();
             _soundService = DependencyService.Get<ISoundService>();
-
+            
             _firebaseService.Initialize();
 
-            ViewModelItemSource = new SmileItemSourceViewModel(_smileButtonSourceService.GetSmiles());
+            ViewModelItemSource = new SmileItemSourceViewModel(_smileButtonSourceService.GetSmiles(), _soundService);
 
             Connectivity.ConnectivityChanged += ConnectivityChangedHandler;
             PlayingSong.CollectionChanged += PlayingSongsChanged;
@@ -410,7 +409,7 @@ namespace quazimodo.ViewModels
             var smileViewModels = ViewModelItemSource.ItemSource.Where(x => x.IsRecord);
             foreach (var viewModel in smileViewModels)
             {
-                viewModel.IsVisible = false;
+                if(viewModel.IsVisible) viewModel.IsVisible = false;
             }
         }
 
@@ -423,15 +422,20 @@ namespace quazimodo.ViewModels
             try
             {
                 var soundParameter = (SoundParameter) obj;
-
-                if (!MicrophoneIsDisabledByUser)
-                {
-                    var permissions = await _soundService.CheckPermissions();
-                    if (permissions != PermissionStatus.Granted) ADMPPopupVisible = true;
-                }
-                
                 var smileViewModel =
                     ViewModelItemSource.ItemSource.FirstOrDefault(x => x.CommandParameter == soundParameter);
+
+                if (smileViewModel == null) return;
+                if (smileViewModel.IsPlusButton && !MicrophoneIsDisabledByUser)
+                {
+                    if (await _soundService.RequestPermissionsIfNeeded() != PermissionStatus.Granted)
+                    {
+                        ADMPPopupVisible = true;
+                        return;
+                    }
+                }
+                
+                if (smileViewModel.IsPlusButton && MicrophoneIsDisabledByUser) return;
                 if (DeleteRecordsMode)
                 { 
                     if (!_soundService.MicrophonePermissionsGranted ||
@@ -442,7 +446,7 @@ namespace quazimodo.ViewModels
                 else
                 {
                     _lastClickedViewModel = smileViewModel;
-                    if (smileViewModel != null && smileViewModel.IsPlusButton)
+                    if (smileViewModel.IsPlusButton)
                     {
                         await PrepareToRecording(smileViewModel);
                     }
@@ -464,7 +468,7 @@ namespace quazimodo.ViewModels
                 Console.WriteLine(e);
             }
         }
-
+        
         public void DeleteAllRecords()
         {
             var records = new SoundParameter[]
@@ -653,23 +657,12 @@ namespace quazimodo.ViewModels
             StopRecordingPopupVisible = false;
         }
 
-        private async void HideADMPPopupHandler(object obj)
+        private void HideADMPPopupHandler(object obj)
         {
-            var param = (string) obj;
-
-            if (param == ConstantsForms.Positive)
-            {
-                MicrophoneIsDisabledByUser = true;
-            }
-            else
-            {
-                MicrophoneIsDisabledByUser = false;
-                ADMPPopupVisible = false;
-                var permissionStatus = await _soundService.CheckPermissions();
-                if (permissionStatus != PermissionStatus.Granted) MicrophoneIsDisabledByUser = true;
-            }
+            MicrophoneIsDisabledByUser = true;
+            ADMPPopupVisible = false;
         }
-
+        
         private void AppClosedHandler()
         {
             StopSounds();

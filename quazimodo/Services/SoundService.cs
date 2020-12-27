@@ -52,7 +52,7 @@ namespace quazimodo.Services
             Play(parameter);
         }
 
-        public override async Task<PermissionStatus> CheckPermissions()
+        public override async Task<PermissionStatus> RequestPermissionsIfNeeded()
         {
             var microphoneStatus = await Permissions.CheckStatusAsync<Permissions.Microphone>();
             if (microphoneStatus != PermissionStatus.Granted)
@@ -61,6 +61,11 @@ namespace quazimodo.Services
             }
             MicrophonePermissionsGranted = true;
             return PermissionStatus.Granted;
+        }
+
+        public override async Task<PermissionStatus> CheckPermissions()
+        {
+            return await Permissions.CheckStatusAsync<Permissions.Microphone>();
         }
 
         public override async Task StartRecording(SoundParameter commandParameter)

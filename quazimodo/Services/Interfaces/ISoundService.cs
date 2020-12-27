@@ -14,6 +14,7 @@ namespace quazimodo.Services.Interfaces
         public abstract Action RecordReleased { get; set; }
         public abstract Task CreateSoundPathAndPlay(SoundParameter parameter);
         public abstract Task StopPlayingAll();
+        public abstract Task<PermissionStatus> RequestPermissionsIfNeeded();
         public abstract Task<PermissionStatus> CheckPermissions();
         public abstract Task StartRecording(SoundParameter commandParameter);
         public abstract Task StopRecording();

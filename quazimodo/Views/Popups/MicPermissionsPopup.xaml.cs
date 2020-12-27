@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using quazimodo.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

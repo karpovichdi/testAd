@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
+using System.Threading.Tasks;
 using quazimodo.Models.Enums;
+using quazimodo.Services.Interfaces;
 using quazimodo.Utilities;
 using quazimodo.Utilities.Constants;
+using Xamarin.Essentials;
 
 namespace quazimodo.ViewModels
 {
     public class SmileItemSourceViewModel : ViewModelBase
     {
+        private ISoundService _soundService;
         public ObservableRangeCollection<ButtonSmileViewModel> PositiveItemSource { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> NeutralItemSource { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> NegativeItemSource { get; set; }
-        
         public ObservableRangeCollection<ButtonSmileViewModel> ItemSource { get; set; }
 
-        public SmileItemSourceViewModel(IEnumerable<ButtonSmileViewModel> list)
+        public SmileItemSourceViewModel(IEnumerable<ButtonSmileViewModel> list, ISoundService soundService)
         {
+            _soundService = soundService;
+            
             ItemSource = new ObservableRangeCollection<ButtonSmileViewModel>();
             
             PositiveItemSource = new ObservableRangeCollection<ButtonSmileViewModel>(); 
@@ -27,8 +32,6 @@ namespace quazimodo.ViewModels
             ItemSource.CollectionChanged += ItemSourceOnCollectionChanged;
 
             UnusedItemsTurnOffVisibility(list);
-            
-            ItemSource.AddRange(list);
         }
 
         private void UnusedItemsTurnOffVisibility(IEnumerable<ButtonSmileViewModel> list)
@@ -78,6 +81,8 @@ namespace quazimodo.ViewModels
                     item.IsVisible = true;
                 }
             }
+            
+            ItemSource.AddRange(list);
         }
 
         private void ItemSourceOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
