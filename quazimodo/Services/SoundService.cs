@@ -70,30 +70,25 @@ namespace quazimodo.Services
 
         public override async Task StartRecording(SoundParameter commandParameter)
         {
-            // var player = GetPlayer(commandParameter);
-            //
-            // using (var streamReader = new StreamReader(record1))
-            // {
-            //     var content = await streamReader.ReadToEndAsync();
-            //     var streamReaderBaseStream = streamReader.BaseStream;
-            //     player.Load(streamReaderBaseStream);
-            //     player.Play();
-            // }
-            
-            _recorderService = new AudioRecorderService
+             _recorderService = new AudioRecorderService
             {
                 TotalAudioTimeout = TimeSpan.FromSeconds(ConstantsForms.MaxLenghtOfRecordedSoundInSecond),
                 FilePath = ResourceHelper.GetSongPath(commandParameter),
-                StopRecordingOnSilence = false
+                StopRecordingOnSilence = false,
+                StopRecordingAfterTimeout = true 
             };
                 
             _recorderService.AudioInputReceived += OnRecordReceived;
-            
             await _recorderService.StartRecording();
         }
 
-        public override async Task StopRecording()
+        public override async Task StopRecording(bool disableReceiveHandler)
         {
+            if (disableReceiveHandler)
+            {
+                _recorderService.AudioInputReceived -= OnRecordReceived;
+            }
+            
             if (_recorderService.IsRecording)
             {
                 await _recorderService.StopRecording();

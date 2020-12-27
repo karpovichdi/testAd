@@ -44,16 +44,6 @@ namespace quazimodo.ViewModels
 
         #region Properties
         
-        public bool MicrophoneIsDisabledByUser
-        {
-            get => _microphoneIsDisabledByUser;
-            set
-            {
-                _microphoneIsDisabledByUser = value;
-                if (value) HideAllRecordButtons();
-            }
-        }
-        
         public bool AppsIsLoaded { get; set; }
         public SmileItemSourceViewModel ViewModelItemSource { get; set; }
         public Command SongClickCommand { get; set; }
@@ -72,6 +62,16 @@ namespace quazimodo.ViewModels
         #endregion
 
         #region BindableProperties
+        
+        public bool MicrophoneIsDisabledByUser
+        {
+            get => _microphoneIsDisabledByUser;
+            set
+            {
+                _microphoneIsDisabledByUser = value;
+                if (value) HideAllRecordButtons();
+            }
+        }
         
         public bool MyAppsPageVisible
         {
@@ -228,7 +228,7 @@ namespace quazimodo.ViewModels
             MyAppSelectedCommand = new Command(MyAppSelectedHandler);
             StopRecordCommand = new Command(StopRecordHandler);
             HideADMPPopupCommmand = new Command(HideADMPPopupHandler);
-            HideRecordPopupCommand = new Command(HideRecordPopupdHandler);
+            HideRecordPopupCommand = new Command(HideRecordPopupHandler);
             SettingsBtnClickedCommand = new Command(TopBtnClickHandler);
 
             MyApps = new ObservableRangeCollection<MyApp>();
@@ -323,8 +323,7 @@ namespace quazimodo.ViewModels
         {
             if (closeWithoutPopup)
             {
-                await _soundService.StopRecording();
-                _soundService.DeleteSong(_lastClickedViewModel.CommandParameter);
+                await _soundService.StopRecording(true);
                 StopRecordingOnUi();
             }
             else
@@ -419,6 +418,8 @@ namespace quazimodo.ViewModels
 
         private async void SongClickHandler(object obj)
         {
+            // DeleteAllRecords();
+            
             try
             {
                 var soundParameter = (SoundParameter) obj;
@@ -645,12 +646,16 @@ namespace quazimodo.ViewModels
             DonationPageVisible = false;
         }
 
-        private void HideRecordPopupdHandler(object obj)
+        private async void HideRecordPopupHandler(object obj)
         {
             var param = obj as string;
             if (param == ConstantsForms.Positive)
             {
-                _soundService.StopRecording();
+                await _soundService.StopRecording(false);
+            }
+            else
+            {
+                await _soundService.StopRecording(true);
             }
 
             StopRecordingOnUi();
