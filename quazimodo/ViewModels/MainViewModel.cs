@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
@@ -13,6 +14,7 @@ using quazimodo.Utilities.Constants;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.Xaml;
 
 namespace quazimodo.ViewModels
 {
@@ -69,10 +71,17 @@ namespace quazimodo.ViewModels
             set
             {
                 _microphoneIsDisabledByUser = value;
-                if (value) HideAllRecordButtons();
+                if (value)
+                {
+                    HideAllRecordButtons();
+                }
+                else
+                {
+                    ShowAllRecordButtons();
+                }
             }
         }
-        
+
         public bool MyAppsPageVisible
         {
             get => _myAppsPageVisible;
@@ -301,7 +310,7 @@ namespace quazimodo.ViewModels
         private async Task PrepareToRecording(ButtonSmileViewModel buttonSmileViewModel)
         {
             await StopSounds();
-
+            
             RecordViewVisible = true;
 
             _recordProgressTimer = new Timer(500) {AutoReset = true};
@@ -405,10 +414,57 @@ namespace quazimodo.ViewModels
 
         private void HideAllRecordButtons()
         {
-            var smileViewModels = ViewModelItemSource.ItemSource.Where(x => x.IsRecord);
-            foreach (var viewModel in smileViewModels)
+            var plusButton1 = ViewModelItemSource.PositiveItemSource.FirstOrDefault(x => x.IsPlusButton);
+            var plusButton2 = ViewModelItemSource.NeutralItemSource.FirstOrDefault(x => x.IsPlusButton);
+            var plusButton3 = ViewModelItemSource.NegativeItemSource.FirstOrDefault(x => x.IsPlusButton);
+
+            ViewModelItemSource.PositiveItemSource.Remove(plusButton1);
+            ViewModelItemSource.NeutralItemSource.Remove(plusButton2);
+            ViewModelItemSource.NegativeItemSource.Remove(plusButton3);
+            
+            ViewModelItemSource.ItemSource.Add(plusButton1);
+            ViewModelItemSource.ItemSource.Add(plusButton2);
+            ViewModelItemSource.ItemSource.Add(plusButton3);
+        }
+        
+        private void ShowAllRecordButtons()
+        {
+            var countPositive = ViewModelItemSource.PositiveItemSource.Count(x => x.IsRecord);
+            if (countPositive < ConstantsForms.MaxCountOfSoundInOneTab)
             {
-                if(viewModel.IsVisible) viewModel.IsVisible = false;
+                var buttonSmileViewModel = new ButtonSmileViewModel 
+                {
+                    IsPlusButton = true, SmileType = SmileType.Positive, 
+                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countPositive, SmileType.Positive)
+                };
+                
+                ViewModelItemSource.PositiveItemSource.Add(buttonSmileViewModel);
+                ViewModelItemSource.ItemSource.Add(buttonSmileViewModel);
+            } 
+            
+            var countNeutral = ViewModelItemSource.NeutralItemSource.Count(x => x.IsRecord);
+            if (countNeutral < ConstantsForms.MaxCountOfSoundInOneTab)
+            {
+                var buttonSmileViewModel = new ButtonSmileViewModel
+                {
+                    IsPlusButton = true, SmileType = SmileType.Neutral, 
+                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countNeutral,SmileType.Neutral)
+                };
+                
+                ViewModelItemSource.NeutralItemSource.Add(buttonSmileViewModel);
+                ViewModelItemSource.ItemSource.Add(buttonSmileViewModel);
+            }
+            
+            var countNegative = ViewModelItemSource.NegativeItemSource.Count(x => x.IsRecord);
+            if (countNegative < ConstantsForms.MaxCountOfSoundInOneTab)
+            {
+                var buttonSmileViewModel = new ButtonSmileViewModel
+                {
+                    IsPlusButton = true, SmileType = SmileType.Negative, 
+                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countNegative, SmileType.Negative)
+                };
+                ViewModelItemSource.NegativeItemSource.Add(buttonSmileViewModel);
+                ViewModelItemSource.ItemSource.Add(buttonSmileViewModel);
             }
         }
 
@@ -418,11 +474,10 @@ namespace quazimodo.ViewModels
 
         private async void SongClickHandler(object obj)
         {
-            // DeleteAllRecords();
-            
             try
             {
                 var soundParameter = (SoundParameter) obj;
+                Debug.WriteLine("SoundParameter: " + soundParameter);
                 var smileViewModel =
                     ViewModelItemSource.ItemSource.FirstOrDefault(x => x.CommandParameter == soundParameter);
 
@@ -508,7 +563,7 @@ namespace quazimodo.ViewModels
 
             foreach (var record in records)
             {
-                var songPath = ResourceHelper.GetSongPath(record);
+                var songPath = Helpers.GetSongPath(record);
                 var fileExist = System.IO.File.Exists(songPath);
                 if (fileExist)
                 {
@@ -528,6 +583,8 @@ namespace quazimodo.ViewModels
         {
             if ((string)obj == ConstantsForms.Positive)
             {
+                // SmileType deleteSmileTypes = SmileType.NotSet;
+                
                 var viewModels = ViewModelItemSource.ItemSource.Where(item => 
                     item.DeleteModeState == DeleteModeState.ToDelete).ToList();
 
@@ -540,27 +597,45 @@ namespace quazimodo.ViewModels
                 foreach (var viewModel in viewModels)
                 {
                     DeleteSong(viewModel.CommandParameter);
+                    
+                    
+                    
+                    
+                    
+                    // deleteSmileTypes |= viewModel.SmileType;
                 }
+                
+                // var smileTypes = Enum.GetValues(typeof(SmileType)).Cast<SmileType>();
+                // foreach (var smileType in smileTypes)
+                // {
+                //     if (smileType == SmileType.NotSet) continue;
+                //     if (deleteSmileTypes.HasFlag(smileType))
+                //     {
+                //         var itemSourceByType = ViewModelItemSource.GetSmileItemSourceByType(_lastClickedViewModel.SmileType);
+                //         var visibleRecords = itemSourceByType.Where(x => x.IsRecord && x.IsVisible);
+                //         
+                //     }
+                // }
             }
             DeleteRecordsMode = !DeleteRecordsMode;
         }
 
         private void DeleteSong(SoundParameter parameter)
         {
-            var songPath = ResourceHelper.GetSongPath(parameter);
+            var songPath = Helpers.GetSongPath(parameter);
             var fileExist = System.IO.File.Exists(songPath);
             if (!fileExist) return;
             try
             {
-                System.IO.File.Delete(songPath);
-                var model = ViewModelItemSource.ItemSource.FirstOrDefault(x => 
-                    x.CommandParameter == parameter);
+                var viewModel = ViewModelItemSource.ItemSource.GetViewModelByParameter(parameter);                
+                var itemSource = ViewModelItemSource.GetSmileItemSourceByType(viewModel.SmileType);
 
-                if (model == null) return;
-                model.IsVisible = false;
-                model.SongPath = "";
-                model.Image = "";
-                ViewModelItemSource.ItemSource.Remove(model);
+                viewModel.SongPath = "";
+                viewModel.Image = "";
+                itemSource.Remove(viewModel);
+                itemSource.Add(viewModel);
+                
+                System.IO.File.Delete(songPath);
             }
             catch (Exception e)
             {
@@ -582,39 +657,34 @@ namespace quazimodo.ViewModels
 
         private void SongReleasedHandler(SoundParameter parameter)
         {
-            var model = PlayingSong.FirstOrDefault(x => x.CommandParameter == parameter);
+            var model = PlayingSong.GetViewModelByParameter(parameter);
             if (model != null) PlayingSong.Remove(model);
         }
 
         private void RecordReleasedHandler()
         {
+            var itemSource = ViewModelItemSource.GetSmileItemSourceByType(_lastClickedViewModel.SmileType);
             if (_lastClickedViewModel.IsPlusButton)
             {
-                var previousSongIsPlusButton = false;
-                foreach (var song in ViewModelItemSource.ItemSource)
-                {
-                    if (previousSongIsPlusButton)
-                    {
-                        song.IsVisible = true;
-                        song.IsPlusButton = true;
-                        song.IsPlaying = false;
-                        break;
-                    }
+                _lastClickedViewModel.IsPlusButton = false;
+                _lastClickedViewModel.IsPlaying = false;
+                _lastClickedViewModel.Image = SoundParameter.smilingface + ConstantsForms.ImageExtension;
+                _lastClickedViewModel.SongPath = Helpers.GetSongPath(_lastClickedViewModel.CommandParameter);
 
-                    if (song.IsPlusButton)
+                var count = itemSource.Count(x => x.IsRecord);
+                if (count < ConstantsForms.MaxCountOfSoundInOneTab)
+                {
+                    var buttonSmileViewModel = new ButtonSmileViewModel
                     {
-                        // why microphone is hidden
-                        previousSongIsPlusButton = true;
-                        song.IsVisible = true;
-                        song.IsPlusButton = false;
-                        song.IsPlaying = false;
-                        song.Image = SoundParameter.smilingface + ConstantsForms.ImageExtension;
-                        song.SongPath = ResourceHelper.GetSongPath(_lastClickedViewModel.CommandParameter);
-                    }
+                        IsPlusButton = true, SmileType = _lastClickedViewModel.SmileType,
+                        CommandParameter = Helpers.GetSoundParameterByRecordCount(count, _lastClickedViewModel.SmileType)
+                    };
+
+                    itemSource.Add(buttonSmileViewModel);
+                    ViewModelItemSource.ItemSource.Add(buttonSmileViewModel);
                 }
             }
 
-            StopRecordingOnUi();
             StopRecordingOnUi();
             
             TopButtonVisible = true;
@@ -632,8 +702,10 @@ namespace quazimodo.ViewModels
 
         private void ShowMyAppListHandler()
         {
-            MyAppsPageVisible = true;
-            DonationPageVisible = false;
+            DeleteAllRecords();
+            
+            // MyAppsPageVisible = true;
+            // DonationPageVisible = false;
         }
 
         private void HideMyAppsHandler()

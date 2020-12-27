@@ -1,4 +1,5 @@
-﻿using quazimodo.Views.Effects;
+﻿using quazimodo.Models.Enums;
+using quazimodo.Views.Effects;
 using Xamarin.Forms;
 
 namespace quazimodo.Utilities.Constants
@@ -16,7 +17,40 @@ namespace quazimodo.Utilities.Constants
         public const string PathToSounds = "quazimodo.Sounds.";
         public const string Positive = "Positive";
         public const string Negative = "Negative";
-        
+
+        public static SoundParameter[] SoundParameters = {
+            SoundParameter.record1,
+            SoundParameter.record2,
+            SoundParameter.record3,
+            SoundParameter.record4,
+            SoundParameter.record5,
+            SoundParameter.record6,
+            SoundParameter.record7,
+            SoundParameter.record8,
+            SoundParameter.record9,
+            SoundParameter.record10,
+            SoundParameter.record11,
+            SoundParameter.record12,
+            SoundParameter.record13,
+            SoundParameter.record14,
+            SoundParameter.record15,
+            SoundParameter.record16,
+            SoundParameter.record17,
+            SoundParameter.record18,
+            SoundParameter.record19,
+            SoundParameter.record20,
+            SoundParameter.record21,
+            SoundParameter.record22,
+            SoundParameter.record23,
+            SoundParameter.record24,
+            SoundParameter.record25,
+            SoundParameter.record26,
+            SoundParameter.record27,
+            SoundParameter.record28,
+            SoundParameter.record29,
+            SoundParameter.record30
+        };
+
         public static FontImageSource DefaultImageSource => new FontImageSource()
         {
             FontFamily = MarkupResources.IcoMoonFontForAndroid,

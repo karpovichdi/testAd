@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
-using System.Threading.Tasks;
+using System.Linq;
 using quazimodo.Models.Enums;
 using quazimodo.Services.Interfaces;
 using quazimodo.Utilities;
 using quazimodo.Utilities.Constants;
-using Xamarin.Essentials;
+using Xamarin.Forms.Internals;
 
 namespace quazimodo.ViewModels
 {
@@ -31,58 +30,63 @@ namespace quazimodo.ViewModels
             
             ItemSource.CollectionChanged += ItemSourceOnCollectionChanged;
 
-            UnusedItemsTurnOffVisibility(list);
+            ItemSource.AddRange(list);
+            ItemSource.AddRange(GetListOfRecords());
+            ItemSource.AddRange(GetPlusButtons());
         }
 
-        private void UnusedItemsTurnOffVisibility(IEnumerable<ButtonSmileViewModel> list)
+        private IEnumerable<ButtonSmileViewModel> GetListOfRecords()
         {
-            var recordViewCounter = 0;
-            var tabPlusButtonExist = false;
-            
-            foreach (var item in list)
+            var viewModels = new List<ButtonSmileViewModel>();
+
+            foreach (var soundName in ConstantsForms.SoundParameters)
             {
-                if (item.SongPath == null)
+                var index = ConstantsForms.SoundParameters.IndexOf(soundName);
+                var fullPathToFile = Helpers.GetSongPath(soundName);
+                if (!File.Exists(fullPathToFile)) continue;
+                
+                var viewModel = new ButtonSmileViewModel
                 {
-                    var fullPathToFile = ResourceHelper.GetSongPath(item.CommandParameter);
-                    var fileExist = File.Exists(fullPathToFile);
-
-                    if (fileExist)
-                    {
-                        item.SongPath = fullPathToFile;
-                    }
-                }
-
-                if (item.IsRecord)
-                {
-                    if (string.IsNullOrEmpty(item.SongPath))
-                    {
-                        if (!tabPlusButtonExist)
-                        {
-                            item.IsPlusButton = true;
-                            item.IsVisible = true;
-                            tabPlusButtonExist = true;
-                        }
-                        else
-                        {
-                            item.IsVisible = false;
-                        }
-                    }
-                    
-                    recordViewCounter++;
-
-                    if (recordViewCounter == ConstantsForms.MaxCountOfSoundInOneTab)
-                    {
-                        recordViewCounter = 0;
-                        tabPlusButtonExist = false;
-                    }
-                }
-                else
-                {
-                    item.IsVisible = true;
-                }
+                    SongPath = fullPathToFile, 
+                    IsRecord = true, 
+                    CommandParameter = soundName,
+                };
+                viewModel.SmileType = viewModel.GetSmileTypeByIndex(index);
+                viewModels.Add(viewModel);
             }
             
-            ItemSource.AddRange(list);
+            return viewModels;
+        }
+
+        private IEnumerable<ButtonSmileViewModel> GetPlusButtons()
+        {
+            var viewModels = new List<ButtonSmileViewModel>();
+
+            var countPositive = PositiveItemSource.Count(x => x.IsRecord);
+            if (countPositive < ConstantsForms.MaxCountOfSoundInOneTab) 
+                viewModels.Add(new ButtonSmileViewModel 
+                {
+                    IsPlusButton = true, SmileType = SmileType.Positive, 
+                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countPositive, SmileType.Positive)
+                });
+            
+            var countNeutral = NeutralItemSource.Count(x => x.IsRecord);
+            if (countNeutral < ConstantsForms.MaxCountOfSoundInOneTab) 
+                viewModels.Add(new ButtonSmileViewModel
+                {
+                    IsPlusButton = true, SmileType = SmileType.Neutral, 
+                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countNeutral,SmileType.Neutral)
+                });
+            
+            var countNegative = NegativeItemSource.Count(x => x.IsRecord);
+            if (countNegative < ConstantsForms.MaxCountOfSoundInOneTab) 
+                viewModels.Add(new ButtonSmileViewModel
+                {
+                    IsPlusButton = true, SmileType = SmileType.Negative, 
+                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countNegative, SmileType.Negative)
+                });
+
+            return viewModels;
         }
 
         private void ItemSourceOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -120,7 +124,7 @@ namespace quazimodo.ViewModels
                 case NotifyCollectionChangedAction.Remove:
                     break;
                 case NotifyCollectionChangedAction.Replace:
-                    break;
+                    break; 
                 case NotifyCollectionChangedAction.Reset:
                     break;
             }

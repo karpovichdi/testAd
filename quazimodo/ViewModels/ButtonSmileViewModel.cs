@@ -59,16 +59,6 @@ namespace quazimodo.ViewModels
             }
         }
         
-        public bool IsVisible
-        {
-            get => _isVisible;
-            set
-            {
-                _isVisible = value;
-                OnPropertyChanged(nameof(IsVisible));
-            }
-        }
-        
         public DeleteModeState DeleteModeState
         {
             get => _deleteModeState;

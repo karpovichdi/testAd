@@ -73,7 +73,7 @@ namespace quazimodo.Services
              _recorderService = new AudioRecorderService
             {
                 TotalAudioTimeout = TimeSpan.FromSeconds(ConstantsForms.MaxLenghtOfRecordedSoundInSecond),
-                FilePath = ResourceHelper.GetSongPath(commandParameter),
+                FilePath = Helpers.GetSongPath(commandParameter),
                 StopRecordingOnSilence = false,
                 StopRecordingAfterTimeout = true 
             };
@@ -100,7 +100,7 @@ namespace quazimodo.Services
         {
             try
             {
-                var songPath = ResourceHelper.GetSongPath(parameter);
+                var songPath = Helpers.GetSongPath(parameter);
                 var fileExist = System.IO.File.Exists(songPath);
                 if (!fileExist) return Task.CompletedTask;
                 File.Delete(songPath);
@@ -149,8 +149,8 @@ namespace quazimodo.Services
         {
             try
             {
-                var playingSongStream = ResourceHelper.GetStreamSound(soundParameter) ??
-                                        File.Open(ResourceHelper.GetSongPath(soundParameter), FileMode.Open, FileAccess.Read, FileShare.Read);
+                var playingSongStream = Helpers.GetStreamSound(soundParameter) ??
+                                        File.Open(Helpers.GetSongPath(soundParameter), FileMode.Open, FileAccess.Read, FileShare.Read);
 
                 var player = GetPlayer(soundParameter, playingSongStream);
                 player.Load(playingSongStream);

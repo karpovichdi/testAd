@@ -1,4 +1,7 @@
-﻿using quazimodo.Utilities;
+﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using quazimodo.Utilities;
 using quazimodo.ViewModels;
 using Xamarin.Forms;
 
@@ -34,6 +37,49 @@ namespace quazimodo.Views.Controlls
             }
 
             container.AddButtons(container.ItemSource, container);
+            
+            container.ItemSource.CollectionChanged -= container.ItemSourceOnCollectionChanged;
+            container.ItemSource.CollectionChanged += container.ItemSourceOnCollectionChanged;
+        }
+
+        private void ItemSourceOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            IEnumerable<ButtonSmileViewModel> viewModels;
+            
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    viewModels = e.NewItems.Cast<ButtonSmileViewModel>();
+                    foreach (var viewModel in viewModels)
+                    {
+                        var newButton = new ImageButton
+                        {
+                            BindingContext = viewModel,
+                            Command = ((MainViewModel) BindingContext).SongClickCommand
+                        };
+
+                        newButton.SetBinding(ImageButton.SourceProperty, nameof(viewModel.Image));
+                        newButton.SetBinding(ImageButton.StyleProperty, nameof(viewModel.Style));
+                        newButton.SetBinding(ImageButton.CommandParameterProperty, nameof(viewModel.CommandParameter));
+                        
+                        Children.Add(newButton);
+                    }
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    viewModels = e.OldItems.Cast<ButtonSmileViewModel>();
+                    foreach (var viewModel in viewModels)
+                    {
+                        var button = Children.FirstOrDefault(x => x.BindingContext == viewModel);
+                        if (button != null) Children.Remove(button);
+                    }
+                    break;
+                case NotifyCollectionChangedAction.Move:
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    break;
+            }
         }
 
         private void AddButtons(
@@ -49,7 +95,6 @@ namespace quazimodo.Views.Controlls
                 };
 
                 button.SetBinding(ImageButton.SourceProperty, nameof(viewModel.Image));
-                button.SetBinding(ImageButton.IsVisibleProperty, nameof(viewModel.IsVisible));
                 button.SetBinding(ImageButton.StyleProperty, nameof(viewModel.Style));
                 button.SetBinding(ImageButton.CommandParameterProperty, nameof(viewModel.CommandParameter));
                 

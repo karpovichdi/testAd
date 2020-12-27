@@ -1,9 +1,13 @@
-﻿namespace quazimodo.Models.Enums
+﻿using System;
+
+namespace quazimodo.Models.Enums
 {
+    [Flags]
     public enum SmileType
     {
-        Positive,
-        Negative,
-        Neutral
+        NotSet = 0,
+        Positive = 1,
+        Negative = 2,
+        Neutral = 4,
     }
 }
