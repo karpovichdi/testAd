@@ -22,7 +22,7 @@ namespace quazimodo.Utilities
             return $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/{parameter}{ConstantsForms.SoundExtension}";
         }
         
-        public static ObservableRangeCollection<ButtonSmileViewModel> GetSmileItemSourceByType(this SmileItemSourceViewModel viewModel,
+        public static ObservableRangeCollection<ButtonSmileViewModel> GetSmileItemSourceByType(SmileItemSourceViewModel viewModel,
             SmileType smileType)
         {
             switch (smileType)

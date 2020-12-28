@@ -122,6 +122,17 @@ namespace quazimodo.ViewModels
                 case NotifyCollectionChangedAction.Move:
                     break;
                 case NotifyCollectionChangedAction.Remove:
+                    var viewModels = e.OldItems.Cast<ButtonSmileViewModel>();
+                    foreach (var viewModel in viewModels)
+                    {
+                        var item = ItemSource.FirstOrDefault(x => x.BindingContext == viewModel);
+                        if (item != null)
+                        {
+                            var itemSource = Helpers.GetSmileItemSourceByType(this, viewModel.SmileType);
+                            itemSource.Remove(item);
+                        }
+                    }
+                    
                     break;
                 case NotifyCollectionChangedAction.Replace:
                     break; 
