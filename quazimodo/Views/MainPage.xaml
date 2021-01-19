@@ -25,7 +25,7 @@
         <ScrollView Grid.RowSpan="2">
             <StackLayout Spacing="0"
                          Margin="0,5,0,0">
-                <controlls:SmileContainer x:DataType="viewModels:MainViewModel"/>
+                <controlls:SmileContainer/>
                 <Button x:DataType="viewModels:MainViewModel"
                         Text="{x:Static resources:Localization.Tap}"
                         BackgroundColor="{StaticResource white4}"

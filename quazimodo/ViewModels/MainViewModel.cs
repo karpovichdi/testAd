@@ -425,37 +425,13 @@ namespace quazimodo.ViewModels
         
         private void ShowAllRecordButtons()
         {
-            var countPositive = ViewModelItemSource.PositiveItemSource.Count(x => x.IsRecord);
-            if (countPositive < ConstantsForms.MaxCountOfSoundInOneTab)
-            {
-                var buttonSmileViewModel = new ButtonSmileViewModel 
-                {
-                    IsPlusButton = true, SmileType = SmileType.Positive, 
-                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countPositive, SmileType.Positive)
-                };
-                
-                ViewModelItemSource.ItemSource.Add(buttonSmileViewModel);
-            } 
-            
-            var countNeutral = ViewModelItemSource.NeutralItemSource.Count(x => x.IsRecord);
-            if (countNeutral < ConstantsForms.MaxCountOfSoundInOneTab)
+            var recordsCount = ViewModelItemSource.NegativeItemSource.Count(x => x.SmileType==SmileType.Record);
+            if (recordsCount < ConstantsForms.MaxCountOfRecords)
             {
                 var buttonSmileViewModel = new ButtonSmileViewModel
                 {
-                    IsPlusButton = true, SmileType = SmileType.Neutral, 
-                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countNeutral,SmileType.Neutral)
-                };
-                
-                ViewModelItemSource.ItemSource.Add(buttonSmileViewModel);
-            }
-            
-            var countNegative = ViewModelItemSource.NegativeItemSource.Count(x => x.IsRecord);
-            if (countNegative < ConstantsForms.MaxCountOfSoundInOneTab)
-            {
-                var buttonSmileViewModel = new ButtonSmileViewModel
-                {
-                    IsPlusButton = true, SmileType = SmileType.Negative, 
-                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countNegative, SmileType.Negative)
+                    IsPlusButton = true, SmileType = SmileType.Record, 
+                    CommandParameter = Helpers.GetSoundParameterByRecordCount(recordsCount)
                 };
                 ViewModelItemSource.ItemSource.Add(buttonSmileViewModel);
             }
@@ -488,7 +464,7 @@ namespace quazimodo.ViewModels
                 if (DeleteRecordsMode)
                 { 
                     if (!_soundService.MicrophonePermissionsGranted ||
-                        !smileViewModel.IsRecord || 
+                        smileViewModel.SmileType != SmileType.Record || 
                         smileViewModel.IsPlusButton) return;
                     smileViewModel.SwitchDeleteUIState();
                 }
@@ -655,7 +631,6 @@ namespace quazimodo.ViewModels
 
         private void RecordReleasedHandler()
         {
-            var itemSource = Helpers.GetSmileItemSourceByType(ViewModelItemSource, _lastClickedViewModel.SmileType);
             if (_lastClickedViewModel.IsPlusButton)
             {
                 _lastClickedViewModel.IsPlusButton = false;
@@ -663,13 +638,13 @@ namespace quazimodo.ViewModels
                 _lastClickedViewModel.Image = SoundParameter.smilingface + ConstantsForms.ImageExtension;
                 _lastClickedViewModel.SongPath = Helpers.GetSongPath(_lastClickedViewModel.CommandParameter);
 
-                var count = itemSource.Count(x => x.IsRecord);
-                if (count < ConstantsForms.MaxCountOfSoundInOneTab - 1)
+                var count = ViewModelItemSource.RecordsItemSource.Count;
+                if (count < ConstantsForms.MaxCountOfRecords)
                 {
                     var buttonSmileViewModel = new ButtonSmileViewModel
                     {
-                        IsPlusButton = true, SmileType = _lastClickedViewModel.SmileType, IsRecord = true,
-                        CommandParameter = Helpers.GetSoundParameterByRecordCount(count + 1, _lastClickedViewModel.SmileType)
+                        IsPlusButton = true, SmileType = SmileType.Record,
+                        CommandParameter = Helpers.GetSoundParameterByRecordCount(count)
                     };
 
                     ViewModelItemSource.ItemSource.Add(buttonSmileViewModel);

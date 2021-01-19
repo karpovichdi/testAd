@@ -10,7 +10,7 @@ namespace quazimodo.Utilities.Constants
         public const string SoundExtension = ".mp3";
 
         public const int MaxCountOfSoundInOneTime = 10;
-        public const int MaxCountOfSoundInOneTab = 10;
+        public const int MaxCountOfRecords = 10;
         
         public static int AdditionalValueToRecordProgress = (100/MaxLenghtOfRecordedSoundInSecond)/2;
 

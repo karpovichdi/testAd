@@ -69,4 +69,7 @@
     <data name="YouDisabledMicPermissionsYouCanTurnOnItInPhoneSettingsOrJustReinstallApp" xml:space="preserve">
         <value>Разрешения на использования микрофона отключены, вы можете включить их в настройках телефона или просто переустановить приложение.</value>
     </data>
+    <data name="RecordsHeader" xml:space="preserve">
+        <value>Records</value>
+    </data>
 </root>

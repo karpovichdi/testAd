@@ -180,4 +180,7 @@ Just one click on the banner, and you will help someone) Spoiler, me)</value>
     <data name="YouDisabledMicPermissionsYouCanTurnOnItInPhoneSettingsOrJustReinstallApp" xml:space="preserve">
         <value>Microphone permissions disabled you can turn on it in phone settings or just reinstall the app.</value>
     </data>
+    <data name="RecordsHeader" xml:space="preserve">
+        <value>Records</value>
+    </data>
 </root>

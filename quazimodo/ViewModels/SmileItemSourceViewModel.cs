@@ -6,16 +6,18 @@ using quazimodo.Models.Enums;
 using quazimodo.Services.Interfaces;
 using quazimodo.Utilities;
 using quazimodo.Utilities.Constants;
-using Xamarin.Forms.Internals;
 
 namespace quazimodo.ViewModels
 {
     public class SmileItemSourceViewModel : ViewModelBase
     {
         private ISoundService _soundService;
+
         public ObservableRangeCollection<ButtonSmileViewModel> PositiveItemSource { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> NeutralItemSource { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> NegativeItemSource { get; set; }
+        public ObservableRangeCollection<ButtonSmileViewModel> RecordsItemSource { get; set; }
+        
         public ObservableRangeCollection<ButtonSmileViewModel> ItemSource { get; set; }
 
         public SmileItemSourceViewModel(IEnumerable<ButtonSmileViewModel> list, ISoundService soundService)
@@ -27,63 +29,46 @@ namespace quazimodo.ViewModels
             PositiveItemSource = new ObservableRangeCollection<ButtonSmileViewModel>(); 
             NeutralItemSource = new ObservableRangeCollection<ButtonSmileViewModel>();
             NegativeItemSource = new ObservableRangeCollection<ButtonSmileViewModel>();
+            RecordsItemSource = new ObservableRangeCollection<ButtonSmileViewModel>();
             
             ItemSource.CollectionChanged += ItemSourceOnCollectionChanged;
 
             ItemSource.AddRange(list);
             ItemSource.AddRange(GetListOfRecords());
-            ItemSource.AddRange(GetPlusButtons());
+            ItemSource.AddRange(GetPlusButton());
         }
-
+        
         private IEnumerable<ButtonSmileViewModel> GetListOfRecords()
         {
             var viewModels = new List<ButtonSmileViewModel>();
 
             foreach (var soundName in ConstantsForms.SoundParameters)
             {
-                var index = ConstantsForms.SoundParameters.IndexOf(soundName);
                 var fullPathToFile = Helpers.GetSongPath(soundName);
                 if (!File.Exists(fullPathToFile)) continue;
-                
+
                 var viewModel = new ButtonSmileViewModel
                 {
-                    SongPath = fullPathToFile, 
-                    IsRecord = true, 
+                    SongPath = fullPathToFile,
                     CommandParameter = soundName,
+                    SmileType = SmileType.Record,
                 };
-                viewModel.SmileType = viewModel.GetSmileTypeByIndex(index);
                 viewModels.Add(viewModel);
             }
             
             return viewModels;
         }
 
-        private IEnumerable<ButtonSmileViewModel> GetPlusButtons()
+        private IEnumerable<ButtonSmileViewModel> GetPlusButton()
         {
             var viewModels = new List<ButtonSmileViewModel>();
 
-            var countPositive = PositiveItemSource.Count(x => x.IsRecord);
-            if (countPositive < ConstantsForms.MaxCountOfSoundInOneTab) 
-                viewModels.Add(new ButtonSmileViewModel 
-                {
-                    IsPlusButton = true, SmileType = SmileType.Positive, 
-                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countPositive, SmileType.Positive)
-                });
-            
-            var countNeutral = NeutralItemSource.Count(x => x.IsRecord);
-            if (countNeutral < ConstantsForms.MaxCountOfSoundInOneTab) 
+            var recordCount = RecordsItemSource.Count(x => x.SmileType == SmileType.Record);
+            if (recordCount < ConstantsForms.MaxCountOfRecords) 
                 viewModels.Add(new ButtonSmileViewModel
                 {
-                    IsPlusButton = true, SmileType = SmileType.Neutral, 
-                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countNeutral,SmileType.Neutral)
-                });
-            
-            var countNegative = NegativeItemSource.Count(x => x.IsRecord);
-            if (countNegative < ConstantsForms.MaxCountOfSoundInOneTab) 
-                viewModels.Add(new ButtonSmileViewModel
-                {
-                    IsPlusButton = true, SmileType = SmileType.Negative, 
-                    CommandParameter = Helpers.GetSoundParameterByRecordCount(countNegative, SmileType.Negative)
+                    IsPlusButton = true, SmileType = SmileType.Record, 
+                    CommandParameter = Helpers.GetSoundParameterByRecordCount(recordCount)
                 });
 
             return viewModels;
@@ -98,6 +83,7 @@ namespace quazimodo.ViewModels
                     var positive = new List<ButtonSmileViewModel>();
                     var neutral = new List<ButtonSmileViewModel>();
                     var negative = new List<ButtonSmileViewModel>();
+                    var records = new List<ButtonSmileViewModel>();
 
                     foreach (ButtonSmileViewModel value in e.NewItems)
                     {
@@ -112,12 +98,16 @@ namespace quazimodo.ViewModels
                             case SmileType.Neutral:
                                 neutral.Add(value);
                                 break;
+                            case SmileType.Record:
+                                records.Add(value);
+                                break;
                         }
                     }
                     
                     PositiveItemSource.AddRange(positive);
                     NeutralItemSource.AddRange(neutral);
                     NegativeItemSource.AddRange(negative);
+                    RecordsItemSource.AddRange(records);
                     break;
                 case NotifyCollectionChangedAction.Move:
                     break;

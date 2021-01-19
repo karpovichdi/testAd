@@ -16,7 +16,6 @@ namespace quazimodo.ViewModels
 
         public SoundParameter CommandParameter { get; set; }
         public SmileType SmileType { get; set; }
-        public bool IsRecord { get; set; }
 
         public ImageSource Image
         {
@@ -81,6 +80,8 @@ namespace quazimodo.ViewModels
                         return ConstantsForms.MarkupResources.NegativeEmojiStyle;
                     case SmileType.Neutral:
                         return ConstantsForms.MarkupResources.NeutralEmojiStyle;
+                    case SmileType.Record:
+                        return ConstantsForms.MarkupResources.PositiveEmojiStyle;
                 }
                 
                 return _style;
@@ -99,7 +100,7 @@ namespace quazimodo.ViewModels
 
         public void TurnOnDeleteMode()
         {
-            if (IsRecord)
+            if (SmileType == SmileType.Record)
             {
                 DeleteModeState = !IsPlusButton ? DeleteModeState.ModeEnabled : DeleteModeState.SongDisabled;
             }

@@ -5,9 +5,9 @@
              xmlns:controlls="clr-namespace:quazimodo.Views.Controlls;assembly=quazimodo"
              xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
              xmlns:constants="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
+             xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
+             x:DataType="viewModels:MainViewModel"
              x:Class="quazimodo.Views.Controlls.SmileContainer">
-    <Label Style="{StaticResource labelDeleteMessageStyle}"
-           IsVisible="{Binding DeleteRecordsMode}"/>
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -25,29 +25,11 @@
                                              CornerRadius="5"/>
             </Label.Effects>
         </Label>
-        <controlls:ImageFontView Grid.Row="0"
-                                 CommandParameter="{x:Static constants:ConstantsForms.Negative}"
-                                 HorizontalOptions="End"
-                                 Margin="0,5,20,0"
-                                 Size="22"
-                                 Glyph="{Binding TopGlyph}"
-                                 Color="{StaticResource lightOrange}"
-                                 IsVisible="{Binding TopButtonVisible}"/>
-        <controlls:ImageFontView Grid.Row="0"
-                                 CommandParameter="{x:Static constants:ConstantsForms.Positive}"
-                                 HorizontalOptions="Start"
-                                 Margin="20,5,0,0"
-                                 Size="22"
-                                 Glyph="{x:Static constants:FontIcons.checkmark}"
-                                 Color="{StaticResource lightOrange}"
-                                 IsVisible="{Binding DeleteRecordsMode}"/>
         <controlls:ItemSourceFlexLayout x:Name="positiveFlex"
                                         Grid.Row="1"
                                         Style="{StaticResource flexLayoutStyle}"
                                         ItemSource="{Binding ViewModelItemSource.PositiveItemSource}"/>
     </Grid>
-    <Label Style="{StaticResource labelDeleteMessageStyle}"
-           IsVisible="{Binding DeleteRecordsMode}"/>
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -65,29 +47,11 @@
                                              CornerRadius="5"/>
             </Label.Effects>
         </Label>
-        <controlls:ImageFontView Grid.Row="0"
-                                 CommandParameter="{x:Static constants:ConstantsForms.Negative}"
-                                 HorizontalOptions="End"
-                                 Margin="0,5,20,0"
-                                 Size="22"
-                                 Glyph="{Binding TopGlyph}"
-                                 Color="{StaticResource lightGray}"
-                                 IsVisible="{Binding TopButtonVisible}"/>
-        <controlls:ImageFontView Grid.Row="0"
-                                 CommandParameter="{x:Static constants:ConstantsForms.Positive}"
-                                 HorizontalOptions="Start"
-                                 Margin="20,5,0,0"
-                                 Size="22"
-                                 Glyph="{x:Static constants:FontIcons.checkmark}"
-                                 Color="{StaticResource lightYellow}"
-                                 IsVisible="{Binding DeleteRecordsMode}"/>
         <controlls:ItemSourceFlexLayout x:Name="neutralFlex"
                                         Grid.Row="1"
                                         Style="{StaticResource flexLayoutStyle}"
                                         ItemSource="{Binding ViewModelItemSource.NeutralItemSource}"/>
     </Grid>
-    <Label Style="{StaticResource labelDeleteMessageStyle}"
-           IsVisible="{Binding DeleteRecordsMode}"/>
     <Grid Margin="{StaticResource defaultOffset}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -100,6 +64,33 @@
                Style="{StaticResource soundCategoryStyle}"
                TextColor="{StaticResource lightYellow}"
                Text="{x:Static resources:Localization.NegativeHeader}">
+            <Label.Effects>
+                <effects:RoundedLayoutEffect HasShadow="True"
+                                             CornerRadius="5"/>
+            </Label.Effects>
+        </Label>
+        <controlls:ItemSourceFlexLayout x:Name="negativelFlex"
+                                        Grid.Row="1"
+                                        Style="{StaticResource flexLayoutStyle}"
+                                        ItemSource="{Binding ViewModelItemSource.NegativeItemSource}"/>
+    </Grid>
+    
+    
+    
+    <Label Style="{StaticResource labelDeleteMessageStyle}"
+           IsVisible="{Binding DeleteRecordsMode}"/>
+    <Grid Margin="{StaticResource defaultOffset}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <BoxView Grid.RowSpan="2"
+                 CornerRadius="{StaticResource defaultOffset}"
+                 BackgroundColor="{StaticResource white6}" />
+        <Label Grid.Row="0"
+               Style="{StaticResource soundCategoryStyle}"
+               TextColor="{StaticResource lightOrange}"
+               Text="{x:Static resources:Localization.RecordsHeader}">
             <Label.Effects>
                 <effects:RoundedLayoutEffect HasShadow="True"
                                              CornerRadius="5"/>
@@ -121,11 +112,17 @@
                                  Glyph="{x:Static constants:FontIcons.checkmark}"
                                  Color="{StaticResource lightYellow}"
                                  IsVisible="{Binding DeleteRecordsMode}"/>
-        <controlls:ItemSourceFlexLayout x:Name="negativelFlex"
+        <controlls:ItemSourceFlexLayout x:Name="recordsFlex"
                                         Grid.Row="1"
                                         Style="{StaticResource flexLayoutStyle}"
-                                        ItemSource="{Binding ViewModelItemSource.NegativeItemSource}"/>
+                                        ItemSource="{Binding ViewModelItemSource.RecordsItemSource}"/>
     </Grid>
+    
+    
+    
+    
+    
+    
     <Label Style="{StaticResource labelDeleteMessageStyle}"
            IsVisible="{Binding DeleteRecordsMode}"/>
 </StackLayout>

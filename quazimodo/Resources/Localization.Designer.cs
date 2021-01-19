@@ -65,6 +65,12 @@ namespace quazimodo.Resources {
             }
         }
         
+        public static string RecordsHeader {
+            get {
+                return ResourceManager.GetString("RecordsHeader", resourceCulture);
+            }
+        }
+        
         public static string Skip {
             get {
                 return ResourceManager.GetString("Skip", resourceCulture);

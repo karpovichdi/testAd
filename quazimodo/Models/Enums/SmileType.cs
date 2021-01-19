@@ -9,5 +9,6 @@ namespace quazimodo.Models.Enums
         Positive = 1,
         Negative = 2,
         Neutral = 4,
+        Record = 8
     }
 }
