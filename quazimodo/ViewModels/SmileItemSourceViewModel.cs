@@ -35,7 +35,6 @@ namespace quazimodo.ViewModels
 
             ItemSource.AddRange(list);
             ItemSource.AddRange(GetListOfRecords());
-            ItemSource.AddRange(GetPlusButton());
         }
         
         private IEnumerable<ButtonSmileViewModel> GetListOfRecords()
@@ -56,21 +55,6 @@ namespace quazimodo.ViewModels
                 viewModels.Add(viewModel);
             }
             
-            return viewModels;
-        }
-
-        private IEnumerable<ButtonSmileViewModel> GetPlusButton()
-        {
-            var viewModels = new List<ButtonSmileViewModel>();
-
-            var recordCount = RecordsItemSource.Count(x => x.SmileType == SmileType.Record);
-            if (recordCount < ConstantsForms.MaxCountOfRecords) 
-                viewModels.Add(new ButtonSmileViewModel
-                {
-                    IsPlusButton = true, SmileType = SmileType.Record, 
-                    CommandParameter = Helpers.GetSoundParameterByRecordCount(recordCount)
-                });
-
             return viewModels;
         }
 
@@ -113,13 +97,12 @@ namespace quazimodo.ViewModels
                     break;
                 case NotifyCollectionChangedAction.Remove:
                     var viewModels = e.OldItems.Cast<ButtonSmileViewModel>();
-                    foreach (var viewModel in viewModels)
+                    foreach (ButtonSmileViewModel viewModel in viewModels)
                     {
-                        var item = ItemSource.FirstOrDefault(x => x.BindingContext == viewModel);
+                        var item = RecordsItemSource.FirstOrDefault(x => x.CommandParameter == viewModel.CommandParameter);
                         if (item != null)
                         {
-                            var itemSource = Helpers.GetSmileItemSourceByType(this, viewModel.SmileType);
-                            itemSource.Remove(item);
+                            RecordsItemSource.Remove(item);
                         }
                     }
                     

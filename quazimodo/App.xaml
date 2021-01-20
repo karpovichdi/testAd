@@ -113,18 +113,6 @@
                     <Setter Property="BorderColor" Value="{StaticResource white1}" />
                 </DataTrigger>
                 <DataTrigger TargetType="ImageButton"
-                             Binding="{Binding IsPlusButton}"
-                             Value="false">
-                    <Setter Property="BackgroundColor" Value="{StaticResource lightOrange}" />
-                    <Setter Property="BorderColor" Value="{StaticResource white1}" />
-                </DataTrigger>
-                <DataTrigger TargetType="ImageButton"
-                             Binding="{Binding IsPlusButton}"
-                             Value="true">
-                    <Setter Property="BackgroundColor" Value="Transparent" />
-                    <Setter Property="BorderColor" Value="Transparent" />
-                </DataTrigger>
-                <DataTrigger TargetType="ImageButton"
                              Binding="{Binding DeleteModeState}"
                              Value="{x:Static enums:DeleteModeState.ModeDisabled}">
                     <Setter Property="Opacity" Value="{StaticResource normalTransperency}" />
@@ -146,18 +134,6 @@
                     <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
                     <Setter Property="BackgroundColor" Value="{StaticResource lightGray}" />
                     <Setter Property="BorderColor" Value="{StaticResource white1}" />
-                </DataTrigger>
-                <DataTrigger TargetType="ImageButton"
-                             Binding="{Binding IsPlusButton}"
-                             Value="false">
-                    <Setter Property="BackgroundColor" Value="{StaticResource lightGray}" />
-                    <Setter Property="BorderColor" Value="{StaticResource white1}" />
-                </DataTrigger>
-                <DataTrigger TargetType="ImageButton"
-                             Binding="{Binding IsPlusButton}"
-                             Value="true">
-                    <Setter Property="BackgroundColor" Value="Transparent" />
-                    <Setter Property="BorderColor" Value="Transparent" />
                 </DataTrigger>
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding DeleteModeState}"
@@ -188,12 +164,6 @@
                              Value="false">
                     <Setter Property="BackgroundColor" Value="{StaticResource lightYellow}" />
                     <Setter Property="BorderColor" Value="{StaticResource white3}" />
-                </DataTrigger>
-                <DataTrigger TargetType="ImageButton"
-                             Binding="{Binding IsPlusButton}"
-                             Value="true">
-                    <Setter Property="BackgroundColor" Value="Transparent" />
-                    <Setter Property="BorderColor" Value="Transparent" />
                 </DataTrigger>
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding DeleteModeState}"

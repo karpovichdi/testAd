@@ -22,6 +22,11 @@ namespace quazimodo.Utilities
             return $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/{parameter}{ConstantsForms.SoundExtension}";
         }
         
+        public static string GetSongPath(string parameter)
+        {
+            return $"{Environment.GetFolderPath(Environment.SpecialFolder.Personal)}/{parameter}{ConstantsForms.SoundExtension}";
+        }
+        
         public static ObservableRangeCollection<ButtonSmileViewModel> GetSmileItemSourceByType(SmileItemSourceViewModel viewModel,
             SmileType smileType)
         {
@@ -50,9 +55,22 @@ namespace quazimodo.Utilities
             return index < 30 ? SmileType.Negative : SmileType.NotSet;
         }
         
-        public static SoundParameter GetSoundParameterByRecordCount(int index)
+        public static SoundParameter GetNewSoundParameter()
         {
-            switch (index)
+            for (var i = 0; i <= ConstantsForms.MaxCountOfRecords; i++)
+            {
+                if (!File.Exists(GetSongPath("record" + (i+1))))
+                {
+                    var t = GetSoundParameterByValue(i);
+                    return t;
+                }
+            }
+            return SoundParameter.accept;
+        }
+
+        private static SoundParameter GetSoundParameterByValue(int value)
+        {
+            switch (value)
             {
                 case 0: return SoundParameter.record1;
                 case 1: return SoundParameter.record2;
@@ -84,9 +102,8 @@ namespace quazimodo.Utilities
                 case 27: return SoundParameter.record28;
                 case 28: return SoundParameter.record29;
                 case 29: return SoundParameter.record30;
+                default: return SoundParameter.record1;
             }
-
-            return SoundParameter.accept;
         }
     }
 }

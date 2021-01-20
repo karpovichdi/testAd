@@ -47,17 +47,6 @@ namespace quazimodo.ViewModels
             }
         }
         
-        public bool IsPlusButton
-        {
-            get => _isPlusButton;
-            set
-            {
-                if (value) Image = ConstantsForms.DefaultImageSource;
-                _isPlusButton = value;
-                OnPropertyChanged(nameof(IsPlusButton));
-            }
-        }
-        
         public DeleteModeState DeleteModeState
         {
             get => _deleteModeState;
@@ -102,7 +91,7 @@ namespace quazimodo.ViewModels
         {
             if (SmileType == SmileType.Record)
             {
-                DeleteModeState = !IsPlusButton ? DeleteModeState.ModeEnabled : DeleteModeState.SongDisabled;
+                DeleteModeState = DeleteModeState.ModeEnabled;
             }
             else
             {
@@ -113,10 +102,6 @@ namespace quazimodo.ViewModels
         public void TurnOffDeleteMode()
         {
             DeleteModeState = DeleteModeState.ModeDisabled;
-
-            if (!IsPlusButton) return;
-            IsPlusButton = false;
-            IsPlusButton = true;
         }
     }
 }

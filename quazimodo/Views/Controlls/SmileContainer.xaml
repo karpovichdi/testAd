@@ -74,9 +74,6 @@
                                         Style="{StaticResource flexLayoutStyle}"
                                         ItemSource="{Binding ViewModelItemSource.NegativeItemSource}"/>
     </Grid>
-    
-    
-    
     <Label Style="{StaticResource labelDeleteMessageStyle}"
            IsVisible="{Binding DeleteRecordsMode}"/>
     <Grid Margin="{StaticResource defaultOffset}">
@@ -117,12 +114,6 @@
                                         Style="{StaticResource flexLayoutStyle}"
                                         ItemSource="{Binding ViewModelItemSource.RecordsItemSource}"/>
     </Grid>
-    
-    
-    
-    
-    
-    
     <Label Style="{StaticResource labelDeleteMessageStyle}"
            IsVisible="{Binding DeleteRecordsMode}"/>
 </StackLayout>
