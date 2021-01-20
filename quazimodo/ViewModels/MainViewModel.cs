@@ -38,6 +38,7 @@ namespace quazimodo.ViewModels
         private bool _topButtonVisible;
         private bool _microphoneIsDisabledByUser;
         private bool _recordsVisible;
+        private bool _addButtonVisible;
         private double _recordingViewProgress;
         private string _topGlyph = FontIcons.cog;
         private Timer _recordProgressTimer;
@@ -94,7 +95,7 @@ namespace quazimodo.ViewModels
                 OnPropertyChanged(nameof(MyAppsPageVisible));
             }
         }
-
+        
         public bool MyAppsIsExist
         {
             get => _myAppsIsExist;

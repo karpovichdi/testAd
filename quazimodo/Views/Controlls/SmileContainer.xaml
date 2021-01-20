@@ -6,6 +6,7 @@
              xmlns:effects="clr-namespace:quazimodo.Views.Effects;assembly=quazimodo"
              xmlns:constants="clr-namespace:quazimodo.Utilities.Constants;assembly=quazimodo"
              xmlns:viewModels="clr-namespace:quazimodo.ViewModels;assembly=quazimodo"
+             xmlns:converters="clr-namespace:quazimodo.Utilities.Converters;assembly=quazimodo"
              x:DataType="viewModels:MainViewModel"
              x:Class="quazimodo.Views.Controlls.SmileContainer">
     <Grid Margin="{StaticResource defaultOffset}">
@@ -76,14 +77,8 @@
     </Grid>
     <Label Style="{StaticResource labelDeleteMessageStyle}"
            IsVisible="{Binding DeleteRecordsMode}"/>
-    
-    
-    
-    
-    
-    
-    
     <Grid Margin="{StaticResource defaultOffset}"
+          Padding="0,0,0,70"
           IsVisible="{Binding ViewModelItemSource.RecordsVisible}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -107,8 +102,7 @@
                                  Margin="0,5,20,0"
                                  Size="22"
                                  Glyph="{Binding TopGlyph}"
-                                 Color="{StaticResource lightYellow}"
-                                 IsVisible="{Binding TopButtonVisible}"/>
+                                 Color="{StaticResource lightYellow}"/>
         <controlls:ImageFontView Grid.Row="0"
                                  CommandParameter="{x:Static constants:ConstantsForms.Positive}"
                                  HorizontalOptions="Start"

@@ -13,6 +13,7 @@ namespace quazimodo.ViewModels
     {
         private ISoundService _soundService;
         private bool _recordsVisible;
+        private bool _addButtonVisible;
 
         public ObservableRangeCollection<ButtonSmileViewModel> PositiveItemSource { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> NeutralItemSource { get; set; }
@@ -28,6 +29,16 @@ namespace quazimodo.ViewModels
             {
                 _recordsVisible = value;
                 OnPropertyChanged(nameof(RecordsVisible));
+            }
+        }
+        
+        public bool AddButtonVisible
+        {
+            get => _addButtonVisible;
+            set
+            {
+                _addButtonVisible = value;
+                OnPropertyChanged(nameof(AddButtonVisible));
             }
         }
 
@@ -126,6 +137,7 @@ namespace quazimodo.ViewModels
             }
 
             RecordsVisible = RecordsItemSource.Count > 0;
+            AddButtonVisible = RecordsItemSource.Count < ConstantsForms.MaxCountOfRecords;
         }
     }
 }

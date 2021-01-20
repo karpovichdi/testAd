@@ -23,17 +23,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <ScrollView Grid.RowSpan="2">
-            <StackLayout Spacing="0"
-                         Margin="0,5,0,0">
-                <controlls:SmileContainer/>
-                <Button x:DataType="viewModels:MainViewModel"
-                        Text="{x:Static resources:Localization.Tap}"
-                        BackgroundColor="{StaticResource white4}"
-                        CornerRadius="{StaticResource defaultCorner}"
-                        Margin="{StaticResource defaultOffset}"
-                        Command="{Binding ShowMyAppListCommand}"
-                        IsVisible="{Binding MyAppsIsExist}" />
-            </StackLayout>
+            <controlls:SmileContainer/>
         </ScrollView>
         <ImageButton x:Name="stopSoundButton"
                      x:DataType="viewModels:MainViewModel"
@@ -63,27 +53,52 @@
             </ImageButton.Effects>
         </ImageButton>
         
-        <Button x:Name="_newOrderButton"
-                Grid.Row="0"
-                Grid.RowSpan="2"
-                CornerRadius="25"
-                BackgroundColor="{StaticResource red}"
-                TextColor="White"
-                FontSize="24"
-                Command="{Binding RecordButtonCommand}"
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                WidthRequest="50"
-                HeightRequest="50"
-                Margin="0,0,25,25">
-            <Button.ImageSource>
-                <x:FontImage x:Key="plusFontImage"
-                             FontFamily="{StaticResource icomoonFont}"
-                             Size="22"
-                             Color="{StaticResource white6}"
-                             Glyph="{x:Static constants:FontIcons.mic}" />
-            </Button.ImageSource>
-        </Button>
+        <Grid Grid.Row="0"
+              Grid.RowSpan="2"
+              VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    CornerRadius="25"
+                    BackgroundColor="#deb945"
+                    TextColor="White"
+                    FontSize="24"
+                    Command="{Binding ShowMyAppListCommand}"
+                    IsVisible="{Binding MyAppsIsExist}"
+                    HorizontalOptions="Start"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    Margin="25,0,0,25">
+                <Button.ImageSource>
+                    <x:FontImage x:Key="plusFontImage"
+                                 FontFamily="{StaticResource icomoonFont}"
+                                 Size="22"
+                                 Color="{StaticResource white2}"
+                                 Glyph="{x:Static constants:FontIcons.home}" />
+                </Button.ImageSource>
+            </Button>
+            <Button Grid.Column="1"
+                    CornerRadius="25"
+                    BackgroundColor="#ffd54f"
+                    TextColor="White"
+                    FontSize="24"
+                    IsVisible="{Binding ViewModelItemSource.AddButtonVisible}"
+                    Command="{Binding RecordButtonCommand}"
+                    HorizontalOptions="End"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    Margin="0,0,25,25">
+                <Button.ImageSource>
+                    <x:FontImage x:Key="plusFontImage"
+                                 FontFamily="{StaticResource icomoonFont}"
+                                 Size="22"
+                                 Color="{StaticResource white2}"
+                                 Glyph="{x:Static constants:FontIcons.mic}" />
+                </Button.ImageSource>
+            </Button>
+        </Grid>
         
         <controlls:AdMobBannerView x:Name="adMobBannerView"
                                    Grid.Row="2"
