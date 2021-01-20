@@ -178,19 +178,19 @@
                              Value="false">
                     <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
                     <Setter Property="BackgroundColor" Value="Transparent" />
-                    <Setter Property="BorderColor" Value="Transparent" />
+                    <Setter Property="BorderColor" Value="{StaticResource white7}" />
                 </DataTrigger>
                 <DataTrigger TargetType="ImageButton"
                              Binding="{Binding DeleteModeState}"
                              Value="{x:Static enums:DeleteModeState.ModeDisabled}">
                     <Setter Property="Opacity" Value="{StaticResource normalTransperency}" />
-                    <Setter Property="BorderColor" Value="Transparent" />
+                    <Setter Property="BorderColor" Value="{StaticResource white7}" />
                     <Setter Property="BorderWidth" Value="{StaticResource emojiBorderWidth}" />
                 </DataTrigger>
             </Style.Triggers>
             
             <Setter Property="BackgroundColor" Value="Transparent" />
-            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="BorderColor" Value="{StaticResource white7}" />
             <Setter Property="Command" Value="{Binding PositiveMusicBtnClickCommand}" />
         </Style>
         

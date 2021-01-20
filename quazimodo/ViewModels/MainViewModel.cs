@@ -37,6 +37,7 @@ namespace quazimodo.ViewModels
         private bool _admpPopupVisible;
         private bool _topButtonVisible;
         private bool _microphoneIsDisabledByUser;
+        private bool _recordsVisible;
         private double _recordingViewProgress;
         private string _topGlyph = FontIcons.cog;
         private Timer _recordProgressTimer;

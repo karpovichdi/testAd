@@ -12,6 +12,7 @@ namespace quazimodo.ViewModels
     public class SmileItemSourceViewModel : ViewModelBase
     {
         private ISoundService _soundService;
+        private bool _recordsVisible;
 
         public ObservableRangeCollection<ButtonSmileViewModel> PositiveItemSource { get; set; }
         public ObservableRangeCollection<ButtonSmileViewModel> NeutralItemSource { get; set; }
@@ -19,6 +20,16 @@ namespace quazimodo.ViewModels
         public ObservableRangeCollection<ButtonSmileViewModel> RecordsItemSource { get; set; }
         
         public ObservableRangeCollection<ButtonSmileViewModel> ItemSource { get; set; }
+        
+        public bool RecordsVisible
+        {
+            get => _recordsVisible;
+            set
+            {
+                _recordsVisible = value;
+                OnPropertyChanged(nameof(RecordsVisible));
+            }
+        }
 
         public SmileItemSourceViewModel(IEnumerable<ButtonSmileViewModel> list, ISoundService soundService)
         {
@@ -51,6 +62,7 @@ namespace quazimodo.ViewModels
                     SongPath = fullPathToFile,
                     CommandParameter = soundName,
                     SmileType = SmileType.Record,
+                    Image = $"{soundName}.png"
                 };
                 viewModels.Add(viewModel);
             }
@@ -112,6 +124,8 @@ namespace quazimodo.ViewModels
                 case NotifyCollectionChangedAction.Reset:
                     break;
             }
+
+            RecordsVisible = RecordsItemSource.Count > 0;
         }
     }
 }

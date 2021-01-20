@@ -76,7 +76,15 @@
     </Grid>
     <Label Style="{StaticResource labelDeleteMessageStyle}"
            IsVisible="{Binding DeleteRecordsMode}"/>
-    <Grid Margin="{StaticResource defaultOffset}">
+    
+    
+    
+    
+    
+    
+    
+    <Grid Margin="{StaticResource defaultOffset}"
+          IsVisible="{Binding ViewModelItemSource.RecordsVisible}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
