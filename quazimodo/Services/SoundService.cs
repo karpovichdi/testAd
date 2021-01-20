@@ -30,6 +30,7 @@ namespace quazimodo.Services
         private AudioRecorderService _recorderService;
 
         private readonly AudioPlayer _audioPlayer;
+        private SoundParameter _lastCommandParameter;
 
         private bool CanPlaySound => _freePlayers.Count > 0;
 
@@ -77,6 +78,8 @@ namespace quazimodo.Services
                 StopRecordingOnSilence = false,
                 StopRecordingAfterTimeout = true 
             };
+
+             _lastCommandParameter = commandParameter;
                 
             _recorderService.AudioInputReceived += OnRecordReceived;
             await _recorderService.StartRecording();
@@ -92,8 +95,14 @@ namespace quazimodo.Services
             if (_recorderService.IsRecording)
             {
                 await _recorderService.StopRecording();
-                _recorderService = null;
             };
+
+            if (disableReceiveHandler)
+            {
+                await DeleteSong(_lastCommandParameter);
+            }
+
+            _recorderService = null;
         }
 
         public override Task DeleteSong(SoundParameter parameter)

@@ -66,8 +66,9 @@ namespace quazimodo.ViewModels
             foreach (var soundName in ConstantsForms.SoundParameters)
             {
                 var fullPathToFile = Helpers.GetSongPath(soundName);
+                    // /data/user/0/com.karpovichdi.quazimodo2/files/record1.mp3
                 if (!File.Exists(fullPathToFile)) continue;
-
+                    // /data/user/0/com.karpovichdi.quazimodo2/files/record1.mp3
                 var viewModel = new ButtonSmileViewModel
                 {
                     SongPath = fullPathToFile,

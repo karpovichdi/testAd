@@ -99,14 +99,14 @@
         <controlls:ImageFontView Grid.Row="0"
                                  CommandParameter="{x:Static constants:ConstantsForms.Negative}"
                                  HorizontalOptions="End"
-                                 Margin="0,5,20,0"
+                                 Margin="0,5,30,0"
                                  Size="22"
                                  Glyph="{Binding TopGlyph}"
                                  Color="{StaticResource lightYellow}"/>
         <controlls:ImageFontView Grid.Row="0"
                                  CommandParameter="{x:Static constants:ConstantsForms.Positive}"
                                  HorizontalOptions="Start"
-                                 Margin="20,5,0,0"
+                                 Margin="30,5,0,0"
                                  Size="22"
                                  Glyph="{x:Static constants:FontIcons.checkmark}"
                                  Color="{StaticResource lightYellow}"
@@ -116,6 +116,4 @@
                                         Style="{StaticResource flexLayoutStyle}"
                                         ItemSource="{Binding ViewModelItemSource.RecordsItemSource}"/>
     </Grid>
-    <Label Style="{StaticResource labelDeleteMessageStyle}"
-           IsVisible="{Binding DeleteRecordsMode}"/>
 </StackLayout>
