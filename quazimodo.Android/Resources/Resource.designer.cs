@@ -14040,139 +14040,229 @@ namespace quazimodo.Droid
 			public const int puke = 2131165403;
 			
 			// aapt resource value: 0x7F0700DC
-			public const int reject = 2131165404;
+			public const int record1 = 2131165404;
 			
 			// aapt resource value: 0x7F0700DD
-			public const int robot = 2131165405;
+			public const int record10 = 2131165405;
 			
 			// aapt resource value: 0x7F0700DE
-			public const int sad = 2131165406;
+			public const int record11 = 2131165406;
 			
 			// aapt resource value: 0x7F0700DF
-			public const int sadface = 2131165407;
+			public const int record12 = 2131165407;
 			
 			// aapt resource value: 0x7F0700E0
-			public const int sadness = 2131165408;
+			public const int record13 = 2131165408;
 			
 			// aapt resource value: 0x7F0700E1
-			public const int shock = 2131165409;
+			public const int record14 = 2131165409;
 			
 			// aapt resource value: 0x7F0700E2
-			public const int silent = 2131165410;
+			public const int record15 = 2131165410;
 			
 			// aapt resource value: 0x7F0700E3
-			public const int skull = 2131165411;
+			public const int record16 = 2131165411;
 			
 			// aapt resource value: 0x7F0700E4
-			public const int sleeping = 2131165412;
+			public const int record17 = 2131165412;
 			
 			// aapt resource value: 0x7F0700E5
-			public const int sleepingd = 2131165413;
+			public const int record18 = 2131165413;
 			
 			// aapt resource value: 0x7F0700E6
-			public const int smile = 2131165414;
+			public const int record19 = 2131165414;
 			
 			// aapt resource value: 0x7F0700E7
-			public const int smilingface = 2131165415;
+			public const int record2 = 2131165415;
 			
 			// aapt resource value: 0x7F0700E8
-			public const int sneezing = 2131165416;
+			public const int record20 = 2131165416;
 			
 			// aapt resource value: 0x7F0700E9
-			public const int snoring = 2131165417;
+			public const int record21 = 2131165417;
 			
 			// aapt resource value: 0x7F0700EA
-			public const int Splash2 = 2131165418;
+			public const int record22 = 2131165418;
 			
 			// aapt resource value: 0x7F0700EB
-			public const int splash_logo = 2131165419;
+			public const int record23 = 2131165419;
 			
 			// aapt resource value: 0x7F0700EC
-			public const int splash_screen = 2131165420;
+			public const int record24 = 2131165420;
 			
 			// aapt resource value: 0x7F0700ED
-			public const int starred = 2131165421;
+			public const int record25 = 2131165421;
 			
 			// aapt resource value: 0x7F0700EE
-			public const int stop = 2131165422;
+			public const int record26 = 2131165422;
 			
 			// aapt resource value: 0x7F0700EF
-			public const int sunglasses = 2131165423;
+			public const int record27 = 2131165423;
 			
 			// aapt resource value: 0x7F0700F0
-			public const int sunglassesq = 2131165424;
+			public const int record28 = 2131165424;
 			
 			// aapt resource value: 0x7F0700F1
-			public const int surprised = 2131165425;
+			public const int record29 = 2131165425;
 			
 			// aapt resource value: 0x7F0700F2
-			public const int sweat = 2131165426;
+			public const int record3 = 2131165426;
 			
 			// aapt resource value: 0x7F0700F3
-			public const int sweating = 2131165427;
+			public const int record30 = 2131165427;
 			
 			// aapt resource value: 0x7F0700F4
-			public const int sweattongue = 2131165428;
+			public const int record4 = 2131165428;
 			
 			// aapt resource value: 0x7F0700F5
-			public const int tasty = 2131165429;
+			public const int record5 = 2131165429;
 			
 			// aapt resource value: 0x7F0700F6
-			public const int tears = 2131165430;
+			public const int record6 = 2131165430;
 			
 			// aapt resource value: 0x7F0700F7
-			public const int tease = 2131165431;
+			public const int record7 = 2131165431;
 			
 			// aapt resource value: 0x7F0700F8
-			public const int teasing = 2131165432;
+			public const int record8 = 2131165432;
 			
 			// aapt resource value: 0x7F0700F9
-			public const int teeth = 2131165433;
+			public const int record9 = 2131165433;
 			
 			// aapt resource value: 0x7F0700FA
-			public const int thief = 2131165434;
+			public const int reject = 2131165434;
 			
 			// aapt resource value: 0x7F0700FB
-			public const int thinking = 2131165435;
+			public const int robot = 2131165435;
 			
 			// aapt resource value: 0x7F0700FC
-			public const int tongueout = 2131165436;
+			public const int sad = 2131165436;
 			
 			// aapt resource value: 0x7F0700FD
-			public const int tongueoutq = 2131165437;
+			public const int sadface = 2131165437;
 			
 			// aapt resource value: 0x7F0700FE
-			public const int tooltip_frame_dark = 2131165438;
+			public const int sadness = 2131165438;
 			
 			// aapt resource value: 0x7F0700FF
-			public const int tooltip_frame_light = 2131165439;
+			public const int shock = 2131165439;
 			
 			// aapt resource value: 0x7F070100
-			public const int universal = 2131165440;
+			public const int silent = 2131165440;
 			
 			// aapt resource value: 0x7F070101
-			public const int upset = 2131165441;
+			public const int skull = 2131165441;
 			
 			// aapt resource value: 0x7F070102
-			public const int upsidedown = 2131165442;
+			public const int sleeping = 2131165442;
 			
 			// aapt resource value: 0x7F070103
-			public const int wink = 2131165443;
+			public const int sleepingd = 2131165443;
 			
 			// aapt resource value: 0x7F070104
-			public const int winkingface = 2131165444;
+			public const int smile = 2131165444;
 			
 			// aapt resource value: 0x7F070105
-			public const int yummy = 2131165445;
+			public const int smilingface = 2131165445;
 			
 			// aapt resource value: 0x7F070106
-			public const int zany = 2131165446;
+			public const int sneezing = 2131165446;
 			
 			// aapt resource value: 0x7F070107
-			public const int zanyq = 2131165447;
+			public const int snoring = 2131165447;
 			
 			// aapt resource value: 0x7F070108
-			public const int zipped = 2131165448;
+			public const int Splash2 = 2131165448;
+			
+			// aapt resource value: 0x7F070109
+			public const int splash_logo = 2131165449;
+			
+			// aapt resource value: 0x7F07010A
+			public const int splash_screen = 2131165450;
+			
+			// aapt resource value: 0x7F07010B
+			public const int starred = 2131165451;
+			
+			// aapt resource value: 0x7F07010C
+			public const int stop = 2131165452;
+			
+			// aapt resource value: 0x7F07010D
+			public const int sunglasses = 2131165453;
+			
+			// aapt resource value: 0x7F07010E
+			public const int sunglassesq = 2131165454;
+			
+			// aapt resource value: 0x7F07010F
+			public const int surprised = 2131165455;
+			
+			// aapt resource value: 0x7F070110
+			public const int sweat = 2131165456;
+			
+			// aapt resource value: 0x7F070111
+			public const int sweating = 2131165457;
+			
+			// aapt resource value: 0x7F070112
+			public const int sweattongue = 2131165458;
+			
+			// aapt resource value: 0x7F070113
+			public const int tasty = 2131165459;
+			
+			// aapt resource value: 0x7F070114
+			public const int tears = 2131165460;
+			
+			// aapt resource value: 0x7F070115
+			public const int tease = 2131165461;
+			
+			// aapt resource value: 0x7F070116
+			public const int teasing = 2131165462;
+			
+			// aapt resource value: 0x7F070117
+			public const int teeth = 2131165463;
+			
+			// aapt resource value: 0x7F070118
+			public const int thief = 2131165464;
+			
+			// aapt resource value: 0x7F070119
+			public const int thinking = 2131165465;
+			
+			// aapt resource value: 0x7F07011A
+			public const int tongueout = 2131165466;
+			
+			// aapt resource value: 0x7F07011B
+			public const int tongueoutq = 2131165467;
+			
+			// aapt resource value: 0x7F07011C
+			public const int tooltip_frame_dark = 2131165468;
+			
+			// aapt resource value: 0x7F07011D
+			public const int tooltip_frame_light = 2131165469;
+			
+			// aapt resource value: 0x7F07011E
+			public const int universal = 2131165470;
+			
+			// aapt resource value: 0x7F07011F
+			public const int upset = 2131165471;
+			
+			// aapt resource value: 0x7F070120
+			public const int upsidedown = 2131165472;
+			
+			// aapt resource value: 0x7F070121
+			public const int wink = 2131165473;
+			
+			// aapt resource value: 0x7F070122
+			public const int winkingface = 2131165474;
+			
+			// aapt resource value: 0x7F070123
+			public const int yummy = 2131165475;
+			
+			// aapt resource value: 0x7F070124
+			public const int zany = 2131165476;
+			
+			// aapt resource value: 0x7F070125
+			public const int zanyq = 2131165477;
+			
+			// aapt resource value: 0x7F070126
+			public const int zipped = 2131165478;
 			
 			static Drawable()
 			{

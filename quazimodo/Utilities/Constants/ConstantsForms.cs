@@ -75,6 +75,7 @@ namespace quazimodo.Utilities.Constants
             public static Style PositiveEmojiStyle => (Style)Application.Current.Resources["positiveEmojiItem"];
             public static Style NeutralEmojiStyle => (Style)Application.Current.Resources["neutralEmojiItem"];
             public static Style NegativeEmojiStyle => (Style)Application.Current.Resources["negativeEmojiItem"];
+            public static Style RecordEmojiStyle => (Style)Application.Current.Resources["recordEmojiItem"];
 
             public static string IcoMoonFontForAndroid =>
                 (string) ((OnPlatform<string>) Application.Current.Resources["icomoonFont"]).Platforms[0].Value;

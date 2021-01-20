@@ -635,7 +635,7 @@ namespace quazimodo.ViewModels
                 var viewModel = new ButtonSmileViewModel
                 {
                     SongPath = Helpers.GetSongPath(_lastRecordedSoundParameter),
-                    Image = ConstantsForms.DefaultImageSource,
+                    Image = ImageSource.FromFile($"{_lastRecordedSoundParameter}.png"),
                     CommandParameter = _lastRecordedSoundParameter,
                     SmileType = SmileType.Record
                 };

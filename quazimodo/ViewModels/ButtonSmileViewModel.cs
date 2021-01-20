@@ -70,7 +70,7 @@ namespace quazimodo.ViewModels
                     case SmileType.Neutral:
                         return ConstantsForms.MarkupResources.NeutralEmojiStyle;
                     case SmileType.Record:
-                        return ConstantsForms.MarkupResources.PositiveEmojiStyle;
+                        return ConstantsForms.MarkupResources.RecordEmojiStyle;
                 }
                 
                 return _style;
